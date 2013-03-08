@@ -97,7 +97,7 @@ bool LeapfrogIterator<T>::AtEnd()
 template <typename T>
 void LeapfrogIterator<T>::Search()
 {
-    T xMax = iterators[(p - 1) % k]->Key();
+    T xMax = iterators[(k + p - 1) % k]->Key();
 
     while (true)
     {
