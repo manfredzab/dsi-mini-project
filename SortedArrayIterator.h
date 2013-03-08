@@ -17,7 +17,7 @@ public:
     virtual bool AtEnd();
 private:
     std::vector<T>* elements;
-    int currentPosition;
+    typename std::vector<T>::iterator currentPosition;
 };
 
 #endif /* SORTEDARRAYITERATOR_H_ */
