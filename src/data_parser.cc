@@ -3,9 +3,9 @@
 #include <sstream>
 #include <algorithm>
 
-#include "data_parser.h"
+#include "../include/data_parser.h"
 
-std::vector<Relation*>& DataParser::ParseDatabase(const char* file_name)
+std::vector<Relation*>* DataParser::ParseDatabase(const char* file_name)
 {
     std::vector<Relation*>* result = new std::vector<Relation*>();
 
@@ -28,7 +28,7 @@ std::vector<Relation*>& DataParser::ParseDatabase(const char* file_name)
         std::cerr << "Fatal error: Could not open the database file " << file_name;
     }
 
-    return *result;
+    return result;
 }
 
 Relation* DataParser::ParseRelation(const char* database_file_name, std::string relation_line)

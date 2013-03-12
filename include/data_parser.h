@@ -9,7 +9,7 @@
 class DataParser
 {
 public:
-    static std::vector<Relation*>& ParseDatabase(const char* file_name);
+    static std::vector<Relation*>* ParseDatabase(const char* file_name);
     static Relation* ParseRelation(const char* file_name, std::string relation_name, std::vector<std::string>& attribute_names);
 private:
     static Relation* ParseRelation(const char* database_file_name, std::string relation_line);
