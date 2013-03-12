@@ -8,21 +8,37 @@
 #include <ctime>
 #include <iterator>
 #include <vector>
+#include <map>
 
 //#include "SortedArrayIterator.h"
 //#include "LeapfrogIterator.h"
 
 #include "../include/data_parser.h"
 #include "../include/relation.h"
+#include "../include/query.h"
 #include "../include/simple_iterator.h"
 #include "../include/simple_trie_iterator.h"
 
 int main()
 {
-    std::vector<Relation*>* db_relations = DataParser::ParseDatabase("data/dataset1-uniform/scale6/databasefile");
-    //std::vector<Relation*>* db_relations = DataParser::ParseDatabase("tests/data/databasefile");
+//    std::map<std::string, Relation*>* db_relations = DataParser::ParseDatabase("data/dataset1-uniform/scale6/databasefile");
+    std::map<std::string, Relation*>* db_relations = DataParser::ParseDatabase("tests/data/databasefile");
 
-    SimpleTrieIterator simple_trie_iterator(*((*db_relations)[2]));
+    Query* query = DataParser::ParseQuery("data/query3");
+    std::cout << "Relation names:" << std::endl;
+    for (typename std::vector<std::string>::iterator it = query->relation_names.begin(); it != query->relation_names.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl << "Join attributes:" << std::endl;
+    for (typename std::vector<std::string>::iterator it = query->join_attributes.begin(); it != query->join_attributes.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+
+    SimpleTrieIterator simple_trie_iterator(*((*db_relations)["W"]));
 
     int current_command;
     do
