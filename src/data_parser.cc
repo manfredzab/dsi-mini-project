@@ -47,7 +47,7 @@ Query* DataParser::ParseQuery(const char* file_name)
 }
 
 
-std::map<std::string, Relation*>* DataParser::ParseDatabase(const char* file_name)
+std::map<std::string, Relation*>* DataParser::ParseRelations(const char* file_name)
 {
     std::map<std::string, Relation*>* relation_map = new std::map<std::string, Relation*>();
 

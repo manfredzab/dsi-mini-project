@@ -10,7 +10,7 @@
 class DataParser
 {
 public:
-    static std::map<std::string, Relation*>* ParseDatabase(const char* file_name);
+    static std::map<std::string, Relation*>* ParseRelations(const char* file_name);
     static Query*                            ParseQuery(const char* file_name);
 };
 

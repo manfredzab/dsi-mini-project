@@ -18,72 +18,79 @@
 #include "../include/query.h"
 #include "../include/simple_iterator.h"
 #include "../include/simple_trie_iterator.h"
+#include "../include/join.h"
+#include "../include/sort_merge_join.h"
 
 int main()
 {
-//    std::map<std::string, Relation*>* db_relations = DataParser::ParseDatabase("data/dataset1-uniform/scale6/databasefile");
-    std::map<std::string, Relation*>* db_relations = DataParser::ParseDatabase("tests/data/databasefile");
-
+    std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale6/databasefile");
+    //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("tests/data/databasefile");
     Query* query = DataParser::ParseQuery("data/query3");
-    std::cout << "Relation names:" << std::endl;
-    for (typename std::vector<std::string>::iterator it = query->relation_names.begin(); it != query->relation_names.end(); ++it)
-    {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl << "Join attributes:" << std::endl;
-    for (typename std::vector<std::string>::iterator it = query->join_attributes.begin(); it != query->join_attributes.end(); ++it)
-    {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
 
+    IJoin* joinAlgorithm = new SortMergeJoin();
+    joinAlgorithm->Join(*relations, *query);
 
-    SimpleTrieIterator simple_trie_iterator(*((*db_relations)["W"]));
+    delete joinAlgorithm;
 
-    int current_command;
-    do
-    {
-        std::cout << "[0] Exit, [1] Up, [2] Next, [3] Open, [4] Key" << std::endl;
-        std::cin >> current_command;
-
-        switch (current_command)
-        {
-            case 1:
-            {
-                if (simple_trie_iterator.Up() == kOK)
-                    std::cout << "SUCCESS" << std::endl;
-                else
-                    std::cout << "FAIL" << std::endl;
-                break;
-            }
-            case 2:
-            {
-                if (simple_trie_iterator.Next() == kOK)
-                    std::cout << "SUCCESS" << std::endl;
-                else
-                    std::cout << "FAIL" << std::endl;
-                break;
-            }
-            case 3:
-            {
-                if (simple_trie_iterator.Open() == kOK)
-                    std::cout << "SUCCESS" << std::endl;
-                else
-                    std::cout << "FAIL" << std::endl;
-                break;
-            }
-            case 4:
-            {
-                int result;
-                if (simple_trie_iterator.Key(&result) == kOK)
-                    std::cout << result << std::endl;
-                else
-                    std::cout << "FAIL" << std::endl;
-                break;
-            }
-        }
-    }
-    while (current_command != 0);
+//    std::cout << "Relation names:" << std::endl;
+//    for (typename std::vector<std::string>::iterator it = query->relation_names.begin(); it != query->relation_names.end(); ++it)
+//    {
+//        std::cout << *it << " ";
+//    }
+//    std::cout << std::endl << "Join attributes:" << std::endl;
+//    for (typename std::vector<std::string>::iterator it = query->join_attributes.begin(); it != query->join_attributes.end(); ++it)
+//    {
+//        std::cout << *it << " ";
+//    }
+//    std::cout << std::endl;
+//
+//
+//    SimpleTrieIterator simple_trie_iterator(*((*db_relations)["W"]));
+//
+//    int current_command;
+//    do
+//    {
+//        std::cout << "[0] Exit, [1] Up, [2] Next, [3] Open, [4] Key" << std::endl;
+//        std::cin >> current_command;
+//
+//        switch (current_command)
+//        {
+//            case 1:
+//            {
+//                if (simple_trie_iterator.Up() == kOK)
+//                    std::cout << "SUCCESS" << std::endl;
+//                else
+//                    std::cout << "FAIL" << std::endl;
+//                break;
+//            }
+//            case 2:
+//            {
+//                if (simple_trie_iterator.Next() == kOK)
+//                    std::cout << "SUCCESS" << std::endl;
+//                else
+//                    std::cout << "FAIL" << std::endl;
+//                break;
+//            }
+//            case 3:
+//            {
+//                if (simple_trie_iterator.Open() == kOK)
+//                    std::cout << "SUCCESS" << std::endl;
+//                else
+//                    std::cout << "FAIL" << std::endl;
+//                break;
+//            }
+//            case 4:
+//            {
+//                int result;
+//                if (simple_trie_iterator.Key(&result) == kOK)
+//                    std::cout << result << std::endl;
+//                else
+//                    std::cout << "FAIL" << std::endl;
+//                break;
+//            }
+//        }
+//    }
+//    while (current_command != 0);
 
 
 //    SimpleIterator simple_iterator(*((*db_relations)[0]));

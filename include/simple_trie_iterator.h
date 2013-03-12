@@ -4,6 +4,7 @@
 #include "simple_iterator.h"
 #include "trie.h"
 
+// TODO: implement without building a tree (using just the seeks of the simple iterator)
 class SimpleTrieIterator : public virtual SimpleIterator
 {
     public:
