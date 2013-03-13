@@ -5,11 +5,12 @@
 #include <string>
 #include "relation.h"
 #include "query.h"
+#include "status.h"
 
 class IJoin
 {
     public:
-        virtual Relation* Join(const std::map<std::string, Relation*>& relations, const Query& query) = 0;
+        virtual Status Join(const std::map<std::string, Relation*>& relations, const Query& query, Relation* result) = 0;
         virtual ~IJoin() { };
 };
 

@@ -2,11 +2,12 @@
 
 #include "../include/simple_trie_iterator.h"
 
-SimpleTrieIterator::SimpleTrieIterator(const Relation& relation) : SimpleIterator(relation)
+SimpleTrieIterator::SimpleTrieIterator(const Relation& relation)// : SimpleIterator(relation)
 {
     // Build the trie
     this->trie = new Trie(relation);
     this->current_node = &trie->root;
+    this->at_end = false;
 }
 
 SimpleTrieIterator::~SimpleTrieIterator()
@@ -23,6 +24,7 @@ Status SimpleTrieIterator::Open()
 
     // Mark the first child as being opened
     this->current_node->current_child = this->current_node->children.begin();
+    this->at_end = false;
 
     this->current_node = *(this->current_node->current_child);
     return kOK;
@@ -36,6 +38,7 @@ Status SimpleTrieIterator::Up()
         return kFail;
     }
 
+    this->at_end = false;
     this->current_node = this->current_node->parent;
     return kOK;
 }
@@ -60,14 +63,24 @@ Status SimpleTrieIterator::Next()
         return kFail;
     }
 
-    this->current_node = *(++this->current_node->parent->current_child);
+    this->current_node->parent->current_child++;
+
+    if (this->current_node->parent->current_child == this->current_node->parent->children.end())
+    {
+        this->at_end = true;
+    }
+    else
+    {
+        this->current_node = *this->current_node->parent->current_child;
+    }
+
     return kOK;
 }
 
 
 bool SimpleTrieIterator::AtEnd()
 {
-    return (this->current_node->parent->current_child == this->current_node->parent->children.end() - 1);
+    return this->at_end;
 }
 
 

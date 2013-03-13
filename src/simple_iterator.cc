@@ -1,20 +1,25 @@
 #include "../include/simple_iterator.h"
 
-SimpleIterator::SimpleIterator(const Relation& relation) : relation(relation)
+template SimpleIterator<int*>::SimpleIterator(const std::vector<int*>& data);
+
+
+template <typename T>
+SimpleIterator<T>::SimpleIterator(const std::vector<T>& data) : tuple_data(data)
 {
-    this->tuple_iterator = this->relation.data.begin();
+    this->tuple_iterator = data.begin();
     this->attribute_index = 0;
 }
 
 
-Status SimpleIterator::Key(int* result)
+template <typename T>
+Status SimpleIterator<T>::Key(T result)
 {
     *result = (*this->tuple_iterator)[this->attribute_index];
     return kOK;
 }
 
-
-Status SimpleIterator::Next()
+template <typename T>
+Status SimpleIterator<T>::Next()
 {
     if (this->AtEnd())
     {
@@ -25,8 +30,8 @@ Status SimpleIterator::Next()
     return kOK;
 }
 
-
-bool SimpleIterator::AtEnd()
+template <typename T>
+bool SimpleIterator<T>::AtEnd()
 {
-    return (this->tuple_iterator == this->relation.data.end() - 1);
+    return (this->tuple_iterator == this->tuple_data.end());
 }

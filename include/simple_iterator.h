@@ -6,21 +6,21 @@
 #include "status.h"
 #include "relation.h"
 
+template <class T>
 class SimpleIterator
 {
     public:
-        SimpleIterator(const Relation& relation);
+        SimpleIterator(const std::vector<T>& data);
         virtual ~SimpleIterator() { };
 
-        virtual Status Key(int* result);
+        virtual Status Key(T result);
         virtual Status Next();
         virtual bool   AtEnd();
 
         int attribute_index;
-    protected:
-        const Relation& relation;
     private:
-        typename std::vector<int*>::const_iterator tuple_iterator;
+        const std::vector<T>&                   tuple_data;
+        typename std::vector<T>::const_iterator tuple_iterator;
 };
 
 #endif /* SIMPLEITERATOR_H_ */

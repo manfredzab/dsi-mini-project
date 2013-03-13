@@ -2,6 +2,8 @@
 // - Better file format handling (less attributes in one tuple than in the other, etc)
 // - File headers (time, etc)
 // - Comments
+// - Release memory for Relation int*'s
+// - Release memory for trie
 
 #include <iostream>
 #include <cstdlib>
@@ -19,19 +21,98 @@
 #include "../include/simple_iterator.h"
 #include "../include/simple_trie_iterator.h"
 #include "../include/join.h"
-#include "../include/sort_merge_join.h"
+#include "../include/sort_merge_join_trie_iterator.h"
 
 int main()
 {
-    std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale6/databasefile");
-    //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("tests/data/databasefile");
+    //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale6/databasefile");
+    std::map<std::string, Relation*>* relations = DataParser::ParseRelations("tests/data/databasefile");
     Query* query = DataParser::ParseQuery("data/query3");
 
-    IJoin* joinAlgorithm = new SortMergeJoin();
-    joinAlgorithm->Join(*relations, *query);
+    SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
 
-    delete joinAlgorithm;
+    std::vector<int> stack;
+    int current_command;
+    do
+    {
+        std::cout << "[0] Exit, [1] Up, [2] Next, [3] Open, [4] Key" << std::endl;
+        std::cin >> current_command;
 
+        switch (current_command)
+        {
+            case 1:
+            {
+                if (join_iterator->Up() == kOK)
+                {
+                    stack.pop_back();
+                    std::cout << "[";
+                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+                    {
+                        std::cout << " " << *it;
+                    }
+                    std::cout << " ] SUCCESS" << std::endl;
+                }
+                else
+                    std::cout << "FAIL" << std::endl;
+                break;
+            }
+            case 2:
+            {
+                if (join_iterator->Next() == kOK)
+                {
+                    stack.pop_back();
+                    int result;
+                    join_iterator->Key(&result);
+                    stack.push_back(result);
+
+                    std::cout << "[";
+                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+                    {
+                        std::cout << " " << *it;
+                    }
+                    std::cout << " ] SUCCESS" << std::endl;
+                }
+                else
+                    std::cout << "FAIL" << std::endl;
+                break;
+            }
+            case 3:
+            {
+                if (join_iterator->Open() == kOK)
+                {
+                    int result;
+                    join_iterator->Key(&result);
+                    stack.push_back(result);
+
+                    std::cout << "[";
+                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+                    {
+                        std::cout << " " << *it;
+                    }
+                    std::cout << " ] SUCCESS" << std::endl;
+                }
+                else
+                    std::cout << "FAIL" << std::endl;
+                break;
+            }
+            case 4:
+            {
+                int result;
+                if (join_iterator->Key(&result) == kOK)
+                    std::cout << result << std::endl;
+                else
+                    std::cout << "FAIL" << std::endl;
+                break;
+            }
+        }
+    }
+    while (current_command != 0);
+
+
+    delete join_iterator;
+
+    delete query;
+    delete relations;
 //    std::cout << "Relation names:" << std::endl;
 //    for (typename std::vector<std::string>::iterator it = query->relation_names.begin(); it != query->relation_names.end(); ++it)
 //    {
@@ -47,50 +128,6 @@ int main()
 //
 //    SimpleTrieIterator simple_trie_iterator(*((*db_relations)["W"]));
 //
-//    int current_command;
-//    do
-//    {
-//        std::cout << "[0] Exit, [1] Up, [2] Next, [3] Open, [4] Key" << std::endl;
-//        std::cin >> current_command;
-//
-//        switch (current_command)
-//        {
-//            case 1:
-//            {
-//                if (simple_trie_iterator.Up() == kOK)
-//                    std::cout << "SUCCESS" << std::endl;
-//                else
-//                    std::cout << "FAIL" << std::endl;
-//                break;
-//            }
-//            case 2:
-//            {
-//                if (simple_trie_iterator.Next() == kOK)
-//                    std::cout << "SUCCESS" << std::endl;
-//                else
-//                    std::cout << "FAIL" << std::endl;
-//                break;
-//            }
-//            case 3:
-//            {
-//                if (simple_trie_iterator.Open() == kOK)
-//                    std::cout << "SUCCESS" << std::endl;
-//                else
-//                    std::cout << "FAIL" << std::endl;
-//                break;
-//            }
-//            case 4:
-//            {
-//                int result;
-//                if (simple_trie_iterator.Key(&result) == kOK)
-//                    std::cout << result << std::endl;
-//                else
-//                    std::cout << "FAIL" << std::endl;
-//                break;
-//            }
-//        }
-//    }
-//    while (current_command != 0);
 
 
 //    SimpleIterator simple_iterator(*((*db_relations)[0]));
@@ -118,6 +155,8 @@ int main()
 //        std::cout << std::endl;
 //        std::cout << "Relation size: " << (*it)->data.size() << std::endl;
 //    }
+
+
 
 //    int k = 6;
 //
