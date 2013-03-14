@@ -2,11 +2,12 @@
 #define SIMPLE_TRIE_ITERATOR_H_
 
 #include "simple_iterator.h"
+#include "trie_iterator.h"
 #include "trie.h"
 
 // TODO: implement without building a tree (using just the seeks of the simple iterator);
 //       use this implementation as basis for trie iterator for leapfrog.
-class SimpleTrieIterator// : public virtual SimpleIterator
+class SimpleTrieIterator : public ITrieIterator // : public virtual SimpleIterator
 {
     public:
         SimpleTrieIterator(const Relation& relation);

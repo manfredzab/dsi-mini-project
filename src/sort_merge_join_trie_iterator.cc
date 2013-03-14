@@ -7,6 +7,9 @@
 
 SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query)
 {
+    // Initialize the number of join attributes
+    number_of_join_attributes = query.join_attributes.size();
+
     // Create an iterator for each of the relations involved in the query
     for (unsigned i = 0; i < query.relation_names.size(); i++)
     {
@@ -16,9 +19,9 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const std::map<std::string,
         this->trie_iterator_for_relation[relation_name] = new SimpleTrieIterator(*relation);
     }
 
-    // For each attribute x in the equi-join, create an array of pointers to the trie iterators of the
-    // relations in which x occurs, and initialize the sort merge join instances with those trie iterators.
-    for (unsigned attribute_depth = 0; attribute_depth < query.join_attributes.size(); attribute_depth++)
+    // For each attribute X in the equi-join, create an array of pointers to the trie iterators of the
+    // relations in which X occurs, and initialize the sort merge join instances with those trie iterators.
+    for (unsigned attribute_depth = 0; attribute_depth < number_of_join_attributes; attribute_depth++)
     {
         std::string attribute = query.join_attributes[attribute_depth];
 
@@ -39,7 +42,24 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const std::map<std::string,
         join_iterator_for_depth[attribute_depth] = new SortMergeJoinIterator(trie_iterators_for_depth[attribute_depth]);
     }
 
-    // Initialize the current attribute depth
+    // For each of the attributes Y which are present in the original relations, but not in the equi-join, initialize
+    // the trie iterators to their respective relations.
+    int last_attribute = query.join_attributes.size();
+    for (std::map<std::string, Relation*>::const_iterator it = relations.begin(); it != relations.end(); ++it)
+    {
+        Relation* current_db_relation = it->second;
+        for (unsigned i = 0; i < current_db_relation->attribute_names.size(); i++)
+        {
+            std::string attribute = current_db_relation->attribute_names[i];
+            if (find(query.join_attributes.begin(), query.join_attributes.end(), attribute) == query.join_attributes.end())
+            {
+                trie_iterators_for_depth[last_attribute++].push_back(trie_iterator_for_relation[current_db_relation->name]);
+            }
+        }
+    }
+
+    // Initialize the current attribute depth and the total number of attributes in the result relation
+    number_of_result_attributes = trie_iterators_for_depth.size();
     depth = -1;
 }
 
@@ -64,23 +84,38 @@ Status SortMergeJoinTrieIterator::Open()
 
     depth++;
 
-    for (unsigned i = 0; i < trie_iterators_for_depth[depth].size(); i++)
+    if (depth < number_of_join_attributes) // We are still merging join variables
     {
-        Status sub_status = trie_iterators_for_depth[depth][i]->Open();
-        if (status == kOK)
+        for (unsigned i = 0; i < trie_iterators_for_depth[depth].size(); i++)
         {
-            status = sub_status;
+            Status sub_status = trie_iterators_for_depth[depth][i]->Open();
+            if (status == kOK)
+            {
+                status = sub_status;
+            }
+        }
+
+        if (kOK == status)
+        {
+            join_iterator_for_depth[depth]->Init();
+
+            if (AtEnd())
+            {
+                status = kFail;
+                Up(); // Undo changes
+            }
         }
     }
-
-    if (kOK == status)
+    else // We are merging variables not involved in the join
     {
-        join_iterator_for_depth[depth]->Init();
-
-        if (AtEnd())
+        if (depth < number_of_result_attributes)
+        {
+            status = trie_iterators_for_depth[depth][0]->Open();
+        }
+        else
         {
             status = kFail;
-            Up(); // Undo changes
+            depth--;
         }
     }
 
@@ -90,18 +125,33 @@ Status SortMergeJoinTrieIterator::Open()
 
 Status SortMergeJoinTrieIterator::Up()
 {
-    Status status = kOK;
-
-    for (unsigned i = 0; i < trie_iterators_for_depth[depth].size(); i++)
+    if (AtRoot())
     {
-        Status sub_status = trie_iterators_for_depth[depth][i]->Up();
-        if (status == kOK)
-        {
-            status = sub_status;
-        }
+        return kFail;
     }
 
-    depth--;
+    Status status = kOK;
+
+    if (depth < number_of_join_attributes)
+    {
+        for (unsigned i = 0; i < trie_iterators_for_depth[depth].size(); i++)
+        {
+            Status sub_status = trie_iterators_for_depth[depth][i]->Up();
+            if (kOK == status)
+            {
+                status = sub_status;
+            }
+        }
+    }
+    else
+    {
+        status = trie_iterators_for_depth[depth][0]->Up();
+    }
+
+    if (kOK == status)
+    {
+        depth--;
+    }
 
     return status;
 }
@@ -114,19 +164,45 @@ Status SortMergeJoinTrieIterator::Key(int* result)
         return kFail;
     }
 
-    return join_iterator_for_depth[depth]->Key(result);
+    if (depth < number_of_join_attributes)
+    {
+        return join_iterator_for_depth[depth]->Key(result);
+    }
+    else
+    {
+        return trie_iterators_for_depth[depth][0]->Key(result);
+    }
 }
 
 
 Status SortMergeJoinTrieIterator::Next()
 {
-    return join_iterator_for_depth[depth]->Next();
+    if (AtRoot())
+    {
+        return kFail;
+    }
+
+    if (depth < number_of_join_attributes)
+    {
+        return join_iterator_for_depth[depth]->Next();
+    }
+    else
+    {
+        return trie_iterators_for_depth[depth][0]->Next();
+    }
 }
 
 
 bool SortMergeJoinTrieIterator::AtEnd()
 {
-    return join_iterator_for_depth[depth]->AtEnd();
+    if (depth < number_of_join_attributes)
+    {
+        return join_iterator_for_depth[depth]->AtEnd();
+    }
+    else
+    {
+        return trie_iterators_for_depth[depth][0]->AtEnd();
+    }
 }
 
 

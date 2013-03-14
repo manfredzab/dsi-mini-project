@@ -22,6 +22,7 @@
 #include "../include/simple_trie_iterator.h"
 #include "../include/join.h"
 #include "../include/sort_merge_join_trie_iterator.h"
+#include "../include/trie_iterator_printer.h"
 
 int main()
 {
@@ -30,6 +31,8 @@ int main()
     Query* query = DataParser::ParseQuery("data/query3");
 
     SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
+
+    TrieIteratorPrinter::Print(*join_iterator, 9, std::cout);
 
     std::vector<int> stack;
     int current_command;

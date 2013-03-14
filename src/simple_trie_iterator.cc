@@ -68,6 +68,7 @@ Status SimpleTrieIterator::Next()
     if (this->current_node->parent->current_child == this->current_node->parent->children.end())
     {
         this->at_end = true;
+        return kFail;
     }
     else
     {
