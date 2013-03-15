@@ -45,12 +45,12 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const std::map<std::string,
     // For each of the attributes Y which are present in the original relations, but not in the equi-join, initialize
     // the trie iterators to their respective relations.
     int last_attribute = query.join_attributes.size();
-    for (std::map<std::string, Relation*>::const_iterator it = relations.begin(); it != relations.end(); ++it)
+    for (unsigned i = 0; i < query.relation_names.size(); i++)
     {
-        Relation* current_db_relation = it->second;
-        for (unsigned i = 0; i < current_db_relation->attribute_names.size(); i++)
+        Relation* current_db_relation = relations.find(query.relation_names[i])->second;
+        for (unsigned j = 0; j < current_db_relation->attribute_names.size(); j++)
         {
-            std::string attribute = current_db_relation->attribute_names[i];
+            std::string attribute = current_db_relation->attribute_names[j];
             if (find(query.join_attributes.begin(), query.join_attributes.end(), attribute) == query.join_attributes.end())
             {
                 trie_iterators_for_depth[last_attribute++].push_back(trie_iterator_for_relation[current_db_relation->name]);
@@ -105,6 +105,11 @@ Status SortMergeJoinTrieIterator::Open()
                 Up(); // Undo changes
             }
         }
+
+//        if (kOK == status)
+//        {
+//            this->key_multiplicities.push_back(join_iterator_for_depth[depth]->KeyMultiplicity());
+//        }
     }
     else // We are merging variables not involved in the join
     {
@@ -151,6 +156,7 @@ Status SortMergeJoinTrieIterator::Up()
     if (kOK == status)
     {
         depth--;
+        //this->key_multiplicities.pop_back();
     }
 
     return status;

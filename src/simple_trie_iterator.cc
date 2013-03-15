@@ -44,6 +44,22 @@ Status SimpleTrieIterator::Up()
 }
 
 
+Status SimpleTrieIterator::Peek(int* result)
+{
+    bool last_child = (*(this->current_node->parent->children.end() - 1) == this->current_node);
+
+    if (this->AtRoot() || this->AtEnd() || last_child)
+    {
+        return kFail;
+    }
+
+    std::vector<TrieNode*>::iterator next_node = this->current_node->parent->current_child + 1;
+    *result = (*next_node)->key;
+
+    return kOK;
+}
+
+
 Status SimpleTrieIterator::Key(int* result)
 {
     if (this->AtRoot())

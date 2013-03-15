@@ -14,6 +14,7 @@ SortMergeJoinIterator::SortMergeJoinIterator(std::vector<SimpleTrieIterator*>& i
     this->at_end = false;
     this->current_iterator = 0;
     this->key = 0;
+    this->key_multiplicity = 1;
 }
 
 void SortMergeJoinIterator::Init()
@@ -47,6 +48,30 @@ void SortMergeJoinIterator::Search()
         if (min_key == max_key)
         {
             key = min_key;
+
+            // Deal with duplicates
+            key_multiplicity = 1;
+
+            for (int i = 0; i < iterator_count; i++)
+            {
+                int current_iterator_key_multiplicity = 1;
+
+                int current_key;
+                Status peek_status = iterators[current_iterator]->Peek(&current_key);
+
+                while ((current_key == key) && (peek_status == kOK))
+                {
+                    iterators[current_iterator]->Next();
+                    iterators[current_iterator]->Peek(&current_key);
+
+                    current_iterator_key_multiplicity++;
+                }
+
+                key_multiplicity *= current_iterator_key_multiplicity;
+
+                current_iterator = (current_iterator + 1) % iterator_count;
+            }
+
             return;
         }
         else
@@ -79,18 +104,24 @@ Status SortMergeJoinIterator::Next()
         return kFail;
     }
 
-    iterators[current_iterator]->Next();
-    if (iterators[current_iterator]->AtEnd())
+    if (key_multiplicity > 1)
     {
-        at_end = true;
+        key_multiplicity--;
     }
     else
     {
+        iterators[current_iterator]->Next();
+        if (iterators[current_iterator]->AtEnd())
+        {
+            at_end = true;
+            return kFail;
+        }
+
         current_iterator = (current_iterator + 1) % iterators.size();
         Search();
     }
 
-    return (at_end) ? kFail : kOK;
+    return (this->AtEnd()) ? kFail : kOK;
 }
 
 
@@ -104,4 +135,9 @@ Status SortMergeJoinIterator::Key(int* result)
 bool SortMergeJoinIterator::AtEnd()
 {
     return this->at_end;
+}
+
+int SortMergeJoinIterator::KeyMultiplicity()
+{
+    return this->key_multiplicity;
 }

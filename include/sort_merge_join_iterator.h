@@ -13,6 +13,7 @@ class SortMergeJoinIterator
 
         virtual void Init();
         virtual void Search();
+        virtual int KeyMultiplicity();
 
         virtual Status Key(int* result);
         virtual Status Next();
@@ -21,6 +22,7 @@ class SortMergeJoinIterator
         std::vector<SimpleTrieIterator*>& iterators;
         bool                              at_end;
         int                               key;
+        int                               key_multiplicity;
         int                               current_iterator;
 };
 

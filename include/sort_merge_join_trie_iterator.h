@@ -31,6 +31,7 @@ class SortMergeJoinTrieIterator : public ITrieIterator
         int                                              depth;
         int                                              number_of_join_attributes;
         int                                              number_of_result_attributes;
+//        std::vector<int>                                 key_multiplicities;
         std::map<std::string, SimpleTrieIterator*>       trie_iterator_for_relation;
         std::map<int, std::vector<SimpleTrieIterator*> > trie_iterators_for_depth;
         std::map<int, SortMergeJoinIterator*>            join_iterator_for_depth;

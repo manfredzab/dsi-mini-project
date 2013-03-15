@@ -17,6 +17,7 @@ class SimpleTrieIterator : public ITrieIterator // : public virtual SimpleIterat
         virtual Status Up();
         virtual Status Key(int* result);
         virtual Status Next();
+        virtual Status Peek(int* result);
         virtual bool   AtEnd();
     private:
         bool AtRoot();

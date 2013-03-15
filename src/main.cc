@@ -11,6 +11,7 @@
 #include <iterator>
 #include <vector>
 #include <map>
+#include <set>
 
 //#include "SortedArrayIterator.h"
 //#include "LeapfrogIterator.h"
@@ -26,13 +27,20 @@
 
 int main()
 {
-    //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale6/databasefile");
+    //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale1/databasefile");
     std::map<std::string, Relation*>* relations = DataParser::ParseRelations("tests/data/databasefile");
     Query* query = DataParser::ParseQuery("data/query3");
 
+    std::set<std::string> result_schema;
+    for (unsigned i = 0; i < query->relation_names.size(); i++)
+    {
+        Relation* current_relation = (*relations)[query->relation_names[i]];
+        result_schema.insert(current_relation->attribute_names.begin(), current_relation->attribute_names.end());
+    }
+
     SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
 
-    TrieIteratorPrinter::Print(*join_iterator, 9, std::cout);
+    TrieIteratorPrinter::Print(*join_iterator, result_schema.size(), std::cout);
 
     std::vector<int> stack;
     int current_command;

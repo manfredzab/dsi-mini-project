@@ -4,6 +4,9 @@
 #include <ostream>
 #include "trie_iterator.h"
 
+#include <map>
+#include <string>
+
 class TrieIteratorPrinter
 {
     public:

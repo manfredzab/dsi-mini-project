@@ -1,6 +1,6 @@
 #include <algorithm>
-#include "include/trie.h"
-#include "include/simple_iterator.h"
+#include "../include/trie.h"
+#include "../include/simple_iterator.h"
 
 Trie::Trie(const Relation& relation)
 {
@@ -44,8 +44,9 @@ void Trie::Insert(const int* tuple)
                                                                        trie_node_to_insert,
                                                                        CompareTrieNodeKeys);
 
-        // If the node with this key is not present in the children list, insert it
-        if (insert_position == currentNode->children.end())
+        // If the node with this key is not present in the children list (and we are not at the leaf
+        // level), insert it.
+        if ((insert_position == currentNode->children.end()) || (i == this->trie_depth - 1))
         {
             insert_position = currentNode->children.insert(insert_position, trie_node_to_insert);
         }
