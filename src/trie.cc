@@ -19,7 +19,18 @@ Trie::Trie(const Relation& relation)
 
 Trie::~Trie()
 {
-    // TODO DELETE THE WHOLE FRIGGIN TRIE!
+    std::vector<TrieNode*> nodes_to_delete;
+
+    nodes_to_delete.insert(nodes_to_delete.begin(), this->root.children.begin(), this->root.children.end());
+    while (!nodes_to_delete.empty())
+    {
+        TrieNode* current_node = nodes_to_delete.back();
+        nodes_to_delete.pop_back();
+
+        nodes_to_delete.insert(nodes_to_delete.end(), current_node->children.begin(), current_node->children.end());
+
+        delete current_node;
+    }
 }
 
 bool CompareTrieNodeKeys(TrieNode* first, TrieNode* second)

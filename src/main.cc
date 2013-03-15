@@ -3,7 +3,6 @@
 // - File headers (time, etc)
 // - Comments
 // - Release memory for Relation int*'s
-// - Release memory for trie
 
 #include <iostream>
 #include <cstdlib>
@@ -29,7 +28,7 @@ int main()
 {
     //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale1/databasefile");
     std::map<std::string, Relation*>* relations = DataParser::ParseRelations("tests/data/databasefile");
-    Query* query = DataParser::ParseQuery("data/query3");
+    Query* query = DataParser::ParseQuery("data/query1");
 
     std::set<std::string> result_schema;
     for (unsigned i = 0; i < query->relation_names.size(); i++)
