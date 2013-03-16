@@ -1,8 +1,10 @@
+#include <algorithm>
+#include <vector>
 #include <string>
 
-#include "../include/simple_trie_iterator.h"
+#include "../include/trie_iterator.h"
 
-SimpleTrieIterator::SimpleTrieIterator(const Relation& relation)// : SimpleIterator(relation)
+TrieIterator::TrieIterator(const Relation& relation) : LinearIterator(relation)
 {
     // Build the trie
     this->trie = new Trie(relation);
@@ -10,12 +12,12 @@ SimpleTrieIterator::SimpleTrieIterator(const Relation& relation)// : SimpleItera
     this->at_end = false;
 }
 
-SimpleTrieIterator::~SimpleTrieIterator()
+TrieIterator::~TrieIterator()
 {
     delete this->trie;
 }
 
-Status SimpleTrieIterator::Open()
+Status TrieIterator::Open()
 {
     if (this->current_node->children.empty())
     {
@@ -31,7 +33,7 @@ Status SimpleTrieIterator::Open()
 }
 
 
-Status SimpleTrieIterator::Up()
+Status TrieIterator::Up()
 {
     if (this->AtRoot())
     {
@@ -44,7 +46,7 @@ Status SimpleTrieIterator::Up()
 }
 
 
-Status SimpleTrieIterator::Peek(int* result)
+Status TrieIterator::Peek(int* result)
 {
     bool last_child = (*(this->current_node->parent->children.end() - 1) == this->current_node);
 
@@ -60,7 +62,7 @@ Status SimpleTrieIterator::Peek(int* result)
 }
 
 
-Status SimpleTrieIterator::Key(int* result)
+Status TrieIterator::Key(int* result)
 {
     if (this->AtRoot())
     {
@@ -72,7 +74,37 @@ Status SimpleTrieIterator::Key(int* result)
 }
 
 
-Status SimpleTrieIterator::Next()
+Status TrieIterator::Seek(int seek_key)
+{
+    if (this->Next() == kFail)
+    {
+        return kFail;
+    }
+
+    // Binary search for the seek key in the parent's children vector
+    TrieNode* seek_key_trie_node = new TrieNode();
+    seek_key_trie_node->key = seek_key;
+
+    std::vector<TrieNode*>::iterator seek_result_node = std::lower_bound(this->current_node->parent->current_child, this->current_node->parent->children.end(), seek_key_trie_node, CompareTrieNodeKeys);
+
+    delete seek_key_trie_node;
+
+    // If the sibling found is out of bounds of the parent's children list, indicate that we have reached the end
+    // and DO NOT UPDATE the current node (otherwise all the pointers will be corrupted).
+    if (seek_result_node == this->current_node->parent->children.end())
+    {
+        this->at_end = true;
+        return kFail;
+    }
+
+    // We are not at the end, set the current node pointer to the seek result node
+    this->current_node = *seek_result_node;
+    return kOK;
+}
+
+
+
+Status TrieIterator::Next()
 {
     if (this->AtRoot() || this->AtEnd())
     {
@@ -96,13 +128,13 @@ Status SimpleTrieIterator::Next()
 }
 
 
-bool SimpleTrieIterator::AtEnd()
+bool TrieIterator::AtEnd()
 {
     return this->at_end;
 }
 
 
-bool SimpleTrieIterator::AtRoot()
+bool TrieIterator::AtRoot()
 {
     return (this->current_node == &trie->root);
 }

@@ -1,17 +1,11 @@
 #include <algorithm>
-#include "../include/sort_merge_join_iterator.h"
+#include "../include/leapfrog_join_iterator.h"
 
 
-bool CompareTrieIteratorsByKeys(SimpleTrieIterator* first, SimpleTrieIterator* second)
-{
-    int first_result, second_result;
-    first->Key(&first_result); second->Key(&second_result);
-
-    return (first_result < second_result);
-}
+bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second);
 
 
-SortMergeJoinIterator::SortMergeJoinIterator(std::vector<SimpleTrieIterator*>& iterators) : iterators(iterators)
+LeapfrogJoinIterator::LeapfrogJoinIterator(std::vector<TrieIterator*>& iterators) : iterators(iterators)
 {
     this->at_end = false;
     this->current_iterator_index = 0;
@@ -20,10 +14,10 @@ SortMergeJoinIterator::SortMergeJoinIterator(std::vector<SimpleTrieIterator*>& i
 }
 
 
-void SortMergeJoinIterator::Init()
+void LeapfrogJoinIterator::Init()
 {
     at_end = false;
-    for (std::vector<SimpleTrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
+    for (std::vector<TrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
     {
         at_end |= (*iterator)->AtEnd();
     }
@@ -37,7 +31,7 @@ void SortMergeJoinIterator::Init()
 }
 
 
-void SortMergeJoinIterator::Search()
+void LeapfrogJoinIterator::Search()
 {
     int iterator_count = iterators.size();
 
@@ -80,11 +74,7 @@ void SortMergeJoinIterator::Search()
         }
         else
         {
-            while ((min_key < max_key) && !iterators[current_iterator_index]->AtEnd())
-            {
-                iterators[current_iterator_index]->Next();
-                iterators[current_iterator_index]->Key(&min_key);
-            }
+            iterators[current_iterator_index]->Seek(max_key);
 
             if (iterators[current_iterator_index]->AtEnd())
             {
@@ -101,7 +91,7 @@ void SortMergeJoinIterator::Search()
 }
 
 
-Status SortMergeJoinIterator::Next()
+Status LeapfrogJoinIterator::Next()
 {
     if (this->AtEnd())
     {
@@ -129,7 +119,24 @@ Status SortMergeJoinIterator::Next()
 }
 
 
-Status SortMergeJoinIterator::Key(int* result)
+Status LeapfrogJoinIterator::Seek(int seek_key)
+{
+    iterators[current_iterator_index]->Seek(seek_key);
+    if (iterators[current_iterator_index]->AtEnd())
+    {
+        at_end = true;
+    }
+    else
+    {
+        current_iterator_index = (current_iterator_index + 1) % iterators.size();
+        Search();
+    }
+
+    return (this->AtEnd()) ? kFail : kOK;
+}
+
+
+Status LeapfrogJoinIterator::Key(int* result)
 {
     *result = this->key;
 
@@ -137,7 +144,16 @@ Status SortMergeJoinIterator::Key(int* result)
 }
 
 
-bool SortMergeJoinIterator::AtEnd()
+bool LeapfrogJoinIterator::AtEnd()
 {
     return this->at_end;
+}
+
+
+bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second)
+{
+    int first_result, second_result;
+    first->Key(&first_result); second->Key(&second_result);
+
+    return (first_result < second_result);
 }

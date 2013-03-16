@@ -13,7 +13,6 @@ class SortMergeJoinIterator
 
         virtual void Init();
         virtual void Search();
-        virtual int KeyMultiplicity();
 
         virtual Status Key(int* result);
         virtual Status Next();
@@ -23,7 +22,7 @@ class SortMergeJoinIterator
         bool                              at_end;
         int                               key;
         int                               key_multiplicity;
-        int                               current_iterator;
+        int                               current_iterator_index;
 };
 
 #endif /* SORT_MERGE_JOIN_ITERATOR_H_ */

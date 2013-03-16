@@ -33,10 +33,6 @@ Trie::~Trie()
     }
 }
 
-bool CompareTrieNodeKeys(TrieNode* first, TrieNode* second)
-{
-    return (first->key < second->key);
-}
 
 // TODO: could be optimized
 void Trie::Insert(const int* tuple)
@@ -69,4 +65,9 @@ void Trie::Insert(const int* tuple)
 
         currentNode = *insert_position;
     }
+}
+
+bool CompareTrieNodeKeys(TrieNode* first, TrieNode* second)
+{
+    return (first->key < second->key);
 }

@@ -22,13 +22,15 @@
 #include "../include/simple_trie_iterator.h"
 #include "../include/join.h"
 #include "../include/sort_merge_join_trie_iterator.h"
+#include "../include/leapfrog_join_trie_iterator.h"
 #include "../include/trie_iterator_printer.h"
+#include "../include/linear_iterator.h"
 
 int main()
 {
     //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale1/databasefile");
     std::map<std::string, Relation*>* relations = DataParser::ParseRelations("tests/data/databasefile");
-    Query* query = DataParser::ParseQuery("data/query1");
+    Query* query = DataParser::ParseQuery("data/query3");
 
     std::set<std::string> result_schema;
     for (unsigned i = 0; i < query->relation_names.size(); i++)
@@ -37,7 +39,8 @@ int main()
         result_schema.insert(current_relation->attribute_names.begin(), current_relation->attribute_names.end());
     }
 
-    SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
+    //SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
+    LeapfrogJoinTrieIterator* join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);
 
     TrieIteratorPrinter::Print(*join_iterator, result_schema.size(), std::cout);
 
@@ -241,5 +244,53 @@ int main()
 //
 //	delete iterator;
 
+
+//    Relation& relation = *(*relations)["R"];
+//    LinearIterator iterator(relation);
+//
+//    int seek_key[relation.attribute_names.size()];
+//    int command = 0;
+//    do
+//    {
+//        std::cout << "Choose action: [1] Key, [2] Next, [3] Seek, [4] At end, [0] Exit" << std::endl << "> ";
+//        std::cin >> command;
+//
+//        switch (command)
+//        {
+//            case 1:
+//                for (int i = 0; i < relation.attribute_names.size(); i++)
+//                {
+//                    iterator.attribute_index = i;
+//                    int key;
+//                    iterator.Key(&key);
+//                    std::cout << key << ",";
+//                }
+//                std::cout<< std::endl;
+//
+//                break;
+//
+//            case 2:
+//                iterator.Next();
+//                break;
+//
+//            case 3:
+//                std::cout << "Enter seek value: > ";
+//
+//                for (int i = 0; i < relation.attribute_names.size(); i++)
+//                {
+//                    std::cin >> seek_key[i];
+//                }
+//
+//                iterator.Seek(seek_key);
+//                break;
+//
+//            case 4:
+//                std::cout << iterator.AtEnd() << std::endl;
+//                break;
+//        }
+//    }
+//    while (command != 0);
+//
+//    return 0;
 	return 0;
 }

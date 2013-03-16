@@ -13,6 +13,8 @@ struct TrieNode
         typename std::vector<TrieNode*>::iterator  current_child;
 };
 
+bool CompareTrieNodeKeys(TrieNode* first, TrieNode* second);
+
 class Trie
 {
     public:
