@@ -53,23 +53,12 @@ void SortMergeJoinIterator::Search()
         {
             key = min_key;
 
-            // Deal with duplicates
+            // Count key multiplicity
             key_multiplicity = 1;
-
             for (int i = 0; i < iterator_count; i++)
             {
-                int current_iterator_key_multiplicity = 1;
-
-                int current_key;
-                Status peek_status = iterators[current_iterator_index]->Peek(&current_key);
-
-                while ((current_key == key) && (peek_status == kOK))
-                {
-                    iterators[current_iterator_index]->Next();
-                    peek_status = iterators[current_iterator_index]->Peek(&current_key);
-
-                    current_iterator_key_multiplicity++;
-                }
+                int current_iterator_key_multiplicity;
+                iterators[current_iterator_index]->Multiplicity(&current_iterator_key_multiplicity);
 
                 key_multiplicity *= current_iterator_key_multiplicity;
 
@@ -108,11 +97,11 @@ Status SortMergeJoinIterator::Next()
         return kFail;
     }
 
-    if (key_multiplicity > 1)
-    {
-        key_multiplicity--;
-    }
-    else
+//    if (key_multiplicity > 1)
+//    {
+//        key_multiplicity--;
+//    }
+//    else
     {
         iterators[current_iterator_index]->Next();
         if (iterators[current_iterator_index]->AtEnd())
@@ -136,6 +125,13 @@ Status SortMergeJoinIterator::Key(int* result)
     return kOK;
 }
 
+
+Status SortMergeJoinIterator::Multiplicity(int* result)
+{
+    *result = this->key_multiplicity;
+
+    return kOK;
+}
 
 bool SortMergeJoinIterator::AtEnd()
 {

@@ -9,6 +9,8 @@ struct TrieNode
     public:
         TrieNode*                                  parent;
         int                                        key;
+        int                                        multiplicity;
+        int                                        position_within_duplicates;
         std::vector<TrieNode*>                     children;
         typename std::vector<TrieNode*>::iterator  current_child;
 };

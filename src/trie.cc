@@ -8,6 +8,8 @@ Trie::Trie(const Relation& relation)
 
     this->root.parent = NULL;
     this->root.key = 0;
+    this->root.multiplicity = 1;
+    this->root.position_within_duplicates = 0;
     this->root.current_child = this->root.children.begin();
 
     // Build the trie
@@ -42,28 +44,37 @@ void Trie::Insert(const int* tuple)
     {
         // Find the entry to insert in the children list
         TrieNode* trie_node_to_insert = new TrieNode();
-        trie_node_to_insert->parent = currentNode;
         trie_node_to_insert->key = tuple[i];
-        trie_node_to_insert->current_child = trie_node_to_insert->children.begin();
 
-        std::vector<TrieNode*>::iterator insert_position = lower_bound(currentNode->children.begin(),
-                                                                       currentNode->children.end(),
-                                                                       trie_node_to_insert,
-                                                                       CompareTrieNodeKeys);
+        std::vector<TrieNode*>::iterator insert_position_node = lower_bound(currentNode->children.begin(),
+                                                                            currentNode->children.end(),
+                                                                            trie_node_to_insert,
+                                                                            CompareTrieNodeKeys);
 
-        // If the node with this key is not present in the children list (and we are not at the leaf
-        // level), insert it.
-        if ((insert_position == currentNode->children.end()) || (i == this->trie_depth - 1))
+        // If the node with this key is not present in the children list, finish initializing members
+        // and insert it.
+        if (insert_position_node == currentNode->children.end())
         {
-            insert_position = currentNode->children.insert(insert_position, trie_node_to_insert);
+            trie_node_to_insert->parent = currentNode;
+            trie_node_to_insert->multiplicity = 1;
+            trie_node_to_insert->position_within_duplicates = 0;
+            trie_node_to_insert->current_child = trie_node_to_insert->children.begin();
+
+            insert_position_node = currentNode->children.insert(insert_position_node, trie_node_to_insert);
         }
         else
         {
             // Node with this key already exists in the trie, and the new node is unnecessary
             delete trie_node_to_insert;
+
+            // However, if we were at the leaf level, increase the leaf's multiplicity
+            if (i == this->trie_depth - 1)
+            {
+                (*insert_position_node)->multiplicity++;
+            }
         }
 
-        currentNode = *insert_position;
+        currentNode = *insert_position_node;
     }
 }
 

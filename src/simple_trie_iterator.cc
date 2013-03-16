@@ -7,6 +7,7 @@ SimpleTrieIterator::SimpleTrieIterator(const Relation& relation)// : SimpleItera
     // Build the trie
     this->trie = new Trie(relation);
     this->current_node = &trie->root;
+    this->current_node_multiplicity = trie->root.multiplicity;
     this->at_end = false;
 }
 
@@ -27,6 +28,10 @@ Status SimpleTrieIterator::Open()
     this->at_end = false;
 
     this->current_node = *(this->current_node->current_child);
+
+//    // Reset the position of the child (for duplicate nodes)
+//    this->current_node_multiplicity = current_node->multiplicity;
+
     return kOK;
 }
 
@@ -38,36 +43,41 @@ Status SimpleTrieIterator::Up()
         return kFail;
     }
 
-    this->at_end = false;
+    // Reset the position between duplicates for the current node
+    current_node->position_within_duplicates = 0;
+
+    // Make the current node point to its parent
     this->current_node = this->current_node->parent;
-    return kOK;
-}
 
-
-Status SimpleTrieIterator::Peek(int* result)
-{
-    bool last_child = (*(this->current_node->parent->children.end() - 1) == this->current_node);
-
-    if (this->AtRoot() || this->AtEnd() || last_child)
-    {
-        return kFail;
-    }
-
-    std::vector<TrieNode*>::iterator next_node = this->current_node->parent->current_child + 1;
-    *result = (*next_node)->key;
+    // Reset "at end" marker
+    this->at_end = false;
 
     return kOK;
 }
 
 
-Status SimpleTrieIterator::Key(int* result)
+Status SimpleTrieIterator::Key(int* out_key)
 {
     if (this->AtRoot())
     {
         return kFail;
     }
 
-    *result = this->current_node->key;
+    *out_key = this->current_node->key;
+
+    return kOK;
+}
+
+
+Status SimpleTrieIterator::Multiplicity(int* out_multiplicity)
+{
+    if (this->AtRoot())
+    {
+        return kFail;
+    }
+
+    *out_multiplicity = this->current_node->multiplicity;
+
     return kOK;
 }
 
@@ -78,6 +88,13 @@ Status SimpleTrieIterator::Next()
     {
         return kFail;
     }
+
+//    if (this->current_node_multiplicity > 1)
+//    {
+//        this->current_node_multiplicity--;
+//
+//        return kOK;
+//    }
 
     // Get the pointer to the sibling
     this->current_node->parent->current_child++;

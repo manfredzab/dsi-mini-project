@@ -12,15 +12,16 @@ class SimpleTrieIterator : public ITrieIterator // : public virtual SimpleIterat
 
         virtual Status Open();
         virtual Status Up();
-        virtual Status Key(int* result);
+        virtual Status Key(int* out_key);
+        virtual Status Multiplicity(int* out_multiplicity);
         virtual Status Next();
-        virtual Status Peek(int* result);
         virtual bool   AtEnd();
     private:
         bool AtRoot();
 
         Trie*     trie;
         TrieNode* current_node;
+        int       current_node_multiplicity;
         bool      at_end;
 };
 
