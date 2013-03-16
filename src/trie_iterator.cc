@@ -97,8 +97,11 @@ Status TrieIterator::Seek(int seek_key)
         return kFail;
     }
 
-    // We are not at the end, set the current node pointer to the seek result node
+    // We are not at the end, set the current node pointer to the seek result node and update
+    // the parent's current child pointer
     this->current_node = *seek_result_node;
+    this->current_node->parent->current_child = seek_result_node;
+
     return kOK;
 }
 

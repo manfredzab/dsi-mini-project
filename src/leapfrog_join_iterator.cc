@@ -83,7 +83,7 @@ void LeapfrogJoinIterator::Search()
             }
             else
             {
-                max_key = min_key;
+                iterators[current_iterator_index]->Key(&max_key);
                 current_iterator_index = (current_iterator_index + 1) % iterator_count;
             }
         }
