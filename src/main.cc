@@ -30,9 +30,9 @@
 
 int main()
 {
-    //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale1/databasefile");
-    std::map<std::string, Relation*>* relations = DataParser::ParseRelations("tests/data/databasefile");
-    Query* query = DataParser::ParseQuery("data/query3");
+    std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale2/databasefile");
+    //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("tests/data/databasefile");
+    Query* query = DataParser::ParseQuery("data/query2");
 
     std::set<std::string> result_schema;
     for (unsigned i = 0; i < query->relation_names.size(); i++)
@@ -41,87 +41,90 @@ int main()
         result_schema.insert(current_relation->attribute_names.begin(), current_relation->attribute_names.end());
     }
 
-    //SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
-    LeapfrogJoinTrieIterator* join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);
+    //SimpleTrieIterator simple_relation_iterator(*((*relations)["R"]));
+
+    SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
+    //LeapfrogJoinTrieIterator* join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);
 
     TrieIteratorPrinter::Print(*join_iterator, result_schema.size(), std::cout);
+    //TrieIteratorPrinter::Print(simple_relation_iterator, 3, std::cout);
 
-    std::vector<int> stack;
-    int current_command;
-    do
-    {
-        std::cout << "[0] Exit, [1] Up, [2] Next, [3] Open, [4] Key" << std::endl;
-        std::cin >> current_command;
-
-        switch (current_command)
-        {
-            case 1:
-            {
-                if (join_iterator->Up() == kOK)
-                {
-                    stack.pop_back();
-                    std::cout << "[";
-                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
-                    {
-                        std::cout << " " << *it;
-                    }
-                    std::cout << " ] SUCCESS" << std::endl;
-                }
-                else
-                    std::cout << "FAIL" << std::endl;
-                break;
-            }
-            case 2:
-            {
-                if (join_iterator->Next() == kOK)
-                {
-                    stack.pop_back();
-                    int result;
-                    join_iterator->Key(&result);
-                    stack.push_back(result);
-
-                    std::cout << "[";
-                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
-                    {
-                        std::cout << " " << *it;
-                    }
-                    std::cout << " ] SUCCESS" << std::endl;
-                }
-                else
-                    std::cout << "FAIL" << std::endl;
-                break;
-            }
-            case 3:
-            {
-                if (join_iterator->Open() == kOK)
-                {
-                    int result;
-                    join_iterator->Key(&result);
-                    stack.push_back(result);
-
-                    std::cout << "[";
-                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
-                    {
-                        std::cout << " " << *it;
-                    }
-                    std::cout << " ] SUCCESS" << std::endl;
-                }
-                else
-                    std::cout << "FAIL" << std::endl;
-                break;
-            }
-            case 4:
-            {
-                int result;
-                if (join_iterator->Key(&result) == kOK)
-                    std::cout << result << std::endl;
-                else
-                    std::cout << "FAIL" << std::endl;
-                break;
-            }
-        }
-    }
-    while (current_command != 0);
+//    std::vector<int> stack;
+//    int current_command;
+//    do
+//    {
+//        std::cout << "[0] Exit, [1] Up, [2] Next, [3] Open, [4] Key" << std::endl;
+//        std::cin >> current_command;
+//
+//        switch (current_command)
+//        {
+//            case 1:
+//            {
+//                if (join_iterator->Up() == kOK)
+//                {
+//                    stack.pop_back();
+//                    std::cout << "[";
+//                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+//                    {
+//                        std::cout << " " << *it;
+//                    }
+//                    std::cout << " ] SUCCESS" << std::endl;
+//                }
+//                else
+//                    std::cout << "FAIL" << std::endl;
+//                break;
+//            }
+//            case 2:
+//            {
+//                if (join_iterator->Next() == kOK)
+//                {
+//                    stack.pop_back();
+//                    int result;
+//                    join_iterator->Key(&result);
+//                    stack.push_back(result);
+//
+//                    std::cout << "[";
+//                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+//                    {
+//                        std::cout << " " << *it;
+//                    }
+//                    std::cout << " ] SUCCESS" << std::endl;
+//                }
+//                else
+//                    std::cout << "FAIL" << std::endl;
+//                break;
+//            }
+//            case 3:
+//            {
+//                if (join_iterator->Open() == kOK)
+//                {
+//                    int result;
+//                    join_iterator->Key(&result);
+//                    stack.push_back(result);
+//
+//                    std::cout << "[";
+//                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+//                    {
+//                        std::cout << " " << *it;
+//                    }
+//                    std::cout << " ] SUCCESS" << std::endl;
+//                }
+//                else
+//                    std::cout << "FAIL" << std::endl;
+//                break;
+//            }
+//            case 4:
+//            {
+//                int result;
+//                if (join_iterator->Key(&result) == kOK)
+//                    std::cout << result << std::endl;
+//                else
+//                    std::cout << "FAIL" << std::endl;
+//                break;
+//            }
+//        }
+//    }
+//    while (current_command != 0);
 
 
     delete join_iterator;

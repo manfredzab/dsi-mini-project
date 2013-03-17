@@ -29,6 +29,9 @@ class SortMergeJoinTrieIterator : public ITrieIterator
     private:
         bool AtRoot();
 
+        // TODO: remove
+        void PrintStack(const char* title);
+
         int                                              depth;
         int                                              number_of_join_attributes;
         int                                              number_of_result_attributes;

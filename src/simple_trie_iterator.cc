@@ -40,8 +40,8 @@ Status SimpleTrieIterator::Up()
         return kFail;
     }
 
-    // Reset the position between duplicates for the current node
-    current_node->position_within_duplicates = 0;
+    // Reset the position between children and duplicates for the current node
+    this->current_node->position_within_duplicates = 0;
 
     // Make the current node point to its parent
     this->current_node = this->current_node->parent;
@@ -87,18 +87,19 @@ Status SimpleTrieIterator::Next()
     }
 
     // Get the pointer to the sibling
-    this->current_node->parent->current_child++;
+    std::vector<TrieNode*>::iterator right_sibling = this->current_node->parent->current_child + 1;
 
     // If sibling is out of bounds of the parent's children list, indicate that we have reached the end
     // and DO NOT UPDATE the current node (otherwise all the pointers will be corrupted).
-    if (this->current_node->parent->current_child == this->current_node->parent->children.end())
+    if (right_sibling == this->current_node->parent->children.end())
     {
         this->at_end = true;
         return kFail;
     }
 
     // We are not at the end, set the current node pointer to its right sibling.
-    this->current_node = *this->current_node->parent->current_child;
+    this->current_node->parent->current_child = right_sibling;
+    this->current_node = *right_sibling;
     return kOK;
 }
 
