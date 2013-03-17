@@ -1,4 +1,6 @@
 // TODO:
+// - LeapfrogTrieIterator and MergeSortTrieIteratore ARE identical - definitely need to be abstracted.
+// - LeapfrogJoinIterator and MergeSortJoinIterator are nearly identical - should be abstracted.
 // - Better file format handling (less attributes in one tuple than in the other, etc)
 // - File headers (time, etc)
 // - Comments
@@ -39,8 +41,8 @@ int main()
         result_schema.insert(current_relation->attribute_names.begin(), current_relation->attribute_names.end());
     }
 
-    SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
-    //LeapfrogJoinTrieIterator* join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);
+    //SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
+    LeapfrogJoinTrieIterator* join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);
 
     TrieIteratorPrinter::Print(*join_iterator, result_schema.size(), std::cout);
 

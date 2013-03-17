@@ -2,13 +2,7 @@
 #include "../include/sort_merge_join_iterator.h"
 
 
-bool CompareTrieIteratorsByKeys(SimpleTrieIterator* first, SimpleTrieIterator* second)
-{
-    int first_result, second_result;
-    first->Key(&first_result); second->Key(&second_result);
-
-    return (first_result < second_result);
-}
+bool CompareTrieIteratorsByKeys(SimpleTrieIterator* first, SimpleTrieIterator* second);
 
 
 SortMergeJoinIterator::SortMergeJoinIterator(std::vector<SimpleTrieIterator*>& iterators) : iterators(iterators)
@@ -97,43 +91,46 @@ Status SortMergeJoinIterator::Next()
         return kFail;
     }
 
-//    if (key_multiplicity > 1)
-//    {
-//        key_multiplicity--;
-//    }
-//    else
+    iterators[current_iterator_index]->Next();
+    if (iterators[current_iterator_index]->AtEnd())
     {
-        iterators[current_iterator_index]->Next();
-        if (iterators[current_iterator_index]->AtEnd())
-        {
-            at_end = true;
-            return kFail;
-        }
-
-        current_iterator_index = (current_iterator_index + 1) % iterators.size();
-        Search();
+        at_end = true;
+        return kFail;
     }
+
+    current_iterator_index = (current_iterator_index + 1) % iterators.size();
+    Search();
 
     return (this->AtEnd()) ? kFail : kOK;
 }
 
 
-Status SortMergeJoinIterator::Key(int* result)
+Status SortMergeJoinIterator::Key(int* out_key)
 {
-    *result = this->key;
+    *out_key = this->key;
 
     return kOK;
 }
 
 
-Status SortMergeJoinIterator::Multiplicity(int* result)
+Status SortMergeJoinIterator::Multiplicity(int* out_multiplicity)
 {
-    *result = this->key_multiplicity;
+    *out_multiplicity = this->key_multiplicity;
 
     return kOK;
 }
+
 
 bool SortMergeJoinIterator::AtEnd()
 {
     return this->at_end;
+}
+
+
+bool CompareTrieIteratorsByKeys(SimpleTrieIterator* first, SimpleTrieIterator* second)
+{
+    int first_result, second_result;
+    first->Key(&first_result); second->Key(&second_result);
+
+    return (first_result < second_result);
 }

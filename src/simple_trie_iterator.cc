@@ -29,9 +29,6 @@ Status SimpleTrieIterator::Open()
 
     this->current_node = *(this->current_node->current_child);
 
-//    // Reset the position of the child (for duplicate nodes)
-//    this->current_node_multiplicity = current_node->multiplicity;
-
     return kOK;
 }
 
@@ -88,13 +85,6 @@ Status SimpleTrieIterator::Next()
     {
         return kFail;
     }
-
-//    if (this->current_node_multiplicity > 1)
-//    {
-//        this->current_node_multiplicity--;
-//
-//        return kOK;
-//    }
 
     // Get the pointer to the sibling
     this->current_node->parent->current_child++;

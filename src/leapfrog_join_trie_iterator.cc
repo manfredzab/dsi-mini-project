@@ -21,7 +21,7 @@ LeapfrogJoinTrieIterator::LeapfrogJoinTrieIterator(const std::map<std::string, R
 
     // For each attribute X in the equi-join, create an array of pointers to the trie iterators of the
     // relations in which X occurs, and initialize the sort merge join instances with those trie iterators.
-    for (unsigned attribute_depth = 0; attribute_depth < number_of_join_attributes; attribute_depth++)
+    for (int attribute_depth = 0; attribute_depth < number_of_join_attributes; attribute_depth++)
     {
         std::string attribute = query.join_attributes[attribute_depth];
 
@@ -61,6 +61,9 @@ LeapfrogJoinTrieIterator::LeapfrogJoinTrieIterator(const std::map<std::string, R
     // Initialize the current attribute depth and the total number of attributes in the result relation
     number_of_result_attributes = trie_iterators_for_depth.size();
     depth = -1;
+
+    // Initialize the key multiplicity stack
+    key_multiplicity_stack.push_back(1);
 }
 
 
@@ -89,7 +92,7 @@ Status LeapfrogJoinTrieIterator::Open()
         for (unsigned i = 0; i < trie_iterators_for_depth[depth].size(); i++)
         {
             Status sub_status = trie_iterators_for_depth[depth][i]->Open();
-            if (status == kOK)
+            if (kOK == status)
             {
                 status = sub_status;
             }
@@ -105,17 +108,35 @@ Status LeapfrogJoinTrieIterator::Open()
                 Up(); // Undo changes
             }
         }
+
+        if (kOK == status)
+        {
+            int join_iterator_key_multiplicity;
+            join_iterator_for_depth[depth]->Multiplicity(&join_iterator_key_multiplicity);
+
+            key_multiplicity_stack.push_back(join_iterator_key_multiplicity);
+        }
     }
     else // We are merging variables not involved in the join
     {
         if (depth < number_of_result_attributes)
         {
+            // Only a single relation trie iterator can be associated with the variable
+            // which is not involved in join.
             status = trie_iterators_for_depth[depth][0]->Open();
         }
         else
         {
             status = kFail;
             depth--;
+        }
+
+        if (kOK == status)
+        {
+            int current_trie_iterator_multiplicity;
+            trie_iterators_for_depth[depth][0]->Multiplicity(&current_trie_iterator_multiplicity);
+
+            key_multiplicity_stack.push_back(current_trie_iterator_multiplicity);
         }
     }
 
@@ -151,7 +172,8 @@ Status LeapfrogJoinTrieIterator::Up()
     if (kOK == status)
     {
         depth--;
-        //this->key_multiplicities.pop_back();
+
+        key_multiplicity_stack.pop_back();
     }
 
     return status;
@@ -183,14 +205,35 @@ Status LeapfrogJoinTrieIterator::Next()
         return kFail;
     }
 
-    if (depth < number_of_join_attributes)
+    // If there is more than one key at this level, stay in place
+    if (key_multiplicity_stack.back() > 1)
     {
-        return join_iterator_for_depth[depth]->Next();
+        key_multiplicity_stack.back()--;
+        return kOK;
     }
-    else
+
+    // Move to the next key
+    Status status = (depth < number_of_join_attributes) ? join_iterator_for_depth[depth]->Next() :
+                                                          trie_iterators_for_depth[depth][0]->Next();
+
+    // Update the key multiplicity stack
+    if (kOK == status)
     {
-        return trie_iterators_for_depth[depth][0]->Next();
+        int current_iterator_multiplicity;
+        if (depth < number_of_join_attributes)
+        {
+            join_iterator_for_depth[depth]->Multiplicity(&current_iterator_multiplicity);
+        }
+        else
+        {
+            trie_iterators_for_depth[depth][0]->Multiplicity(&current_iterator_multiplicity);
+        }
+
+        key_multiplicity_stack.pop_back();
+        key_multiplicity_stack.push_back(current_iterator_multiplicity);
     }
+
+    return status;
 }
 
 

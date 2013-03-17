@@ -12,8 +12,6 @@
 #include "trie_iterator.h"
 #include "leapfrog_join_iterator.h"
 
-//#include "join.h"
-
 class LeapfrogJoinTrieIterator : public ITrieIterator
 {
     public:
@@ -35,6 +33,7 @@ class LeapfrogJoinTrieIterator : public ITrieIterator
         std::map<std::string, TrieIterator*>       trie_iterator_for_relation;
         std::map<int, std::vector<TrieIterator*> > trie_iterators_for_depth;
         std::map<int, LeapfrogJoinIterator*>       join_iterator_for_depth;
+        std::vector<int>                           key_multiplicity_stack;
 };
 
 #endif /* LEAPFROG_JOIN_TRIE_ITERATOR_H_ */

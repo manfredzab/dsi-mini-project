@@ -9,24 +9,24 @@
 
 class TrieIterator : public LinearIterator, public ITrieIterator
 {
-public:
-    TrieIterator(const Relation& relation);
-    virtual ~TrieIterator();
+    public:
+        TrieIterator(const Relation& relation);
+        virtual ~TrieIterator();
 
-    virtual Status Open();
-    virtual Status Up();
-    virtual Status Key(int* result);
-    virtual Status Seek(int seek_key);
-    virtual Status Next();
-    virtual bool   AtEnd();
+        virtual Status Open();
+        virtual Status Up();
+        virtual Status Key(int* out_key);
+        virtual Status Multiplicity(int* out_multiplicity);
+        virtual Status Seek(int seek_key);
+        virtual Status Next();
+        virtual bool   AtEnd();
+    private:
+        bool AtRoot();
 
-    virtual Status Peek(int* result);
-private:
-    bool AtRoot();
-
-    Trie*     trie;
-    TrieNode* current_node;
-    bool      at_end;
+        Trie*     trie;
+        TrieNode* current_node;
+        int       current_node_multiplicity;
+        bool      at_end;
 };
 
 #endif /* TRIE_ITERATOR_H_ */

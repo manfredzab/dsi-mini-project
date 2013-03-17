@@ -9,6 +9,7 @@ TrieIterator::TrieIterator(const Relation& relation) : LinearIterator(relation)
     // Build the trie
     this->trie = new Trie(relation);
     this->current_node = &trie->root;
+    this->current_node_multiplicity = trie->root.multiplicity;
     this->at_end = false;
 }
 
@@ -46,30 +47,27 @@ Status TrieIterator::Up()
 }
 
 
-Status TrieIterator::Peek(int* result)
-{
-    bool last_child = (*(this->current_node->parent->children.end() - 1) == this->current_node);
-
-    if (this->AtRoot() || this->AtEnd() || last_child)
-    {
-        return kFail;
-    }
-
-    std::vector<TrieNode*>::iterator next_node = this->current_node->parent->current_child + 1;
-    *result = (*next_node)->key;
-
-    return kOK;
-}
-
-
-Status TrieIterator::Key(int* result)
+Status TrieIterator::Key(int* out_key)
 {
     if (this->AtRoot())
     {
         return kFail;
     }
 
-    *result = this->current_node->key;
+    *out_key = this->current_node->key;
+    return kOK;
+}
+
+
+Status TrieIterator::Multiplicity(int* out_multiplicity)
+{
+    if (this->AtRoot())
+    {
+        return kFail;
+    }
+
+    *out_multiplicity = this->current_node->multiplicity;
+
     return kOK;
 }
 

@@ -14,8 +14,8 @@ class SortMergeJoinIterator
         virtual void Init();
         virtual void Search();
 
-        virtual Status Key(int* result);
-        virtual Status Multiplicity(int* result);
+        virtual Status Key(int* out_key);
+        virtual Status Multiplicity(int* out_result);
         virtual Status Next();
         virtual bool   AtEnd();
     private:

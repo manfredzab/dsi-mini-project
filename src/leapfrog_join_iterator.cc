@@ -47,23 +47,12 @@ void LeapfrogJoinIterator::Search()
         {
             key = min_key;
 
-            // Deal with duplicates
+            // Count key multiplicity
             key_multiplicity = 1;
-
             for (int i = 0; i < iterator_count; i++)
             {
-                int current_iterator_key_multiplicity = 1;
-
-                int current_key;
-                Status peek_status = iterators[current_iterator_index]->Peek(&current_key);
-
-                while ((current_key == key) && (peek_status == kOK))
-                {
-                    iterators[current_iterator_index]->Next();
-                    peek_status = iterators[current_iterator_index]->Peek(&current_key);
-
-                    current_iterator_key_multiplicity++;
-                }
+                int current_iterator_key_multiplicity;
+                iterators[current_iterator_index]->Multiplicity(&current_iterator_key_multiplicity);
 
                 key_multiplicity *= current_iterator_key_multiplicity;
 
@@ -98,22 +87,15 @@ Status LeapfrogJoinIterator::Next()
         return kFail;
     }
 
-    if (key_multiplicity > 1)
+    iterators[current_iterator_index]->Next();
+    if (iterators[current_iterator_index]->AtEnd())
     {
-        key_multiplicity--;
+        at_end = true;
+        return kFail;
     }
-    else
-    {
-        iterators[current_iterator_index]->Next();
-        if (iterators[current_iterator_index]->AtEnd())
-        {
-            at_end = true;
-            return kFail;
-        }
 
-        current_iterator_index = (current_iterator_index + 1) % iterators.size();
-        Search();
-    }
+    current_iterator_index = (current_iterator_index + 1) % iterators.size();
+    Search();
 
     return (this->AtEnd()) ? kFail : kOK;
 }
@@ -139,6 +121,14 @@ Status LeapfrogJoinIterator::Seek(int seek_key)
 Status LeapfrogJoinIterator::Key(int* result)
 {
     *result = this->key;
+
+    return kOK;
+}
+
+
+Status LeapfrogJoinIterator::Multiplicity(int* out_multiplicity)
+{
+    *out_multiplicity = this->key_multiplicity;
 
     return kOK;
 }
