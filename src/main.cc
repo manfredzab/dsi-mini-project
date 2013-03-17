@@ -43,11 +43,10 @@ int main()
 
     //SimpleTrieIterator simple_relation_iterator(*((*relations)["R"]));
 
-    SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
-    //LeapfrogJoinTrieIterator* join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);
+    //SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
+    LeapfrogJoinTrieIterator* join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);
 
     TrieIteratorPrinter::Print(*join_iterator, result_schema.size(), std::cout);
-    //TrieIteratorPrinter::Print(simple_relation_iterator, 3, std::cout);
 
 //    std::vector<int> stack;
 //    int current_command;

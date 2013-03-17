@@ -5,16 +5,6 @@
 
 #include "../include/sort_merge_join_trie_iterator.h"
 
-void SortMergeJoinTrieIterator::PrintStack(const char* title)
-{
-//    std::cout << title;
-//    for (unsigned i = 0; i < key_multiplicity_stack.size(); i++)
-//    {
-//        std::cout << key_multiplicity_stack[i] << " ";
-//    }
-//    std::cout << std::endl;
-}
-
 SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query)
 {
     // Initialize the number of join attributes
@@ -74,9 +64,7 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const std::map<std::string,
 
     // Initialize the key multiplicity stack
 
-    PrintStack("[Init] Before: ");
     key_multiplicity_stack.push_back(1);
-    PrintStack("[Init] After:  ");
 }
 
 
@@ -118,9 +106,7 @@ Status SortMergeJoinTrieIterator::Open()
             int join_iterator_key_multiplicity;
             join_iterator_for_depth[depth]->Multiplicity(&join_iterator_key_multiplicity);
 
-            PrintStack("[Open] Before: ");
             key_multiplicity_stack.push_back(join_iterator_key_multiplicity);
-            PrintStack("[Open] After:  ");
 
             if (AtEnd())
             {
@@ -134,10 +120,8 @@ Status SortMergeJoinTrieIterator::Open()
         if (depth < number_of_result_attributes)
         {
             // Only a single relation trie iterator can be associated with the variable
-            // which is not involved in join. X
-            std::vector<SimpleTrieIterator*>& trie_iterators = trie_iterators_for_depth[depth];
-            SimpleTrieIterator* trie_iterator = trie_iterators[0];
-            status = trie_iterator->Open();
+            // which is not involved in join.
+            status = trie_iterators_for_depth[depth][0]->Open();
         }
         else
         {
@@ -150,9 +134,7 @@ Status SortMergeJoinTrieIterator::Open()
             int current_trie_iterator_multiplicity;
             trie_iterators_for_depth[depth][0]->Multiplicity(&current_trie_iterator_multiplicity);
 
-            PrintStack("[Open] Before: ");
             key_multiplicity_stack.push_back(current_trie_iterator_multiplicity);
-            PrintStack("[Open] After:  ");
         }
     }
 
@@ -189,9 +171,7 @@ Status SortMergeJoinTrieIterator::Up()
     {
         depth--;
 
-        PrintStack("[ Up ] Before: ");
         key_multiplicity_stack.pop_back();
-        PrintStack("[ Up ] After:  ");
     }
 
     return status;
@@ -226,9 +206,7 @@ Status SortMergeJoinTrieIterator::Next()
     // If there is more than one key at this level, stay in place
     if (key_multiplicity_stack.back() > 1)
     {
-        PrintStack("[Next] Before: ");
         key_multiplicity_stack.back()--;
-        PrintStack("[Next] After:  ");
         return kOK;
     }
 
@@ -249,10 +227,8 @@ Status SortMergeJoinTrieIterator::Next()
             trie_iterators_for_depth[depth][0]->Multiplicity(&current_iterator_multiplicity);
         }
 
-        PrintStack("[Next] Before: ");
         key_multiplicity_stack.pop_back();
         key_multiplicity_stack.push_back(current_iterator_multiplicity);
-        PrintStack("[Next] After:  ");
     }
 
     return status;

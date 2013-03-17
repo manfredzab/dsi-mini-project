@@ -102,19 +102,17 @@ Status LeapfrogJoinTrieIterator::Open()
         {
             join_iterator_for_depth[depth]->Init();
 
+            // Record key multiplicity
+            int join_iterator_key_multiplicity;
+            join_iterator_for_depth[depth]->Multiplicity(&join_iterator_key_multiplicity);
+
+            key_multiplicity_stack.push_back(join_iterator_key_multiplicity);
+
             if (AtEnd())
             {
                 status = kFail;
                 Up(); // Undo changes
             }
-        }
-
-        if (kOK == status)
-        {
-            int join_iterator_key_multiplicity;
-            join_iterator_for_depth[depth]->Multiplicity(&join_iterator_key_multiplicity);
-
-            key_multiplicity_stack.push_back(join_iterator_key_multiplicity);
         }
     }
     else // We are merging variables not involved in the join

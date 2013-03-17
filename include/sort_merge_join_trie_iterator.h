@@ -12,8 +12,6 @@
 #include "simple_trie_iterator.h"
 #include "sort_merge_join_iterator.h"
 
-//#include "join.h"
-
 class SortMergeJoinTrieIterator : public ITrieIterator
 {
     public:
@@ -28,10 +26,6 @@ class SortMergeJoinTrieIterator : public ITrieIterator
 
     private:
         bool AtRoot();
-
-        // TODO: remove
-        void PrintStack(const char* title);
-
         int                                              depth;
         int                                              number_of_join_attributes;
         int                                              number_of_result_attributes;
