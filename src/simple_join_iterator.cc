@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "../include/join_iterator.h"
+#include "../include/simple_join_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
@@ -7,10 +7,10 @@ namespace uk_ac_ox_cs_c875114
 using std::vector;
 
 
-bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second);
+bool CompareTrieIteratorsByKeys(ITrieIterator* first, ITrieIterator* second);
 
 
-JoinIterator::JoinIterator(vector<TrieIterator*>& iterators) : iterators(iterators)
+SimpleJoinIterator::SimpleJoinIterator(vector<ITrieIterator*>& iterators) : iterators(iterators)
 {
     this->at_end = false;
     this->current_iterator_index = 0;
@@ -21,10 +21,10 @@ JoinIterator::JoinIterator(vector<TrieIterator*>& iterators) : iterators(iterato
 }
 
 
-void JoinIterator::Init()
+void SimpleJoinIterator::Init()
 {
     at_end = false;
-    for (vector<TrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
+    for (vector<ITrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
     {
         at_end |= (*iterator)->AtEnd();
     }
@@ -38,7 +38,7 @@ void JoinIterator::Init()
 }
 
 
-void JoinIterator::Search()
+void SimpleJoinIterator::Search()
 {
     int iterator_count = iterators.size();
 
@@ -85,7 +85,7 @@ void JoinIterator::Search()
 }
 
 
-void JoinIterator::SeekCurrentIteratorToMaxKey()
+void SimpleJoinIterator::SeekCurrentIteratorToMaxKey()
 {
     while ((min_key < max_key) && !iterators[current_iterator_index]->AtEnd())
     {
@@ -95,7 +95,7 @@ void JoinIterator::SeekCurrentIteratorToMaxKey()
 }
 
 
-Status JoinIterator::Next()
+Status SimpleJoinIterator::Next()
 {
     if (this->AtEnd())
     {
@@ -116,7 +116,7 @@ Status JoinIterator::Next()
 }
 
 
-Status JoinIterator::Key(int* out_key)
+Status SimpleJoinIterator::Key(int* out_key)
 {
     *out_key = this->key;
 
@@ -124,7 +124,7 @@ Status JoinIterator::Key(int* out_key)
 }
 
 
-Status JoinIterator::Multiplicity(int* out_multiplicity)
+Status SimpleJoinIterator::Multiplicity(int* out_multiplicity)
 {
     *out_multiplicity = this->key_multiplicity;
 
@@ -132,13 +132,13 @@ Status JoinIterator::Multiplicity(int* out_multiplicity)
 }
 
 
-bool JoinIterator::AtEnd()
+bool SimpleJoinIterator::AtEnd()
 {
     return this->at_end;
 }
 
 
-bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second)
+bool CompareTrieIteratorsByKeys(ITrieIterator* first, ITrieIterator* second)
 {
     int first_result, second_result;
     first->Key(&first_result); second->Key(&second_result);

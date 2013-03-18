@@ -2,14 +2,14 @@
 #include <vector>
 #include <string>
 
-#include "../include/seekable_trie_iterator.h"
+#include "../include/linear_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
 using std::vector;
 
-Status SeekableTrieIterator::Seek(int seek_key)
+Status LinearTrieIterator::Seek(int seek_key)
 {
     if (this->Next() == kFail)
     {

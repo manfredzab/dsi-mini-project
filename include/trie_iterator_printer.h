@@ -2,7 +2,7 @@
 #define TRIE_ITERATOR_PRINTER_H_
 
 #include <ostream>
-#include "trie_iterator_interface.h"
+#include "trie_iterator.h"
 
 #include <map>
 #include <string>

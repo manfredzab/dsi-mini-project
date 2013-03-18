@@ -2,7 +2,7 @@
 #define ARGUMENTS_H_
 
 #include <string>
-#include "join.h"
+#include "join_algorithm_type.h"
 
 namespace uk_ac_ox_cs_c875114
 {

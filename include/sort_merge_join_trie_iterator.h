@@ -8,7 +8,6 @@
 #include "relation.h"
 #include "query.h"
 #include "status.h"
-#include "trie_iterator_interface.h"
 #include "trie_iterator.h"
 #include "join_iterator.h"
 
@@ -18,28 +17,33 @@ namespace uk_ac_ox_cs_c875114
 class SortMergeJoinTrieIterator : public virtual ITrieIterator
 {
     public:
-        SortMergeJoinTrieIterator() : depth(0), number_of_join_attributes(0), number_of_result_attributes(0) { };
+        SortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) : depth(0), number_of_join_attributes(0), number_of_result_attributes(0), relations(relations), query(query) { };
         virtual ~SortMergeJoinTrieIterator();
 
-        virtual void   Init(const std::map<std::string, Relation*>& relations, const Query& query);
+        virtual Status Init();
         virtual Status Open();
         virtual Status Up();
         virtual Status Key(int* result);
+        virtual Status Multiplicity(int* result);
         virtual Status Next();
         virtual bool   AtEnd();
 
     protected:
-        virtual bool          AtRoot();
-        virtual TrieIterator* CreateTrieIteratorForRelation(const Relation& relation);
-        virtual JoinIterator* CreateJoinIteratorForTrieIterators(std::vector<TrieIterator*>& trie_iterators);
+        virtual bool           AtRoot();
+        virtual ITrieIterator* CreateTrieIteratorForRelation(const Relation& relation);
+        virtual IJoinIterator* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
 
-        int                                        depth;
-        int                                        number_of_join_attributes;
-        int                                        number_of_result_attributes;
-        std::map<std::string, TrieIterator*>       trie_iterator_for_relation;
-        std::map<int, std::vector<TrieIterator*> > trie_iterators_for_depth;
-        std::map<int, JoinIterator*>               join_iterator_for_depth;
-        std::vector<int>                           key_multiplicity_stack;
+        int                                         depth;
+        int                                         number_of_join_attributes;
+        int                                         number_of_result_attributes;
+        std::map<std::string, ITrieIterator*>       trie_iterator_for_relation;
+        std::map<int, std::vector<ITrieIterator*> > trie_iterators_for_depth;
+        std::map<int, IJoinIterator*>               join_iterator_for_depth;
+        std::vector<int>                            key_multiplicity_stack;
+
+    private:
+        const std::map<std::string, Relation*>& relations;
+        const Query&                            query;
 };
 
 } // namespace uk_ac_ox_cs_c875114

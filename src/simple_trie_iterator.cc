@@ -1,13 +1,13 @@
 #include <string>
 
-#include "../include/trie_iterator.h"
+#include "../include/simple_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
 using std::vector;
 
-TrieIterator::TrieIterator(const Relation& relation)// : SimpleIterator(relation)
+SimpleTrieIterator::SimpleTrieIterator(const Relation& relation)// : SimpleIterator(relation)
 {
     // Build the trie
     this->trie = new Trie(relation);
@@ -16,12 +16,18 @@ TrieIterator::TrieIterator(const Relation& relation)// : SimpleIterator(relation
     this->at_end = false;
 }
 
-TrieIterator::~TrieIterator()
+SimpleTrieIterator::~SimpleTrieIterator()
 {
     delete this->trie;
 }
 
-Status TrieIterator::Open()
+Status SimpleTrieIterator::Init()
+{
+    // Nothing to do
+    return kOK;
+}
+
+Status SimpleTrieIterator::Open()
 {
     if (this->current_node->children.empty())
     {
@@ -38,7 +44,7 @@ Status TrieIterator::Open()
 }
 
 
-Status TrieIterator::Up()
+Status SimpleTrieIterator::Up()
 {
     if (this->AtRoot())
     {
@@ -58,7 +64,7 @@ Status TrieIterator::Up()
 }
 
 
-Status TrieIterator::Key(int* out_key)
+Status SimpleTrieIterator::Key(int* out_key)
 {
     if (this->AtRoot())
     {
@@ -71,7 +77,7 @@ Status TrieIterator::Key(int* out_key)
 }
 
 
-Status TrieIterator::Multiplicity(int* out_multiplicity)
+Status SimpleTrieIterator::Multiplicity(int* out_multiplicity)
 {
     if (this->AtRoot())
     {
@@ -84,7 +90,7 @@ Status TrieIterator::Multiplicity(int* out_multiplicity)
 }
 
 
-Status TrieIterator::Next()
+Status SimpleTrieIterator::Next()
 {
     if (this->AtRoot() || this->AtEnd())
     {
@@ -109,13 +115,13 @@ Status TrieIterator::Next()
 }
 
 
-bool TrieIterator::AtEnd()
+bool SimpleTrieIterator::AtEnd()
 {
     return this->at_end;
 }
 
 
-bool TrieIterator::AtRoot()
+bool SimpleTrieIterator::AtRoot()
 {
     return (this->current_node == &trie->root);
 }

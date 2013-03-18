@@ -4,6 +4,8 @@
 #include <vector>
 
 #include "../include/sort_merge_join_trie_iterator.h"
+#include "../include/simple_trie_iterator.h"
+#include "../include/simple_join_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
@@ -14,19 +16,19 @@ using std::map;
 
 SortMergeJoinTrieIterator::~SortMergeJoinTrieIterator()
 {
-    for (map<string, TrieIterator*>::iterator it = trie_iterator_for_relation.begin(); it != trie_iterator_for_relation.end(); ++it)
+    for (map<string, ITrieIterator*>::iterator it = trie_iterator_for_relation.begin(); it != trie_iterator_for_relation.end(); ++it)
     {
         delete it->second;
     }
 
-    for (map<int, JoinIterator*>::iterator it = join_iterator_for_depth.begin(); it != join_iterator_for_depth.end(); ++it)
+    for (map<int, IJoinIterator*>::iterator it = join_iterator_for_depth.begin(); it != join_iterator_for_depth.end(); ++it)
     {
         delete it->second;
     }
 }
 
 
-void SortMergeJoinTrieIterator::Init(const map<string, Relation*>& relations, const Query& query)
+Status SortMergeJoinTrieIterator::Init()
 {
     // Initialize the number of join attributes
     number_of_join_attributes = query.join_attributes.size();
@@ -85,18 +87,20 @@ void SortMergeJoinTrieIterator::Init(const map<string, Relation*>& relations, co
 
     // Initialize the key multiplicity stack
     key_multiplicity_stack.push_back(1);
+
+    return kOK;
 }
 
 
-TrieIterator* SortMergeJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
+ITrieIterator* SortMergeJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
 {
-    return new TrieIterator(relation);
+    return new SimpleTrieIterator(relation);
 }
 
 
-JoinIterator* SortMergeJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<TrieIterator*>& trie_iterators)
+IJoinIterator* SortMergeJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
 {
-    return new JoinIterator(trie_iterators);
+    return new SimpleJoinIterator(trie_iterators);
 }
 
 
@@ -211,6 +215,13 @@ Status SortMergeJoinTrieIterator::Key(int* result)
     {
         return trie_iterators_for_depth[depth][0]->Key(result);
     }
+}
+
+
+Status SortMergeJoinTrieIterator::Multiplicity(int* result)
+{
+    *result = this->key_multiplicity_stack.back();
+    return kOK;
 }
 
 

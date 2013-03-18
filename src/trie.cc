@@ -1,6 +1,6 @@
 #include <algorithm>
 #include "../include/trie.h"
-#include "../include/simple_iterator.h"
+#include "../include/simple_relation_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
@@ -18,9 +18,15 @@ Trie::Trie(const Relation& relation)
     this->root.current_child = this->root.children.begin();
 
     // Build the trie
-    for (vector<int*>::const_iterator tuple_iterator = relation.data.begin(); tuple_iterator != relation.data.end(); ++tuple_iterator)
+    SimpleRelationIterator relation_iterator(relation);
+
+    int* current_tuple;
+    while (!relation_iterator.AtEnd())
     {
-        this->Insert(*tuple_iterator);
+        relation_iterator.Key(&current_tuple);
+        relation_iterator.Next();
+
+        this->Insert(current_tuple);
     }
 }
 
@@ -52,9 +58,9 @@ void Trie::Insert(const int* tuple)
         trie_node_to_insert->key = tuple[i];
 
         vector<TrieNode*>::iterator insert_position_node = lower_bound(currentNode->children.begin(),
-                                                                            currentNode->children.end(),
-                                                                            trie_node_to_insert,
-                                                                            CompareTrieNodeKeys);
+                                                                       currentNode->children.end(),
+                                                                       trie_node_to_insert,
+                                                                       CompareTrieNodeKeys);
 
         // If the node with this key is not present in the children list, finish initializing members
         // and insert it.

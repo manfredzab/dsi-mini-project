@@ -4,23 +4,23 @@
 #include <vector>
 
 #include "../include/leapfrog_join_trie_iterator.h"
-#include "../include/seekable_trie_iterator.h"
-#include "../include/seekable_join_iterator.h"
+#include "../include/linear_trie_iterator.h"
+#include "../include/linear_join_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
 using std::vector;
 
-TrieIterator* LeapfrogJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
+ITrieIterator* LeapfrogJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
 {
-    return new SeekableTrieIterator(relation);
+    return new LinearTrieIterator(relation);
 }
 
 
-JoinIterator* LeapfrogJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<TrieIterator*>& trie_iterators)
+IJoinIterator* LeapfrogJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
 {
-    return new SeekableJoinIterator(trie_iterators);
+    return new LinearJoinIterator(trie_iterators);
 }
 
 } // namespace uk_ac_ox_cs_c875114

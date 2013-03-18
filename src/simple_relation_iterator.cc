@@ -1,26 +1,26 @@
-#include "../include/simple_iterator.h"
+#include <cstring>
+#include "../include/simple_relation_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-SimpleIterator::SimpleIterator(const Relation& relation) : relation(relation)
+SimpleRelationIterator::SimpleRelationIterator(const Relation& relation) : relation(relation)
 {
     this->tuple_iterator = relation.data.begin();
     this->tuple_size = relation.attribute_names.size();
-
-    this->attribute_index = 0;
 }
 
 
-Status SimpleIterator::Key(int* result)
+Status SimpleRelationIterator::Key(int** out_key)
 {
-    *result = (*this->tuple_iterator)[this->attribute_index];
+
+    *out_key = *this->tuple_iterator;
 
     return kOK;
 }
 
 
-Status SimpleIterator::Next()
+Status SimpleRelationIterator::Next()
 {
     if (this->AtEnd())
     {
@@ -32,7 +32,7 @@ Status SimpleIterator::Next()
 }
 
 
-bool SimpleIterator::AtEnd()
+bool SimpleRelationIterator::AtEnd()
 {
     return (this->tuple_iterator == this->relation.data.end());
 }

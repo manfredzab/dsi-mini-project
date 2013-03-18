@@ -1,5 +1,5 @@
-#ifndef SIMPLEITERATOR_H_
-#define SIMPLEITERATOR_H_
+#ifndef SIMPLE_RELATION_ITERATOR_H_
+#define SIMPLE_RELATION_ITERATOR_H_
 
 #include <vector>
 
@@ -9,17 +9,17 @@
 namespace uk_ac_ox_cs_c875114
 {
 
-class SimpleIterator
+// TODO: add IRelationIterator
+class SimpleRelationIterator
 {
     public:
-        SimpleIterator(const Relation& relation);
-        virtual ~SimpleIterator() { };
+        SimpleRelationIterator(const Relation& relation);
+        virtual ~SimpleRelationIterator() { };
 
-        virtual Status Key(int* result);
+        virtual Status Key(int** out_key);
         virtual Status Next();
         virtual bool   AtEnd();
 
-        int attribute_index;
     protected:
         const Relation&                            relation;
         typename std::vector<int*>::const_iterator tuple_iterator;
@@ -29,4 +29,4 @@ class SimpleIterator
 
 } // namespace uk_ac_ox_cs_c875114
 
-#endif /* SIMPLEITERATOR_H_ */
+#endif /* SIMPLE_RELATION_ITERATOR_H_ */
