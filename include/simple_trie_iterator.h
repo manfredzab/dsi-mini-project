@@ -4,6 +4,9 @@
 #include "trie_iterator_interface.h"
 #include "trie.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class SimpleTrieIterator : public ITrieIterator // : public virtual SimpleIterator
 {
     public:
@@ -24,5 +27,7 @@ class SimpleTrieIterator : public ITrieIterator // : public virtual SimpleIterat
         int       current_node_multiplicity;
         bool      at_end;
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* SIMPLE_TRIE_ITERATOR_H_ */

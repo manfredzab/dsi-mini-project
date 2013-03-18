@@ -18,6 +18,8 @@
 //#include "LeapfrogIterator.h"
 
 #include "../include/data_parser.h"
+#include "../include/argument_parser.h"
+#include "../include/arguments.h"
 #include "../include/relation.h"
 #include "../include/query.h"
 #include "../include/simple_iterator.h"
@@ -28,27 +30,48 @@
 #include "../include/trie_iterator_printer.h"
 #include "../include/linear_iterator.h"
 
-int main()
-{
-    std::map<std::string, Relation*>* relations = DataParser::ParseRelations("data/dataset1-uniform/scale2/databasefile");
-    //std::map<std::string, Relation*>* relations = DataParser::ParseRelations("tests/data/databasefile");
-    Query* query = DataParser::ParseQuery("data/query2");
+using namespace uk_ac_ox_cs_c875114;
 
-    std::set<std::string> result_schema;
+using std::string;
+using std::vector;
+using std::map;
+using std::set;
+
+int main(int argc, char *argv[])
+{
+    Arguments arguments;
+    Status status = ArgumentParser::ParseArguments(argc, argv, &arguments);
+
+    if (kFail == status)
+    {
+        // TODO: proper error msg
+        std::cerr << "Wrong argument format";
+        return 1;
+    }
+
+    map<string, Relation*>* relations = DataParser::ParseDatabase(arguments.database_file);
+    Query* query = DataParser::ParseQuery(arguments.query_file);
+
+    ITrieIterator* join_iterator;
+    switch (arguments.join_algorithm_type)
+    {
+        case kSortMerge:     join_iterator = new SortMergeJoinTrieIterator(*relations, *query); break;
+        case kSortMergeTrie: join_iterator = new SortMergeJoinTrieIterator(*relations, *query); break;
+        case kLeapfrog:      join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);  break;
+    }
+
+    // TODO: migrate to TrieIterator
+    // Get the number of distinct attributes
+    set<string> result_schema;
     for (unsigned i = 0; i < query->relation_names.size(); i++)
     {
         Relation* current_relation = (*relations)[query->relation_names[i]];
         result_schema.insert(current_relation->attribute_names.begin(), current_relation->attribute_names.end());
     }
 
-    //SimpleTrieIterator simple_relation_iterator(*((*relations)["R"]));
-
-    //SortMergeJoinTrieIterator* join_iterator = new SortMergeJoinTrieIterator(*relations, *query);
-    LeapfrogJoinTrieIterator* join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);
-
     TrieIteratorPrinter::Print(*join_iterator, result_schema.size(), std::cout);
 
-//    std::vector<int> stack;
+//    vector<int> stack;
 //    int current_command;
 //    do
 //    {
@@ -63,7 +86,7 @@ int main()
 //                {
 //                    stack.pop_back();
 //                    std::cout << "[";
-//                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+//                    for (vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
 //                    {
 //                        std::cout << " " << *it;
 //                    }
@@ -83,7 +106,7 @@ int main()
 //                    stack.push_back(result);
 //
 //                    std::cout << "[";
-//                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+//                    for (vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
 //                    {
 //                        std::cout << " " << *it;
 //                    }
@@ -102,7 +125,7 @@ int main()
 //                    stack.push_back(result);
 //
 //                    std::cout << "[";
-//                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+//                    for (vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
 //                    {
 //                        std::cout << " " << *it;
 //                    }
@@ -131,12 +154,12 @@ int main()
     delete query;
     delete relations;
 //    std::cout << "Relation names:" << std::endl;
-//    for (typename std::vector<std::string>::iterator it = query->relation_names.begin(); it != query->relation_names.end(); ++it)
+//    for (typename vector<string>::iterator it = query->relation_names.begin(); it != query->relation_names.end(); ++it)
 //    {
 //        std::cout << *it << " ";
 //    }
 //    std::cout << std::endl << "Join attributes:" << std::endl;
-//    for (typename std::vector<std::string>::iterator it = query->join_attributes.begin(); it != query->join_attributes.end(); ++it)
+//    for (typename vector<string>::iterator it = query->join_attributes.begin(); it != query->join_attributes.end(); ++it)
 //    {
 //        std::cout << *it << " ";
 //    }
@@ -159,13 +182,13 @@ int main()
 //    while (!simple_iterator.Next());
 
 
-//    std::vector<Relation*>& db_relations = DataParser::ParseDatabase("data/dataset1-uniform/scale1/databasefile");
+//    vector<Relation*>& db_relations = DataParser::ParseDatabase("data/dataset1-uniform/scale1/databasefile");
 //
-//    for (std::vector<Relation*>::iterator it = db_relations.begin(); it != db_relations.end(); ++it)
+//    for (vector<Relation*>::iterator it = db_relations.begin(); it != db_relations.end(); ++it)
 //    {
 //        std::cout << "Relation name: " << (*it)->name << std::endl;
 //        std::cout << "Relation attr: ";
-//        for (std::vector<std::string>::iterator a_it = (*it)->attribute_names.begin(); a_it != (*it)->attribute_names.end(); ++a_it)
+//        for (vector<string>::iterator a_it = (*it)->attribute_names.begin(); a_it != (*it)->attribute_names.end(); ++a_it)
 //        {
 //            std::cout << *a_it << " ";
 //        }
@@ -177,7 +200,7 @@ int main()
 
 //    int k = 6;
 //
-//    std::vector<IIterator<int>*> iterators;
+//    vector<IIterator<int>*> iterators;
 //    for (int i = 0; i < k; i++)
 //    {
 //        iterators.push_back(GenerateRelation(50 + (i + 1) * 5));

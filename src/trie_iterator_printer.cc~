@@ -15,8 +15,8 @@ namespace uk_ac_ox_cs_c875114
 using std::string;
 using std::vector;
 using std::map;
-using std::ostream;
-using std::ostringstream;
+using std::ostream
+using std::ostringtream
 
 map<string, int> tuple_counts;
 vector<string> sorted_tuples;

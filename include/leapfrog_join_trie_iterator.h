@@ -12,6 +12,9 @@
 #include "trie_iterator.h"
 #include "leapfrog_join_iterator.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class LeapfrogJoinTrieIterator : public ITrieIterator
 {
     public:
@@ -35,5 +38,7 @@ class LeapfrogJoinTrieIterator : public ITrieIterator
         std::map<int, LeapfrogJoinIterator*>       join_iterator_for_depth;
         std::vector<int>                           key_multiplicity_stack;
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* LEAPFROG_JOIN_TRIE_ITERATOR_H_ */

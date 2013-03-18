@@ -4,6 +4,9 @@
 #include <vector>
 #include "relation.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 struct TrieNode
 {
     public:
@@ -29,5 +32,7 @@ class Trie
 
         int trie_depth;
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* TRIE_H_ */

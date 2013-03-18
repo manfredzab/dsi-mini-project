@@ -1,11 +1,14 @@
 #include <algorithm>
 #include "../include/leapfrog_join_iterator.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
+using std::vector;
 
 bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second);
 
-
-LeapfrogJoinIterator::LeapfrogJoinIterator(std::vector<TrieIterator*>& iterators) : iterators(iterators)
+LeapfrogJoinIterator::LeapfrogJoinIterator(vector<TrieIterator*>& iterators) : iterators(iterators)
 {
     this->at_end = false;
     this->current_iterator_index = 0;
@@ -17,7 +20,7 @@ LeapfrogJoinIterator::LeapfrogJoinIterator(std::vector<TrieIterator*>& iterators
 void LeapfrogJoinIterator::Init()
 {
     at_end = false;
-    for (std::vector<TrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
+    for (vector<TrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
     {
         at_end |= (*iterator)->AtEnd();
     }
@@ -147,3 +150,5 @@ bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second)
 
     return (first_result < second_result);
 }
+
+} // namespace uk_ac_ox_cs_c875114

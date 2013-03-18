@@ -1,5 +1,8 @@
 #include "../include/simple_iterator.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 SimpleIterator::SimpleIterator(const Relation& relation) : relation(relation)
 {
     this->tuple_iterator = relation.data.begin();
@@ -33,3 +36,5 @@ bool SimpleIterator::AtEnd()
 {
     return (this->tuple_iterator == this->relation.data.end());
 }
+
+} // namespace uk_ac_ox_cs_c875114

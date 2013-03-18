@@ -7,6 +7,9 @@
 #include "status.h"
 #include "trie.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class TrieIterator : public LinearIterator, public ITrieIterator
 {
     public:
@@ -28,5 +31,7 @@ class TrieIterator : public LinearIterator, public ITrieIterator
         int       current_node_multiplicity;
         bool      at_end;
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* TRIE_ITERATOR_H_ */

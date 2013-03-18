@@ -30,7 +30,7 @@ Status LinearIterator::Seek(int* seek_key)
         return kFail;
     }
 
-    this->tuple_iterator = lower_bound(this->tuple_iterator + 1, this->relation.data.end(), seek_key, TupleComparator(this->tuple_size));
+    this->tuple_iterator = std::lower_bound(this->tuple_iterator + 1, this->relation.data.end(), seek_key, TupleComparator(this->tuple_size));
 
     return kOK;
 }

@@ -8,10 +8,7 @@
 namespace uk_ac_ox_cs_c875114
 {
 
-using std::string;
-using std::map;
-
-SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const map<string, Relation*>& relations, const Query& query)
+SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query)
 {
     // Initialize the number of join attributes
     number_of_join_attributes = query.join_attributes.size();
@@ -19,7 +16,7 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const map<string, Relation*
     // Create an iterator for each of the relations involved in the query
     for (unsigned i = 0; i < query.relation_names.size(); i++)
     {
-        string relation_name = query.relation_names[i];
+        std::string relation_name = query.relation_names[i];
         const Relation* relation = relations.find(relation_name)->second;
 
         this->trie_iterator_for_relation[relation_name] = new SimpleTrieIterator(*relation);
@@ -29,12 +26,12 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const map<string, Relation*
     // relations in which X occurs, and initialize the sort merge join instances with those trie iterators.
     for (int attribute_depth = 0; attribute_depth < number_of_join_attributes; attribute_depth++)
     {
-        string attribute = query.join_attributes[attribute_depth];
+        std::string attribute = query.join_attributes[attribute_depth];
 
-        for (map<string, Relation*>::const_iterator it = relations.begin(); it != relations.end(); ++it)
+        for (std::map<std::string, Relation*>::const_iterator it = relations.begin(); it != relations.end(); ++it)
         {
             Relation* current_db_relation = it->second;
-            string current_relation_name = current_db_relation->name;
+            std::string current_relation_name = current_db_relation->name;
 
             // Check whether the current relation is in the list of relations in the query (i.e. whether an iterator was created for it),
             // and whether the current relation contains the attribute in question.
@@ -56,7 +53,7 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const map<string, Relation*
         Relation* current_db_relation = relations.find(query.relation_names[i])->second;
         for (unsigned j = 0; j < current_db_relation->attribute_names.size(); j++)
         {
-            string attribute = current_db_relation->attribute_names[j];
+            std::string attribute = current_db_relation->attribute_names[j];
             if (find(query.join_attributes.begin(), query.join_attributes.end(), attribute) == query.join_attributes.end())
             {
                 trie_iterators_for_depth[last_attribute++].push_back(trie_iterator_for_relation[current_db_relation->name]);
@@ -76,12 +73,12 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const map<string, Relation*
 
 SortMergeJoinTrieIterator::~SortMergeJoinTrieIterator()
 {
-    for (map<string, SimpleTrieIterator*>::iterator it = trie_iterator_for_relation.begin(); it != trie_iterator_for_relation.end(); ++it)
+    for (std::map<std::string, SimpleTrieIterator*>::iterator it = trie_iterator_for_relation.begin(); it != trie_iterator_for_relation.end(); ++it)
     {
         delete it->second;
     }
 
-    for (map<int, SortMergeJoinIterator*>::iterator it = join_iterator_for_depth.begin(); it != join_iterator_for_depth.end(); ++it)
+    for (std::map<int, SortMergeJoinIterator*>::iterator it = join_iterator_for_depth.begin(); it != join_iterator_for_depth.end(); ++it)
     {
         delete it->second;
     }
@@ -264,7 +261,7 @@ bool SortMergeJoinTrieIterator::AtRoot()
 //        std::cout << "Attribute: " << query.join_attributes[i] << std::endl;
 //
 //        std::cout << "Associated relations:";
-//        std::vector<string>& relations_for_attribute = attribute_relations[query.join_attributes[i]];
+//        std::vector<std::string>& relations_for_attribute = attribute_relations[query.join_attributes[i]];
 //        for (int j = 0; j < relations_for_attribute.size(); j++)
 //        {
 //            std::cout << " " << relations_for_attribute[j];

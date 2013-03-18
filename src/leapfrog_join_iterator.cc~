@@ -1,14 +1,13 @@
 #include <algorithm>
-#include "../include/sort_merge_join_iterator.h"
+#include "../include/leapfrog_join_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-using std::vector;
+bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second);
 
-bool CompareTrieIteratorsByKeys(SimpleTrieIterator* first, SimpleTrieIterator* second);
 
-SortMergeJoinIterator::SortMergeJoinIterator(vector<SimpleTrieIterator*>& iterators) : iterators(iterators)
+LeapfrogJoinIterator::LeapfrogJoinIterator(std::vector<TrieIterator*>& iterators) : iterators(iterators)
 {
     this->at_end = false;
     this->current_iterator_index = 0;
@@ -17,10 +16,10 @@ SortMergeJoinIterator::SortMergeJoinIterator(vector<SimpleTrieIterator*>& iterat
 }
 
 
-void SortMergeJoinIterator::Init()
+void LeapfrogJoinIterator::Init()
 {
     at_end = false;
-    for (vector<SimpleTrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
+    for (std::vector<TrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
     {
         at_end |= (*iterator)->AtEnd();
     }
@@ -34,7 +33,7 @@ void SortMergeJoinIterator::Init()
 }
 
 
-void SortMergeJoinIterator::Search()
+void LeapfrogJoinIterator::Search()
 {
     int iterator_count = iterators.size();
 
@@ -66,11 +65,7 @@ void SortMergeJoinIterator::Search()
         }
         else
         {
-            while ((min_key < max_key) && !iterators[current_iterator_index]->AtEnd())
-            {
-                iterators[current_iterator_index]->Next();
-                iterators[current_iterator_index]->Key(&min_key);
-            }
+            iterators[current_iterator_index]->Seek(max_key);
 
             if (iterators[current_iterator_index]->AtEnd())
             {
@@ -79,7 +74,7 @@ void SortMergeJoinIterator::Search()
             }
             else
             {
-                max_key = min_key;
+                iterators[current_iterator_index]->Key(&max_key);
                 current_iterator_index = (current_iterator_index + 1) % iterator_count;
             }
         }
@@ -87,7 +82,7 @@ void SortMergeJoinIterator::Search()
 }
 
 
-Status SortMergeJoinIterator::Next()
+Status LeapfrogJoinIterator::Next()
 {
     if (this->AtEnd())
     {
@@ -108,15 +103,32 @@ Status SortMergeJoinIterator::Next()
 }
 
 
-Status SortMergeJoinIterator::Key(int* out_key)
+Status LeapfrogJoinIterator::Seek(int seek_key)
 {
-    *out_key = this->key;
+    iterators[current_iterator_index]->Seek(seek_key);
+    if (iterators[current_iterator_index]->AtEnd())
+    {
+        at_end = true;
+    }
+    else
+    {
+        current_iterator_index = (current_iterator_index + 1) % iterators.size();
+        Search();
+    }
+
+    return (this->AtEnd()) ? kFail : kOK;
+}
+
+
+Status LeapfrogJoinIterator::Key(int* result)
+{
+    *result = this->key;
 
     return kOK;
 }
 
 
-Status SortMergeJoinIterator::Multiplicity(int* out_multiplicity)
+Status LeapfrogJoinIterator::Multiplicity(int* out_multiplicity)
 {
     *out_multiplicity = this->key_multiplicity;
 
@@ -124,19 +136,18 @@ Status SortMergeJoinIterator::Multiplicity(int* out_multiplicity)
 }
 
 
-bool SortMergeJoinIterator::AtEnd()
+bool LeapfrogJoinIterator::AtEnd()
 {
     return this->at_end;
 }
 
 
-bool CompareTrieIteratorsByKeys(SimpleTrieIterator* first, SimpleTrieIterator* second)
+bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second)
 {
     int first_result, second_result;
     first->Key(&first_result); second->Key(&second_result);
 
     return (first_result < second_result);
 }
-
 
 } // namespace uk_ac_ox_cs_c875114

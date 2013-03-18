@@ -6,6 +6,9 @@
 #include "status.h"
 #include "relation.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class SimpleIterator
 {
     public:
@@ -23,5 +26,7 @@ class SimpleIterator
         int                                        tuple_size;
 
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* SIMPLEITERATOR_H_ */

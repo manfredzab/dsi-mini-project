@@ -12,6 +12,9 @@
 #include "simple_trie_iterator.h"
 #include "sort_merge_join_iterator.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class SortMergeJoinTrieIterator : public ITrieIterator
 {
     public:
@@ -34,5 +37,7 @@ class SortMergeJoinTrieIterator : public ITrieIterator
         std::map<int, SortMergeJoinIterator*>            join_iterator_for_depth;
         std::vector<int>                                 key_multiplicity_stack;
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* SORT_MERGE_JOIN_H_ */

@@ -5,8 +5,6 @@
 namespace uk_ac_ox_cs_c875114
 {
 
-using std::vector;
-
 SimpleTrieIterator::SimpleTrieIterator(const Relation& relation)// : SimpleIterator(relation)
 {
     // Build the trie
@@ -92,7 +90,7 @@ Status SimpleTrieIterator::Next()
     }
 
     // Get the pointer to the sibling
-    vector<TrieNode*>::iterator right_sibling = this->current_node->parent->current_child + 1;
+    std::vector<TrieNode*>::iterator right_sibling = this->current_node->parent->current_child + 1;
 
     // If sibling is out of bounds of the parent's children list, indicate that we have reached the end
     // and DO NOT UPDATE the current node (otherwise all the pointers will be corrupted).

@@ -3,6 +3,9 @@
 
 #include "status.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class ITrieIterator
 {
     public:
@@ -15,5 +18,6 @@ class ITrieIterator
         virtual bool   AtEnd()          = 0;
 };
 
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* I_TRIE_ITERATOR_H_ */

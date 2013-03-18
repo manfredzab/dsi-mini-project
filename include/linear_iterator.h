@@ -4,6 +4,9 @@
 #include "simple_iterator.h"
 #include "status.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class LinearIterator : public SimpleIterator
 {
     public:
@@ -12,5 +15,7 @@ class LinearIterator : public SimpleIterator
 
         virtual Status Seek(int* seek_key);
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* LINEAR_ITERATOR_H_ */

@@ -7,11 +7,16 @@
 #include "query.h"
 #include "relation.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class DataParser
 {
-public:
-    static std::map<std::string, Relation*>* ParseRelations(const char* file_name);
-    static Query*                            ParseQuery(const char* file_name);
+    public:
+        static std::map<std::string, Relation*>* ParseDatabase(std::string file_name);
+        static Query*                            ParseQuery(std::string file_name);
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* DATABASE_PARSER_H_ */

@@ -5,6 +5,9 @@
 #include "simple_trie_iterator.h"
 #include "status.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class SortMergeJoinIterator
 {
     public:
@@ -25,5 +28,7 @@ class SortMergeJoinIterator
         int                               key_multiplicity;
         int                               current_iterator_index;
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* SORT_MERGE_JOIN_ITERATOR_H_ */

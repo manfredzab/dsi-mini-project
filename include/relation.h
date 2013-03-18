@@ -4,6 +4,9 @@
 #include <string>
 #include <vector>
 
+namespace uk_ac_ox_cs_c875114
+{
+
 struct Relation
 {
     public:
@@ -12,5 +15,7 @@ struct Relation
 
         std::vector<int*> data;
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* RELATION_H_ */

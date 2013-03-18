@@ -5,6 +5,9 @@
 #include "trie_iterator.h"
 #include "status.h"
 
+namespace uk_ac_ox_cs_c875114
+{
+
 class LeapfrogJoinIterator
 {
     public:
@@ -26,5 +29,7 @@ class LeapfrogJoinIterator
         int                         key_multiplicity;
         int                         current_iterator_index;
 };
+
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* LEAP_FROG_JOIN_ITERATOR_H_ */

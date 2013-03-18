@@ -6,32 +6,43 @@
 
 #include "../include/data_parser.h"
 
-Relation*                 ParseRelation(const char* database_file_name, std::string relation_line);
-Relation*                 ParseRelation(const char* relation_file_name, std::string relation_name, const std::vector<std::string>& attribute_names);
-int*                      ParseRelationTuple(std::string relation_tuple_line, int attribute_count);
-std::vector<std::string>* TokenizeString(const std::string& input_string, const char character);
-void                      RemoveStringWhitespace(std::string& input_string);
-int                       StringToInt(const std::string& input_string);
-std::string               GetFilePath(const char* file_name);
+namespace uk_ac_ox_cs_c875114
+{
+
+using std::string;
+using std::vector;
+using std::map;
+using std::ifstream;
+using std::istringstream;
+using std::cerr;
 
 
-Query* DataParser::ParseQuery(const char* file_name)
+Relation*       ParseRelation(string database_file_name, string relation_line);
+Relation*       ParseRelation(string relation_file_name, string relation_name, const vector<string>& attribute_names);
+int*            ParseRelationTuple(string relation_tuple_line, int attribute_count);
+vector<string>* TokenizeString(const string& input_string, const char character);
+void            RemoveStringWhitespace(string& input_string);
+int             StringToInt(const string& input_string);
+string          GetFilePath(string file_name);
+
+
+Query* DataParser::ParseQuery(string file_name)
 {
     Query* result_query = NULL;
 
-    std::ifstream query_file(file_name);
+    ifstream query_file(file_name.c_str());
 
     if (query_file.is_open())
     {
-        std::string relation_line, attribute_line;
+        string relation_line, attribute_line;
         getline(query_file, relation_line);
         getline(query_file, attribute_line);
 
         RemoveStringWhitespace(relation_line);
-        std::vector<std::string>* relations = TokenizeString(relation_line, ',');
+        vector<string>* relations = TokenizeString(relation_line, ',');
 
         RemoveStringWhitespace(attribute_line);
-        std::vector<std::string>* attributes = TokenizeString(attribute_line, ',');
+        vector<string>* attributes = TokenizeString(attribute_line, ',');
 
         result_query = new Query();
         result_query->relation_names.insert(result_query->relation_names.begin(), relations->begin(), relations->end());
@@ -47,13 +58,13 @@ Query* DataParser::ParseQuery(const char* file_name)
 }
 
 
-std::map<std::string, Relation*>* DataParser::ParseRelations(const char* file_name)
+map<string, Relation*>* DataParser::ParseDatabase(string file_name)
 {
-    std::map<std::string, Relation*>* relation_map = new std::map<std::string, Relation*>();
+    map<string, Relation*>* relation_map = new map<string, Relation*>();
 
-    std::ifstream database_file(file_name);
+    ifstream database_file(file_name.c_str());
 
-    std::string relation_line;
+    string relation_line;
     if (database_file.is_open())
     {
         while (getline(database_file, relation_line))
@@ -67,27 +78,27 @@ std::map<std::string, Relation*>* DataParser::ParseRelations(const char* file_na
     }
     else
     {
-        std::cerr << "Fatal error: Could not open the database file " << file_name;
+        cerr << "Fatal error: Could not open the database file " << file_name;
     }
 
     return relation_map;
 }
 
 
-Relation* ParseRelation(const char* database_file_name, std::string relation_line)
+Relation* ParseRelation(string database_file_name, string relation_line)
 {
     // Remove whitespace characters from relation_line
     RemoveStringWhitespace(relation_line);
 
     // Tokenize relation_line (splitting on commas)
-    std::vector<std::string>* tokens = TokenizeString(relation_line, ',');
+    vector<string>* tokens = TokenizeString(relation_line, ',');
 
     // First token - file name (needs to be made relative to the database path)
-    std::string file_path_prefix = GetFilePath(database_file_name);
-    std::string file_name = file_path_prefix + (*tokens)[0];
+    string file_path_prefix = GetFilePath(database_file_name);
+    string file_name = file_path_prefix + (*tokens)[0];
 
     // Second token - relation name
-    std::string relation_name = (*tokens)[1];
+    string relation_name = (*tokens)[1];
 
     // The rest of the tokens - attributes
     tokens->erase(tokens->begin(), tokens->begin() + 2);
@@ -99,7 +110,7 @@ Relation* ParseRelation(const char* database_file_name, std::string relation_lin
 }
 
 
-Relation* ParseRelation(const char* relation_file_name, std::string relation_name, const std::vector<std::string>& attribute_names)
+Relation* ParseRelation(string relation_file_name, string relation_name, const vector<string>& attribute_names)
 {
     Relation* result = new Relation();
 
@@ -109,8 +120,8 @@ Relation* ParseRelation(const char* relation_file_name, std::string relation_nam
     // Read and parse the data
     int attribute_count = attribute_names.size();
 
-    std::ifstream relation_file(relation_file_name);
-    std::string line;
+    ifstream relation_file(relation_file_name.c_str());
+    string line;
     if (relation_file.is_open())
     {
         while (getline(relation_file, line))
@@ -124,19 +135,19 @@ Relation* ParseRelation(const char* relation_file_name, std::string relation_nam
     }
     else
     {
-        std::cerr << "Fatal error: could not open the relation file " << relation_file_name;
+        cerr << "Fatal error: could not open the relation file " << relation_file_name;
     }
 
     return result;
 }
 
 
-int* ParseRelationTuple(std::string relation_tuple_line, int attribute_count)
+int* ParseRelationTuple(string relation_tuple_line, int attribute_count)
 {
     int* result = new int[attribute_count];
 
     RemoveStringWhitespace(relation_tuple_line);
-    std::vector<std::string>* tokens = TokenizeString(relation_tuple_line, ',');
+    vector<string>* tokens = TokenizeString(relation_tuple_line, ',');
 
     for (int i = 0; i < attribute_count; i++)
     {
@@ -149,12 +160,12 @@ int* ParseRelationTuple(std::string relation_tuple_line, int attribute_count)
 }
 
 
-std::vector<std::string>* TokenizeString(const std::string& input_string, const char character)
+vector<string>* TokenizeString(const string& input_string, const char character)
 {
-    std::istringstream token_stream(input_string);
-    std::string token;
+    istringstream token_stream(input_string);
+    string token;
 
-    std::vector<std::string>* tokens = new std::vector<std::string>();
+    vector<string>* tokens = new vector<string>();
     while (getline(token_stream, token, character))
     {
         tokens->push_back(token);
@@ -164,23 +175,24 @@ std::vector<std::string>* TokenizeString(const std::string& input_string, const 
 }
 
 
-void RemoveStringWhitespace(std::string& input_string)
+void RemoveStringWhitespace(string& input_string)
 {
     input_string.erase(remove_if(input_string.begin(), input_string.end(), ::isspace), input_string.end());
 }
 
 
-std::string GetFilePath(const char* file_name)
+string GetFilePath(string file_name)
 {
-    std::string file_name_string(file_name, 0, 1024); // Path length limit: 1023 characters.
+    int last_slash_position = file_name.find_last_of("/\\");
 
-    int last_slash_position = file_name_string.find_last_of("/\\");
-
-    return file_name_string.substr(0, last_slash_position + 1);
+    return file_name.substr(0, last_slash_position + 1);
 }
 
 
-int StringToInt(const std::string& input_string)
+int StringToInt(const string& input_string)
 {
     return atoi(input_string.c_str());
 }
+
+
+} // namespace uk_ac_ox_cs_c875114
