@@ -14,16 +14,13 @@
 #include <map>
 #include <set>
 
-//#include "SortedArrayIterator.h"
-//#include "LeapfrogIterator.h"
-
 #include "../include/data_parser.h"
 #include "../include/argument_parser.h"
 #include "../include/arguments.h"
 #include "../include/relation.h"
 #include "../include/query.h"
 #include "../include/simple_iterator.h"
-#include "../include/simple_trie_iterator.h"
+#include "../include/trie_iterator.h"
 #include "../include/join.h"
 #include "../include/sort_merge_join_trie_iterator.h"
 #include "../include/leapfrog_join_trie_iterator.h"
@@ -55,10 +52,32 @@ int main(int argc, char *argv[])
     ITrieIterator* join_iterator;
     switch (arguments.join_algorithm_type)
     {
-        case kSortMerge:     join_iterator = new SortMergeJoinTrieIterator(*relations, *query); break;
-        case kSortMergeTrie: join_iterator = new SortMergeJoinTrieIterator(*relations, *query); break;
-        case kLeapfrog:      join_iterator = new LeapfrogJoinTrieIterator(*relations, *query);  break;
+        case kSortMerge:
+        {
+            SortMergeJoinTrieIterator* sort_merge_iterator = new SortMergeJoinTrieIterator();
+            sort_merge_iterator->Init(*relations, *query);
+
+            join_iterator = sort_merge_iterator;
+            break;
+        }
+        case kSortMergeTrie:
+        {
+            SortMergeJoinTrieIterator* sort_merge_iterator = new SortMergeJoinTrieIterator();
+            sort_merge_iterator->Init(*relations, *query);
+
+            join_iterator = sort_merge_iterator;
+            break;
+        }
+        case kLeapfrog:
+        {
+            LeapfrogJoinTrieIterator* leapfrog_iterator = new LeapfrogJoinTrieIterator();
+            leapfrog_iterator->Init(*relations, *query);
+
+            join_iterator = leapfrog_iterator;
+            break;
+        }
     }
+
 
     // TODO: migrate to TrieIterator
     // Get the number of distinct attributes

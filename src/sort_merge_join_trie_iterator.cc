@@ -9,20 +9,35 @@ namespace uk_ac_ox_cs_c875114
 {
 
 using std::string;
+using std::vector;
 using std::map;
 
-SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const map<string, Relation*>& relations, const Query& query)
+SortMergeJoinTrieIterator::~SortMergeJoinTrieIterator()
+{
+    for (map<string, TrieIterator*>::iterator it = trie_iterator_for_relation.begin(); it != trie_iterator_for_relation.end(); ++it)
+    {
+        delete it->second;
+    }
+
+    for (map<int, JoinIterator*>::iterator it = join_iterator_for_depth.begin(); it != join_iterator_for_depth.end(); ++it)
+    {
+        delete it->second;
+    }
+}
+
+
+void SortMergeJoinTrieIterator::Init(const map<string, Relation*>& relations, const Query& query)
 {
     // Initialize the number of join attributes
     number_of_join_attributes = query.join_attributes.size();
 
-    // Create an iterator for each of the relations involved in the query
+    // Create a trie iterator for each of the relations involved in the query
     for (unsigned i = 0; i < query.relation_names.size(); i++)
     {
         string relation_name = query.relation_names[i];
         const Relation* relation = relations.find(relation_name)->second;
 
-        this->trie_iterator_for_relation[relation_name] = new SimpleTrieIterator(*relation);
+        this->trie_iterator_for_relation[relation_name] = CreateTrieIteratorForRelation(*relation);
     }
 
     // For each attribute X in the equi-join, create an array of pointers to the trie iterators of the
@@ -45,7 +60,7 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const map<string, Relation*
             }
         }
 
-        join_iterator_for_depth[attribute_depth] = new SortMergeJoinIterator(trie_iterators_for_depth[attribute_depth]);
+        join_iterator_for_depth[attribute_depth] = CreateJoinIteratorForTrieIterators(trie_iterators_for_depth[attribute_depth]);
     }
 
     // For each of the attributes Y which are present in the original relations, but not in the equi-join, initialize
@@ -69,22 +84,19 @@ SortMergeJoinTrieIterator::SortMergeJoinTrieIterator(const map<string, Relation*
     depth = -1;
 
     // Initialize the key multiplicity stack
-
     key_multiplicity_stack.push_back(1);
 }
 
 
-SortMergeJoinTrieIterator::~SortMergeJoinTrieIterator()
+TrieIterator* SortMergeJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
 {
-    for (map<string, SimpleTrieIterator*>::iterator it = trie_iterator_for_relation.begin(); it != trie_iterator_for_relation.end(); ++it)
-    {
-        delete it->second;
-    }
+    return new TrieIterator(relation);
+}
 
-    for (map<int, SortMergeJoinIterator*>::iterator it = join_iterator_for_depth.begin(); it != join_iterator_for_depth.end(); ++it)
-    {
-        delete it->second;
-    }
+
+JoinIterator* SortMergeJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<TrieIterator*>& trie_iterators)
+{
+    return new JoinIterator(trie_iterators);
 }
 
 

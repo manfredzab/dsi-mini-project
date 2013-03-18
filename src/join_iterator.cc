@@ -1,25 +1,30 @@
 #include <algorithm>
-#include "../include/sort_merge_join_iterator.h"
+#include "../include/join_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-bool CompareTrieIteratorsByKeys(SimpleTrieIterator* first, SimpleTrieIterator* second);
+using std::vector;
 
 
-SortMergeJoinIterator::SortMergeJoinIterator(std::vector<SimpleTrieIterator*>& iterators) : iterators(iterators)
+bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second);
+
+
+JoinIterator::JoinIterator(vector<TrieIterator*>& iterators) : iterators(iterators)
 {
     this->at_end = false;
     this->current_iterator_index = 0;
     this->key = 0;
+    this->min_key = 0;
+    this->max_key = 0;
     this->key_multiplicity = 1;
 }
 
 
-void SortMergeJoinIterator::Init()
+void JoinIterator::Init()
 {
     at_end = false;
-    for (std::vector<SimpleTrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
+    for (vector<TrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
     {
         at_end |= (*iterator)->AtEnd();
     }
@@ -33,16 +38,14 @@ void SortMergeJoinIterator::Init()
 }
 
 
-void SortMergeJoinIterator::Search()
+void JoinIterator::Search()
 {
     int iterator_count = iterators.size();
 
-    int max_key;
     iterators[(current_iterator_index - 1 + iterator_count) % iterator_count]->Key(&max_key);
 
     while (true)
     {
-        int min_key;
         iterators[current_iterator_index]->Key(&min_key);
 
         if (min_key == max_key)
@@ -65,11 +68,7 @@ void SortMergeJoinIterator::Search()
         }
         else
         {
-            while ((min_key < max_key) && !iterators[current_iterator_index]->AtEnd())
-            {
-                iterators[current_iterator_index]->Next();
-                iterators[current_iterator_index]->Key(&min_key);
-            }
+            SeekCurrentIteratorToMaxKey();
 
             if (iterators[current_iterator_index]->AtEnd())
             {
@@ -78,7 +77,7 @@ void SortMergeJoinIterator::Search()
             }
             else
             {
-                max_key = min_key;
+                iterators[current_iterator_index]->Key(&max_key);
                 current_iterator_index = (current_iterator_index + 1) % iterator_count;
             }
         }
@@ -86,7 +85,17 @@ void SortMergeJoinIterator::Search()
 }
 
 
-Status SortMergeJoinIterator::Next()
+void JoinIterator::SeekCurrentIteratorToMaxKey()
+{
+    while ((min_key < max_key) && !iterators[current_iterator_index]->AtEnd())
+    {
+        iterators[current_iterator_index]->Next();
+        iterators[current_iterator_index]->Key(&min_key);
+    }
+}
+
+
+Status JoinIterator::Next()
 {
     if (this->AtEnd())
     {
@@ -107,7 +116,7 @@ Status SortMergeJoinIterator::Next()
 }
 
 
-Status SortMergeJoinIterator::Key(int* out_key)
+Status JoinIterator::Key(int* out_key)
 {
     *out_key = this->key;
 
@@ -115,7 +124,7 @@ Status SortMergeJoinIterator::Key(int* out_key)
 }
 
 
-Status SortMergeJoinIterator::Multiplicity(int* out_multiplicity)
+Status JoinIterator::Multiplicity(int* out_multiplicity)
 {
     *out_multiplicity = this->key_multiplicity;
 
@@ -123,13 +132,13 @@ Status SortMergeJoinIterator::Multiplicity(int* out_multiplicity)
 }
 
 
-bool SortMergeJoinIterator::AtEnd()
+bool JoinIterator::AtEnd()
 {
     return this->at_end;
 }
 
 
-bool CompareTrieIteratorsByKeys(SimpleTrieIterator* first, SimpleTrieIterator* second)
+bool CompareTrieIteratorsByKeys(TrieIterator* first, TrieIterator* second)
 {
     int first_result, second_result;
     first->Key(&first_result); second->Key(&second_result);

@@ -11,11 +11,11 @@ class ITrieIterator
     public:
         virtual ~ITrieIterator() { };
 
-        virtual Status Open()           = 0;
-        virtual Status Up()             = 0;
-        virtual Status Key(int* result) = 0;
-        virtual Status Next()           = 0;
-        virtual bool   AtEnd()          = 0;
+        virtual Status Open()                                                                      = 0;
+        virtual Status Up()                                                                        = 0;
+        virtual Status Key(int* result)                                                            = 0;
+        virtual Status Next()                                                                      = 0;
+        virtual bool   AtEnd()                                                                     = 0;
 };
 
 } // namespace uk_ac_ox_cs_c875114
