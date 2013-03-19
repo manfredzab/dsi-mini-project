@@ -26,12 +26,12 @@ class SimpleJoinIterator : public virtual IJoinIterator<int>
         virtual void SeekCurrentIteratorToMaxKey();
 
         std::vector<ITrieIterator<int>*>& iterators;
-        bool                         at_end;
-        int                          key;
-        int                          min_key;
-        int                          max_key;
-        int                          key_multiplicity;
-        int                          current_iterator_index;
+        bool                              at_end;
+        int                               key;
+        int                               min_key;
+        int                               max_key;
+        int                               key_multiplicity;
+        int                               current_iterator_index;
 };
 
 } // namespace uk_ac_ox_cs_c875114

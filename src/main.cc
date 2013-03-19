@@ -1,6 +1,4 @@
 // TODO:
-// - LeapfrogTrieIterator and MergeSortTrieIteratore ARE identical - definitely need to be abstracted.
-// - LeapfrogJoinIterator and MergeSortJoinIterator are nearly identical - should be abstracted.
 // - Better file format handling (less attributes in one tuple than in the other, etc)
 // - File headers (time, etc)
 // - Comments
@@ -23,7 +21,7 @@
 #include "../include/sort_merge_join_trie_iterator.h"
 #include "../include/leapfrog_join_trie_iterator.h"
 #include "../include/trie_iterator_printer.h"
-#include "../include/binary_sort_merge_join_iterator.h"
+#include "../include/binary_sort_merge_join.h"
 
 using namespace uk_ac_ox_cs_c875114;
 
@@ -49,8 +47,33 @@ int main(int argc, char *argv[])
     Query* query = DataParser::ParseQuery(arguments.query_file);
 
     //---------------------------------------------------------------------------
-    BinarySortMergeJoinIterator iterator(*(*relations)["R"], *(*relations)["U"], *query);
-    iterator.Init();
+
+    Relation* result_relation = BinarySortMergeJoin::Join(*(*relations)["R"], *(*relations)["U"], *query);
+
+    std::cout << "Result relation name: " << result_relation->name << std::endl;
+
+    std::cout << "Result relation attributes: ";
+    for (unsigned i = 0; i < result_relation->attribute_names.size(); i++)
+    {
+        std::cout << result_relation->attribute_names[i] << ",";
+    }
+    std::cout << std::endl;
+
+    SimpleRelationIterator result_iterator(*result_relation);
+    int* key = new int[result_relation->attribute_names.size()];
+    while (!result_iterator.AtEnd())
+    {
+        result_iterator.Key(&key);
+        for (unsigned i = 0; i < result_relation->attribute_names.size(); i++)
+        {
+            std::cout << key[i] << ",";
+        }
+        std::cout << std::endl;
+
+        result_iterator.Next();
+    }
+
+    std::cout << "Total number of tuples: " << result_relation->data.size() << std::endl;
 
     return 1;
     //---------------------------------------------------------------------------

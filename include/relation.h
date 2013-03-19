@@ -9,11 +9,10 @@ namespace uk_ac_ox_cs_c875114
 
 struct Relation
 {
-    public:
-        std::string name;
-        std::vector<std::string> attribute_names;
+    std::string name;
+    std::vector<std::string> attribute_names;
 
-        std::vector<int*> data;
+    std::vector<int*> data;
 };
 
 } // namespace uk_ac_ox_cs_c875114

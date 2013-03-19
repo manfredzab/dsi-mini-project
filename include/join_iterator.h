@@ -14,11 +14,11 @@ class IJoinIterator
     public:
         virtual ~IJoinIterator() { };
 
-        virtual Status Init()                      = 0;
-        virtual Status Key(T* out_key)             = 0;
-        virtual Status Multiplicity(T* out_result) = 0;
-        virtual Status Next()                      = 0;
-        virtual bool   AtEnd()                     = 0;
+        virtual Status Init()                        = 0;
+        virtual Status Key(T* out_key)               = 0;
+        virtual Status Multiplicity(int* out_result) = 0;
+        virtual Status Next()                        = 0;
+        virtual bool   AtEnd()                       = 0;
 };
 
 }

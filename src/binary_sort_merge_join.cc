@@ -1,41 +1,51 @@
-// TODO: remove
-#include <iostream>
-
 #include <algorithm>
+#include <vector>
+#include <string>
+#include "../include/binary_sort_merge_join.h"
 #include "../include/binary_sort_merge_join_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-using std::string;
 using std::vector;
+using std::string;
 
-BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(Relation& outer_relation, Relation& inner_relation, const Query& query) :
-        outer_relation(outer_relation),
-        outer_relation_iterator(outer_relation),
-        inner_relation(inner_relation),
-        inner_relation_iterator(inner_relation)
+typedef BinarySortMergeJoinIterator::AttributeOrderDescriptor AttributeOrderDescriptor; // Shorten the name without polluting the namespaces
+
+Relation* BinarySortMergeJoin::Join(Relation& outer_relation, Relation& inner_relation, const Query& query)
 {
+    // Build the result relation metadata
+    Relation* result_relation = new Relation();
+
+    // Concatenate the outer and inner relation names to produce a temporary result relation name
+    result_relation->name = outer_relation.name + inner_relation.name;
+
+    // Build the result relation's attribute name vector
+    vector<AttributeOrderDescriptor> result_relation_tuple_order;
+
+    std::vector<int> outer_relation_join_attribute_positions;
+    std::vector<int> inner_relation_join_attribute_positions;
+
     // Find the common attributes of the relations and build the resulting relation's attribute name
     // vector (in the join order)
-    const vector<string>& outer_attributes = outer_relation.attribute_names;
-    const vector<string>& inner_attributes = inner_relation.attribute_names;
-
     for (unsigned i = 0; i < query.join_attributes.size(); i++)
     {
         string current_attribute = query.join_attributes[i];
 
-        unsigned attribute_index_in_outer_relation = find(outer_attributes.begin(), outer_attributes.end(), current_attribute) - outer_attributes.begin();
-        unsigned attribute_index_in_inner_relation = find(inner_attributes.begin(), inner_attributes.end(), current_attribute) - inner_attributes.begin();
+        unsigned attribute_index_in_outer_relation = find(outer_relation.attribute_names.begin(), outer_relation.attribute_names.end(), current_attribute) - outer_relation.attribute_names.begin();
+        unsigned attribute_index_in_inner_relation = find(inner_relation.attribute_names.begin(), inner_relation.attribute_names.end(), current_attribute) - inner_relation.attribute_names.begin();
 
-        if (attribute_index_in_outer_relation < outer_attributes.size() || attribute_index_in_inner_relation < inner_attributes.size())
+        if (attribute_index_in_outer_relation < outer_relation.attribute_names.size() || attribute_index_in_inner_relation < inner_relation.attribute_names.size())
         {
             // Save the attribute name
-        result_relation_attribute_names.push_back(current_attribute);
+            result_relation->attribute_names.push_back(current_attribute);
 
-            // Create the attribute re-order descriptor
+            // Create the attribute re-order descriptor which indicates in what order the join result tuple
+            // should be constructed (in this case, join attributes in join order, followed by outer relation
+            // attributes not participating in the join, then inner relation attributes; the latter two are
+            // added further below).
             AttributeOrderDescriptor order_descriptor;
-            order_descriptor.is_outer_relation = attribute_index_in_outer_relation < outer_attributes.size();
+            order_descriptor.is_outer_relation = attribute_index_in_outer_relation < outer_relation.attribute_names.size();
             order_descriptor.relation_attribute_index = order_descriptor.is_outer_relation ? attribute_index_in_outer_relation : attribute_index_in_inner_relation;
 
             result_relation_tuple_order.push_back(order_descriptor);
@@ -43,168 +53,56 @@ BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(Relation& outer_relatio
         }
 
         // If the attribute is present in both relations, record its position
-        if (attribute_index_in_outer_relation < outer_attributes.size() && attribute_index_in_inner_relation < inner_attributes.size())
+        if (attribute_index_in_outer_relation < outer_relation.attribute_names.size() && attribute_index_in_inner_relation < inner_relation.attribute_names.size())
         {
             outer_relation_join_attribute_positions.push_back(attribute_index_in_outer_relation);
             inner_relation_join_attribute_positions.push_back(attribute_index_in_inner_relation);
         }
     }
-    
-    // Add the remaining attributes from the relations that do not appear in the sort order
-    const vector<string>* relation_attributes[] = { &outer_attributes, &inner_attributes };
+
+    // Add the remaining attributes from the inner and outer relations that do not participate
+    // in the join to the attribute vector and the re-order descriptor, as described above.
+    const vector<string>* relation_attributes[] = { &outer_relation.attribute_names, &inner_relation.attribute_names };
     for (int i = 0; i < 2; i++)
     {
         const vector<string>& attributes = *(relation_attributes[i]);
         int attributes_size = attributes.size();
         for (int j = 0; j < attributes_size; j++)
         {
-            if (find(result_relation_attribute_names.begin(), result_relation_attribute_names.end(), attributes[j]) == result_relation_attribute_names.end())
+            if (find(result_relation->attribute_names.begin(), result_relation->attribute_names.end(), attributes[j]) == result_relation->attribute_names.end())
             {
-                result_relation_attribute_names.push_back(attributes[j]);
+                result_relation->attribute_names.push_back(attributes[j]);
 
-                AttributeOrderDescriptor order_decriptor = { attributes == outer_attributes, j };
+                AttributeOrderDescriptor order_decriptor = { attributes == outer_relation.attribute_names, j };
                 result_relation_tuple_order.push_back(order_decriptor);
             }
         }
     }
 
+    // Build the result relation's tuple data vector using a binary sort-merge join iterator on the outer and inner relations
+    BinarySortMergeJoinIterator join_iterator(outer_relation, inner_relation, result_relation_tuple_order, outer_relation_join_attribute_positions, inner_relation_join_attribute_positions);
+    BuildRelationTupleData(join_iterator, result_relation);
 
-    // Print results
-    for (vector<string>::iterator it = result_relation_attribute_names.begin(); it != result_relation_attribute_names.end(); ++it)
-    {
-        std::cout << *it << "\t";
-    }
-    std::cout << std::endl;
-
-    for (vector<AttributeOrderDescriptor>::iterator it = result_relation_tuple_order.begin(); it != result_relation_tuple_order.end(); ++it)
-    {
-        std::cout << (it->is_outer_relation ? "Out" : "In") << "/" << it->relation_attribute_index << "\t";
-    }
-    std::cout << std::endl;
-
-    std::cout << "Outer relation join attribute indices: ";
-    for (unsigned i = 0; i < outer_relation_join_attribute_positions.size(); i++)
-    {
-        std::cout << outer_relation_join_attribute_positions[i] << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << "Inner relation join attribute indices: ";
-    for (unsigned i = 0; i < inner_relation_join_attribute_positions.size(); i++)
-    {
-        std::cout << inner_relation_join_attribute_positions[i] << " ";
-    }
-    std::cout << std::endl;
+    return result_relation;
 }
 
 
-Status BinarySortMergeJoinIterator::Init()
+void BinarySortMergeJoin::BuildRelationTupleData(BinarySortMergeJoinIterator& join_iterator, Relation* out_result_relation)
 {
-    std::cout << "Outer relation:" << std::endl;
-    for (int i = 0; i < outer_relation.data.size(); i++)
+    int result_relation_tuple_size = out_result_relation->attribute_names.size();
+
+    join_iterator.Init();
+    do
     {
-        for (int j = 0; j < outer_relation.attribute_names.size(); j++)
-        {
-            std::cout << outer_relation.data[i][j] << " ";
-        }
-        std::cout << std::endl;
+        // Get the result tuple
+        int* key = new int[result_relation_tuple_size];
+        join_iterator.Key(&key);
+
+        // Store it in the result relation's tuple data vector
+        out_result_relation->data.push_back(key);
     }
-
-    std::cout << "Inner relation:" << std::endl;
-    for (int i = 0; i < inner_relation.data.size(); i++)
-    {
-        for (int j = 0; j < inner_relation.attribute_names.size(); j++)
-        {
-            std::cout << inner_relation.data[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-
-    int* tuple;
-
-    std::cout << "Outer relation iterator:" << std::endl;
-    outer_relation_iterator.Key(&tuple);
-    for (int j = 0; j < outer_relation.attribute_names.size(); j++)
-    {
-        std::cout << tuple[j] << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << "Inner relation iterator:" << std::endl;
-    inner_relation_iterator.Key(&tuple);
-    for (int j = 0; j < inner_relation.attribute_names.size(); j++)
-    {
-        std::cout << tuple[j] << " ";
-    }
-    std::cout << std::endl;
-
-    // Sort the relations
-    TupleComparisonFunctor outer_relation_tuple_comparison_functor(outer_relation_join_attribute_positions);
-    TupleComparisonFunctor inner_relation_tuple_comparison_functor(inner_relation_join_attribute_positions);
-
-    sort(outer_relation.data.begin(), outer_relation.data.end(), outer_relation_tuple_comparison_functor);
-    sort(inner_relation.data.begin(), inner_relation.data.end(), inner_relation_tuple_comparison_functor);
-
-    std::cout << "Outer relation:" << std::endl;
-    for (int i = 0; i < outer_relation.data.size(); i++)
-    {
-        for (int j = 0; j < outer_relation.attribute_names.size(); j++)
-        {
-            std::cout << outer_relation.data[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-
-    std::cout << "Inner relation:" << std::endl;
-    for (int i = 0; i < inner_relation.data.size(); i++)
-    {
-        for (int j = 0; j < inner_relation.attribute_names.size(); j++)
-        {
-            std::cout << inner_relation.data[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-
-    std::cout << "Outer relation iterator:" << std::endl;
-    outer_relation_iterator.Key(&tuple);
-    for (int j = 0; j < outer_relation.attribute_names.size(); j++)
-    {
-        std::cout << tuple[j] << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << "Inner relation iterator:" << std::endl;
-    inner_relation_iterator.Key(&tuple);
-    for (int j = 0; j < inner_relation.attribute_names.size(); j++)
-    {
-        std::cout << tuple[j] << " ";
-    }
-    std::cout << std::endl;
-
-    return kOK;
+    while (kOK == join_iterator.Next()); // Move to the next tuple
 }
 
-Status BinarySortMergeJoinIterator::Key(int** out_key)
-{
-    return kFail;
-}
-
-
-Status BinarySortMergeJoinIterator::Multiplicity(int** out_result)
-{
-    return kFail;
-}
-
-
-Status BinarySortMergeJoinIterator::Next()
-{
-    return kFail;
-}
-
-
-bool BinarySortMergeJoinIterator::AtEnd()
-{
-    return false;
-}
 
 } /* namespace uk_ac_ox_cs_c875114 */

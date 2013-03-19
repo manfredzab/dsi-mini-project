@@ -21,11 +21,10 @@ class SimpleRelationIterator
         virtual Status Next();
         virtual bool   AtEnd();
 
+        const int kTupleSize;
     protected:
         const Relation&                            relation;
         typename std::vector<int*>::const_iterator tuple_iterator;
-        int                                        tuple_size;
-
 };
 
 } // namespace uk_ac_ox_cs_c875114
