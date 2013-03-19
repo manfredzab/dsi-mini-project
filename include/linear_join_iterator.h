@@ -11,7 +11,7 @@ namespace uk_ac_ox_cs_c875114
 class LinearJoinIterator : public virtual SimpleJoinIterator
 {
     public:
-        LinearJoinIterator(std::vector<ITrieIterator*>& iterators) : SimpleJoinIterator(iterators) { };
+        LinearJoinIterator(std::vector<ITrieIterator<int>*>& iterators) : SimpleJoinIterator(iterators) { };
         virtual ~LinearJoinIterator() { };
 
         virtual Status Seek(int seek_key);

@@ -1,23 +1,20 @@
 #ifndef I_TRIE_ITERATOR_H_
 #define I_TRIE_ITERATOR_H_
 
+#include "join_iterator.h"
 #include "status.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-class ITrieIterator
+template <typename T>
+class ITrieIterator : public virtual IJoinIterator<T>
 {
     public:
         virtual ~ITrieIterator() { };
 
-        virtual Status Init()                    = 0;
         virtual Status Open()                    = 0;
         virtual Status Up()                      = 0;
-        virtual Status Key(int* result)          = 0;
-        virtual Status Multiplicity(int* result) = 0;
-        virtual Status Next()                    = 0;
-        virtual bool   AtEnd()                   = 0;
 };
 
 } // namespace uk_ac_ox_cs_c875114

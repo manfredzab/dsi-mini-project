@@ -13,7 +13,7 @@ namespace uk_ac_ox_cs_c875114
 class TrieIteratorPrinter
 {
     public:
-        static void Print(ITrieIterator& trie_iterator, int printing_depth, std::ostream& out);
+        static void Print(ITrieIterator<int>& trie_iterator, int printing_depth, std::ostream& out);
 };
 
 } // namespace uk_ac_ox_cs_c875114

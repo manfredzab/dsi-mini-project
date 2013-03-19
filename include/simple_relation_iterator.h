@@ -5,6 +5,7 @@
 
 #include "status.h"
 #include "relation.h"
+#include "join_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {

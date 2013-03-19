@@ -9,24 +9,23 @@
 namespace uk_ac_ox_cs_c875114
 {
 
-class SimpleJoinIterator : public virtual IJoinIterator
+class SimpleJoinIterator : public virtual IJoinIterator<int>
 {
     public:
-        SimpleJoinIterator(std::vector<ITrieIterator*>& iterators);
+        SimpleJoinIterator(std::vector<ITrieIterator<int>*>& iterators);
         virtual ~SimpleJoinIterator() { };
 
-        virtual void Init();
-        virtual void Search();
-
+        virtual Status Init();
         virtual Status Key(int* out_key);
         virtual Status Multiplicity(int* out_result);
         virtual Status Next();
         virtual bool   AtEnd();
 
     protected:
+        virtual void Search();
         virtual void SeekCurrentIteratorToMaxKey();
 
-        std::vector<ITrieIterator*>& iterators;
+        std::vector<ITrieIterator<int>*>& iterators;
         bool                         at_end;
         int                          key;
         int                          min_key;

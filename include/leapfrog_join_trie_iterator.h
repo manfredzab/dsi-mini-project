@@ -22,8 +22,8 @@ class LeapfrogJoinTrieIterator : public virtual SortMergeJoinTrieIterator
         virtual ~LeapfrogJoinTrieIterator() { };
 
     protected:
-        virtual ITrieIterator* CreateTrieIteratorForRelation(const Relation& relation);
-        virtual IJoinIterator* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
+        virtual ITrieIterator<int>* CreateTrieIteratorForRelation(const Relation& relation);
+        virtual IJoinIterator<int>* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
 };
 
 } // namespace uk_ac_ox_cs_c875114

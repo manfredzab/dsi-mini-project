@@ -12,13 +12,13 @@ namespace uk_ac_ox_cs_c875114
 
 using std::vector;
 
-ITrieIterator* LeapfrogJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
+ITrieIterator<int>* LeapfrogJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
 {
     return new LinearTrieIterator(relation);
 }
 
 
-IJoinIterator* LeapfrogJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
+IJoinIterator<int>* LeapfrogJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
 {
     return new LinearJoinIterator(trie_iterators);
 }

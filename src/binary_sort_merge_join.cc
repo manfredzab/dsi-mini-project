@@ -10,7 +10,7 @@ namespace uk_ac_ox_cs_c875114
 using std::string;
 using std::vector;
 
-BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(const Relation& outer_relation, const Relation& inner_relation, const Query& query) :
+BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(Relation& outer_relation, Relation& inner_relation, const Query& query) :
         outer_relation(outer_relation),
         outer_relation_iterator(outer_relation),
         inner_relation(inner_relation),
@@ -31,7 +31,7 @@ BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(const Relation& outer_r
         if (attribute_index_in_outer_relation < outer_attributes.size() || attribute_index_in_inner_relation < inner_attributes.size())
         {
             // Save the attribute name
-            result_relation_attribute_names.push_back(current_attribute);
+        result_relation_attribute_names.push_back(current_attribute);
 
             // Create the attribute re-order descriptor
             AttributeOrderDescriptor order_descriptor;
@@ -97,26 +97,100 @@ BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(const Relation& outer_r
     std::cout << std::endl;
 }
 
-void BinarySortMergeJoinIterator::Init()
+
+Status BinarySortMergeJoinIterator::Init()
 {
+    std::cout << "Outer relation:" << std::endl;
+    for (int i = 0; i < outer_relation.data.size(); i++)
+    {
+        for (int j = 0; j < outer_relation.attribute_names.size(); j++)
+        {
+            std::cout << outer_relation.data[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << "Inner relation:" << std::endl;
+    for (int i = 0; i < inner_relation.data.size(); i++)
+    {
+        for (int j = 0; j < inner_relation.attribute_names.size(); j++)
+        {
+            std::cout << inner_relation.data[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    int* tuple;
+
+    std::cout << "Outer relation iterator:" << std::endl;
+    outer_relation_iterator.Key(&tuple);
+    for (int j = 0; j < outer_relation.attribute_names.size(); j++)
+    {
+        std::cout << tuple[j] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Inner relation iterator:" << std::endl;
+    inner_relation_iterator.Key(&tuple);
+    for (int j = 0; j < inner_relation.attribute_names.size(); j++)
+    {
+        std::cout << tuple[j] << " ";
+    }
+    std::cout << std::endl;
+
     // Sort the relations
-    //outer_relation_iterator.
+    TupleComparisonFunctor outer_relation_tuple_comparison_functor(outer_relation_join_attribute_positions);
+    TupleComparisonFunctor inner_relation_tuple_comparison_functor(inner_relation_join_attribute_positions);
+
+    sort(outer_relation.data.begin(), outer_relation.data.end(), outer_relation_tuple_comparison_functor);
+    sort(inner_relation.data.begin(), inner_relation.data.end(), inner_relation_tuple_comparison_functor);
+
+    std::cout << "Outer relation:" << std::endl;
+    for (int i = 0; i < outer_relation.data.size(); i++)
+    {
+        for (int j = 0; j < outer_relation.attribute_names.size(); j++)
+        {
+            std::cout << outer_relation.data[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << "Inner relation:" << std::endl;
+    for (int i = 0; i < inner_relation.data.size(); i++)
+    {
+        for (int j = 0; j < inner_relation.attribute_names.size(); j++)
+        {
+            std::cout << inner_relation.data[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << "Outer relation iterator:" << std::endl;
+    outer_relation_iterator.Key(&tuple);
+    for (int j = 0; j < outer_relation.attribute_names.size(); j++)
+    {
+        std::cout << tuple[j] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Inner relation iterator:" << std::endl;
+    inner_relation_iterator.Key(&tuple);
+    for (int j = 0; j < inner_relation.attribute_names.size(); j++)
+    {
+        std::cout << tuple[j] << " ";
+    }
+    std::cout << std::endl;
+
+    return kOK;
 }
 
-
-void BinarySortMergeJoinIterator::Search()
-{
-
-}
-
-
-Status BinarySortMergeJoinIterator::Key(int* out_key)
+Status BinarySortMergeJoinIterator::Key(int** out_key)
 {
     return kFail;
 }
 
 
-Status BinarySortMergeJoinIterator::Multiplicity(int* out_result)
+Status BinarySortMergeJoinIterator::Multiplicity(int** out_result)
 {
     return kFail;
 }

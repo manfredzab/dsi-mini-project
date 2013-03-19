@@ -46,7 +46,7 @@ void PrintTuple(vector<int>& current_tuple, ostream& out, char separator)
 }
 
 
-void PrintNode(ITrieIterator& trie_iterator, int printing_depth, ostream& out, int current_depth, vector<int>& current_tuple)
+void PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, ostream& out, int current_depth, vector<int>& current_tuple)
 {
     if (trie_iterator.Open() == kFail)
     {
@@ -75,7 +75,7 @@ void PrintNode(ITrieIterator& trie_iterator, int printing_depth, ostream& out, i
 }
 
 
-void TrieIteratorPrinter::Print(ITrieIterator& trie_iterator, int printing_depth, ostream& out)
+void TrieIteratorPrinter::Print(ITrieIterator<int>& trie_iterator, int printing_depth, ostream& out)
 {
     // Print the trie contents in-order
     vector<int> current_tuple;

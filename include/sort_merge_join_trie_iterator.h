@@ -14,7 +14,7 @@
 namespace uk_ac_ox_cs_c875114
 {
 
-class SortMergeJoinTrieIterator : public virtual ITrieIterator
+class SortMergeJoinTrieIterator : public virtual ITrieIterator<int>
 {
     public:
         SortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) : depth(0), number_of_join_attributes(0), number_of_result_attributes(0), relations(relations), query(query) { };
@@ -30,8 +30,8 @@ class SortMergeJoinTrieIterator : public virtual ITrieIterator
 
     protected:
         virtual bool           AtRoot();
-        virtual ITrieIterator* CreateTrieIteratorForRelation(const Relation& relation);
-        virtual IJoinIterator* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
+        virtual ITrieIterator<int>* CreateTrieIteratorForRelation(const Relation& relation);
+        virtual IJoinIterator<int>* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
 
         int                                         depth;
         int                                         number_of_join_attributes;

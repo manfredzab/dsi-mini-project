@@ -7,10 +7,10 @@ namespace uk_ac_ox_cs_c875114
 using std::vector;
 
 
-bool CompareTrieIteratorsByKeys(ITrieIterator* first, ITrieIterator* second);
+bool CompareTrieIteratorsByKeys(ITrieIterator<int>* first, ITrieIterator<int>* second);
 
 
-SimpleJoinIterator::SimpleJoinIterator(vector<ITrieIterator*>& iterators) : iterators(iterators)
+SimpleJoinIterator::SimpleJoinIterator(vector<ITrieIterator<int>*>& iterators) : iterators(iterators)
 {
     this->at_end = false;
     this->current_iterator_index = 0;
@@ -21,10 +21,10 @@ SimpleJoinIterator::SimpleJoinIterator(vector<ITrieIterator*>& iterators) : iter
 }
 
 
-void SimpleJoinIterator::Init()
+Status SimpleJoinIterator::Init()
 {
     at_end = false;
-    for (vector<ITrieIterator*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
+    for (vector<ITrieIterator<int>*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
     {
         at_end |= (*iterator)->AtEnd();
     }
@@ -35,6 +35,8 @@ void SimpleJoinIterator::Init()
         current_iterator_index = 0;
         Search();
     }
+
+    return kOK;
 }
 
 
@@ -138,7 +140,7 @@ bool SimpleJoinIterator::AtEnd()
 }
 
 
-bool CompareTrieIteratorsByKeys(ITrieIterator* first, ITrieIterator* second)
+bool CompareTrieIteratorsByKeys(ITrieIterator<int>* first, ITrieIterator<int>* second)
 {
     int first_result, second_result;
     first->Key(&first_result); second->Key(&second_result);

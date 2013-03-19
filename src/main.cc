@@ -50,11 +50,12 @@ int main(int argc, char *argv[])
 
     //---------------------------------------------------------------------------
     BinarySortMergeJoinIterator iterator(*(*relations)["R"], *(*relations)["U"], *query);
+    iterator.Init();
 
     return 1;
     //---------------------------------------------------------------------------
 
-    ITrieIterator* join_iterator;
+    ITrieIterator<int>* join_iterator;
     switch (arguments.join_algorithm_type)
     {
         case kSortMerge:     join_iterator = new SortMergeJoinTrieIterator(*relations, *query); break;

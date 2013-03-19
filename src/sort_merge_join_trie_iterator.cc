@@ -92,13 +92,13 @@ Status SortMergeJoinTrieIterator::Init()
 }
 
 
-ITrieIterator* SortMergeJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
+ITrieIterator<int>* SortMergeJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
 {
     return new SimpleTrieIterator(relation);
 }
 
 
-IJoinIterator* SortMergeJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
+IJoinIterator<int>* SortMergeJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
 {
     return new SimpleJoinIterator(trie_iterators);
 }
