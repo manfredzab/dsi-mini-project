@@ -1,6 +1,3 @@
-// TODO: remove
-#include <iostream>
-
 #include <cstring>
 #include <algorithm>
 #include "../include/binary_sort_merge_join_iterator.h"
@@ -19,14 +16,16 @@ BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(Relation& outer_relatio
                                                          const vector<int>& inner_relation_join_attribute_positions) :
     outer_relation(outer_relation),
     inner_relation(inner_relation),
-    outer_relation_iterator(outer_relation),
-    inner_relation_iterator(inner_relation),
     outer_relation_tuple_comparison_functor(outer_relation_join_attribute_positions),
     inner_relation_tuple_comparison_functor(inner_relation_join_attribute_positions),
     result_relation_tuple_order(result_relation_tuple_order),
     outer_relation_join_attribute_positions(outer_relation_join_attribute_positions),
     inner_relation_join_attribute_positions(inner_relation_join_attribute_positions)
 {
+    // Initialize simple iterator pointers
+    outer_relation_iterator = NULL;
+    inner_relation_iterator = NULL;
+
     // Initialize iterator's state
     result_relation_attribute_count = result_relation_tuple_order.size();
     join_attribute_count = outer_relation_join_attribute_positions.size();
@@ -34,89 +33,34 @@ BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(Relation& outer_relatio
 
     // Allocate memory for the key
     key = new int[result_relation_attribute_count];
-
-    // Print results
-    /*
-     for (vector<string>::iterator it = result_relation_attribute_names.begin(); it != result_relation_attribute_names.end(); ++it)
-     {
-     std::cout << *it << "\t";
-     }
-     std::cout << std::endl;
-
-     for (vector<AttributeOrderDescriptor>::iterator it = result_relation_tuple_order.begin(); it != result_relation_tuple_order.end(); ++it)
-     {
-     std::cout << (it->is_outer_relation ? "Out" : "In") << "/" << it->relation_attribute_index << "\t";
-     }
-     std::cout << std::endl;
-
-     std::cout << "Outer relation join attribute indices: ";
-     for (unsigned i = 0; i < outer_relation_join_attribute_positions.size(); i++)
-     {
-     std::cout << outer_relation_join_attribute_positions[i] << " ";
-     }
-     std::cout << std::endl;
-
-     std::cout << "Inner relation join attribute indices: ";
-     for (unsigned i = 0; i < inner_relation_join_attribute_positions.size(); i++)
-     {
-     std::cout << inner_relation_join_attribute_positions[i] << " ";
-     }
-     std::cout << std::endl;
-     */
 }
 
 
 BinarySortMergeJoinIterator::~BinarySortMergeJoinIterator()
 {
     delete[] key;
+
+    if (outer_relation_iterator != NULL)
+    {
+        delete outer_relation_iterator;
+    }
+
+    if (inner_relation_iterator != NULL)
+    {
+        delete inner_relation_iterator;
+    }
 }
 
 
 Status BinarySortMergeJoinIterator::Init()
 {
-    /*
-     std::cout << "Outer relation:" << std::endl;
-     for (int i = 0; i < outer_relation.data.size(); i++)
-     {
-     for (int j = 0; j < outer_relation.attribute_names.size(); j++)
-     {
-     std::cout << outer_relation.data[i][j] << " ";
-     }
-     std::cout << std::endl;
-     }
-
-     std::cout << "Inner relation:" << std::endl;
-     for (int i = 0; i < inner_relation.data.size(); i++)
-     {
-     for (int j = 0; j < inner_relation.attribute_names.size(); j++)
-     {
-     std::cout << inner_relation.data[i][j] << " ";
-     }
-     std::cout << std::endl;
-     }
-
-     int* tuple;
-
-     std::cout << "Outer relation iterator:" << std::endl;
-     outer_relation_iterator.Key(&tuple);
-     for (int j = 0; j < outer_relation.attribute_names.size(); j++)
-     {
-     std::cout << tuple[j] << " ";
-     }
-     std::cout << std::endl;
-
-     std::cout << "Inner relation iterator:" << std::endl;
-     inner_relation_iterator.Key(&tuple);
-     for (int j = 0; j < inner_relation.attribute_names.size(); j++)
-     {
-     std::cout << tuple[j] << " ";
-     }
-     std::cout << std::endl;
-     */
-
     // Sort the relations
-    sort(outer_relation.data.begin(), outer_relation.data.end(), outer_relation_tuple_comparison_functor);
-    sort(inner_relation.data.begin(), inner_relation.data.end(), inner_relation_tuple_comparison_functor);
+    outer_relation.data.sort(outer_relation_tuple_comparison_functor);
+    inner_relation.data.sort(inner_relation_tuple_comparison_functor);
+
+    // Initialize relation iterators
+    outer_relation_iterator = new SimpleRelationIterator(outer_relation);
+    inner_relation_iterator = new SimpleRelationIterator(inner_relation);
 
     // Position the iterator at the next match
     return Next();
@@ -171,18 +115,18 @@ Status BinarySortMergeJoinIterator::Next()
         return kFail;
     }
 
-    while (!outer_relation_iterator.AtEnd() && !inner_relation_iterator.AtEnd())
+    while (!outer_relation_iterator->AtEnd() && !inner_relation_iterator->AtEnd())
     {
-        outer_relation_iterator.Key(&outer_tuple);
-        inner_relation_iterator.Key(&inner_tuple);
+        outer_relation_iterator->Key(&outer_tuple);
+        inner_relation_iterator->Key(&inner_tuple);
 
         if (kLessThan == CompareTuplesAtDifferentRelations(outer_tuple, inner_tuple))
         {
-            outer_relation_iterator.Next();
+            outer_relation_iterator->Next();
         }
         else if (kGreaterThan == CompareTuplesAtDifferentRelations(outer_tuple, inner_tuple))
         {
-            inner_relation_iterator.Next();
+            inner_relation_iterator->Next();
         }
         else // Outer and inner tuples are equal
         {
@@ -190,8 +134,8 @@ Status BinarySortMergeJoinIterator::Next()
             CreateResultTupleAsKey(outer_tuple, inner_tuple);
 
             // Gather the duplicates
-            GatherSameKeyTuples(outer_relation_iterator, outer_relation_tuple_comparison_functor, outer_relation_duplicates);
-            GatherSameKeyTuples(inner_relation_iterator, inner_relation_tuple_comparison_functor, inner_relation_duplicates);
+            GatherSameKeyTuples(*outer_relation_iterator, outer_relation_tuple_comparison_functor, outer_relation_duplicates);
+            GatherSameKeyTuples(*inner_relation_iterator, inner_relation_tuple_comparison_functor, inner_relation_duplicates);
 
             // Set the current position for the inner relation duplicates to the beginning
             inner_relation_duplicates_position = inner_relation_duplicates.begin();

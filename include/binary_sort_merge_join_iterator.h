@@ -83,8 +83,8 @@ class BinarySortMergeJoinIterator : public virtual IJoinIterator<int*>
         Relation&                                    outer_relation;
         Relation&                                    inner_relation;
 
-        SimpleRelationIterator                       outer_relation_iterator;
-        SimpleRelationIterator                       inner_relation_iterator;
+        SimpleRelationIterator*                      outer_relation_iterator;
+        SimpleRelationIterator*                      inner_relation_iterator;
 
         SameRelationTupleComparisonFunctor           outer_relation_tuple_comparison_functor;
         SameRelationTupleComparisonFunctor           inner_relation_tuple_comparison_functor;

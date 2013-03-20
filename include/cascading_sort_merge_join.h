@@ -13,6 +13,19 @@ class CascadingSortMergeJoin
 {
     public:
         static Relation* Join(std::map<std::string, Relation*>& relations, const Query& query);
+//
+//    private:
+//        struct RelationComparisonBySizeFunctor
+//        {
+//            RelationComparisonBySizeFunctor(std::map<std::string, Relation*>& relations) : relations(relations) { }
+//
+//            std::map<std::string, Relation*>& relations;
+//
+//            bool operator()(std::string first, std::string second)
+//            {
+//                return relations[first]->data.size() < relations[second]->data.size();
+//            }
+//        };
 };
 
 } // namespace uk_ac_ox_cs_c875114
