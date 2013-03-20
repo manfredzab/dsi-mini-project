@@ -21,6 +21,6 @@ class IJoinIterator
         virtual bool   AtEnd()                       = 0;
 };
 
-}
+} // namespace uk_ac_ox_cs_c875114
 
 #endif /* JOIN_ITERATOR_H_ */

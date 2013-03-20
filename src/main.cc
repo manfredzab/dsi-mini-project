@@ -4,6 +4,8 @@
 // - Comments
 
 #include <iostream>
+#include <fstream>
+#include <cstdlib>
 #include <map>
 
 #include "../include/arguments.h"
@@ -16,11 +18,14 @@
 #include "../include/leapfrog_join_trie_iterator.h"
 #include "../include/cascading_sort_merge_join.h"
 #include "../include/printer.h"
+#include "../include/timer.h"
 
 using namespace uk_ac_ox_cs_c875114;
 
 using std::map;
 using std::string;
+
+void PrintUsageMessage();
 
 int main(int argc, char *argv[])
 {
@@ -31,25 +36,42 @@ int main(int argc, char *argv[])
 
     if (kFail == status)
     {
-        // TODO: proper error msg
-        std::cerr << "Wrong argument format";
-        return 1;
+        PrintUsageMessage();
+        return EXIT_FAILURE;
     }
 
     // Parse the given database and the query
     map<string, Relation*>* relations = DataParser::ParseDatabase(arguments.database_file);
     Query* query = DataParser::ParseQuery(arguments.query_file);
 
-    // Execute the given join
+    // Set up the output stream: if "-output time" flag is specified, the joined relation will
+    // be written into "result.rel" file and the time measurement will be written to STDOUT;
+    // otherwise the joined relation will be printed to STDOUT.
+    std::ofstream file_output_stream;
+    if (arguments.output_time)
+    {
+        file_output_stream.open("result.rel", std::ios::out | std::ios::trunc);
+    }
+    std::ostream& output_stream = arguments.output_time ? file_output_stream : std::cout;
+
+    // Execute the given join measuring the time
+    Timer timer;
+    double join_elapsed_time_in_seconds;
+
     switch (arguments.join_algorithm_type)
     {
         case kSortMerge:
         {
-            // Join the relations on the given query
+            // Start measuring the time
+            timer.Start();
+
+            // Join the relations on the given query and print the result
             Relation* result_relation = CascadingSortMergeJoin::Join(*relations, *query);
 
-            // Print the result relation
-            Printer::PrintSorted(*result_relation);
+            Printer::PrintSorted(*result_relation, output_stream);
+
+            // Stop measuring the time
+            join_elapsed_time_in_seconds = timer.Stop();
 
             // Release the memory
             delete result_relation;
@@ -64,8 +86,14 @@ int main(int argc, char *argv[])
             // Initialize the join trie iterator
             join_trie_iterator->Init();
 
-            // Print the result trie
-            Printer::PrintSorted(*join_trie_iterator);
+            // Start measuring the time (ignoring the time required to build the tries for relations)
+            timer.Start();
+
+            // Traverse the non-materialized result trie and print it
+            Printer::PrintSorted(*join_trie_iterator, output_stream);
+
+            // Stop measuring the time
+            join_elapsed_time_in_seconds = timer.Stop();
 
             // Release the memory
             delete join_trie_iterator;
@@ -74,8 +102,8 @@ int main(int argc, char *argv[])
         }
         default:
         {
-            // TODO: Print error
-            break;
+            PrintUsageMessage();
+            return EXIT_FAILURE;
         }
     }
 
@@ -83,5 +111,21 @@ int main(int argc, char *argv[])
     delete query;
     delete relations;
 
-	return 0;
+    // If we were supposed to print the time, print it to the console and close the result relation file
+    if (arguments.output_time)
+    {
+        std::cout << join_elapsed_time_in_seconds << std::endl;
+
+        file_output_stream.close();
+    }
+
+	return EXIT_SUCCESS;
+}
+
+
+void PrintUsageMessage()
+{
+    std::cerr << "Usage: \"dsi-mini-project <algorithm> -query <query file> -database <database file> [-output <output type>]\", where" << std::endl;
+    std::cerr << " - <algorithm> is one of { \"sortmerge\", \"sortmergetrie\", \"leapfrog\" }, and" << std::endl;
+    std::cerr << " - <output type> is one of { \"relation\", \"time\" }."<< std::endl;
 }

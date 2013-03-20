@@ -11,7 +11,10 @@ Status ArgumentParser::ParseArguments(int argc, char *argv[], Arguments* out_arg
 {
     if ((6 != argc) || (strcmp(argv[2], "-query") != 0) || (strcmp(argv[4], "-database") != 0))
     {
-        return kFail;
+        if ((8 != argc) || (strcmp(argv[6], "-output") != 0)) // One last chance
+        {
+            return kFail;
+        }
     }
 
     // Parse the join algorithm method
@@ -37,10 +40,14 @@ Status ArgumentParser::ParseArguments(int argc, char *argv[], Arguments* out_arg
     string query_file(argv[3]);
     string database_file(argv[5]);
 
+    // Parse the output type
+    bool output_time = (8 == argc) && (strcmp(argv[7], "time") == 0);
+
     // Set the result
     out_arguments->join_algorithm_type = join_algorithm_type;
     out_arguments->query_file = query_file;
     out_arguments->database_file = database_file;
+    out_arguments->output_time = output_time;
 
     return kOK;
 }
