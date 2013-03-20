@@ -29,7 +29,6 @@ void PrintUsageMessage();
 
 int main(int argc, char *argv[])
 {
-
     // Parse the arguments
     Arguments arguments;
     Status status = ArgumentParser::ParseArguments(argc, argv, &arguments);
