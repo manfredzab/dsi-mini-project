@@ -282,18 +282,10 @@ bool SortMergeJoinTrieIterator::AtRoot()
     return (-1 == depth);
 }
 
-//    for (int i = 0; i < query.join_attributes.size(); i++)
-//    {
-//        std::cout << "Attribute: " << query.join_attributes[i] << std::endl;
-//
-//        std::cout << "Associated relations:";
-//        std::vector<string>& relations_for_attribute = attribute_relations[query.join_attributes[i]];
-//        for (int j = 0; j < relations_for_attribute.size(); j++)
-//        {
-//            std::cout << " " << relations_for_attribute[j];
-//        }
-//        std::cout << std::endl;
-//    }
 
+int SortMergeJoinTrieIterator::Depth()
+{
+    return number_of_result_attributes;
+}
 
 } // namespace uk_ac_ox_cs_c875114

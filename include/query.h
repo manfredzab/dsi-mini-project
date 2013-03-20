@@ -1,6 +1,8 @@
 #ifndef QUERY_H_
 #define QUERY_H_
 
+#include <vector>
+
 namespace uk_ac_ox_cs_c875114
 {
 

@@ -27,6 +27,7 @@ class SortMergeJoinTrieIterator : public virtual ITrieIterator<int>
         virtual Status Multiplicity(int* result);
         virtual Status Next();
         virtual bool   AtEnd();
+        virtual int    Depth();
 
     protected:
         virtual bool           AtRoot();

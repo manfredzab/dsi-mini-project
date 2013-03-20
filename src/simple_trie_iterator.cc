@@ -14,6 +14,7 @@ SimpleTrieIterator::SimpleTrieIterator(const Relation& relation)// : SimpleItera
     this->current_node = &trie->root;
     this->current_node_multiplicity = trie->root.multiplicity;
     this->at_end = false;
+    this->depth = relation.attribute_names.size();
 }
 
 SimpleTrieIterator::~SimpleTrieIterator()
@@ -124,6 +125,11 @@ bool SimpleTrieIterator::AtEnd()
 bool SimpleTrieIterator::AtRoot()
 {
     return (this->current_node == &trie->root);
+}
+
+int SimpleTrieIterator::Depth()
+{
+    return this->depth;
 }
 
 } // namespace uk_ac_ox_cs_c875114

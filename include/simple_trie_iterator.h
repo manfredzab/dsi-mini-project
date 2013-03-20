@@ -20,6 +20,7 @@ class SimpleTrieIterator : public virtual ITrieIterator<int>
         virtual Status Multiplicity(int* out_multiplicity);
         virtual Status Next();
         virtual bool   AtEnd();
+        virtual int    Depth();
     protected:
         virtual bool AtRoot();
 
@@ -27,6 +28,7 @@ class SimpleTrieIterator : public virtual ITrieIterator<int>
         TrieNode* current_node;
         int       current_node_multiplicity;
         bool      at_end;
+        int       depth;
 };
 
 } // namespace uk_ac_ox_cs_c875114

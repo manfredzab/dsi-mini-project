@@ -81,13 +81,13 @@ Relation* BinarySortMergeJoin::Join(Relation& outer_relation, Relation& inner_re
 
     // Build the result relation's tuple data vector using a binary sort-merge join iterator on the outer and inner relations
     BinarySortMergeJoinIterator join_iterator(outer_relation, inner_relation, result_relation_tuple_order, outer_relation_join_attribute_positions, inner_relation_join_attribute_positions);
-    BuildRelationTupleData(join_iterator, result_relation);
+    JoinUsingIterator(join_iterator, result_relation);
 
     return result_relation;
 }
 
 
-void BinarySortMergeJoin::BuildRelationTupleData(BinarySortMergeJoinIterator& join_iterator, Relation* out_result_relation)
+void BinarySortMergeJoin::JoinUsingIterator(BinarySortMergeJoinIterator& join_iterator, Relation* out_result_relation)
 {
     int result_relation_tuple_size = out_result_relation->attribute_names.size();
 

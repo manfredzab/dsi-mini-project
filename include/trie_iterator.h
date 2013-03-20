@@ -15,6 +15,7 @@ class ITrieIterator : public virtual IJoinIterator<T>
 
         virtual Status Open()                    = 0;
         virtual Status Up()                      = 0;
+        virtual int    Depth()               = 0;
 };
 
 } // namespace uk_ac_ox_cs_c875114
