@@ -10,6 +10,7 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+// TODO: remove and replace by BinarySearchTreeTrieIterator
 class LinearTrieIterator : public TrieTrieIterator
 {
     public:

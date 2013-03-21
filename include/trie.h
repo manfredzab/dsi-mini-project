@@ -16,15 +16,19 @@ struct TrieNode
     typename std::vector<TrieNode*>::iterator  current_child;
 };
 
-bool CompareTrieNodeKeys(TrieNode* first, TrieNode* second);
-
 class Trie
 {
     public:
         Trie(const Relation& relation);
         virtual ~Trie();
 
+        static bool CompareTrieNodeKeys(TrieNode* first, TrieNode* second)
+        {
+            return (first->key < second->key);
+        }
+
         TrieNode root;
+
     private:
         void Insert(const int* tuple);
 

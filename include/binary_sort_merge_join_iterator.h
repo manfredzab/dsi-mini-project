@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <list>
+#include "equality.h"
 #include "relation.h"
 #include "interface_iterator.h"
 #include "simple_iterator.h"
@@ -35,13 +36,6 @@ class BinarySortMergeJoinIterator : public virtual IIterator<int*>
         virtual bool   AtEnd();
 
     private:
-        enum Equality
-        {
-            kLessThan = 0,
-            kEqual,
-            kGreaterThan
-        };
-
         struct SameRelationTupleComparisonFunctor
         {
             SameRelationTupleComparisonFunctor(const std::vector<int>& compare_positions) : compare_positions(compare_positions)
@@ -82,8 +76,8 @@ class BinarySortMergeJoinIterator : public virtual IIterator<int*>
         Relation&                                    outer_relation;
         Relation&                                    inner_relation;
 
-        SimpleIterator*                      outer_relation_iterator;
-        SimpleIterator*                      inner_relation_iterator;
+        SimpleIterator*                              outer_relation_iterator;
+        SimpleIterator*                              inner_relation_iterator;
 
         SameRelationTupleComparisonFunctor           outer_relation_tuple_comparison_functor;
         SameRelationTupleComparisonFunctor           inner_relation_tuple_comparison_functor;

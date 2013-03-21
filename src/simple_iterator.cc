@@ -6,7 +6,7 @@ namespace uk_ac_ox_cs_c875114
 
 SimpleIterator::SimpleIterator(const Relation& relation) :
     kTupleSize(relation.attribute_names.size()),
-    relation(relation)
+    kRelation(relation)
 {
     this->tuple_iterator = relation.data.begin();
 }
@@ -38,18 +38,18 @@ Status SimpleIterator::Next()
 
 bool SimpleIterator::AtEnd()
 {
-    return (this->tuple_iterator == this->relation.data.end());
+    return (this->tuple_iterator == this->kRelation.data.end());
 }
 
 
 Status SimpleIterator::Init()
 {
-    return kNotSupported;
+    return kNotImplemented;
 }
 
 
 Status SimpleIterator::Multiplicity(int* out_result)
 {
-    return kNotSupported;
+    return kNotImplemented;
 }
 } /* namespace uk_ac_ox_cs_c875114 */

@@ -8,7 +8,7 @@ enum Status
 {
   kOK = 0,
   kFail,
-  kNotSupported
+  kNotImplemented
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */

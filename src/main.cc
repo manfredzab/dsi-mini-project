@@ -45,9 +45,11 @@ int main(int argc, char *argv[])
     Query* query = DataParser::ParseQuery(arguments.query_file);
 
     //-----------------------------------------------------
-    Relation* test_rel = (*relations)["R"];
-
-    BinarySearchTree(test_rel->data, test_rel->attribute_names.size());
+    //Relation* test_rel = (*relations)["R"];
+    for (map<string, Relation*>::iterator it = relations->begin(); it != relations->end(); ++it)
+    {
+        BinarySearchTree(it->second->data, it->second->attribute_names.size());
+    }
 
     return 1;
     //-----------------------------------------------------

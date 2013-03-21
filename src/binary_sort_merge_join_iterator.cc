@@ -170,7 +170,7 @@ inline void BinarySortMergeJoinIterator::GatherSameKeyTuples(SimpleIterator& rel
 }
 
 
-inline BinarySortMergeJoinIterator::Equality BinarySortMergeJoinIterator::CompareTuplesAtDifferentRelations(int* outer_relation_tuple, int* inner_relation_tuple)
+inline Equality BinarySortMergeJoinIterator::CompareTuplesAtDifferentRelations(int* outer_relation_tuple, int* inner_relation_tuple)
 {
     for (int i = 0; i < join_attribute_count; i++)
     {
@@ -200,7 +200,7 @@ inline void BinarySortMergeJoinIterator::CreateResultTupleAsKey(int* outer_tuple
 
 Status BinarySortMergeJoinIterator::Multiplicity(int* out_key)
 {
-    return kNotSupported;
+    return kNotImplemented;
 }
 
 

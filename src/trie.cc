@@ -87,10 +87,4 @@ void Trie::Insert(const int* tuple)
     }
 }
 
-bool CompareTrieNodeKeys(TrieNode* first, TrieNode* second)
-{
-    return (first->key < second->key);
-}
-
-
 } /* namespace uk_ac_ox_cs_c875114 */

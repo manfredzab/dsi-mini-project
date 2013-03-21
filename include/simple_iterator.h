@@ -22,9 +22,11 @@ class SimpleIterator : IIterator<int*>
         virtual Status Next();
         virtual bool   AtEnd();
 
-        const int kTupleSize;
     protected:
-        const Relation&                          relation;
+        const int       kTupleSize;
+        const Relation& kRelation;
+
+    private:
         typename std::vector<int*>::const_iterator tuple_iterator;
 };
 

@@ -20,7 +20,7 @@ Status LinearTrieIterator::Seek(int seek_key)
     TrieNode* seek_key_trie_node = new TrieNode();
     seek_key_trie_node->key = seek_key;
 
-    vector<TrieNode*>::iterator seek_result_node = lower_bound(this->current_node->parent->current_child, this->current_node->parent->children.end(), seek_key_trie_node, CompareTrieNodeKeys);
+    vector<TrieNode*>::iterator seek_result_node = lower_bound(this->current_node->parent->current_child, this->current_node->parent->children.end(), seek_key_trie_node, Trie::CompareTrieNodeKeys);
 
     delete seek_key_trie_node;
 
