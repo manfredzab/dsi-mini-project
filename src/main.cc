@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
             // Join the relations on the given query and print the result
             Relation* result_relation = CascadingSortMergeJoin::Join(*relations, *query);
 
-            Printer::PrintSorted(*result_relation, output_stream);
+            Printer::Print(*result_relation, output_stream);
 
             // Stop measuring the time
             join_elapsed_time_in_seconds = timer.Stop();
@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
             timer.Start();
 
             // Traverse the non-materialized result trie and print it
-            Printer::PrintSorted(*join_trie_iterator, output_stream);
+            Printer::Print(*join_trie_iterator, output_stream);
 
             // Stop measuring the time
             join_elapsed_time_in_seconds = timer.Stop();
@@ -108,6 +108,10 @@ int main(int argc, char *argv[])
 
     // Release the memory
     delete query;
+    for (map<string, Relation*>::iterator it = relations->begin(); it != relations->end(); ++it)
+    {
+        delete it->second;
+    }
     delete relations;
 
     // If we were supposed to print the time, print it to the console and close the result relation file

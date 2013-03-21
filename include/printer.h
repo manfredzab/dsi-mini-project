@@ -2,7 +2,6 @@
 #define PRINTER_H_
 
 #include <map>
-#include <vector>
 #include <string>
 #include <ostream>
 #include <iostream>
@@ -16,16 +15,13 @@ namespace uk_ac_ox_cs_c875114
 class Printer
 {
     public:
-        static void PrintSorted(Relation& relation, std::ostream& out = std::cout);
-        static void PrintSorted(ITrieIterator<int>& trie_iterator, std::ostream& out = std::cout);
+        static void Print(Relation& relation, std::ostream& out = std::cout);
+        static void Print(ITrieIterator<int>& trie_iterator, std::ostream& out = std::cout);
 
     private:
-        static void        PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, std::vector<int>& current_tuple);
+        static void        PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, std::vector<int>& current_tuple, std::ostream& out);
         static std::string TupleToString(std::vector<int>& current_tuple, char separator);
         static std::string TupleToString(int* current_tuple, int tuple_size, char separator);
-        static void        SortAndPrintTuples(std::ostream& out = std::cout);
-
-        static std::vector<std::string> sorted_tuples;
 };
 
 } // namespace uk_ac_ox_cs_c875114

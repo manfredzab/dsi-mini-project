@@ -14,51 +14,31 @@ using std::map;
 using std::ostream;
 using std::ostringstream;
 
-vector<string> Printer::sorted_tuples;
-
-void Printer::PrintSorted(Relation& relation, std::ostream& out)
+void Printer::Print(Relation& relation, std::ostream& out)
 {
-    sorted_tuples.clear();
-
     int tuple_size = relation.attribute_names.size();
     for (list<int*>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
     {
-        sorted_tuples.push_back(TupleToString(*it, tuple_size, ','));
+        out << TupleToString(*it, tuple_size, ',') << std::endl;
     }
-
-    SortAndPrintTuples(out);
 }
 
 
-void Printer::PrintSorted(ITrieIterator<int>& trie_iterator, ostream& out)
+void Printer::Print(ITrieIterator<int>& trie_iterator, ostream& out)
 {
-    sorted_tuples.clear();
-
     // Print the trie contents in-order
     vector<int> current_tuple;
-    PrintNode(trie_iterator, trie_iterator.Depth(), 0, current_tuple);
-
-    SortAndPrintTuples(out);
+    PrintNode(trie_iterator, trie_iterator.Depth(), 0, current_tuple, out);
 }
 
 
-void Printer::SortAndPrintTuples(std::ostream& out)
-{
-    sort(sorted_tuples.begin(), sorted_tuples.end());
-    for (vector<string>::iterator it = sorted_tuples.begin(); it != sorted_tuples.end(); ++it)
-    {
-        out << *it << std::endl;
-    }
-}
-
-
-void Printer::PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, vector<int>& current_tuple)
+void Printer::PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, vector<int>& current_tuple, ostream& out)
 {
     if (trie_iterator.Open() == kFail)
     {
         if (current_depth == printing_depth)
         {
-            sorted_tuples.push_back(TupleToString(current_tuple, ','));
+            out << TupleToString(current_tuple, ',') << std::endl;
         }
 
         return;
@@ -71,7 +51,7 @@ void Printer::PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, i
 
         current_tuple.push_back(current_node_key);
 
-        PrintNode(trie_iterator, printing_depth, current_depth + 1, current_tuple);
+        PrintNode(trie_iterator, printing_depth, current_depth + 1, current_tuple, out);
 
         current_tuple.pop_back();
     }
