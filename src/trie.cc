@@ -1,6 +1,6 @@
 #include <algorithm>
 #include "../include/trie.h"
-#include "../include/simple_relation_iterator.h"
+#include "../include/simple_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
@@ -18,7 +18,7 @@ Trie::Trie(const Relation& relation)
     this->root.current_child = this->root.children.begin();
 
     // Build the trie
-    SimpleRelationIterator relation_iterator(relation);
+    SimpleIterator relation_iterator(relation);
 
     int* current_tuple;
     while (!relation_iterator.AtEnd())

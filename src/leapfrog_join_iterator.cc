@@ -1,16 +1,16 @@
 #include <algorithm>
-#include "../include/linear_join_iterator.h"
+#include "../include/leapfrog_join_iterator.h"
 #include "../include/linear_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-void LinearJoinIterator::SeekCurrentIteratorToMaxKey()
+void LeapfrogJoinIterator::PositionCurrentIteratorAtKey(int key)
 {
-    (dynamic_cast<LinearTrieIterator*>(iterators[current_iterator_index]))->Seek(max_key);
+    (dynamic_cast<LinearTrieIterator*>(iterators[current_iterator_index]))->Seek(key);
 }
 
-Status LinearJoinIterator::Seek(int seek_key)
+Status LeapfrogJoinIterator::Seek(int seek_key)
 {
     (dynamic_cast<LinearTrieIterator*>(iterators[current_iterator_index]))->Seek(seek_key);
 

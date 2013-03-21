@@ -1,23 +1,24 @@
-#ifndef SIMPLE_RELATION_ITERATOR_H_
-#define SIMPLE_RELATION_ITERATOR_H_
+#ifndef SIMPLE_ITERATOR_H_
+#define SIMPLE_ITERATOR_H_
 
 #include <list>
 
 #include "status.h"
 #include "relation.h"
-#include "join_iterator.h"
+#include "interface_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-// TODO: add IRelationIterator
-class SimpleRelationIterator
+class SimpleIterator : IIterator<int*>
 {
     public:
-        SimpleRelationIterator(const Relation& relation);
-        virtual ~SimpleRelationIterator() { };
+        SimpleIterator(const Relation& relation);
+        virtual ~SimpleIterator() { };
 
+        virtual Status Init();
         virtual Status Key(int** out_key);
+        virtual Status Multiplicity(int* out_result);
         virtual Status Next();
         virtual bool   AtEnd();
 
@@ -29,4 +30,4 @@ class SimpleRelationIterator
 
 } // namespace uk_ac_ox_cs_c875114
 
-#endif /* SIMPLE_RELATION_ITERATOR_H_ */
+#endif /* SIMPLE_ITERATOR_H_ */

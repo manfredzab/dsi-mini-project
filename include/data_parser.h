@@ -1,5 +1,5 @@
 #ifndef DATABASE_PARSER_H_
-#define DATA_PARSER_H_
+#define DATABASE_PARSER_H_
 
 #include <map>
 #include <string>

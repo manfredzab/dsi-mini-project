@@ -8,22 +8,22 @@
 #include "relation.h"
 #include "query.h"
 #include "status.h"
-#include "trie_iterator.h"
-#include "join_iterator.h"
-#include "sort_merge_join_trie_iterator.h"
+#include "interface_trie_iterator.h"
+#include "interface_iterator.h"
+#include "multiway_sort_merge_join_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-class LeapfrogJoinTrieIterator : public virtual SortMergeJoinTrieIterator
+class LeapfrogJoinTrieIterator : public virtual MultiwaySortMergeJoinTrieIterator
 {
     public:
-        LeapfrogJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) : SortMergeJoinTrieIterator(relations, query) { };
+        LeapfrogJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) : MultiwaySortMergeJoinTrieIterator(relations, query) { };
         virtual ~LeapfrogJoinTrieIterator() { };
 
     protected:
         virtual ITrieIterator<int>* CreateTrieIteratorForRelation(const Relation& relation);
-        virtual IJoinIterator<int>* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
+        virtual IIterator<int>* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
 };
 
 } // namespace uk_ac_ox_cs_c875114

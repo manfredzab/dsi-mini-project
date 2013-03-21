@@ -5,7 +5,7 @@
 
 #include "../include/leapfrog_join_trie_iterator.h"
 #include "../include/linear_trie_iterator.h"
-#include "../include/linear_join_iterator.h"
+#include "../include/leapfrog_join_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
@@ -18,9 +18,9 @@ ITrieIterator<int>* LeapfrogJoinTrieIterator::CreateTrieIteratorForRelation(cons
 }
 
 
-IJoinIterator<int>* LeapfrogJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
+IIterator<int>* LeapfrogJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
 {
-    return new LinearJoinIterator(trie_iterators);
+    return new LeapfrogJoinIterator(trie_iterators);
 }
 
 } // namespace uk_ac_ox_cs_c875114

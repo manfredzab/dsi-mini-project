@@ -14,7 +14,7 @@
 #include "../include/join_algorithm_type.h"
 #include "../include/relation.h"
 #include "../include/query.h"
-#include "../include/sort_merge_join_trie_iterator.h"
+#include "../include/multiway_sort_merge_join_trie_iterator.h"
 #include "../include/leapfrog_join_trie_iterator.h"
 #include "../include/cascading_sort_merge_join.h"
 #include "../include/printer.h"
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
         case kSortMergeTrie:
         case kLeapfrog:
         {
-            ITrieIterator<int>* join_trie_iterator = (kSortMergeTrie == arguments.join_algorithm_type) ? new SortMergeJoinTrieIterator(*relations, *query) :
+            ITrieIterator<int>* join_trie_iterator = (kSortMergeTrie == arguments.join_algorithm_type) ? new MultiwaySortMergeJoinTrieIterator(*relations, *query) :
                                                                                                          new LeapfrogJoinTrieIterator(*relations, *query);
             // Initialize the join trie iterator
             join_trie_iterator->Init();

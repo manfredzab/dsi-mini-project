@@ -59,8 +59,8 @@ Status BinarySortMergeJoinIterator::Init()
     inner_relation.data.sort(inner_relation_tuple_comparison_functor);
 
     // Initialize relation iterators
-    outer_relation_iterator = new SimpleRelationIterator(outer_relation);
-    inner_relation_iterator = new SimpleRelationIterator(inner_relation);
+    outer_relation_iterator = new SimpleIterator(outer_relation);
+    inner_relation_iterator = new SimpleIterator(inner_relation);
 
     // Position the iterator at the next match
     return Next();
@@ -149,7 +149,7 @@ Status BinarySortMergeJoinIterator::Next()
 }
 
 
-inline void BinarySortMergeJoinIterator::GatherSameKeyTuples(SimpleRelationIterator& relation_iterator, SameRelationTupleComparisonFunctor& comparison_functor, list<int*>& out_same_key_tuples)
+inline void BinarySortMergeJoinIterator::GatherSameKeyTuples(SimpleIterator& relation_iterator, SameRelationTupleComparisonFunctor& comparison_functor, list<int*>& out_same_key_tuples)
 {
     int* current_tuple;
     relation_iterator.Key(&current_tuple);
@@ -197,5 +197,11 @@ inline void BinarySortMergeJoinIterator::CreateResultTupleAsKey(int* outer_tuple
     }
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
 
+Status BinarySortMergeJoinIterator::Multiplicity(int* out_key)
+{
+    return kNotSupported;
+}
+
+
+} // namespace uk_ac_ox_cs_c875114

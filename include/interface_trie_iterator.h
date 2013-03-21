@@ -1,14 +1,14 @@
-#ifndef I_TRIE_ITERATOR_H_
-#define I_TRIE_ITERATOR_H_
+#ifndef INTERFACE_TRIE_ITERATOR_H_
+#define INTERFACE_TRIE_ITERATOR_H_
 
-#include "join_iterator.h"
+#include "interface_iterator.h"
 #include "status.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
 template <typename T>
-class ITrieIterator : public virtual IJoinIterator<T>
+class ITrieIterator : public virtual IIterator<T>
 {
     public:
         virtual ~ITrieIterator() { };
@@ -20,4 +20,4 @@ class ITrieIterator : public virtual IJoinIterator<T>
 
 } // namespace uk_ac_ox_cs_c875114
 
-#endif /* I_TRIE_ITERATOR_H_ */
+#endif /* INTERFACE_TRIE_ITERATOR_H_ */

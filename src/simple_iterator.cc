@@ -1,10 +1,10 @@
 #include <cstring>
-#include "../include/simple_relation_iterator.h"
+#include "../include/simple_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-SimpleRelationIterator::SimpleRelationIterator(const Relation& relation) :
+SimpleIterator::SimpleIterator(const Relation& relation) :
         kTupleSize(relation.attribute_names.size()),
         relation(relation)
 {
@@ -12,7 +12,7 @@ SimpleRelationIterator::SimpleRelationIterator(const Relation& relation) :
 }
 
 
-Status SimpleRelationIterator::Key(int** out_key)
+Status SimpleIterator::Key(int** out_key)
 {
     if (this->AtEnd())
     {
@@ -24,7 +24,7 @@ Status SimpleRelationIterator::Key(int** out_key)
 }
 
 
-Status SimpleRelationIterator::Next()
+Status SimpleIterator::Next()
 {
     if (this->AtEnd())
     {
@@ -36,9 +36,20 @@ Status SimpleRelationIterator::Next()
 }
 
 
-bool SimpleRelationIterator::AtEnd()
+bool SimpleIterator::AtEnd()
 {
     return (this->tuple_iterator == this->relation.data.end());
 }
 
+
+Status SimpleIterator::Init()
+{
+    return kNotSupported;
+}
+
+
+Status SimpleIterator::Multiplicity(int* out_result)
+{
+    return kNotSupported;
+}
 } // namespace uk_ac_ox_cs_c875114

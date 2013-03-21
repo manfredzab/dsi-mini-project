@@ -3,9 +3,9 @@
 #include <algorithm>
 #include <vector>
 
-#include "../include/sort_merge_join_trie_iterator.h"
-#include "../include/simple_trie_iterator.h"
-#include "../include/simple_join_iterator.h"
+#include "../include/multiway_sort_merge_join_trie_iterator.h"
+#include "../include/multiway_sort_merge_join_iterator.h"
+#include "../include/trie_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
@@ -14,21 +14,21 @@ using std::string;
 using std::vector;
 using std::map;
 
-SortMergeJoinTrieIterator::~SortMergeJoinTrieIterator()
+MultiwaySortMergeJoinTrieIterator::~MultiwaySortMergeJoinTrieIterator()
 {
     for (map<string, ITrieIterator*>::iterator it = trie_iterator_for_relation.begin(); it != trie_iterator_for_relation.end(); ++it)
     {
         delete it->second;
     }
 
-    for (map<int, IJoinIterator*>::iterator it = join_iterator_for_depth.begin(); it != join_iterator_for_depth.end(); ++it)
+    for (map<int, IIterator*>::iterator it = join_iterator_for_depth.begin(); it != join_iterator_for_depth.end(); ++it)
     {
         delete it->second;
     }
 }
 
 
-Status SortMergeJoinTrieIterator::Init()
+Status MultiwaySortMergeJoinTrieIterator::Init()
 {
     // Initialize the number of join attributes
     number_of_join_attributes = query.join_attributes.size();
@@ -92,19 +92,19 @@ Status SortMergeJoinTrieIterator::Init()
 }
 
 
-ITrieIterator<int>* SortMergeJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
+ITrieIterator<int>* MultiwaySortMergeJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
 {
-    return new SimpleTrieIterator(relation);
+    return new TrieTrieIterator(relation);
 }
 
 
-IJoinIterator<int>* SortMergeJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
+IIterator<int>* MultiwaySortMergeJoinTrieIterator::CreateJoinIteratorForTrieIterators(vector<ITrieIterator*>& trie_iterators)
 {
-    return new SimpleJoinIterator(trie_iterators);
+    return new MultiwaySortMergeJoinIterator(trie_iterators);
 }
 
 
-Status SortMergeJoinTrieIterator::Open()
+Status MultiwaySortMergeJoinTrieIterator::Open()
 {
     Status status = kOK;
 
@@ -164,7 +164,7 @@ Status SortMergeJoinTrieIterator::Open()
 }
 
 
-Status SortMergeJoinTrieIterator::Up()
+Status MultiwaySortMergeJoinTrieIterator::Up()
 {
     if (AtRoot())
     {
@@ -200,7 +200,7 @@ Status SortMergeJoinTrieIterator::Up()
 }
 
 
-Status SortMergeJoinTrieIterator::Key(int* result)
+Status MultiwaySortMergeJoinTrieIterator::Key(int* result)
 {
     if (AtRoot())
     {
@@ -218,14 +218,14 @@ Status SortMergeJoinTrieIterator::Key(int* result)
 }
 
 
-Status SortMergeJoinTrieIterator::Multiplicity(int* result)
+Status MultiwaySortMergeJoinTrieIterator::Multiplicity(int* result)
 {
     *result = this->key_multiplicity_stack.back();
     return kOK;
 }
 
 
-Status SortMergeJoinTrieIterator::Next()
+Status MultiwaySortMergeJoinTrieIterator::Next()
 {
     if (AtRoot())
     {
@@ -264,7 +264,7 @@ Status SortMergeJoinTrieIterator::Next()
 }
 
 
-bool SortMergeJoinTrieIterator::AtEnd()
+bool MultiwaySortMergeJoinTrieIterator::AtEnd()
 {
     if (depth < number_of_join_attributes)
     {
@@ -277,13 +277,13 @@ bool SortMergeJoinTrieIterator::AtEnd()
 }
 
 
-bool SortMergeJoinTrieIterator::AtRoot()
+bool MultiwaySortMergeJoinTrieIterator::AtRoot()
 {
     return (-1 == depth);
 }
 
 
-int SortMergeJoinTrieIterator::Depth()
+int MultiwaySortMergeJoinTrieIterator::Depth()
 {
     return number_of_result_attributes;
 }

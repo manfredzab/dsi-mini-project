@@ -1,17 +1,17 @@
-#ifndef SIMPLE_TRIE_ITERATOR_H_
-#define SIMPLE_TRIE_ITERATOR_H_
+#ifndef TRIE_TRIE_ITERATOR_H_
+#define TRIE_TRIE_ITERATOR_H_
 
-#include "trie_iterator.h"
+#include "interface_trie_iterator.h"
 #include "trie.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-class SimpleTrieIterator : public virtual ITrieIterator<int>
+class TrieTrieIterator : public virtual ITrieIterator<int>
 {
     public:
-        SimpleTrieIterator(const Relation& relation);
-        virtual ~SimpleTrieIterator();
+        TrieTrieIterator(const Relation& relation);
+        virtual ~TrieTrieIterator();
 
         virtual Status Init();
         virtual Status Open();
@@ -33,4 +33,4 @@ class SimpleTrieIterator : public virtual ITrieIterator<int>
 
 } // namespace uk_ac_ox_cs_c875114
 
-#endif /* SIMPLE_TRIE_ITERATOR_H_ */
+#endif /* TRIE_TRIE_ITERATOR_H_ */

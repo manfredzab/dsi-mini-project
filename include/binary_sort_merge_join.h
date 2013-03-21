@@ -18,4 +18,5 @@ class BinarySortMergeJoin
 };
 
 } // namespace uk_ac_ox_cs_c875114
+
 #endif /* BINARY_SORT_MERGE_JOIN_H_ */

@@ -7,7 +7,7 @@
 #include <iostream>
 
 #include "relation.h"
-#include "trie_iterator.h"
+#include "interface_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {

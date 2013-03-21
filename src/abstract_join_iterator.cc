@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "../include/simple_join_iterator.h"
+#include "../include/abstract_multiway_sort_merge_join_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
@@ -10,7 +10,7 @@ using std::vector;
 bool CompareTrieIteratorsByKeys(ITrieIterator<int>* first, ITrieIterator<int>* second);
 
 
-SimpleJoinIterator::SimpleJoinIterator(vector<ITrieIterator<int>*>& iterators) : iterators(iterators)
+AbstractMultiwaySortMergeJoinIterator::AbstractMultiwaySortMergeJoinIterator(vector<ITrieIterator<int>*>& iterators) : iterators(iterators)
 {
     this->at_end = false;
     this->current_iterator_index = 0;
@@ -21,7 +21,7 @@ SimpleJoinIterator::SimpleJoinIterator(vector<ITrieIterator<int>*>& iterators) :
 }
 
 
-Status SimpleJoinIterator::Init()
+Status AbstractMultiwaySortMergeJoinIterator::Init()
 {
     at_end = false;
     for (vector<ITrieIterator<int>*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
@@ -40,7 +40,7 @@ Status SimpleJoinIterator::Init()
 }
 
 
-void SimpleJoinIterator::Search()
+void AbstractMultiwaySortMergeJoinIterator::Search()
 {
     int iterator_count = iterators.size();
 
@@ -70,7 +70,7 @@ void SimpleJoinIterator::Search()
         }
         else
         {
-            SeekCurrentIteratorToMaxKey();
+            PositionCurrentIteratorAtKey(max_key);
 
             if (iterators[current_iterator_index]->AtEnd())
             {
@@ -87,17 +87,7 @@ void SimpleJoinIterator::Search()
 }
 
 
-void SimpleJoinIterator::SeekCurrentIteratorToMaxKey()
-{
-    while ((min_key < max_key) && !iterators[current_iterator_index]->AtEnd())
-    {
-        iterators[current_iterator_index]->Next();
-        iterators[current_iterator_index]->Key(&min_key);
-    }
-}
-
-
-Status SimpleJoinIterator::Next()
+Status AbstractMultiwaySortMergeJoinIterator::Next()
 {
     if (this->AtEnd())
     {
@@ -118,7 +108,7 @@ Status SimpleJoinIterator::Next()
 }
 
 
-Status SimpleJoinIterator::Key(int* out_key)
+Status AbstractMultiwaySortMergeJoinIterator::Key(int* out_key)
 {
     *out_key = this->key;
 
@@ -126,7 +116,7 @@ Status SimpleJoinIterator::Key(int* out_key)
 }
 
 
-Status SimpleJoinIterator::Multiplicity(int* out_multiplicity)
+Status AbstractMultiwaySortMergeJoinIterator::Multiplicity(int* out_multiplicity)
 {
     *out_multiplicity = this->key_multiplicity;
 
@@ -134,7 +124,7 @@ Status SimpleJoinIterator::Multiplicity(int* out_multiplicity)
 }
 
 
-bool SimpleJoinIterator::AtEnd()
+bool AbstractMultiwaySortMergeJoinIterator::AtEnd()
 {
     return this->at_end;
 }

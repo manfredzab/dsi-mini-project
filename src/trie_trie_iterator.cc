@@ -1,13 +1,13 @@
 #include <string>
 
-#include "../include/simple_trie_iterator.h"
+#include "../include/trie_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
 using std::vector;
 
-SimpleTrieIterator::SimpleTrieIterator(const Relation& relation)// : SimpleIterator(relation)
+TrieTrieIterator::TrieTrieIterator(const Relation& relation)// : SimpleIterator(relation)
 {
     // Build the trie
     this->trie = new Trie(relation);
@@ -17,18 +17,18 @@ SimpleTrieIterator::SimpleTrieIterator(const Relation& relation)// : SimpleItera
     this->depth = relation.attribute_names.size();
 }
 
-SimpleTrieIterator::~SimpleTrieIterator()
+TrieTrieIterator::~TrieTrieIterator()
 {
     delete this->trie;
 }
 
-Status SimpleTrieIterator::Init()
+Status TrieTrieIterator::Init()
 {
     // Nothing to do
     return kOK;
 }
 
-Status SimpleTrieIterator::Open()
+Status TrieTrieIterator::Open()
 {
     if (this->current_node->children.empty())
     {
@@ -45,7 +45,7 @@ Status SimpleTrieIterator::Open()
 }
 
 
-Status SimpleTrieIterator::Up()
+Status TrieTrieIterator::Up()
 {
     if (this->AtRoot())
     {
@@ -65,7 +65,7 @@ Status SimpleTrieIterator::Up()
 }
 
 
-Status SimpleTrieIterator::Key(int* out_key)
+Status TrieTrieIterator::Key(int* out_key)
 {
     if (this->AtRoot())
     {
@@ -78,7 +78,7 @@ Status SimpleTrieIterator::Key(int* out_key)
 }
 
 
-Status SimpleTrieIterator::Multiplicity(int* out_multiplicity)
+Status TrieTrieIterator::Multiplicity(int* out_multiplicity)
 {
     if (this->AtRoot())
     {
@@ -91,7 +91,7 @@ Status SimpleTrieIterator::Multiplicity(int* out_multiplicity)
 }
 
 
-Status SimpleTrieIterator::Next()
+Status TrieTrieIterator::Next()
 {
     if (this->AtRoot() || this->AtEnd())
     {
@@ -116,18 +116,18 @@ Status SimpleTrieIterator::Next()
 }
 
 
-bool SimpleTrieIterator::AtEnd()
+bool TrieTrieIterator::AtEnd()
 {
     return this->at_end;
 }
 
 
-bool SimpleTrieIterator::AtRoot()
+bool TrieTrieIterator::AtRoot()
 {
     return (this->current_node == &trie->root);
 }
 
-int SimpleTrieIterator::Depth()
+int TrieTrieIterator::Depth()
 {
     return this->depth;
 }

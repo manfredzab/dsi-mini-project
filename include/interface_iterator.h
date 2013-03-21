@@ -1,7 +1,5 @@
-#ifndef JOIN_ITERATOR_H_
-#define JOIN_ITERATOR_H_
-
-// TODO: rename to "Iterator"?
+#ifndef INTERFACE_ITERATOR_H_
+#define INTERFACE_ITERATOR_H_
 
 #include "status.h"
 
@@ -9,10 +7,10 @@ namespace uk_ac_ox_cs_c875114
 {
 
 template <typename T>
-class IJoinIterator
+class IIterator
 {
     public:
-        virtual ~IJoinIterator() { };
+        virtual ~IIterator() { };
 
         virtual Status Init()                        = 0;
         virtual Status Key(T* out_key)               = 0;
@@ -23,4 +21,4 @@ class IJoinIterator
 
 } // namespace uk_ac_ox_cs_c875114
 
-#endif /* JOIN_ITERATOR_H_ */
+#endif /* INTERFACE_ITERATOR_H_ */
