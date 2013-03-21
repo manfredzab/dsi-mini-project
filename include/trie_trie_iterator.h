@@ -31,6 +31,6 @@ class TrieTrieIterator : public virtual ITrieIterator<int>
         int       depth;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* TRIE_TRIE_ITERATOR_H_ */

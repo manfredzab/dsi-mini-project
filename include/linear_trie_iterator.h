@@ -19,6 +19,6 @@ class LinearTrieIterator : public TrieTrieIterator
         virtual Status Seek(int seek_key);
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* LINEAR_TRIE_ITERATOR_H_ */

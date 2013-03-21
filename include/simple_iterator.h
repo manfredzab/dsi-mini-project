@@ -28,6 +28,6 @@ class SimpleIterator : IIterator<int*>
         typename std::vector<int*>::const_iterator tuple_iterator;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* SIMPLE_ITERATOR_H_ */

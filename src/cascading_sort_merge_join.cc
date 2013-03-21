@@ -35,7 +35,7 @@ Relation* CascadingSortMergeJoin::Join(map<string, Relation*>& relations, const 
     return current_join;
 }
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 //RelationComparisonBySizeFunctor relation_comparison_by_size_functor(relations);
 //    vector<string> relations_to_join(query.relation_names);

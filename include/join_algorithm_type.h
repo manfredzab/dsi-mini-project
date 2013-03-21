@@ -11,6 +11,6 @@ enum JoinAlgorithmType
     kLeapfrog
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* JOIN_ALGORITHM_TYPE_H_ */

@@ -103,6 +103,6 @@ class BinarySortMergeJoinIterator : public virtual IIterator<int*>
         int                                          join_attribute_count;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* BINARY_SORT_MERGE_JOIN_ITERATOR_H_ */

@@ -28,6 +28,6 @@ class CascadingSortMergeJoin
 //        };
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* CASCADING_SORT_MERGE_JOIN_H_ */

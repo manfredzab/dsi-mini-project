@@ -34,6 +34,6 @@ class Timer
         timeval start_time;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* TIMER_H_ */

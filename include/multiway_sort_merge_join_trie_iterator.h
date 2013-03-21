@@ -47,6 +47,6 @@ class MultiwaySortMergeJoinTrieIterator : public virtual ITrieIterator<int>
         const Query&                            query;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* MULTIWAY_SORT_MERGE_JOIN_TRIE_ITERATOR_H_ */

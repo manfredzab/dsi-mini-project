@@ -52,9 +52,6 @@ Status TrieTrieIterator::Up()
         return kFail;
     }
 
-    // Reset the position between children and duplicates for the current node
-    this->current_node->position_within_duplicates = 0;
-
     // Make the current node point to its parent
     this->current_node = this->current_node->parent;
 
@@ -132,4 +129,4 @@ int TrieTrieIterator::Depth()
     return this->depth;
 }
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */

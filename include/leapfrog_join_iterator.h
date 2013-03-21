@@ -20,6 +20,6 @@ class LeapfrogJoinIterator : public virtual AbstractMultiwaySortMergeJoinIterato
         virtual void PositionCurrentIteratorAtKey(int key);
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* LEAPFROG_JOIN_ITERATOR_H_ */

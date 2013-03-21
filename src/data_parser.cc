@@ -195,4 +195,4 @@ int StringToInt(const string& input_string)
 }
 
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */

@@ -12,7 +12,6 @@ struct TrieNode
     TrieNode*                                  parent;
     int                                        key;
     int                                        multiplicity;
-    int                                        position_within_duplicates;
     std::vector<TrieNode*>                     children;
     typename std::vector<TrieNode*>::iterator  current_child;
 };
@@ -32,6 +31,6 @@ class Trie
         int trie_depth;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* TRIE_H_ */

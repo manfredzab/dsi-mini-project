@@ -23,4 +23,4 @@ IIterator<int>* LeapfrogJoinTrieIterator::CreateJoinIteratorForTrieIterators(vec
     return new LeapfrogJoinIterator(trie_iterators);
 }
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */

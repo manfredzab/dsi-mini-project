@@ -12,6 +12,6 @@ struct Query
     std::vector<std::string> join_attributes;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* QUERY_H_ */

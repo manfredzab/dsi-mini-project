@@ -84,4 +84,4 @@ string Printer::TupleToString(vector<int>& current_tuple, char separator)
     return stream.str();
 }
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */

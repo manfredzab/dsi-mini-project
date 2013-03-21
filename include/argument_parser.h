@@ -25,6 +25,6 @@ class ArgumentParser
         static Status ParseArguments(int argc, char *argv[], Arguments* out_arguments);
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* ARGUMENT_PARSER_H_ */

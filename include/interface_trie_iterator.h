@@ -18,6 +18,6 @@ class ITrieIterator : public virtual IIterator<T>
         virtual int    Depth()               = 0;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* INTERFACE_TRIE_ITERATOR_H_ */

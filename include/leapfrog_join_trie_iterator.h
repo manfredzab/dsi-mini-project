@@ -26,6 +26,6 @@ class LeapfrogJoinTrieIterator : public virtual MultiwaySortMergeJoinTrieIterato
         virtual IIterator<int>* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* LEAPFROG_JOIN_TRIE_ITERATOR_H_ */

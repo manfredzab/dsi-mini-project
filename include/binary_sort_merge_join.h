@@ -17,6 +17,6 @@ class BinarySortMergeJoin
         static void JoinUsingIterator(BinarySortMergeJoinIterator& join_iterator, Relation* out_result_relation);
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* BINARY_SORT_MERGE_JOIN_H_ */

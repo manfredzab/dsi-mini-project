@@ -19,6 +19,6 @@ class IIterator
         virtual bool   AtEnd()                       = 0;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* INTERFACE_ITERATOR_H_ */

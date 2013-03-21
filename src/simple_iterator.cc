@@ -52,4 +52,4 @@ Status SimpleIterator::Multiplicity(int* out_result)
 {
     return kNotSupported;
 }
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */

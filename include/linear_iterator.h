@@ -14,6 +14,6 @@ class LinearIterator : public virtual SimpleIterator
         virtual ~LinearIterator();
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* LINEAR_ITERATOR_H_ */

@@ -24,6 +24,6 @@ class Printer
         static std::string TupleToString(int* current_tuple, int tuple_size, char separator);
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* PRINTER_H_ */

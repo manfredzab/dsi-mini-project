@@ -59,6 +59,6 @@ class AbstractMultiwaySortMergeJoinIterator : public virtual IIterator<int>
         int                               current_iterator_index;
 };
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
 
 #endif /* ABSTRACT_MULTIWAY_SORT_MERGE_JOIN_ITERATOR_H_ */

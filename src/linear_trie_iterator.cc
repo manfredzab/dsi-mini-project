@@ -40,4 +40,4 @@ Status LinearTrieIterator::Seek(int seek_key)
     return kOK;
 }
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */

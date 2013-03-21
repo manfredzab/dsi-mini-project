@@ -19,6 +19,7 @@
 #include "../include/cascading_sort_merge_join.h"
 #include "../include/printer.h"
 #include "../include/timer.h"
+#include "../include/binary_search_tree.h"
 
 using namespace uk_ac_ox_cs_c875114;
 
@@ -42,6 +43,14 @@ int main(int argc, char *argv[])
     // Parse the given database and the query
     map<string, Relation*>* relations = DataParser::ParseDatabase(arguments.database_file);
     Query* query = DataParser::ParseQuery(arguments.query_file);
+
+    //-----------------------------------------------------
+    Relation* test_rel = (*relations)["R"];
+
+    BinarySearchTree(test_rel->data, test_rel->attribute_names.size());
+
+    return 1;
+    //-----------------------------------------------------
 
     // Set up the output stream: if "-output time" flag is specified, the joined relation will
     // be written into "result.rel" file and the time measurement will be written to STDOUT;

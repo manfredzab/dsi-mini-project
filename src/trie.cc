@@ -14,7 +14,6 @@ Trie::Trie(const Relation& relation)
     this->root.parent = NULL;
     this->root.key = 0;
     this->root.multiplicity = 1;
-    this->root.position_within_duplicates = 0;
     this->root.current_child = this->root.children.begin();
 
     // Build the trie
@@ -68,7 +67,6 @@ void Trie::Insert(const int* tuple)
         {
             trie_node_to_insert->parent = currentNode;
             trie_node_to_insert->multiplicity = 1;
-            trie_node_to_insert->position_within_duplicates = 0;
             trie_node_to_insert->current_child = trie_node_to_insert->children.begin();
 
             insert_position_node = currentNode->children.insert(insert_position_node, trie_node_to_insert);
@@ -95,4 +93,4 @@ bool CompareTrieNodeKeys(TrieNode* first, TrieNode* second)
 }
 
 
-} // namespace uk_ac_ox_cs_c875114
+} /* namespace uk_ac_ox_cs_c875114 */
