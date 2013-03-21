@@ -12,10 +12,10 @@
  * binary_sort_merge_join
  * cascading_sort_merge_join
  * abstract_multiway_sort_merge_join_iterator
- * interface_join_iterator
+ * interface_iterator
  * leapfrog_join_iterator
  * multiway_sort_merge_join_iterator
- * - simple_iterator
+ * simple_iterator
  * interface_trie_iterator
  * trie_trie_iterator
  * binary_tree_trie_iterator

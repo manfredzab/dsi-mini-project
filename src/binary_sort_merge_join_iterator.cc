@@ -55,8 +55,8 @@ BinarySortMergeJoinIterator::~BinarySortMergeJoinIterator()
 Status BinarySortMergeJoinIterator::Init()
 {
     // Sort the relations
-    outer_relation.data.sort(outer_relation_tuple_comparison_functor);
-    inner_relation.data.sort(inner_relation_tuple_comparison_functor);
+    sort(outer_relation.data.begin(), outer_relation.data.end(), outer_relation_tuple_comparison_functor);
+    sort(inner_relation.data.begin(), inner_relation.data.end(), inner_relation_tuple_comparison_functor);
 
     // Initialize relation iterators
     outer_relation_iterator = new SimpleIterator(outer_relation);

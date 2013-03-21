@@ -5,8 +5,8 @@ namespace uk_ac_ox_cs_c875114
 {
 
 SimpleIterator::SimpleIterator(const Relation& relation) :
-        kTupleSize(relation.attribute_names.size()),
-        relation(relation)
+    kTupleSize(relation.attribute_names.size()),
+    relation(relation)
 {
     this->tuple_iterator = relation.data.begin();
 }

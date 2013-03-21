@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include <list>
 
 namespace uk_ac_ox_cs_c875114
 {
@@ -12,7 +11,7 @@ struct Relation
 {
     ~Relation()
     {
-        for (std::list<int*>::iterator it = data.begin(); it != data.end(); ++it)
+        for (std::vector<int*>::iterator it = data.begin(); it != data.end(); ++it)
         {
             delete[] *it;
         }
@@ -21,7 +20,7 @@ struct Relation
     std::string name;
     std::vector<std::string> attribute_names;
 
-    std::list<int*> data;
+    std::vector<int*> data;
 };
 
 } // namespace uk_ac_ox_cs_c875114

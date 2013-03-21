@@ -15,6 +15,7 @@ class LeapfrogJoinIterator : public virtual AbstractMultiwaySortMergeJoinIterato
         virtual ~LeapfrogJoinIterator() { };
 
         virtual Status Seek(int seek_key);
+
     protected:
         virtual void PositionCurrentIteratorAtKey(int key);
 };

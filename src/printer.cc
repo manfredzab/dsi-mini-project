@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <vector>
-#include <list>
 #include <sstream>
 #include "../include/printer.h"
 
@@ -9,7 +8,6 @@ namespace uk_ac_ox_cs_c875114
 
 using std::string;
 using std::vector;
-using std::list;
 using std::map;
 using std::ostream;
 using std::ostringstream;
@@ -17,7 +15,7 @@ using std::ostringstream;
 void Printer::Print(Relation& relation, std::ostream& out)
 {
     int tuple_size = relation.attribute_names.size();
-    for (list<int*>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
+    for (vector<int*>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
     {
         out << TupleToString(*it, tuple_size, ',') << std::endl;
     }

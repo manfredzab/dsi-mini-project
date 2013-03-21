@@ -1,7 +1,7 @@
 #ifndef SIMPLE_ITERATOR_H_
 #define SIMPLE_ITERATOR_H_
 
-#include <list>
+#include <vector>
 
 #include "status.h"
 #include "relation.h"
@@ -25,7 +25,7 @@ class SimpleIterator : IIterator<int*>
         const int kTupleSize;
     protected:
         const Relation&                          relation;
-        typename std::list<int*>::const_iterator tuple_iterator;
+        typename std::vector<int*>::const_iterator tuple_iterator;
 };
 
 } // namespace uk_ac_ox_cs_c875114
