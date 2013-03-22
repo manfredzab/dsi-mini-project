@@ -21,6 +21,7 @@
 #include "../include/timer.h"
 #include "../include/binary_search_tree.h"
 #include "../include/linear_iterator.h"
+#include "../include/binary_search_tree_trie_iterator.h"
 
 using namespace uk_ac_ox_cs_c875114;
 
@@ -47,97 +48,183 @@ int main(int argc, char *argv[])
 
     //-----------------------------------------------------
     Relation* test_rel = (*relations)["R"];
-    LinearIterator linear_iterator(*test_rel);
-    linear_iterator.Init();
+    BinarySearchTreeTrieIterator trie_iterator(*test_rel);
+    trie_iterator.Init();
 
-    int* tuple;
-    int multiplicity;
-    Status substatus;
+    Printer::Print(trie_iterator);
+    return 1;
 
-    int command = -1;
-    while (command != 0)
+    std::vector<int> stack;
+    int current_command;
+    do
     {
-        std::cout << "[0] Exit [1] Next [2] Key [3] Multiplicity [4] Seek [5] At end" << std::endl;
-        std::cin >> command;
+        std::cout << "[0] Exit, [1] Up, [2] Next, [3] Open, [4] Key" << std::endl;
+        std::cin >> current_command;
 
-        switch (command)
+        switch (current_command)
         {
             case 1:
             {
-                substatus = linear_iterator.Next();
-
-                if (kOK == substatus)
+                if (trie_iterator.Up() == kOK)
                 {
-                    std::cout << "[OK]" << std::endl;
+                    stack.pop_back();
+                    std::cout << "[";
+                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+                    {
+                        std::cout << " " << *it;
+                    }
+                    std::cout << " ] SUCCESS" << std::endl;
                 }
                 else
-                {
-                    std::cout << "[FAIL]" << std::endl;
-                }
-
+                    std::cout << "FAIL" << std::endl;
                 break;
             }
             case 2:
             {
-                substatus = linear_iterator.Key(&tuple);
-                if (kOK == substatus)
+                if (trie_iterator.Next() == kOK)
                 {
-                    std::cout << "[OK] ";
+                    stack.pop_back();
+                    int result;
+                    trie_iterator.Key(&result);
+                    stack.push_back(result);
 
-                    for (unsigned i = 0; i < test_rel->attribute_names.size(); i++)
+                    std::cout << "[";
+                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
                     {
-                        std::cout << tuple[i] << ",";
+                        std::cout << " " << *it;
                     }
-                    std::cout << std::endl;
+                    std::cout << " ] SUCCESS" << std::endl;
                 }
                 else
-                {
-                    std::cout << "[FAIL]" << std::endl;
-                }
+                    std::cout << "FAIL" << std::endl;
                 break;
             }
             case 3:
             {
-                substatus = linear_iterator.Multiplicity(&multiplicity);
-                if (kOK == substatus)
+                if (trie_iterator.Open() == kOK)
                 {
-                    std::cout << "[OK] ";
-                    std::cout << multiplicity << std::endl;
+                    int result;
+                    trie_iterator.Key(&result);
+                    stack.push_back(result);
+
+                    std::cout << "[";
+                    for (std::vector<int>::iterator it = stack.begin(); it != stack.end(); ++it)
+                    {
+                        std::cout << " " << *it;
+                    }
+                    std::cout << " ] SUCCESS" << std::endl;
                 }
                 else
-                {
-                    std::cout << "[FAIL]" << std::endl;
-                }
+                    std::cout << "FAIL" << std::endl;
                 break;
             }
             case 4:
             {
-                int* buffer = new int[test_rel->attribute_names.size()];
-                for (unsigned i = 0; i < test_rel->attribute_names.size(); i++)
-                {
-                    std::cin >> buffer[i];
-                }
-
-                substatus = linear_iterator.Seek(buffer);
-                delete buffer;
-
-                if (kOK == substatus)
-                {
-                    std::cout << "[OK]" << std::endl;
-                }
+                int result;
+                if (trie_iterator.Key(&result) == kOK)
+                    std::cout << result << std::endl;
                 else
-                {
-                    std::cout << "[FAIL]" << std::endl;
-                }
-                break;
-            }
-            case 5:
-            {
-                std::cout << (linear_iterator.AtEnd() ? "TRUE" : "FALSE") << std::endl;
+                    std::cout << "FAIL" << std::endl;
                 break;
             }
         }
     }
+    while (current_command != 0);
+
+
+
+//    LinearIterator linear_iterator(*test_rel);
+//    linear_iterator.Init();
+//
+//    int* tuple;
+//    int multiplicity;
+//    Status substatus;
+//
+//    int command = -1;
+//    while (command != 0)
+//    {
+//        std::cout << "[0] Exit [1] Next [2] Key [3] Multiplicity [4] Seek [5] At end" << std::endl;
+//        std::cin >> command;
+//
+//        switch (command)
+//        {
+//            case 1:
+//            {
+//                substatus = linear_iterator.Next();
+//
+//                if (kOK == substatus)
+//                {
+//                    std::cout << "[OK]" << std::endl;
+//                }
+//                else
+//                {
+//                    std::cout << "[FAIL]" << std::endl;
+//                }
+//
+//                break;
+//            }
+//            case 2:
+//            {
+//                substatus = linear_iterator.Key(&tuple);
+//                if (kOK == substatus)
+//                {
+//                    std::cout << "[OK] ";
+//
+//                    for (unsigned i = 0; i < test_rel->attribute_names.size(); i++)
+//                    {
+//                        std::cout << tuple[i] << ",";
+//                    }
+//                    std::cout << std::endl;
+//                }
+//                else
+//                {
+//                    std::cout << "[FAIL]" << std::endl;
+//                }
+//                break;
+//            }
+//            case 3:
+//            {
+//                substatus = linear_iterator.Multiplicity(&multiplicity);
+//                if (kOK == substatus)
+//                {
+//                    std::cout << "[OK] ";
+//                    std::cout << multiplicity << std::endl;
+//                }
+//                else
+//                {
+//                    std::cout << "[FAIL]" << std::endl;
+//                }
+//                break;
+//            }
+//            case 4:
+//            {
+//                int* buffer = new int[test_rel->attribute_names.size()];
+//                for (unsigned i = 0; i < test_rel->attribute_names.size(); i++)
+//                {
+//                    std::cin >> buffer[i];
+//                }
+//
+//                substatus = linear_iterator.Seek(buffer);
+//                delete buffer;
+//
+//                if (kOK == substatus)
+//                {
+//                    std::cout << "[OK]" << std::endl;
+//                }
+//                else
+//                {
+//                    std::cout << "[FAIL]" << std::endl;
+//                }
+//                break;
+//            }
+//            case 5:
+//            {
+//                std::cout << (linear_iterator.AtEnd() ? "TRUE" : "FALSE") << std::endl;
+//                break;
+//            }
+//        }
+//    }
+
 //    for (map<string, Relation*>::iterator it = relations->begin(); it != relations->end(); ++it)
 //    {
 //        BinarySearchTree(it->second->data, it->second->attribute_names.size());

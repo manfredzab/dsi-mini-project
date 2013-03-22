@@ -14,20 +14,19 @@ class LinearIterator : public virtual SimpleIterator
         LinearIterator(Relation& relation);
         virtual ~LinearIterator();
 
-        virtual Status  Init();
-        virtual Status  Key(int** out_key);
-        virtual Status  Multiplicity(int* out_result);
-        virtual Status  Next();
-        virtual bool    AtEnd();
+        virtual Status Init();
+        virtual Status Key(int** out_key);
+        virtual Status Multiplicity(int* out_result);
+        virtual Status Next();
+        virtual bool   AtEnd();
 
-        virtual Status  Seek(int* seek_key);
+        virtual Status Seek(int* seek_key);
 
-        LinearIterator& operator=(LinearIterator other);
     protected:
         BinarySearchTree* search_tree;
 
     private:
-        void Swap(LinearIterator& first, LinearIterator& second);
+        friend class BinarySearchTreeTrieIterator;
 
         TreeNode* current_node;
         bool      at_end;

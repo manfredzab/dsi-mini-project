@@ -5,8 +5,6 @@
 namespace uk_ac_ox_cs_c875114
 {
 
-using std::swap;
-
 LinearIterator::LinearIterator(Relation& relation) :
     SimpleIterator(relation)
 {
@@ -172,20 +170,6 @@ Status LinearIterator::Next()
 bool LinearIterator::AtEnd()
 {
     return at_end;
-}
-
-void LinearIterator::Swap(LinearIterator& first, LinearIterator& second)
-{
-    swap(first.search_tree, second.search_tree);
-    swap(first.current_node, second.current_node);
-    swap(first.at_end, second.at_end);
-}
-
-LinearIterator& LinearIterator::operator=(LinearIterator other)
-{
-    Swap(*this, other);
-
-    return *this;
 }
 
 } /* namespace uk_ac_ox_cs_c875114 */

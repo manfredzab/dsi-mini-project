@@ -22,10 +22,7 @@ BinarySearchTreeTrieIterator::~BinarySearchTreeTrieIterator()
 
 Status BinarySearchTreeTrieIterator::Init()
 {
-    depth = -1;
-    at_end = false;
-
-    return kOK;
+    return linear_iterator.Init();
 }
 
 
@@ -40,7 +37,8 @@ Status BinarySearchTreeTrieIterator::Open()
     depth++;
 
     // Save the linear iterator state
-    linear_iterator_stack.push(linear_iterator);
+    tree_node_stack.push(linear_iterator.current_node);
+    at_end_stack.push(linear_iterator.at_end);
 
     // Update the current trie iterator state
     UpdateState();
@@ -63,8 +61,11 @@ Status BinarySearchTreeTrieIterator::Up()
     at_end = false;
 
     // Reset the iterator state to what it was before opening the current trie level
-    linear_iterator = linear_iterator_stack.top();
-    linear_iterator_stack.pop();
+    linear_iterator.current_node = tree_node_stack.top();
+    linear_iterator.at_end = at_end_stack.top();
+
+    tree_node_stack.pop();
+    at_end_stack.pop();
 
     return kOK;
 }
@@ -103,35 +104,7 @@ Status BinarySearchTreeTrieIterator::Multiplicity(int* out_multiplicity)
 
 Status BinarySearchTreeTrieIterator::Next()
 {
-    if (AtEnd() || (-1 == depth))
-    {
-        return kFail;
-    }
-
-    // To move the trie iterator to the next node at the same level, seek the linear iterator
-    // to the LUB of the current path in the trie with the remaining arguments filled by +inf.
-    // E.g. if the current position of the ternary trie (x, y, z) iterator is at x = 1, the
-    // seek tuple will be (1, +inf, +inf).
-    int* seek_tuple = new int[kArity];
-    for (int i = 0; i <= depth; i++)
-    {
-        seek_tuple[i] = tuple_state[i];
-    }
-    for (int i = depth + 1; i < kArity; i++)
-    {
-        seek_tuple[i] = std::numeric_limits<int>::max();
-    }
-
-    // Seek the linear iterator
-    Status status = linear_iterator.Seek(seek_tuple);
-
-    // Update the state
-    UpdateState();
-
-    // Release the memory
-    delete[] seek_tuple;
-
-    return status;
+    return Seek(tuple_state[depth] + 1);
 }
 
 
@@ -167,7 +140,8 @@ Status BinarySearchTreeTrieIterator::Seek(int seek_key)
     // Release the memory
     delete[] seek_tuple;
 
-    return status;
+    // If we hit the end return failure, otherwise return the status
+    return AtEnd() ? kFail : status;
 }
 
 

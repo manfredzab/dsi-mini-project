@@ -8,37 +8,37 @@ SimpleIterator::SimpleIterator(const Relation& relation) :
     kTupleSize(relation.attribute_names.size()),
     kRelation(relation)
 {
-    this->tuple_iterator = relation.data.begin();
+    tuple_iterator = relation.data.begin();
 }
 
 
 Status SimpleIterator::Key(int** out_key)
 {
-    if (this->AtEnd())
+    if (AtEnd())
     {
         return kFail;
     }
 
-    *out_key = *this->tuple_iterator;
+    *out_key = *tuple_iterator;
     return kOK;
 }
 
 
 Status SimpleIterator::Next()
 {
-    if (this->AtEnd())
+    if (AtEnd())
     {
         return kFail;
     }
 
-    this->tuple_iterator++;
+    tuple_iterator++;
     return kOK;
 }
 
 
 bool SimpleIterator::AtEnd()
 {
-    return (this->tuple_iterator == this->kRelation.data.end());
+    return (tuple_iterator == kRelation.data.end());
 }
 
 
@@ -52,4 +52,5 @@ Status SimpleIterator::Multiplicity(int* out_result)
 {
     return kNotImplemented;
 }
+
 } /* namespace uk_ac_ox_cs_c875114 */

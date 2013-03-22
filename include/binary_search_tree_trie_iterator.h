@@ -36,11 +36,13 @@ class BinarySearchTreeTrieIterator : public virtual ITrieIterator<int>
 
         const int kArity;
 
-        int                        depth;
-        std::stack<LinearIterator> linear_iterator_stack;
-        LinearIterator             linear_iterator;
-        int*                       tuple_state;
-        bool                       at_end;
+        int                   depth;
+        LinearIterator        linear_iterator;
+        int*                  tuple_state;
+        bool                  at_end;
+
+        std::stack<TreeNode*> tree_node_stack;
+        std::stack<bool>      at_end_stack;
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */
