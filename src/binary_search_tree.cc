@@ -1,11 +1,12 @@
-#include <iostream>
 #include <cstring>
+#include <stack>
 #include "../include/binary_search_tree.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
 using std::vector;
+using std::stack;
 
 BinarySearchTree::BinarySearchTree(vector<int*> tuple_data, int tuple_size) : kTupleSize(tuple_size)
 {
@@ -15,15 +16,38 @@ BinarySearchTree::BinarySearchTree(vector<int*> tuple_data, int tuple_size) : kT
     // Set the iterator to the middle of multiplicities vector
     vector<KeyMultiplicityPair>::const_iterator middle_iterator = multiplicities.begin() + (multiplicities.size() >> 1);
 
-    this->root.parent = NULL;
-    this->root.key_multiplicity_pair = *middle_iterator;
-    this->root.left_child = InsertSubtree(&this->root, multiplicities.begin(), middle_iterator);
-    this->root.right_child = InsertSubtree(&this->root, ++middle_iterator, multiplicities.end());
+    root = new TreeNode();
+    root->parent = NULL;
+    root->key_multiplicity_pair = *middle_iterator;
+    root->left_child = InsertSubtree(root, multiplicities.begin(), middle_iterator);
+    root->right_child = InsertSubtree(root, ++middle_iterator, multiplicities.end());
 }
+
 
 BinarySearchTree::~BinarySearchTree()
 {
-    // TODO: deallocate memory!
+    stack<TreeNode*> nodes_to_delete;
+
+    // Release the memory while traversing the binary search tree in post-order
+    nodes_to_delete.push(root);
+    while (!nodes_to_delete.empty())
+    {
+        TreeNode* top_node = nodes_to_delete.top();
+        nodes_to_delete.pop();
+
+        if (top_node->left_child != NULL)
+        {
+            nodes_to_delete.push(top_node->left_child);
+        }
+
+        if (top_node->right_child != NULL)
+        {
+            nodes_to_delete.push(top_node->right_child);
+        }
+
+        delete top_node;
+    }
+
 }
 
 /**

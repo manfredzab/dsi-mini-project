@@ -1,8 +1,3 @@
-// TODO: remove
-#include <iostream>
-#include <list>
-#include "../include/printer.h"
-
 #include <vector>
 #include <string>
 #include <algorithm>

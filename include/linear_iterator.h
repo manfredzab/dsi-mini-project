@@ -11,7 +11,7 @@ namespace uk_ac_ox_cs_c875114
 class LinearIterator : public virtual SimpleIterator
 {
     public:
-        LinearIterator(Relation& relation);
+        LinearIterator(const Relation& relation);
         virtual ~LinearIterator();
 
         virtual Status Init();

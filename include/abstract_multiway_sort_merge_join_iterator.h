@@ -1,28 +1,3 @@
-// TODO:
-// - make JoinIterator an abstract class AbstractJoinIterator, abstracting PositionCurrentIteratorAtKey
-// - add SortMergeJoinIterator : public virtual AbstractJoinIterator, implement PositionCurrentIteratorAtKey
-// - add BinaryTreeTrieIterator : public virtual ITrieIterator<int>
-// - rename LinearJoinIterator to LeapfrogJoinIterator : public virtual AbstractJoinIterator, ensure that
-//   PositionAtMaxIterator casts the iterator to BinaryTreeTrieIterator and calls seek
-// - remove the LinearTrieIterator
-
-/*
- * File names:
- * binary_sort_merge_join_iterator
- * binary_sort_merge_join
- * cascading_sort_merge_join
- * abstract_multiway_sort_merge_join_iterator
- * interface_iterator
- * leapfrog_join_iterator
- * multiway_sort_merge_join_iterator
- * simple_iterator
- * interface_trie_iterator
- * trie_trie_iterator
- * binary_tree_trie_iterator
- * multiway_sort_merge_join_trie_iterator
- * leapfrog_join_trie_iterator
- */
-
 #ifndef ABSTRACT_MULTIWAY_SORT_MERGE_JOIN_ITERATOR_H_
 #define ABSTRACT_MULTIWAY_SORT_MERGE_JOIN_ITERATOR_H_
 

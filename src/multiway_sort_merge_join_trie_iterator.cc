@@ -44,13 +44,14 @@ Status MultiwaySortMergeJoinTrieIterator::Init()
     // Initialize the number of join attributes
     number_of_join_attributes = query.join_attributes.size();
 
-    // Create a trie iterator for each of the relations involved in the query
+    // Create and initialize a trie iterator for each of the relations involved in the query
     for (unsigned i = 0; i < query.relation_names.size(); i++)
     {
         string relation_name = query.relation_names[i];
         const Relation* relation = relations.find(relation_name)->second;
 
         this->trie_iterator_for_relation[relation_name] = CreateTrieIteratorForRelation(*relation);
+        trie_iterator_for_relation[relation_name]->Init();
     }
 
     // For each attribute X in the equi-join, create an array of pointers to the trie iterators of the

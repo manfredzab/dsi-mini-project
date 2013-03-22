@@ -16,7 +16,7 @@ namespace uk_ac_ox_cs_c875114
 class BinarySearchTreeTrieIterator : public virtual ITrieIterator<int>
 {
     public:
-        BinarySearchTreeTrieIterator(Relation& relation);
+        BinarySearchTreeTrieIterator(const Relation& relation);
         virtual ~BinarySearchTreeTrieIterator();
 
         virtual Status Init();

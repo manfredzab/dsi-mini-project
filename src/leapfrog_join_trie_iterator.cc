@@ -4,8 +4,8 @@
 #include <vector>
 
 #include "../include/leapfrog_join_trie_iterator.h"
-#include "../include/linear_trie_iterator.h"
 #include "../include/leapfrog_join_iterator.h"
+#include "../include/binary_search_tree_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
@@ -14,7 +14,7 @@ using std::vector;
 
 ITrieIterator<int>* LeapfrogJoinTrieIterator::CreateTrieIteratorForRelation(const Relation& relation)
 {
-    return new LinearTrieIterator(relation);
+    return new BinarySearchTreeTrieIterator(relation);
 }
 
 

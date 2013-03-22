@@ -46,7 +46,6 @@ Trie::~Trie()
 }
 
 
-// TODO: could be optimized
 void Trie::Insert(const int* tuple)
 {
     TrieNode* currentNode = &this->root;

@@ -44,7 +44,7 @@ class BinarySearchTree
             return kEqual;
         }
 
-        TreeNode root;
+        TreeNode* root;
 
     private:
         std::vector<KeyMultiplicityPair> CollectTupleMultiplicities(std::vector<int*>& tuple_data);

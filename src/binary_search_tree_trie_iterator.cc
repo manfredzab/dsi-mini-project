@@ -1,14 +1,17 @@
+#include <cstring>
 #include <limits>
 #include "../include/binary_search_tree_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-BinarySearchTreeTrieIterator::BinarySearchTreeTrieIterator(Relation& relation):
+BinarySearchTreeTrieIterator::BinarySearchTreeTrieIterator(const Relation& relation):
     kArity(relation.attribute_names.size()),
     linear_iterator(relation)
 {
     tuple_state = new int[kArity];
+    memset(tuple_state, 0, kArity * sizeof(int)); // Initialize the memory
+
     depth = -1;
     at_end = false;
 }

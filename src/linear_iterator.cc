@@ -5,7 +5,7 @@
 namespace uk_ac_ox_cs_c875114
 {
 
-LinearIterator::LinearIterator(Relation& relation) :
+LinearIterator::LinearIterator(const Relation& relation) :
     SimpleIterator(relation)
 {
     search_tree = new BinarySearchTree(relation.data, relation.attribute_names.size());
@@ -22,7 +22,7 @@ LinearIterator::~LinearIterator()
 
 Status LinearIterator::Init()
 {
-    current_node = &search_tree->root;
+    current_node = search_tree->root;
 
     while (current_node->left_child != NULL)
     {
