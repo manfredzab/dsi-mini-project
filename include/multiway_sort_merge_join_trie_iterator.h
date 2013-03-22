@@ -17,7 +17,7 @@ namespace uk_ac_ox_cs_c875114
 class MultiwaySortMergeJoinTrieIterator : public virtual ITrieIterator<int>
 {
     public:
-        MultiwaySortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) : depth(0), number_of_join_attributes(0), number_of_result_attributes(0), relations(relations), query(query) { };
+        MultiwaySortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query);
         virtual ~MultiwaySortMergeJoinTrieIterator();
 
         virtual Status Init();
@@ -27,7 +27,7 @@ class MultiwaySortMergeJoinTrieIterator : public virtual ITrieIterator<int>
         virtual Status Multiplicity(int* result);
         virtual Status Next();
         virtual bool   AtEnd();
-        virtual int    Depth();
+        virtual int    Arity();
 
     protected:
         virtual bool                AtRoot();
@@ -39,7 +39,7 @@ class MultiwaySortMergeJoinTrieIterator : public virtual ITrieIterator<int>
         int                                         number_of_result_attributes;
         std::map<std::string, ITrieIterator*>       trie_iterator_for_relation;
         std::map<int, std::vector<ITrieIterator*> > trie_iterators_for_depth;
-        std::map<int, IIterator*>               join_iterator_for_depth;
+        std::map<int, IIterator*>                   join_iterator_for_depth;
         std::vector<int>                            key_multiplicity_stack;
 
     private:

@@ -7,14 +7,14 @@ namespace uk_ac_ox_cs_c875114
 
 using std::vector;
 
-TrieTrieIterator::TrieTrieIterator(const Relation& relation)// : SimpleIterator(relation)
+TrieTrieIterator::TrieTrieIterator(const Relation& relation) :
+    kArity(relation.attribute_names.size())
 {
     // Build the trie
     this->trie = new Trie(relation);
     this->current_node = &trie->root;
     this->current_node_multiplicity = trie->root.multiplicity;
     this->at_end = false;
-    this->depth = relation.attribute_names.size();
 }
 
 TrieTrieIterator::~TrieTrieIterator()
@@ -124,9 +124,9 @@ bool TrieTrieIterator::AtRoot()
     return (this->current_node == &trie->root);
 }
 
-int TrieTrieIterator::Depth()
+int TrieTrieIterator::Arity()
 {
-    return this->depth;
+    return this->kArity;
 }
 
 } /* namespace uk_ac_ox_cs_c875114 */

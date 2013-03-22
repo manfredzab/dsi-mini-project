@@ -26,7 +26,7 @@ void Printer::Print(ITrieIterator<int>& trie_iterator, ostream& out)
 {
     // Print the trie contents in-order
     vector<int> current_tuple;
-    PrintNode(trie_iterator, trie_iterator.Depth(), 0, current_tuple, out);
+    PrintNode(trie_iterator, trie_iterator.Arity(), 0, current_tuple, out);
 }
 
 

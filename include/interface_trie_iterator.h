@@ -13,9 +13,9 @@ class ITrieIterator : public virtual IIterator<T>
     public:
         virtual ~ITrieIterator() { };
 
-        virtual Status Open()                    = 0;
-        virtual Status Up()                      = 0;
-        virtual int    Depth()               = 0;
+        virtual Status Open()  = 0;
+        virtual Status Up()    = 0;
+        virtual int    Arity() = 0;
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */

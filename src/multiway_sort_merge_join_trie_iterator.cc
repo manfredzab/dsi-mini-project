@@ -14,6 +14,17 @@ using std::string;
 using std::vector;
 using std::map;
 
+
+MultiwaySortMergeJoinTrieIterator::MultiwaySortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) :
+    depth(0),
+    number_of_join_attributes(0),
+    number_of_result_attributes(0),
+    relations(relations),
+    query(query)
+{
+    // Nothing else to do.
+};
+
 MultiwaySortMergeJoinTrieIterator::~MultiwaySortMergeJoinTrieIterator()
 {
     for (map<string, ITrieIterator*>::iterator it = trie_iterator_for_relation.begin(); it != trie_iterator_for_relation.end(); ++it)
@@ -283,7 +294,7 @@ bool MultiwaySortMergeJoinTrieIterator::AtRoot()
 }
 
 
-int MultiwaySortMergeJoinTrieIterator::Depth()
+int MultiwaySortMergeJoinTrieIterator::Arity()
 {
     return number_of_result_attributes;
 }
