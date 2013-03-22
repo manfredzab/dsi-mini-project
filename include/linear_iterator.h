@@ -17,7 +17,7 @@ class LinearIterator : public virtual SimpleIterator
         virtual Status Init();
         virtual Status Key(int** out_key);
         virtual Status Multiplicity(int* out_result);
-//        virtual Status Next();
+        virtual Status Next();
         virtual bool   AtEnd();
 
         virtual Status Seek(int* seek_key);

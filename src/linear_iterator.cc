@@ -1,3 +1,4 @@
+#include <cstring>
 #include "../include/linear_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
@@ -58,6 +59,11 @@ Status LinearIterator::Multiplicity(int* out_multiplicity)
 
 Status LinearIterator::Seek(int* seek_key)
 {
+    if (AtEnd())
+    {
+        return kFail;
+    }
+
     // Create a temporary tree search node for tree node key comparisons below
     TreeNode search_node;
     search_node.key_multiplicity_pair.key = seek_key;
@@ -122,6 +128,34 @@ Status LinearIterator::Seek(int* seek_key)
 
         return kFail;
     }
+}
+
+/**
+ * Moves to the next tuple in the relation. This method uses the implementation of @see Seek to
+ * find the least upper bound of (current node's key + 1).
+ */
+Status LinearIterator::Next()
+{
+    if (AtEnd())
+    {
+        return kFail;
+    }
+
+    // Get the current node key and increment it to obtain a new seek key
+    int* current_node_key;
+    Key(&current_node_key);
+
+    int* seek_key = new int[kTupleSize];
+    memcpy(seek_key, current_node_key, kTupleSize * sizeof(int));
+    seek_key[kTupleSize - 1]++;
+
+    // Seek for the next key
+    Status status = Seek(seek_key);
+
+    // Free the memory
+    delete[] seek_key;
+
+    return status;
 }
 
 
