@@ -9,23 +9,23 @@ using std::vector;
 
 Trie::Trie(const Relation& relation)
 {
-    this->trie_depth = relation.attribute_names.size();
+    trie_depth = relation.attribute_names.size();
 
-    this->root.parent = NULL;
-    this->root.key = 0;
-    this->root.multiplicity = 1;
-    this->root.current_child = this->root.children.begin();
+    root.parent = NULL;
+    root.key = 0;
+    root.multiplicity = 1;
+    root.current_child = root.children.begin();
 
     // Build the trie
     SimpleIterator relation_iterator(relation);
 
-    int* current_tuple;
+    Tuple current_tuple;
     while (!relation_iterator.AtEnd())
     {
-        relation_iterator.Key(&current_tuple);
+        relation_iterator.Key(&current_tuple.key);
         relation_iterator.Next();
 
-        this->Insert(current_tuple);
+        Insert(current_tuple);
     }
 }
 
@@ -33,7 +33,7 @@ Trie::~Trie()
 {
     vector<TrieNode*> nodes_to_delete;
 
-    nodes_to_delete.insert(nodes_to_delete.begin(), this->root.children.begin(), this->root.children.end());
+    nodes_to_delete.insert(nodes_to_delete.begin(), root.children.begin(), root.children.end());
     while (!nodes_to_delete.empty())
     {
         TrieNode* current_node = nodes_to_delete.back();
@@ -46,14 +46,14 @@ Trie::~Trie()
 }
 
 
-void Trie::Insert(const int* tuple)
+void Trie::Insert(const Tuple& tuple)
 {
     TrieNode* currentNode = &this->root;
     for (int i = 0; i < this->trie_depth; i++)
     {
         // Find the entry to insert in the children list
         TrieNode* trie_node_to_insert = new TrieNode();
-        trie_node_to_insert->key = tuple[i];
+        trie_node_to_insert->key = tuple.key[i];
 
         vector<TrieNode*>::iterator insert_position_node = lower_bound(currentNode->children.begin(),
                                                                        currentNode->children.end(),
@@ -85,5 +85,4 @@ void Trie::Insert(const int* tuple)
         currentNode = *insert_position_node;
     }
 }
-
 } /* namespace uk_ac_ox_cs_c875114 */

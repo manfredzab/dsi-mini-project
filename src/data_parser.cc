@@ -19,7 +19,7 @@ using std::cerr;
 
 Relation*       ParseRelation(string database_file_name, string relation_line);
 Relation*       ParseRelation(string relation_file_name, string relation_name, const vector<string>& attribute_names);
-int*            ParseRelationTuple(string relation_tuple_line, int attribute_count);
+int*            ParseRelationTupleKey(string relation_tuple_line, int attribute_count);
 vector<string>* TokenizeString(const string& input_string, const char character);
 void            RemoveStringWhitespace(string& input_string);
 int             StringToInt(const string& input_string);
@@ -126,9 +126,18 @@ Relation* ParseRelation(string relation_file_name, string relation_name, const v
     {
         while (getline(relation_file, line))
         {
-            int* parsed_tuple = ParseRelationTuple(line, attribute_count);
+            Tuple parsed_tuple = { ParseRelationTupleKey(line, attribute_count), 1 };
 
-            result->data.push_back(parsed_tuple);
+            // Check if the current tuple is a duplicate of the previous tuple
+            if (!result->data.empty() && Tuple::AreKeysEqual(parsed_tuple, result->data.back(), attribute_count))
+            {
+                result->data.back().multiplicity++;
+                delete[] parsed_tuple.key;
+            }
+            else
+            {
+                result->data.push_back(parsed_tuple);
+            }
         }
 
         relation_file.close();
@@ -142,21 +151,21 @@ Relation* ParseRelation(string relation_file_name, string relation_name, const v
 }
 
 
-int* ParseRelationTuple(string relation_tuple_line, int attribute_count)
+int* ParseRelationTupleKey(string relation_tuple_line, int attribute_count)
 {
-    int* result = new int[attribute_count];
+    int* result_key = new int[attribute_count];
 
     RemoveStringWhitespace(relation_tuple_line);
     vector<string>* tokens = TokenizeString(relation_tuple_line, ',');
 
     for (int i = 0; i < attribute_count; i++)
     {
-         result[i] = StringToInt((*tokens)[i]);
+        result_key[i] = StringToInt((*tokens)[i]);
     }
 
     delete tokens;
 
-    return result;
+    return result_key;
 }
 
 
@@ -193,6 +202,5 @@ int StringToInt(const string& input_string)
 {
     return atoi(input_string.c_str());
 }
-
 
 } /* namespace uk_ac_ox_cs_c875114 */

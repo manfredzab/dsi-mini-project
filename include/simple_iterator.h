@@ -18,7 +18,7 @@ class SimpleIterator : IIterator<int*>
 
         virtual Status Init();
         virtual Status Key(int** out_key);
-        virtual Status Multiplicity(int* out_result);
+        virtual Status Multiplicity(int* out_multiplicity);
         virtual Status Next();
         virtual bool   AtEnd();
 
@@ -26,8 +26,10 @@ class SimpleIterator : IIterator<int*>
         const int       kTupleSize;
         const Relation& kRelation;
 
+        int current_multiplicity;
+
     private:
-        typename std::vector<int*>::const_iterator tuple_iterator;
+        typename std::vector<Tuple>::const_iterator tuple_iterator;
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */

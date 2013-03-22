@@ -15,9 +15,12 @@ using std::ostringstream;
 void Printer::Print(Relation& relation, std::ostream& out)
 {
     int tuple_size = relation.attribute_names.size();
-    for (vector<int*>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
+    for (vector<Tuple>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
     {
-        out << TupleToString(*it, tuple_size, ',') << std::endl;
+        for (int i = 0; i < it->multiplicity; i++)
+        {
+            out << TupleToString(it->key, tuple_size, ',') << std::endl;
+        }
     }
 }
 

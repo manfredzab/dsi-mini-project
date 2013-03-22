@@ -9,6 +9,7 @@ SimpleIterator::SimpleIterator(const Relation& relation) :
     kRelation(relation)
 {
     tuple_iterator = relation.data.begin();
+    current_multiplicity = 0;
 }
 
 
@@ -19,7 +20,7 @@ Status SimpleIterator::Key(int** out_key)
         return kFail;
     }
 
-    *out_key = *tuple_iterator;
+    *out_key = tuple_iterator->key;
     return kOK;
 }
 
@@ -31,7 +32,18 @@ Status SimpleIterator::Next()
         return kFail;
     }
 
+    if (current_multiplicity > 1)
+    {
+        current_multiplicity--;
+        return kOK;
+    }
+
     tuple_iterator++;
+    if (!AtEnd())
+    {
+        current_multiplicity = tuple_iterator->multiplicity;
+    }
+
     return kOK;
 }
 
@@ -48,7 +60,7 @@ Status SimpleIterator::Init()
 }
 
 
-Status SimpleIterator::Multiplicity(int* out_result)
+Status SimpleIterator::Multiplicity(int* out_multiplicity)
 {
     return kNotImplemented;
 }

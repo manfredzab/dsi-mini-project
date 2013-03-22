@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
     map<string, Relation*>* relations = DataParser::ParseDatabase(arguments.database_file);
     Query* query = DataParser::ParseQuery(arguments.query_file);
 
+
     // Set up the output stream: if "-output time" flag is specified, the joined relation will
     // be written into "result.rel" file and the time measurement will be written to STDOUT;
     // otherwise the joined relation will be printed to STDOUT.

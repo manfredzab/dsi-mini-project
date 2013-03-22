@@ -1,4 +1,3 @@
-#include <cstring>
 #include <algorithm>
 #include "../include/binary_sort_merge_join_iterator.h"
 
@@ -69,7 +68,7 @@ Status BinarySortMergeJoinIterator::Init()
 
 Status BinarySortMergeJoinIterator::Key(int** out_key)
 {
-    memcpy(*out_key, key, result_relation_attribute_count * sizeof(int));
+    *out_key = key;
 
     return kOK;
 }
@@ -151,16 +150,16 @@ Status BinarySortMergeJoinIterator::Next()
 
 inline void BinarySortMergeJoinIterator::GatherSameKeyTuples(SimpleIterator& relation_iterator, SameRelationTupleComparisonFunctor& comparison_functor, list<int*>& out_same_key_tuples)
 {
-    int* current_tuple;
-    relation_iterator.Key(&current_tuple);
+    Tuple current_tuple;
+    relation_iterator.Key(&current_tuple.key);
 
-    int* duplicate_tuple = current_tuple;
+    Tuple duplicate_tuple = current_tuple;
     while (!relation_iterator.AtEnd() && (kEqual == comparison_functor.CompareTuples(current_tuple, duplicate_tuple)))
     {
-        out_same_key_tuples.push_back(duplicate_tuple);
+        out_same_key_tuples.push_back(duplicate_tuple.key);
 
         relation_iterator.Next();
-        relation_iterator.Key(&duplicate_tuple);
+        relation_iterator.Key(&duplicate_tuple.key);
     }
 
     if (relation_iterator.AtEnd())

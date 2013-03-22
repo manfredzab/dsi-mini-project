@@ -43,15 +43,15 @@ class BinarySortMergeJoinIterator : public virtual IIterator<int*>
                 compare_positions_count = compare_positions.size();
             };
 
-            Equality CompareTuples(const int* first_tuple, const int* second_tuple)
+            Equality CompareTuples(const Tuple& first_tuple, const Tuple& second_tuple)
             {
                 for (int i = 0; i < compare_positions_count; i++)
                 {
-                    if (first_tuple[compare_positions[i]] > second_tuple[compare_positions[i]])
+                    if (first_tuple.key[compare_positions[i]] > second_tuple.key[compare_positions[i]])
                     {
                         return kGreaterThan;
                     }
-                    else if (first_tuple[compare_positions[i]] < second_tuple[compare_positions[i]])
+                    else if (first_tuple.key[compare_positions[i]] < second_tuple.key[compare_positions[i]])
                     {
                         return kLessThan;
                     }
@@ -60,7 +60,7 @@ class BinarySortMergeJoinIterator : public virtual IIterator<int*>
                 return kEqual;
             }
 
-            bool operator()(const int* first_tuple, const int* second_tuple)
+            bool operator()(const Tuple& first_tuple, const Tuple& second_tuple)
             {
                 return (kLessThan == CompareTuples(first_tuple, second_tuple));
             }

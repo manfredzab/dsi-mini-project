@@ -39,7 +39,7 @@ Status LinearIterator::Key(int** out_key)
 {
     if (!AtEnd())
     {
-        *out_key = current_node->key_multiplicity_pair.key;
+        *out_key = current_node->tuple.key;
 
         return kOK;
     }
@@ -54,7 +54,7 @@ Status LinearIterator::Multiplicity(int* out_multiplicity)
 {
     if (!AtEnd())
     {
-        *out_multiplicity = current_node->key_multiplicity_pair.multiplicity;
+        *out_multiplicity = current_node->tuple.multiplicity;
 
         return kOK;
     }
@@ -74,7 +74,7 @@ Status LinearIterator::Seek(int* seek_key)
 
     // Create a temporary tree search node for tree node key comparisons below
     TreeNode search_node;
-    search_node.key_multiplicity_pair.key = seek_key;
+    search_node.tuple.key = seek_key;
 
     TreeNode* lub_node = NULL;
 

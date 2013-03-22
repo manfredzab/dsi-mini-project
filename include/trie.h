@@ -30,7 +30,7 @@ class Trie
         TrieNode root;
 
     private:
-        void Insert(const int* tuple);
+        void Insert(const Tuple& tuple);
 
         int trie_depth;
 };

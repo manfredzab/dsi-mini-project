@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <vector>
 #include <string>
+#include <cstring>
 #include "../include/binary_sort_merge_join.h"
 #include "../include/binary_sort_merge_join_iterator.h"
 
@@ -92,17 +93,31 @@ void BinarySortMergeJoin::JoinUsingIterator(BinarySortMergeJoinIterator& join_it
     int result_relation_tuple_size = out_result_relation->attribute_names.size();
 
     join_iterator.Init();
+
+    Tuple result_tuple;
+    result_tuple.multiplicity = 1;
+
+    int *result_key;
     do
     {
         // Get the result tuple
-        int* key = new int[result_relation_tuple_size];
-        join_iterator.Key(&key);
+        result_tuple.key = new int[result_relation_tuple_size];
+        join_iterator.Key(&result_key);
+        memcpy(result_tuple.key, result_key, result_relation_tuple_size * sizeof(int));
 
-        // Store it in the result relation's tuple data vector
-        out_result_relation->data.push_back(key);
+        // Check if the current tuple is a duplicate of the previous tuple
+        Tuple& previous_tuple = out_result_relation->data.back();
+        if (!out_result_relation->data.empty() && Tuple::AreKeysEqual(result_tuple, previous_tuple, result_relation_tuple_size))
+        {
+            previous_tuple.multiplicity++;
+            delete[] result_tuple.key;
+        }
+        else
+        {
+            out_result_relation->data.push_back(result_tuple);
+        }
     }
     while (kOK == join_iterator.Next()); // Move to the next tuple
 }
-
 
 } /* namespace uk_ac_ox_cs_c875114 */
