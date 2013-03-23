@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['init',['Init',['../classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a4b5a31e1b2f45fc70749baccae129740',1,'uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinIterator::Init()'],['../classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#a5bed2f3fa8d4f11a60bc618b0428b63d',1,'uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinTrieIterator::Init()'],['../classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a8eecbf89fee761fa9a4760c6d6660616',1,'uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::Init()'],['../classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#ad79bd336a73a51fed0727b043fff1588',1,'uk_ac_ox_cs_c875114::BinarySortMergeJoinIterator::Init()'],['../classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#adf3276c0b3856bfb87ca641dfd4c5c70',1,'uk_ac_ox_cs_c875114::LinearIterator::Init()']]]
+];

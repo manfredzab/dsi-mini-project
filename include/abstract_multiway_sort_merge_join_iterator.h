@@ -54,9 +54,9 @@ class AbstractMultiwaySortMergeJoinIterator : public virtual IIterator<int>
         virtual Status Next();
 
         /**
-         * Checks if the join iterator is positioned after the last element in the trie
+         * Checks if the join iterator is positioned at the last element in the trie
          * iterator intersection.
-         * @returns true if the iterator is past the last element, false otherwise.
+         * @returns true if the iterator is at the last element, false otherwise.
          */
         virtual bool AtEnd();
 

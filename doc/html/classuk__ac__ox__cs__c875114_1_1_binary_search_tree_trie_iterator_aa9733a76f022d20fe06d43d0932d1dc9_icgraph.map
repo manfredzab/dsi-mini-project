@@ -1,0 +1,7 @@
+<map id="uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::AtEnd" name="uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::AtEnd">
+<area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a032ace974df1ed4d3baf11dfb91e926b" title="Positions the trie iterator at the first child of the current node." alt="" coords="252,5,487,51"/>
+<area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a675372f7446c0b373e442607b6613b47" title="Returns the key at a current position of the iterator." alt="" coords="256,74,483,121"/>
+<area shape="rect" id="node7" href="$classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#ae861693f80aa76c347a90ae90099d6aa" title="Returns the multiplicity of the key at a current position of the iterator." alt="" coords="271,144,468,208"/>
+<area shape="rect" id="node9" href="$classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a0ca084a646f6b7849b3cc3b7b8c25671" title="Moves the trie iterator to the element which is i) in the same level, ii) belongs to the same parent..." alt="" coords="252,231,487,278"/>
+<area shape="rect" id="node11" href="$classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a3c96787db30fbb81350a4939835c3f82" title="Moves the trie iterator to the next element in same level (belonging to the same parent)." alt="" coords="537,231,769,278"/>
+</map>

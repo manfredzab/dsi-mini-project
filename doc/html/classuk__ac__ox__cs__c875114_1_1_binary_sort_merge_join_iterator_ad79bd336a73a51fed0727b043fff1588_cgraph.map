@@ -1,0 +1,4 @@
+<map id="uk_ac_ox_cs_c875114::BinarySortMergeJoinIterator::Init" name="uk_ac_ox_cs_c875114::BinarySortMergeJoinIterator::Init">
+<area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#a6a4b635a77583239154d68460bb7e7ad" title="Positions the join iterator at the next position in the join result." alt="" coords="273,14,500,61"/>
+<area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#ad92bf83b817712ebd00f2dc7433ce818" title="Checks if the join iterator is positioned at the last tuple in the join result." alt="" coords="549,5,741,69"/>
+</map>

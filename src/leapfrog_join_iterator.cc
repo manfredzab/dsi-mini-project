@@ -17,6 +17,7 @@ void LeapfrogJoinIterator::PositionCurrentIteratorAtKey(int key)
     iterators[current_iterator_index]->Seek(key);
 }
 
+
 Status LeapfrogJoinIterator::Seek(int seek_key)
 {
     iterators[current_iterator_index]->Seek(key);

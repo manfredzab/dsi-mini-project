@@ -11,6 +11,9 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * Outputs relations/tries to a given output stream. Tries are printed in a depth-first search manner.
+ */
 class Printer
 {
     public:

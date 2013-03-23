@@ -10,14 +10,17 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * Allows access to the tuples of a given relation in a given order.
+ */
 class SimpleIterator : IIterator<int*>
 {
     public:
         SimpleIterator(const Relation& relation);
         virtual ~SimpleIterator() { };
 
-        virtual Status Init();
         virtual Status Key(int** out_key);
+        virtual Status Init();
         virtual Status Multiplicity(int* out_result);
         virtual Status Next();
         virtual bool   AtEnd();

@@ -5,30 +5,47 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * Constructs the binary search tree-based trie iterator.
+ * @param relation A reference to the relation for which the trie iterator
+ *                 should be constructed.
+ */
 BinarySearchTreeTrieIterator::BinarySearchTreeTrieIterator(const Relation& relation):
     kArity(relation.attribute_names.size()),
     linear_iterator(relation)
 {
+    // Allocate memory for the current tuple
     tuple_state = new int[kArity];
-    memset(tuple_state, 0, kArity * sizeof(int)); // Initialize the memory
+    memset(tuple_state, 0, kArity * sizeof(int));
 
+    // Initialize the state
     depth = -1;
     at_end = false;
 }
 
-
+/**
+ * Releases resources held by the binary search tree iterator (but not the underlying
+ * linear iterator's binary search tree).
+ */
 BinarySearchTreeTrieIterator::~BinarySearchTreeTrieIterator()
 {
     delete[] tuple_state;
 }
 
-
+/**
+ * Initializes the underlying linear iterator. This method must be called before calling any other
+ * method of the iterator.
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySearchTreeTrieIterator::Init()
 {
     return linear_iterator.Init();
 }
 
-
+/**
+ * Positions the trie iterator at the first child of the current node.
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySearchTreeTrieIterator::Open()
 {
     if (AtEnd() || (kArity - 1 == depth) || linear_iterator.AtEnd())
@@ -49,7 +66,10 @@ Status BinarySearchTreeTrieIterator::Open()
     return kOK;
 }
 
-
+/**
+ * Positions the trie iterator at the parent node.
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySearchTreeTrieIterator::Up()
 {
     if (-1 == depth)
@@ -73,7 +93,11 @@ Status BinarySearchTreeTrieIterator::Up()
     return kOK;
 }
 
-
+/**
+ * Returns the key at a current position of the iterator.
+ * @param out_key A pointer to the memory location where the key should be stored.
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySearchTreeTrieIterator::Key(int* out_key)
 {
     if (AtEnd() || (-1 == depth))
@@ -86,6 +110,12 @@ Status BinarySearchTreeTrieIterator::Key(int* out_key)
 }
 
 
+/**
+ * Returns the multiplicity of the key at a current position of the iterator.
+ * @param out_multiplicity A pointer to the memory location where the multiplicity
+ *                         should be stored.
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySearchTreeTrieIterator::Multiplicity(int* out_multiplicity)
 {
     if (AtEnd() || (-1 == depth))
@@ -104,13 +134,21 @@ Status BinarySearchTreeTrieIterator::Multiplicity(int* out_multiplicity)
     return kOK;
 }
 
-
+/**
+ * Moves the trie iterator to the next element in same level (belonging to the same parent).
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySearchTreeTrieIterator::Next()
 {
     return Seek(tuple_state[depth] + 1);
 }
 
-
+/**
+ * Moves the trie iterator to the element which is i) in the same level, ii) belongs to the
+ * same parent, and iii) is a least upper bound (LUB) for the seek key.
+ * @param seek_key Seek key.
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySearchTreeTrieIterator::Seek(int seek_key)
 {
     if (AtEnd() || (-1 == depth))
@@ -147,20 +185,28 @@ Status BinarySearchTreeTrieIterator::Seek(int seek_key)
     return AtEnd() ? kFail : status;
 }
 
-
+/**
+ * Checks if the trie iterator is positioned at the last child of the parent node.
+ * @returns true if the iterator is positioned at the last element, false otherwise.
+ */
 bool BinarySearchTreeTrieIterator::AtEnd()
 {
     return at_end;
 }
 
 
-
+/**
+ * Returns the arity (maximum depth) of the trie.
+ * @returns the arity (maximum depth) of the trie.
+ */
 int BinarySearchTreeTrieIterator::Arity()
 {
     return kArity;
 }
 
-
+/**
+ * Updates the state of the trie iterator (depth counter and "at end" flag).
+ */
 void BinarySearchTreeTrieIterator::UpdateState()
 {
     int* iterator_tuple;
@@ -176,7 +222,13 @@ void BinarySearchTreeTrieIterator::UpdateState()
     }
 }
 
-
+/**
+ * Calculates the depth until which the tuples match completely (i.e. the longest
+ * common prefix).
+ * @param first_tuple Pointer to the first tuple.
+ * @param second_tuple Pointer to the second tuple.
+ * @returns Match depth (longest common prefix) for both tuples.
+ */
 int BinarySearchTreeTrieIterator::MatchDepth(int* first_tuple, int* second_tuple)
 {
     for (int i = 0; i < kArity; i++)

@@ -1,6 +1,27 @@
-// TODO:
-// - File headers (time, etc)
-// - Comments
+/*! \mainpage Documentation for the DSI Mini Project
+ *
+ * \section intro_sec Usage
+ *
+ * \subsection step1 Running
+ * dsi-mini-project foo bar -query ...
+ *
+ * \subsection step2 Compiling
+ *
+ * TBD
+ *
+ * \subsection step3 Testing
+ *
+ * TBD
+ *
+ * \subsection step4 Measuring times
+ *
+ * TBD
+ *
+ * \section install_sec Tools used
+ *
+ * kCacheMem
+ * Valgrind
+ */
 
 #include <iostream>
 #include <fstream>

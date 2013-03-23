@@ -7,6 +7,11 @@ namespace uk_ac_ox_cs_c875114
 
 using std::vector;
 
+/**
+ * Constructs the materialized trie-based trie iterator.
+ * @param relation A reference to the relation for which the
+ *                 trie iterator should be constructed.
+ */
 TrieTrieIterator::TrieTrieIterator(const Relation& relation) :
     kArity(relation.attribute_names.size())
 {
@@ -17,17 +22,18 @@ TrieTrieIterator::TrieTrieIterator(const Relation& relation) :
     this->at_end = false;
 }
 
+/**
+ * Releases the resources held by the trie iterator.
+ */
 TrieTrieIterator::~TrieTrieIterator()
 {
     delete this->trie;
 }
 
-Status TrieTrieIterator::Init()
-{
-    // Nothing to do
-    return kOK;
-}
-
+/**
+ * Positions the trie iterator at the first child of the current node.
+ * @returns kOK on success, failure otherwise.
+ */
 Status TrieTrieIterator::Open()
 {
     if (this->current_node->children.empty())
@@ -44,7 +50,10 @@ Status TrieTrieIterator::Open()
     return kOK;
 }
 
-
+/**
+ * Positions the trie iterator at the parent node.
+ * @returns kOK on success, failure otherwise.
+ */
 Status TrieTrieIterator::Up()
 {
     if (this->AtRoot())
@@ -61,7 +70,11 @@ Status TrieTrieIterator::Up()
     return kOK;
 }
 
-
+/**
+ * Returns the key at a current position of the iterator.
+ * @param out_key A pointer to the memory location where the key should be stored.
+ * @returns kOK on success, failure otherwise.
+ */
 Status TrieTrieIterator::Key(int* out_key)
 {
     if (this->AtRoot())
@@ -74,7 +87,12 @@ Status TrieTrieIterator::Key(int* out_key)
     return kOK;
 }
 
-
+/**
+ * Returns the multiplicity of the key at a current position of the iterator.
+ * @param out_multiplicity A pointer to the memory location where the multiplicity
+ *                         should be stored.
+ * @returns kOK on success, failure otherwise.
+ */
 Status TrieTrieIterator::Multiplicity(int* out_multiplicity)
 {
     if (this->AtRoot())
@@ -87,7 +105,10 @@ Status TrieTrieIterator::Multiplicity(int* out_multiplicity)
     return kOK;
 }
 
-
+/**
+ * Moves the trie iterator to the next element in same level (belonging to the same parent).
+ * @returns kOK on success, failure otherwise.
+ */
 Status TrieTrieIterator::Next()
 {
     if (this->AtRoot() || this->AtEnd())
@@ -112,21 +133,42 @@ Status TrieTrieIterator::Next()
     return kOK;
 }
 
-
+/**
+ * Checks if the trie iterator is positioned at the last child of the parent node.
+ * @returns true if the iterator is positioned at the last element, false otherwise.
+ */
 bool TrieTrieIterator::AtEnd()
 {
     return this->at_end;
 }
 
-
+/**
+ * Checks if the trie iterator is positioned at the root.
+ * @returns true if the iterator is positioned at the root, false otherwise.
+ */
 bool TrieTrieIterator::AtRoot()
 {
     return (this->current_node == &trie->root);
 }
 
+
+/**
+ * Returns the arity (maximum depth) of the trie.
+ * @returns the arity (maximum depth) of the trie.
+ */
 int TrieTrieIterator::Arity()
 {
     return this->kArity;
+}
+
+/**
+ * Initializes the trie iterator.
+ * @returns kOK
+ */
+Status TrieTrieIterator::Init()
+{
+    // Nothing to do
+    return kOK;
 }
 
 } /* namespace uk_ac_ox_cs_c875114 */

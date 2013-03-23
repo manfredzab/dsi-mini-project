@@ -5,6 +5,10 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * Constructs a linear iterator for a given relation.
+ * @param relation Relation for which a linear iterator should be constructed.
+ */
 LinearIterator::LinearIterator(const Relation& relation) :
     SimpleIterator(relation)
 {
@@ -13,13 +17,20 @@ LinearIterator::LinearIterator(const Relation& relation) :
     at_end = false;
 }
 
-
+/**
+ * Releases all resources (including a binary search tree) occupied by the linear iterator.
+ */
 LinearIterator::~LinearIterator()
 {
+    // Delete the binary search tree
     delete search_tree;
 }
 
-
+/**
+ * Initializes the iterator. This method must be called before calling any other method
+ * of the iterator.
+ * @returns kOK on success, failure otherwise.
+ */
 Status LinearIterator::Init()
 {
     current_node = search_tree->root;
@@ -34,7 +45,12 @@ Status LinearIterator::Init()
     return kOK;
 }
 
-
+/**
+ * Returns the key at a current position of the iterator.
+ * @param out_key A pointer to the memory location where the key should be
+ *                stored.
+ * @returns kOK on success, failure otherwise.
+ */
 Status LinearIterator::Key(int** out_key)
 {
     if (!AtEnd())
@@ -49,7 +65,12 @@ Status LinearIterator::Key(int** out_key)
     }
 }
 
-
+/**
+ * Returns the multiplicity of the key at a current position of the iterator.
+ * @param out_multiplicity A pointer to the memory location where the multiplicity
+ *                         should be stored.
+ * @returns kOK on success, failure otherwise.
+ */
 Status LinearIterator::Multiplicity(int* out_multiplicity)
 {
     if (!AtEnd())
@@ -64,7 +85,11 @@ Status LinearIterator::Multiplicity(int* out_multiplicity)
     }
 }
 
-
+/**
+ * Moves the iterator to the least upper bound (LUB) of the seek key.
+ * @param seek_key Seek key.
+ * @returns kOK on success, failure otherwise.
+ */
 Status LinearIterator::Seek(int* seek_key)
 {
     if (AtEnd())
@@ -139,8 +164,8 @@ Status LinearIterator::Seek(int* seek_key)
 }
 
 /**
- * Moves to the next tuple in the relation. This method uses the implementation of @see Seek to
- * find the least upper bound of (current node's key + 1).
+ * Moves the iterator to the next tuple in the relation.
+ * @returns kOK on success, failure otherwise.
  */
 Status LinearIterator::Next()
 {
@@ -166,7 +191,11 @@ Status LinearIterator::Next()
     return status;
 }
 
-
+/**
+ * Checks if the join iterator is positioned at the last tuple in the
+ * relation.
+ * @returns true if the iterator is at the last tuple, false otherwise.
+ */
 bool LinearIterator::AtEnd()
 {
     return at_end;

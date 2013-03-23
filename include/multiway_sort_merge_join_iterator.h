@@ -7,6 +7,11 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * Multiway sort-merge join iterator implementation. It is based on an abstract multiway sort-merge join iterator, with
+ * the main difference being that it uses the linear iterator portions of the trie-based trie iterator to linearly seek
+ * the iterator (by repeatedly calling Next()) iterator to the next candidate key.
+ */
 class MultiwaySortMergeJoinIterator : public virtual AbstractMultiwaySortMergeJoinIterator<TrieTrieIterator>
 {
     public:
@@ -14,6 +19,11 @@ class MultiwaySortMergeJoinIterator : public virtual AbstractMultiwaySortMergeJo
         virtual ~MultiwaySortMergeJoinIterator() { };
 
     protected:
+        /**
+         * Finds the least upper bound (LUB) for a given key at the current trie iterator by
+         * linear scanning (repeatedly calling Next() until the LUB is found).
+         * @param key Key for which the LUB should be found.
+         */
         virtual void PositionCurrentIteratorAtKey(int key);
 
 };

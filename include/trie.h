@@ -7,6 +7,10 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * Holds internal trie node data: pointer to the parent, node key, node multiplicity,
+ * a list of children trie nodes and the pointer to the currently open child.
+ */
 struct TrieNode
 {
     TrieNode*                                  parent;
@@ -16,23 +20,34 @@ struct TrieNode
     typename std::vector<TrieNode*>::iterator  current_child;
 };
 
+/**
+ * Trie implementation. Builds a trie for a given relation in the order of relation's
+ * attributes.
+ */
 class Trie
 {
     public:
         Trie(const Relation& relation);
         virtual ~Trie();
 
+        /**
+         * Compares two trie nodes by keys.
+         * @param first First node.
+         * @param second Second node.
+         * @returns true if the key of the first node is strictly smaller than
+         *          the key of the second node, false otherwise.
+         */
         static bool CompareTrieNodeKeys(TrieNode* first, TrieNode* second)
         {
             return (first->key < second->key);
         }
 
-        TrieNode root;
+        TrieNode root; /**< Root node of the trie. */
 
     private:
         void Insert(const int* tuple);
 
-        int trie_depth;
+        int trie_depth; /**< Depth of the trie. */
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */

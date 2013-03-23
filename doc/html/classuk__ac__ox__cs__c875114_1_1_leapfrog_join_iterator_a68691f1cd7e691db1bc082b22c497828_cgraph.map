@@ -1,0 +1,4 @@
+<map id="uk_ac_ox_cs_c875114::LeapfrogJoinIterator::Seek" name="uk_ac_ox_cs_c875114::LeapfrogJoinIterator::Seek">
+<area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a0cd13dfc09f2223941fb56024dbdd53a" title="Checks if the join iterator is positioned at the last element in the trie iterator intersection..." alt="" coords="239,5,463,86"/>
+<area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a3fdad1b6a6e664373810d29c2b4203a6" title="Positions all trie iterators at the next element of the iterator key intersection." alt="" coords="239,109,463,190"/>
+</map>

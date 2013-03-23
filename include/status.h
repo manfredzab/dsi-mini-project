@@ -4,6 +4,10 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * Status enumerator, typically used to inform the caller about the success/failure of the callee.
+ * Supported status values include success (kOK), failure (kFail) or lack of implementation (kNotImplemented).
+ */
 enum Status
 {
   kOK = 0,

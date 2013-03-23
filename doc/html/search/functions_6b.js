@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['key',['Key',['../classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a014589f62b3002ac2c27240d40bccdb6',1,'uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinIterator::Key()'],['../classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#aa27c4b308df7bb0e72a46b9657299def',1,'uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinTrieIterator::Key()'],['../classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a675372f7446c0b373e442607b6613b47',1,'uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::Key()'],['../classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#afbcb3a46595eb687c08627d3b11c1650',1,'uk_ac_ox_cs_c875114::BinarySortMergeJoinIterator::Key()'],['../classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a64c068f0a4e2df1e12a256e7b46e711f',1,'uk_ac_ox_cs_c875114::LinearIterator::Key()']]]
+];
