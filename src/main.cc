@@ -149,7 +149,6 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
-
 void PrintUsageMessage()
 {
     std::cerr << "Usage: \"dsi-mini-project <algorithm> -query <query file> -database <database file> [-output <output type>]\", where" << std::endl;
