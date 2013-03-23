@@ -10,8 +10,14 @@ namespace uk_ac_ox_cs_c875114
 using std::vector;
 using std::string;
 
-typedef BinarySortMergeJoinIterator::AttributeOrderDescriptor AttributeOrderDescriptor; // Shorten the name without polluting the namespaces
+typedef BinarySortMergeJoinIterator::AttributeOrderDescriptor AttributeOrderDescriptor; // Shortening of the name (without polluting the namespace)
 
+/***
+ * Performs the binary sort-merge joins for the given relations and a given query.
+ * @param relations Relations to be joined.
+ * @param query Join query.
+ * @result A pointer to the joined relation.
+ */
 Relation* BinarySortMergeJoin::Join(Relation& outer_relation, Relation& inner_relation, const Query& query)
 {
     // Build the result relation metadata
@@ -86,7 +92,12 @@ Relation* BinarySortMergeJoin::Join(Relation& outer_relation, Relation& inner_re
     return result_relation;
 }
 
-
+/***
+ * Joins the outer and inner relations using a binary sort-merge join iterator.
+ * @param join_iterator Binary sort-merge join iterator that is used to join the relations.
+ * @param out_result_relation A pointer to the result relation, where the tuple data should
+ *                            be stored.
+ */
 void BinarySortMergeJoin::JoinUsingIterator(BinarySortMergeJoinIterator& join_iterator, Relation* out_result_relation)
 {
     int result_relation_tuple_size = out_result_relation->attribute_names.size();

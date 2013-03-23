@@ -111,32 +111,32 @@ $(document).ready(function(){initNavTree('relation_8h_source.html','');});
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>uk_ac_ox_cs_c875114</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html">   10</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    ~<a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a>()</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">for</span> (std::vector&lt;int*&gt;::iterator it = data.begin(); it != data.end(); ++it)</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keyword">delete</span>[] *it;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::vector&lt;std::string&gt; attribute_names;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::vector&lt;int*&gt; data;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html">   15</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    ~<a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a>()</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="comment">// Release the tuple data</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">for</span> (std::vector&lt;int*&gt;::iterator it = <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html#a4b3172ecf0f2232aabb97e10f67cda15" title="Tuple data.">data</a>.begin(); it != <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html#a4b3172ecf0f2232aabb97e10f67cda15" title="Tuple data.">data</a>.end(); ++it)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">delete</span>[] *it;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <span class="comment">/* namespace uk_ac_ox_cs_c875114 */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RELATION_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html#a46ff3db44ed0436ca08a4f44b36638d8">   26</a></span>&#160;    std::string <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html#a46ff3db44ed0436ca08a4f44b36638d8" title="Relation name.">name</a>;                          </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html#aff6a5b61aa4772217495da70598b081b">   27</a></span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html#aff6a5b61aa4772217495da70598b081b" title="Attribute names.">attribute_names</a>;  </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html#a4b3172ecf0f2232aabb97e10f67cda15">   29</a></span>&#160;    std::vector&lt;int*&gt; <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html#a4b3172ecf0f2232aabb97e10f67cda15" title="Tuple data.">data</a>;                    </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <span class="comment">/* namespace uk_ac_ox_cs_c875114 */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RELATION_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9bec7083027963d9f9ceae2cc7474de5.html">git</a></li><li class="navelem"><a class="el" href="dir_5f7917324dd3531ad5091474fec5d929.html">dsi-mini-project</a></li><li class="navelem"><a class="el" href="dir_cd053fb20616144d9b3fb80d67110617.html">include</a></li><li class="navelem"><b>relation.h</b></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

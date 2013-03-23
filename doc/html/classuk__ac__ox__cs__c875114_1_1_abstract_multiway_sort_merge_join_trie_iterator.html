@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('classuk__ac__ox__cs__c875114_1_1_abstr
 </div><!--header-->
 <div class="contents">
 
-<p>An abstract multi-way sort-merge join trie iterator.  
+<p>Basis for a generic multi-way sort-merge join trie iterator.  
  <a href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="abstract__multiway__sort__merge__join__trie__iterator_8h_source.html">abstract_multiway_sort_merge_join_trie_iterator.h</a>&gt;</code></p>
@@ -176,9 +176,9 @@ TTrieIterator * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class
 <div class="textblock"><h3>template&lt;class TTrieIterator, class TJoinIterator&gt;<br/>
 class uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinTrieIterator&lt; TTrieIterator, TJoinIterator &gt;</h3>
 
-<p>An abstract multi-way sort-merge join trie iterator. </p>
+<p>Basis for a generic multi-way sort-merge join trie iterator. </p>
 <p>For each join variable X it uses join iterators (of generic TJoinIterator type) over trie iterators (of generic TTrieIterator type) on relations containing X, to produce a non-materialized trie over the resulting relation.</p>
-<p>For example, a multi-way sort-merge join trie iterator instantiates TTrieIterator to <a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html">TrieTrieIterator</a>, and TJoinIterator to <a class="el" href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator.html">MultiwaySortMergeJoinIterator</a>. A leapfrog join trie iterator instantiates TTrieIterator to <a class="el" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html">BinarySearchTreeTrieIterator</a>, and TJoinIterator to <a class="el" href="classuk__ac__ox__cs__c875114_1_1_leapfrog_join_iterator.html" title="Leapfrog join iterator class.">LeapfrogJoinIterator</a>.</p>
+<p>For example, a multi-way sort-merge join trie iterator instantiates TTrieIterator to <a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html">TrieTrieIterator</a>, and TJoinIterator to <a class="el" href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator.html" title="Multiway sort-merge join iterator implementation.">MultiwaySortMergeJoinIterator</a>. A leapfrog join trie iterator instantiates TTrieIterator to <a class="el" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html">BinarySearchTreeTrieIterator</a>, and TJoinIterator to <a class="el" href="classuk__ac__ox__cs__c875114_1_1_leapfrog_join_iterator.html" title="Leapfrog join iterator implementation.">LeapfrogJoinIterator</a>.</p>
 <p>Both of these algorithms also provide implementations of CreateTrieIteratorForRelation and CreateJoinIteratorForTrieIterators methods to create these iterators. </p>
 </div><h2>Member Function Documentation</h2>
 <a class="anchor" id="a3506776237f9e2e78d0ec783fd6b118a"></a>
@@ -717,7 +717,7 @@ template&lt;class TTrieIterator, class TJoinIterator&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html">AbstractMultiwaySortMergeJoinTrieIterator</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

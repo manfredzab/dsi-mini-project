@@ -18,12 +18,6 @@ class BinarySortMergeJoin
         static Relation* Join(Relation& outer_relation, Relation& inner_relation, const Query& query);
 
     private:
-        /***
-         * Joins the outer and inner relations using a binary sort-merge join iterator.
-         * @param join_iterator Binary sort-merge join iterator that is used to join the relations.
-         * @param out_result_relation A pointer to the result relation, where the tuple data should
-         *                            be stored.
-         */
         static void JoinUsingIterator(BinarySortMergeJoinIterator& join_iterator, Relation* out_result_relation);
 };
 

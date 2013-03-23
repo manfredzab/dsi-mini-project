@@ -19,47 +19,11 @@ class LinearIterator : public virtual SimpleIterator
         LinearIterator(const Relation& relation);
         virtual ~LinearIterator();
 
-        /**
-         * Initializes the iterator. This method must be called before calling any other method
-         * of the iterator.
-         * @returns kOK on success, failure otherwise.
-         */
         virtual Status Init();
-
-        /**
-         * Returns the key at a current position of the iterator.
-         * @param out_key A pointer to the memory location where the key should be
-         *                stored.
-         * @returns kOK on success, failure otherwise.
-         */
         virtual Status Key(int** out_key);
-
-        /**
-         * Returns the multiplicity of the key at a current position of the iterator.
-         * @param out_multiplicity A pointer to the memory location where the multiplicity
-         *                         should be stored.
-         * @returns kOK on success, failure otherwise.
-         */
         virtual Status Multiplicity(int* out_result);
-
-        /**
-         * Moves the iterator to the next tuple in the relation.
-         * @returns kOK on success, failure otherwise.
-         */
         virtual Status Next();
-
-        /**
-         * Checks if the join iterator is positioned at the last element tuple in
-         * the relation.
-         * @returns true if the iterator is at the last tuple, false otherwise.
-         */
-        virtual bool AtEnd();
-
-        /**
-         * Moves the iterator to the least upper bound (LUB) of the seek key.
-         * @param seek_key Seek key.
-         * @returns kOK on success, failure otherwise.
-         */
+        virtual bool   AtEnd();
         virtual Status Seek(int* seek_key);
 
     protected:

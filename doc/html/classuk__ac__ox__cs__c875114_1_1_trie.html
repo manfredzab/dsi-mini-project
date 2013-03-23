@@ -110,22 +110,128 @@ $(document).ready(function(){initNavTree('classuk__ac__ox__cs__c875114_1_1_trie.
 <div class="title">uk_ac_ox_cs_c875114::Trie Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie.html" title="Trie implementation.">Trie</a> implementation.  
+ <a href="classuk__ac__ox__cs__c875114_1_1_trie.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="trie_8h_source.html">trie.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a89e1a18a6cf6924601f095eb097f4170"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89e1a18a6cf6924601f095eb097f4170"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Trie</b> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memitem:a89e1a18a6cf6924601f095eb097f4170"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie.html#a89e1a18a6cf6924601f095eb097f4170">Trie</a> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memdesc:a89e1a18a6cf6924601f095eb097f4170"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a trie for a given relation (in the relation's attribute order, i.e.  <a href="#a89e1a18a6cf6924601f095eb097f4170"></a><br/></td></tr>
+<tr class="memitem:a02d2d8e073eafc22b333e90f4e640899"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02d2d8e073eafc22b333e90f4e640899"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie.html#a02d2d8e073eafc22b333e90f4e640899">~Trie</a> ()</td></tr>
+<tr class="memdesc:a02d2d8e073eafc22b333e90f4e640899"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources held by the trie (including all memory occupied by the trie nodes). <br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aade025afb6f6390135bc26e67e4a077a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aade025afb6f6390135bc26e67e4a077a"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>CompareTrieNodeKeys</b> (<a class="el" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a> *first, <a class="el" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a> *second)</td></tr>
+<tr class="memitem:aade025afb6f6390135bc26e67e4a077a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie.html#aade025afb6f6390135bc26e67e4a077a">CompareTrieNodeKeys</a> (<a class="el" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a> *first, <a class="el" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a> *second)</td></tr>
+<tr class="memdesc:aade025afb6f6390135bc26e67e4a077a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two trie nodes by keys.  <a href="#aade025afb6f6390135bc26e67e4a077a"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ab394b101dafa7f65c5c716630adf3a72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab394b101dafa7f65c5c716630adf3a72"></a>
-<a class="el" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>root</b></td></tr>
+<tr class="memitem:ab394b101dafa7f65c5c716630adf3a72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie.html#ab394b101dafa7f65c5c716630adf3a72">root</a></td></tr>
+<tr class="memdesc:ab394b101dafa7f65c5c716630adf3a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Root node of the trie.  <a href="#ab394b101dafa7f65c5c716630adf3a72"></a><br/></td></tr>
 </table>
+<a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie.html" title="Trie implementation.">Trie</a> implementation. </p>
+<p>Builds a trie for a given relation in the order of relation's attributes. </p>
+</div><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a89e1a18a6cf6924601f095eb097f4170"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uk_ac_ox_cs_c875114::Trie::Trie </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;&#160;</td>
+          <td class="paramname"><em>relation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a trie for a given relation (in the relation's attribute order, i.e. </p>
+<p>the leaf nodes of the trie correspond to the last attribute of the relation). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">relation</td><td><a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a> for which the trie should be constructed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_trie_a89e1a18a6cf6924601f095eb097f4170_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_trie_a89e1a18a6cf6924601f095eb097f4170_cgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_trie_a89e1a18a6cf6924601f095eb097f4170_cgraph" id="classuk__ac__ox__cs__c875114_1_1_trie_a89e1a18a6cf6924601f095eb097f4170_cgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a8cd369f15f839afbb043e13e74f996bb" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="411,24,565,70"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4c14eb91f0e51eb6efd6912a2f7b7a79" title="Returns the key at a current position of the iterator." alt="" coords="208,24,363,70"/><area shape="rect" id="node8" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4e967e3b27385f35e8dcba1f1119bbcd" title="Moves the iterator to the next tuple in the relation." alt="" coords="208,93,363,140"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
+<a class="anchor" id="aade025afb6f6390135bc26e67e4a077a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool uk_ac_ox_cs_c875114::Trie::CompareTrieNodeKeys </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a> *&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a> *&#160;</td>
+          <td class="paramname"><em>second</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compares two trie nodes by keys. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>First node. </td></tr>
+    <tr><td class="paramname">second</td><td>Second node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the key of the first node is strictly smaller than the key of the second node, false otherwise. </dd></dl>
+
+</div>
+</div>
+<h2>Member Data Documentation</h2>
+<a class="anchor" id="ab394b101dafa7f65c5c716630adf3a72"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a> uk_ac_ox_cs_c875114::Trie::root</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Root node of the trie. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/manfred/git/dsi-mini-project/include/<a class="el" href="trie_8h_source.html">trie.h</a></li>
 <li>/home/manfred/git/dsi-mini-project/src/trie.cc</li>
@@ -136,7 +242,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie.html">Trie</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

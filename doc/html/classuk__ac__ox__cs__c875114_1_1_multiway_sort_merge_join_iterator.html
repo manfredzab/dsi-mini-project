@@ -109,6 +109,11 @@ $(document).ready(function(){initNavTree('classuk__ac__ox__cs__c875114_1_1_multi
 <div class="title">uk_ac_ox_cs_c875114::MultiwaySortMergeJoinIterator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Multiway sort-merge join iterator implementation.  
+ <a href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="multiway__sort__merge__join__iterator_8h_source.html">multiway_sort_merge_join_iterator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for uk_ac_ox_cs_c875114::MultiwaySortMergeJoinIterator:</div>
 <div class="dyncontent">
@@ -124,25 +129,24 @@ Public Member Functions</h2></td></tr>
 <tr class="inherit_header pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator')"><img src="closed.png" alt="-"/>&nbsp;Public Member Functions inherited from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html">uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinIterator< TrieTrieIterator ></a></td></tr>
 <tr class="memitem:af3fdcfd7fc0b190c92fed81d05fb862b inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3fdcfd7fc0b190c92fed81d05fb862b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>AbstractMultiwaySortMergeJoinIterator</b> (std::vector&lt; <a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html">TrieTrieIterator</a> * &gt; &amp;iterators)</td></tr>
-<tr class="memitem:a4b5a31e1b2f45fc70749baccae129740 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a4b5a31e1b2f45fc70749baccae129740">Init</a> ()</td></tr>
-<tr class="memdesc:a4b5a31e1b2f45fc70749baccae129740 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the iterator.  <a href="#a4b5a31e1b2f45fc70749baccae129740"></a><br/></td></tr>
-<tr class="memitem:a014589f62b3002ac2c27240d40bccdb6 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a014589f62b3002ac2c27240d40bccdb6">Key</a> (int *out_key)</td></tr>
-<tr class="memdesc:a014589f62b3002ac2c27240d40bccdb6 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the key at a current position of the iterator.  <a href="#a014589f62b3002ac2c27240d40bccdb6"></a><br/></td></tr>
-<tr class="memitem:a04967be0876e519136c44572b02b7163 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a04967be0876e519136c44572b02b7163">Multiplicity</a> (int *out_multiplicity)</td></tr>
-<tr class="memdesc:a04967be0876e519136c44572b02b7163 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the multiplicity of the key at a current position of the iterator.  <a href="#a04967be0876e519136c44572b02b7163"></a><br/></td></tr>
-<tr class="memitem:a977c42c368db5057b64c26d23cb31171 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a977c42c368db5057b64c26d23cb31171">Next</a> ()</td></tr>
-<tr class="memdesc:a977c42c368db5057b64c26d23cb31171 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the join iterator to the next element in the trie iterator insersection.  <a href="#a977c42c368db5057b64c26d23cb31171"></a><br/></td></tr>
-<tr class="memitem:a0cd13dfc09f2223941fb56024dbdd53a inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a0cd13dfc09f2223941fb56024dbdd53a">AtEnd</a> ()</td></tr>
-<tr class="memdesc:a0cd13dfc09f2223941fb56024dbdd53a inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the join iterator is positioned at the last element in the trie iterator intersection.  <a href="#a0cd13dfc09f2223941fb56024dbdd53a"></a><br/></td></tr>
+<tr class="memitem:a4b5a31e1b2f45fc70749baccae129740 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b5a31e1b2f45fc70749baccae129740"></a>
+virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
+<tr class="memitem:a014589f62b3002ac2c27240d40bccdb6 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a014589f62b3002ac2c27240d40bccdb6"></a>
+virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Key</b> (int *out_key)</td></tr>
+<tr class="memitem:a04967be0876e519136c44572b02b7163 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04967be0876e519136c44572b02b7163"></a>
+virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Multiplicity</b> (int *out_multiplicity)</td></tr>
+<tr class="memitem:a977c42c368db5057b64c26d23cb31171 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a977c42c368db5057b64c26d23cb31171"></a>
+virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Next</b> ()</td></tr>
+<tr class="memitem:a0cd13dfc09f2223941fb56024dbdd53a inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0cd13dfc09f2223941fb56024dbdd53a"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>AtEnd</b> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:aabad9508ef89e4066083eee5da2d49b5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator.html#aabad9508ef89e4066083eee5da2d49b5">PositionCurrentIteratorAtKey</a> (int <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a5a1668492b8b548b02e543b5662401ce">key</a>)</td></tr>
-<tr class="memdesc:aabad9508ef89e4066083eee5da2d49b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract method to find the least upper bound (LUB) for a given key at the current trie iterator.  <a href="#aabad9508ef89e4066083eee5da2d49b5"></a><br/></td></tr>
+<tr class="memdesc:aabad9508ef89e4066083eee5da2d49b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the least upper bound (LUB) for a given key at the current trie iterator by linear scanning (repeatedly calling <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a977c42c368db5057b64c26d23cb31171">Next()</a> until the LUB is found).  <a href="#aabad9508ef89e4066083eee5da2d49b5"></a><br/></td></tr>
 <tr class="inherit_header pro_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator')"><img src="closed.png" alt="-"/>&nbsp;Protected Member Functions inherited from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html">uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinIterator< TrieTrieIterator ></a></td></tr>
 <tr class="memitem:a3fdad1b6a6e664373810d29c2b4203a6 inherit pro_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3fdad1b6a6e664373810d29c2b4203a6"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a3fdad1b6a6e664373810d29c2b4203a6">Search</a> ()</td></tr>
-<tr class="memdesc:a3fdad1b6a6e664373810d29c2b4203a6 inherit pro_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Positions all trie iterators at the next element of the iterator key intersection. <br/></td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Search</b> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -163,7 +167,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <tr class="memitem:a9537823b5c8459ea67a3f06469c4e9d6 inherit pro_attribs_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a9537823b5c8459ea67a3f06469c4e9d6">key_multiplicity</a></td></tr>
 <tr class="memdesc:a9537823b5c8459ea67a3f06469c4e9d6 inherit pro_attribs_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current key multiplicity.  <a href="#a9537823b5c8459ea67a3f06469c4e9d6"></a><br/></td></tr>
 </table>
-<h2>Member Function Documentation</h2>
+<a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Multiway sort-merge join iterator implementation. </p>
+<p>It is based on an abstract multiway sort-merge join iterator, with the main difference being that it uses the linear iterator portions of the trie-based trie iterator to linearly seek the iterator (by repeatedly calling <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a977c42c368db5057b64c26d23cb31171">Next()</a>) iterator to the next candidate key. </p>
+</div><h2>Member Function Documentation</h2>
 <a class="anchor" id="aabad9508ef89e4066083eee5da2d49b5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -186,7 +193,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </table>
 </div><div class="memdoc">
 
-<p>An abstract method to find the least upper bound (LUB) for a given key at the current trie iterator. </p>
+<p>Finds the least upper bound (LUB) for a given key at the current trie iterator by linear scanning (repeatedly calling <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a977c42c368db5057b64c26d23cb31171">Next()</a> until the LUB is found). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>Key for which the LUB should be found. </td></tr>
@@ -201,7 +208,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator_aabad9508ef89e4066083eee5da2d49b5_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator_aabad9508ef89e4066083eee5da2d49b5_cgraph" alt=""/></div>
 <map name="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator_aabad9508ef89e4066083eee5da2d49b5_cgraph" id="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator_aabad9508ef89e4066083eee5da2d49b5_cgraph">
-<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a0cd13dfc09f2223941fb56024dbdd53a" title="Checks if the join iterator is positioned at the last element in the trie iterator intersection..." alt="" coords="263,5,452,86"/></map>
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a0cd13dfc09f2223941fb56024dbdd53a" title="uk_ac_ox_cs_c875114\l::AbstractMultiwaySortMerge\lJoinIterator\&lt; TrieTrieIterator\l \&gt;::AtEnd" alt="" coords="263,5,452,86"/></map>
 </div>
 </p>
 
@@ -217,7 +224,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator.html">MultiwaySortMergeJoinIterator</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

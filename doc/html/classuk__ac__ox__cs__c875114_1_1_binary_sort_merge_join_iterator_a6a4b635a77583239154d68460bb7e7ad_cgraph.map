@@ -1,3 +1,6 @@
 <map id="uk_ac_ox_cs_c875114::BinarySortMergeJoinIterator::Next" name="uk_ac_ox_cs_c875114::BinarySortMergeJoinIterator::Next">
 <area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#ad92bf83b817712ebd00f2dc7433ce818" title="Checks if the join iterator is positioned at the last tuple in the join result." alt="" coords="283,5,475,69"/>
+<area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a8cd369f15f839afbb043e13e74f996bb" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="523,143,677,190"/>
+<area shape="rect" id="node7" href="$classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4c14eb91f0e51eb6efd6912a2f7b7a79" title="Returns the key at a current position of the iterator." alt="" coords="301,143,456,190"/>
+<area shape="rect" id="node10" href="$classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4e967e3b27385f35e8dcba1f1119bbcd" title="Moves the iterator to the next tuple in the relation." alt="" coords="301,213,456,259"/>
 </map>

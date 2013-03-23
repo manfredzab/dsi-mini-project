@@ -7,8 +7,17 @@ namespace uk_ac_ox_cs_c875114
 
 using std::string;
 
+/**
+ *  Reads the arguments from the command line argument string array and populates the
+ *  @see Arguments structure.
+ *  @param argc Argument count.
+ *  @param argv A pointer to the command line argument string array.
+ *  @param out_arguments Resulting @see Arguments structure.
+ *  @return @see kOK if the arguments were parsed successfully, @see kFail otherwise.
+ */
 Status ArgumentParser::ParseArguments(int argc, char *argv[], Arguments* out_arguments)
 {
+    // Check the fixed parts of the command line argument
     if ((6 != argc) || (strcmp(argv[2], "-query") != 0) || (strcmp(argv[4], "-database") != 0))
     {
         if ((8 != argc) || (strcmp(argv[6], "-output") != 0)) // One last chance

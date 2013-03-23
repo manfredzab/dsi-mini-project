@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('classuk__ac__ox__cs__c875114_1_1_abstr
 </div><!--header-->
 <div class="contents">
 
-<p>An abstract class that serves as a basis for generic multiway sort-merge join iterator.  
+<p>Basis for a generic multi-way sort-merge join iterator.  
  <a href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="abstract__multiway__sort__merge__join__iterator_8h_source.html">abstract_multiway_sort_merge_join_iterator.h</a>&gt;</code></p>
@@ -125,8 +125,8 @@ Inheritance diagram for uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinIterat
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af3fdcfd7fc0b190c92fed81d05fb862b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3fdcfd7fc0b190c92fed81d05fb862b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AbstractMultiwaySortMergeJoinIterator</b> (std::vector&lt; TTrieIterator * &gt; &amp;<a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a7e6da0c08cbe0661aa7bde8526548905">iterators</a>)</td></tr>
+<tr class="memitem:af3fdcfd7fc0b190c92fed81d05fb862b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#af3fdcfd7fc0b190c92fed81d05fb862b">AbstractMultiwaySortMergeJoinIterator</a> (std::vector&lt; TTrieIterator * &gt; &amp;<a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a7e6da0c08cbe0661aa7bde8526548905">iterators</a>)</td></tr>
+<tr class="memdesc:af3fdcfd7fc0b190c92fed81d05fb862b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the basis for the multi-way sort-merge join iterator and initializes its state.  <a href="#af3fdcfd7fc0b190c92fed81d05fb862b"></a><br/></td></tr>
 <tr class="memitem:a4b5a31e1b2f45fc70749baccae129740"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a4b5a31e1b2f45fc70749baccae129740">Init</a> ()</td></tr>
 <tr class="memdesc:a4b5a31e1b2f45fc70749baccae129740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the iterator.  <a href="#a4b5a31e1b2f45fc70749baccae129740"></a><br/></td></tr>
 <tr class="memitem:a014589f62b3002ac2c27240d40bccdb6"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a014589f62b3002ac2c27240d40bccdb6">Key</a> (int *out_key)</td></tr>
@@ -168,9 +168,37 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <div class="textblock"><h3>template&lt;class TTrieIterator&gt;<br/>
 class uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinIterator&lt; TTrieIterator &gt;</h3>
 
-<p>An abstract class that serves as a basis for generic multiway sort-merge join iterator. </p>
-<p>To get an instance of a multiway sort-merge join iterator, PositionCurrentIteratorAtKey method needs to be implemented. E.g. in a regular multi-way sort merge join, PositionCurrentIteratorAtKey is implemented as a tuple-by-tuple scan in the current trie iterator level. In the leapfrog join, this method is implemented as an efficient O(logN) (amortized O(1 + log N/m)) seek in the current trie iterator level. </p>
-</div><h2>Member Function Documentation</h2>
+<p>Basis for a generic multi-way sort-merge join iterator. </p>
+<p>To get an instance of a multi-way sort-merge join iterator, PositionCurrentIteratorAtKey method needs to be implemented. E.g. in a regular multi-way sort merge join, PositionCurrentIteratorAtKey is implemented as a tuple-by-tuple scan in the current trie iterator level. In the leapfrog join, this method is implemented as an efficient <img class="formulaInl" alt="$O(\log N)$" src="form_0.png"/> (amortized <img class="formulaInl" alt="$O(1 + \log N/m)$" src="form_1.png"/>) seek in the current trie iterator level.</p>
+<p><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie.html" title="Trie implementation.">Trie</a> iterator handling is largely based on the leapfrog join iterator as proposed by Todd L Veldhuizen in "Leapfrog Triejoin: A Simple, Worst-Case Optimal Join Algorithm", LogicBlox Technical Report LB1201, December 2012. </p>
+</div><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af3fdcfd7fc0b190c92fed81d05fb862b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TTrieIterator&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html">uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinIterator</a>&lt; TTrieIterator &gt;::<a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html">AbstractMultiwaySortMergeJoinIterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; TTrieIterator * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>iterators</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs the basis for the multi-way sort-merge join iterator and initializes its state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iterators</td><td><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie.html" title="Trie implementation.">Trie</a> iterators which should be used by this join iterator when searching for common elements. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
 <a class="anchor" id="a0cd13dfc09f2223941fb56024dbdd53a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -229,6 +257,15 @@ template&lt;class TTrieIterator &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
 
 <p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_iterator.html">uk_ac_ox_cs_c875114::IIterator&lt; int &gt;</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator_a4b5a31e1b2f45fc70749baccae129740_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator_a4b5a31e1b2f45fc70749baccae129740_cgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator_a4b5a31e1b2f45fc70749baccae129740_cgraph" id="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator_a4b5a31e1b2f45fc70749baccae129740_cgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a3cb448c13a557468cef6e827e8012aec" title="An inline trie iterator comparator, which compares tries by their current keys using &lt; (less than) re..." alt="" coords="245,5,440,69"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -527,7 +564,7 @@ template&lt;class TTrieIterator&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html">AbstractMultiwaySortMergeJoinIterator</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

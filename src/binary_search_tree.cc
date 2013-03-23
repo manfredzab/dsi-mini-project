@@ -8,6 +8,11 @@ namespace uk_ac_ox_cs_c875114
 using std::vector;
 using std::stack;
 
+/**
+ * Constructs a binary search tree from the given tuple data.
+ * @param tuple_data Tuple data vector.
+ * @param tuple_size Tuple size.
+ */
 BinarySearchTree::BinarySearchTree(vector<int*> tuple_data, int tuple_size) : kTupleSize(tuple_size)
 {
     // Remove duplicates from the tuple data by storing tuple multiplicities next to tuple keys
@@ -16,6 +21,7 @@ BinarySearchTree::BinarySearchTree(vector<int*> tuple_data, int tuple_size) : kT
     // Set the iterator to the middle of multiplicities vector
     vector<KeyMultiplicityPair>::const_iterator middle_iterator = multiplicities.begin() + (multiplicities.size() >> 1);
 
+    // Build the binary search tree by creating the root node and recursively inserting subtrees
     root = new TreeNode();
     root->parent = NULL;
     root->key_multiplicity_pair = *middle_iterator;
@@ -23,7 +29,9 @@ BinarySearchTree::BinarySearchTree(vector<int*> tuple_data, int tuple_size) : kT
     root->right_child = InsertSubtree(root, ++middle_iterator, multiplicities.end());
 }
 
-
+/**
+ * Releases all resources occupied by the binary search tree (including the occupied memory).
+ */
 BinarySearchTree::~BinarySearchTree()
 {
     stack<TreeNode*> nodes_to_delete;

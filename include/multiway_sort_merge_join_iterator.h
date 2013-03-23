@@ -15,15 +15,10 @@ namespace uk_ac_ox_cs_c875114
 class MultiwaySortMergeJoinIterator : public virtual AbstractMultiwaySortMergeJoinIterator<TrieTrieIterator>
 {
     public:
-        MultiwaySortMergeJoinIterator(std::vector<TrieTrieIterator*>& iterators) : AbstractMultiwaySortMergeJoinIterator<TrieTrieIterator>(iterators) { };
+        MultiwaySortMergeJoinIterator(std::vector<TrieTrieIterator*>& iterators);
         virtual ~MultiwaySortMergeJoinIterator() { };
 
     protected:
-        /**
-         * Finds the least upper bound (LUB) for a given key at the current trie iterator by
-         * linear scanning (repeatedly calling Next() until the LUB is found).
-         * @param key Key for which the LUB should be found.
-         */
         virtual void PositionCurrentIteratorAtKey(int key);
 
 };

@@ -16,8 +16,14 @@ using std::string;
 using std::vector;
 using std::map;
 
+/**
+ * Constructs the basis for a multi-way sort-merge join trie iterator.
+ * @param relations Relations for which the join trie iterator should be constructed.
+ * @param query     Query on which the relations should be joined.
+ */
 template <class TTrieIterator, class TJoinIterator>
 AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::AbstractMultiwaySortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) :
+// Initialize state
     depth(0),
     number_of_join_attributes(0),
     number_of_result_attributes(0),
@@ -27,7 +33,10 @@ AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::Abstrac
     // Nothing else to do.
 };
 
-
+/**
+ * Releases the resources held by a multi-way sort-merge join trie iterator, including the
+ * concrete join and trie iterators.
+ */
 template <class TTrieIterator, class TJoinIterator>
 AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::~AbstractMultiwaySortMergeJoinTrieIterator()
 {
@@ -42,7 +51,11 @@ AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::~Abstra
     }
 }
 
-
+/**
+ * Initializes trie iterators for each relation and join iterators for all variables participating in the
+ * join. This method must be called before calling any trie navigation method in this class.
+ * @returns kOK on success, failure otherwise.
+ */
 template <class TTrieIterator, class TJoinIterator>
 Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::Init()
 {
@@ -108,7 +121,10 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
     return kOK;
 }
 
-
+/**
+ * Positions the trie iterator at the first child of the current non-materialized trie node.
+ * @returns kOK on success, failure otherwise.
+ */
 template <class TTrieIterator, class TJoinIterator>
 Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::Open()
 {
@@ -118,6 +134,7 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
 
     if (depth < number_of_join_attributes) // We are still merging join variables
     {
+        // Open all trie iterators at the current depth
         for (unsigned i = 0; i < trie_iterators_for_depth[depth].size(); i++)
         {
             Status sub_status = trie_iterators_for_depth[depth][i]->Open();
@@ -127,15 +144,21 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
             }
         }
 
+        // If all trie iterators were opened successfully, initialize the join iterator
+        // at the current depth (effectively finding the next key in the trie interator
+        // intersection).
         if (kOK == status)
         {
             join_iterator_for_depth[depth]->Init();
 
+            // Get the multiplicity of the current key
             int join_iterator_key_multiplicity;
             join_iterator_for_depth[depth]->Multiplicity(&join_iterator_key_multiplicity);
 
+            // Save it for when the trie is navigated (via Open() and Up()).
             key_multiplicity_stack.push_back(join_iterator_key_multiplicity);
 
+            // If the intersection is empty, back out
             if (AtEnd())
             {
                 status = kFail;
@@ -153,15 +176,19 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
         }
         else
         {
+            // We are about to go beyond the maximum trie depth
             status = kFail;
             depth--;
         }
 
         if (kOK == status)
         {
+            // If the trie iterator for the current variable has been opened successfully, get
+            // the multiplicity of the key at the current trie iterator position.
             int current_trie_iterator_multiplicity;
             trie_iterators_for_depth[depth][0]->Multiplicity(&current_trie_iterator_multiplicity);
 
+            // Save it for when the trie is navigated via Open() and Up().
             key_multiplicity_stack.push_back(current_trie_iterator_multiplicity);
         }
     }
@@ -169,7 +196,10 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
     return status;
 }
 
-
+/**
+ * Positions the trie iterator at the non-materialized parent node.
+ * @returns kOK on success, failure otherwise.
+ */
 template <class TTrieIterator, class TJoinIterator>
 Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::Up()
 {
@@ -182,6 +212,8 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
 
     if (depth < number_of_join_attributes)
     {
+        // Current variable was one of the join variables: move all trie iterators for this
+        // variable up
         for (unsigned i = 0; i < trie_iterators_for_depth[depth].size(); i++)
         {
             Status sub_status = trie_iterators_for_depth[depth][i]->Up();
@@ -193,19 +225,27 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
     }
     else
     {
+        // Current variable was one of the variables not involved in the join: there is exactly
+        // one trie associated with it, and that trie needs to be moved up
         status = trie_iterators_for_depth[depth][0]->Up();
     }
 
     if (kOK == status)
     {
+        // Mark the change in depth and pop the old multiplicity of the stack
         depth--;
-
         key_multiplicity_stack.pop_back();
     }
 
     return status;
 }
 
+/**
+ * Returns the key at a current position of the iterator.
+ * @param out_key A pointer to the memory location where the key should be
+ *                stored.
+ * @returns kOK on success, failure otherwise.
+ */
 template <class TTrieIterator, class TJoinIterator>
 Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::Key(int* result)
 {
@@ -214,6 +254,8 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
         return kFail;
     }
 
+    // Return the key depending on whether the variable at the current depth was one
+    // of the join variables or not
     if (depth < number_of_join_attributes)
     {
         return join_iterator_for_depth[depth]->Key(result);
@@ -224,7 +266,12 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
     }
 }
 
-
+/**
+ * Returns the multiplicity of the key at a current position of the iterator.
+ * @param out_multiplicity A pointer to the memory location where the multiplicity
+ *                         should be stored.
+ * @returns kOK on success, failure otherwise.
+ */
 template <class TTrieIterator, class TJoinIterator>
 Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::Multiplicity(int* result)
 {
@@ -232,7 +279,10 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
     return kOK;
 }
 
-
+/**
+ * Moves the trie iterator to the next element in same level (belonging to the same parent).
+ * @returns kOK on success, failure otherwise.
+ */
 template <class TTrieIterator, class TJoinIterator>
 Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::Next()
 {
@@ -255,6 +305,7 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
     // Update the key multiplicity stack
     if (kOK == status)
     {
+        // Get the current multiplicity
         int current_iterator_multiplicity;
         if (depth < number_of_join_attributes)
         {
@@ -265,17 +316,26 @@ Status AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::
             trie_iterators_for_depth[depth][0]->Multiplicity(&current_iterator_multiplicity);
         }
 
+        // Remove the old (left sibling's) multiplicity
         key_multiplicity_stack.pop_back();
+
+        // Push the current multiplicity
         key_multiplicity_stack.push_back(current_iterator_multiplicity);
     }
 
     return status;
 }
 
-
+/**
+ * Checks if the trie iterator is positioned at the last child of the non-materialized
+ * parent node.
+ * @returns true if the iterator is positioned at the last element, false otherwise.
+ */
 template <class TTrieIterator, class TJoinIterator>
 bool AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::AtEnd()
 {
+    // Return the depth based on whether the current variable was one of the join
+    // variables or not.
     if (depth < number_of_join_attributes)
     {
         return join_iterator_for_depth[depth]->AtEnd();
@@ -286,20 +346,27 @@ bool AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::At
     }
 }
 
-
-template <class TTrieIterator, class TJoinIterator>
-bool AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::AtRoot()
-{
-    return (-1 == depth);
-}
-
-
+/**
+ * Returns the arity (maximum depth) of the trie.
+ * @returns the arity (maximum depth) of the trie.
+ */
 template <class TTrieIterator, class TJoinIterator>
 int AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::Arity()
 {
     return number_of_result_attributes;
 }
 
+/**
+ * Checks if the trie iterator is positioned at the root of the non-materialized trie.
+ * @returns true if the trie iterator is positioned at the roo, false otherwise.
+ */
+template <class TTrieIterator, class TJoinIterator>
+bool AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::AtRoot()
+{
+    return (-1 == depth);
+}
+
+// Instantiate the template for multi-way sort merge and leapfrog join trie iterators.
 template class AbstractMultiwaySortMergeJoinTrieIterator<TrieTrieIterator, MultiwaySortMergeJoinIterator>;
 template class AbstractMultiwaySortMergeJoinTrieIterator<BinarySearchTreeTrieIterator, LeapfrogJoinIterator>;
 

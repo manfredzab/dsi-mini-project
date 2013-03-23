@@ -109,6 +109,11 @@ $(document).ready(function(){initNavTree('classuk__ac__ox__cs__c875114_1_1_multi
 <div class="title">uk_ac_ox_cs_c875114::MultiwaySortMergeJoinTrieIterator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Multiway sort-merge join trie iterator.  
+ <a href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_trie_iterator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="multiway__sort__merge__join__trie__iterator_8h_source.html">multiway_sort_merge_join_trie_iterator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for uk_ac_ox_cs_c875114::MultiwaySortMergeJoinTrieIterator:</div>
 <div class="dyncontent">
@@ -144,10 +149,10 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a89a03929525c748d89c1aface4380f21"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html">TrieTrieIterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_trie_iterator.html#a89a03929525c748d89c1aface4380f21">CreateTrieIteratorForRelation</a> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
-<tr class="memdesc:a89a03929525c748d89c1aface4380f21"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract method that creates a trie iterator for a given relation.  <a href="#a89a03929525c748d89c1aface4380f21"></a><br/></td></tr>
+<tr class="memdesc:a89a03929525c748d89c1aface4380f21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator over a materialized trie for a given relation.  <a href="#a89a03929525c748d89c1aface4380f21"></a><br/></td></tr>
 <tr class="memitem:af4ebc5be46988a9d48de1342b61969d0"><td class="memItemLeft" align="right" valign="top">virtual <br class="typebreak"/>
 <a class="el" href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator.html">MultiwaySortMergeJoinIterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_trie_iterator.html#af4ebc5be46988a9d48de1342b61969d0">CreateJoinIteratorForTrieIterators</a> (std::vector&lt; <a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html">TrieTrieIterator</a> * &gt; &amp;trie_iterators)</td></tr>
-<tr class="memdesc:af4ebc5be46988a9d48de1342b61969d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract method that creates a join iterator for given relation trie iterators.  <a href="#af4ebc5be46988a9d48de1342b61969d0"></a><br/></td></tr>
+<tr class="memdesc:af4ebc5be46988a9d48de1342b61969d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a multi-way sort-merge join iterator for given relation trie iterators based on materialized tries.  <a href="#af4ebc5be46988a9d48de1342b61969d0"></a><br/></td></tr>
 <tr class="inherit_header pro_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator')"><img src="closed.png" alt="-"/>&nbsp;Protected Member Functions inherited from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html">uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinTrieIterator< TrieTrieIterator, MultiwaySortMergeJoinIterator ></a></td></tr>
 <tr class="memitem:ac426777d05057c35157b4f38e396c199 inherit pro_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#ac426777d05057c35157b4f38e396c199">AtRoot</a> ()</td></tr>
 <tr class="memdesc:ac426777d05057c35157b4f38e396c199 inherit pro_methods_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the trie iterator is positioned at the root of the non-materialized trie.  <a href="#ac426777d05057c35157b4f38e396c199"></a><br/></td></tr>
@@ -173,7 +178,10 @@ Additional Inherited Members</h2></td></tr>
 <a class="el" href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_iterator.html">MultiwaySortMergeJoinIterator</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#a33ceb962afc64d60b7bdc36fca7549fa">join_iterator_for_depth</a></td></tr>
 <tr class="memdesc:a33ceb962afc64d60b7bdc36fca7549fa inherit pro_attribs_classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">A map between an attribute and an associated join iterator (indexed by attribute's position in the result relation).  <a href="#a33ceb962afc64d60b7bdc36fca7549fa"></a><br/></td></tr>
 </table>
-<h2>Member Function Documentation</h2>
+<a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Multiway sort-merge join trie iterator. </p>
+<p>This class provides an implementation to the abstract multi-way sort-merge join trie iterator, by constructing (actual) tries for underlying relation trie iterators. Similarly, it constructs simple join iterators which are then used to scan the trie iterators at the appropriate depths by repeatedly calling <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#ac12353513553a8d656b729d975a6306f" title="Moves the trie iterator to the next element in same level (belonging to the same parent).">Next()</a> method. </p>
+</div><h2>Member Function Documentation</h2>
 <a class="anchor" id="af4ebc5be46988a9d48de1342b61969d0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -196,14 +204,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>An abstract method that creates a join iterator for given relation trie iterators. </p>
+<p>Creates a multi-way sort-merge join iterator for given relation trie iterators based on materialized tries. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">trie_iterators</td><td>A reference to the list of trie iterators. </td></tr>
+    <tr><td class="paramname">trie_iterators</td><td>A reference to the list of materialized trie-based trie iterators. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the join iterator for given trie iterators. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the multi-way sort-merge join iterator for given trie iterators. </dd></dl>
 
 <p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#a0312677accea2e0099ba6aa57ec7c4ac">uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinTrieIterator&lt; TrieTrieIterator, MultiwaySortMergeJoinIterator &gt;</a>.</p>
 
@@ -231,14 +239,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>An abstract method that creates a trie iterator for a given relation. </p>
+<p>Creates an iterator over a materialized trie for a given relation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">relation</td><td>Input relation. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the trie iterator for a given relation. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the iterator over a materialized trie for a given relation. </dd></dl>
 
 <p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#a889915fae4a3de481cf87bb83f4fb485">uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinTrieIterator&lt; TrieTrieIterator, MultiwaySortMergeJoinIterator &gt;</a>.</p>
 
@@ -254,7 +262,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_multiway_sort_merge_join_trie_iterator.html">MultiwaySortMergeJoinTrieIterator</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

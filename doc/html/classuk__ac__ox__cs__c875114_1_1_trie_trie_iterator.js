@@ -5,6 +5,7 @@ var classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator =
     [ "Arity", "classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aca0cbde7e9dbb54ec8f2f0a45f560b7a", null ],
     [ "AtEnd", "classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aaa60e0d4b7c530278e1651556143502a", null ],
     [ "AtRoot", "classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a25b9d794b6ffd311b13c30ef9df94884", null ],
+    [ "CompareTrieIteratorsByKeys", "classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a3cb448c13a557468cef6e827e8012aec", null ],
     [ "Init", "classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aeacf86db9a67cc4ac49ee0251bf8fb31", null ],
     [ "Key", "classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#af02f83c7917b77dbbccaa862e76727da", null ],
     [ "Multiplicity", "classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#ae55fada4eb19f5ba6a938b5bdc65e111", null ],

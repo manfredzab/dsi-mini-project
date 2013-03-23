@@ -120,13 +120,16 @@ Inheritance diagram for uk_ac_ox_cs_c875114::LinearIterator:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_linear_iterator__inherit__graph.png" border="0" usemap="#uk__ac__ox__cs__c875114_1_1_linear_iterator_inherit__map" alt="Inheritance graph"/></div>
 <map name="uk__ac__ox__cs__c875114_1_1_linear_iterator_inherit__map" id="uk__ac__ox__cs__c875114_1_1_linear_iterator_inherit__map">
-<area shape="rect" id="node2" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html" title="uk_ac_ox_cs_c875114\l::SimpleIterator" alt="" coords="5,102,160,149"/><area shape="rect" id="node4" href="classuk__ac__ox__cs__c875114_1_1_i_iterator.html" title="uk_ac_ox_cs_c875114\l::IIterator\&lt; int * \&gt;" alt="" coords="5,6,160,53"/></map>
+<area shape="rect" id="node2" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html" title="Allows access to the tuples of a given relation in a given order." alt="" coords="5,102,160,149"/><area shape="rect" id="node4" href="classuk__ac__ox__cs__c875114_1_1_i_iterator.html" title="uk_ac_ox_cs_c875114\l::IIterator\&lt; int * \&gt;" alt="" coords="5,6,160,53"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8a2ca514a7104e3365950374296891ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a2ca514a7104e3365950374296891ff"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LinearIterator</b> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memitem:a8a2ca514a7104e3365950374296891ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a8a2ca514a7104e3365950374296891ff">LinearIterator</a> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memdesc:a8a2ca514a7104e3365950374296891ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a linear iterator for a given relation.  <a href="#a8a2ca514a7104e3365950374296891ff"></a><br/></td></tr>
+<tr class="memitem:a1ac60cfba3b0f85c0649312db93b50ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ac60cfba3b0f85c0649312db93b50ab"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a1ac60cfba3b0f85c0649312db93b50ab">~LinearIterator</a> ()</td></tr>
+<tr class="memdesc:a1ac60cfba3b0f85c0649312db93b50ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases all resources (including a binary search tree) occupied by the linear iterator. <br/></td></tr>
 <tr class="memitem:adf3276c0b3856bfb87ca641dfd4c5c70"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#adf3276c0b3856bfb87ca641dfd4c5c70">Init</a> ()</td></tr>
 <tr class="memdesc:adf3276c0b3856bfb87ca641dfd4c5c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the iterator.  <a href="#adf3276c0b3856bfb87ca641dfd4c5c70"></a><br/></td></tr>
 <tr class="memitem:a64c068f0a4e2df1e12a256e7b46e711f"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a64c068f0a4e2df1e12a256e7b46e711f">Key</a> (int **out_key)</td></tr>
@@ -136,12 +139,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae0806b62df1386a7ce6a9af6deda4e8a"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#ae0806b62df1386a7ce6a9af6deda4e8a">Next</a> ()</td></tr>
 <tr class="memdesc:ae0806b62df1386a7ce6a9af6deda4e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the iterator to the next tuple in the relation.  <a href="#ae0806b62df1386a7ce6a9af6deda4e8a"></a><br/></td></tr>
 <tr class="memitem:a279cd465a6e44eee4972b8d549697ab6"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6">AtEnd</a> ()</td></tr>
-<tr class="memdesc:a279cd465a6e44eee4972b8d549697ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the join iterator is positioned at the last element tuple in the relation.  <a href="#a279cd465a6e44eee4972b8d549697ab6"></a><br/></td></tr>
+<tr class="memdesc:a279cd465a6e44eee4972b8d549697ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the join iterator is positioned at the last tuple in the relation.  <a href="#a279cd465a6e44eee4972b8d549697ab6"></a><br/></td></tr>
 <tr class="memitem:aba9cce1f363cd420159691f97a6c4f14"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14">Seek</a> (int *seek_key)</td></tr>
 <tr class="memdesc:aba9cce1f363cd420159691f97a6c4f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the iterator to the least upper bound (LUB) of the seek key.  <a href="#aba9cce1f363cd420159691f97a6c4f14"></a><br/></td></tr>
 <tr class="inherit_header pub_methods_classuk__ac__ox__cs__c875114_1_1_simple_iterator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classuk__ac__ox__cs__c875114_1_1_simple_iterator')"><img src="closed.png" alt="-"/>&nbsp;Public Member Functions inherited from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html">uk_ac_ox_cs_c875114::SimpleIterator</a></td></tr>
-<tr class="memitem:a62a1276da0ede0dcfe5ed55ea1cc3e13 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_simple_iterator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62a1276da0ede0dcfe5ed55ea1cc3e13"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SimpleIterator</b> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memitem:a62a1276da0ede0dcfe5ed55ea1cc3e13 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_simple_iterator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a62a1276da0ede0dcfe5ed55ea1cc3e13">SimpleIterator</a> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memdesc:a62a1276da0ede0dcfe5ed55ea1cc3e13 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_simple_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a simple iterator for a given relation.  <a href="#a62a1276da0ede0dcfe5ed55ea1cc3e13"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -161,8 +164,33 @@ Friends</h2></td></tr>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Linear iterator class based on the binary search tree. </p>
 <p>It extends the simple iterator (</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html">SimpleIterator</a>) by providing a <a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key.">Seek()</a> method which finds a seek key in O(log N) time and O(1 + log N/m) amortized time, where N is the number of nodes in the relation and m is the number of visits to keys in ascending order. </dd></dl>
-</div><h2>Member Function Documentation</h2>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html" title="Allows access to the tuples of a given relation in a given order.">SimpleIterator</a>) by providing a <a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key.">Seek()</a> method which finds a seek key in O(log N) time and O(1 + log N/m) amortized time, where N is the number of nodes in the relation and m is the number of visits to keys in ascending order. </dd></dl>
+</div><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a8a2ca514a7104e3365950374296891ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uk_ac_ox_cs_c875114::LinearIterator::LinearIterator </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;&#160;</td>
+          <td class="paramname"><em>relation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a linear iterator for a given relation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">relation</td><td><a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a> for which a linear iterator should be constructed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
 <a class="anchor" id="a279cd465a6e44eee4972b8d549697ab6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -184,10 +212,10 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Checks if the join iterator is positioned at the last element tuple in the relation. </p>
+<p>Checks if the join iterator is positioned at the last tuple in the relation. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if the iterator is at the last tuple, false otherwise. </dd></dl>
 
-<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
+<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a8cd369f15f839afbb043e13e74f996bb">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -225,7 +253,7 @@ Here is the caller graph for this function:</div>
 <p>This method must be called before calling any other method of the iterator. </p>
 <dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
 
-<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
+<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#af71aa8b9a4946e950ca7fe1cb205e7ff">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -269,14 +297,14 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
 
-<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
+<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4c14eb91f0e51eb6efd6912a2f7b7a79">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_linear_iterator_a64c068f0a4e2df1e12a256e7b46e711f_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_linear_iterator_a64c068f0a4e2df1e12a256e7b46e711f_cgraph" alt=""/></div>
 <map name="classuk__ac__ox__cs__c875114_1_1_linear_iterator_a64c068f0a4e2df1e12a256e7b46e711f_cgraph" id="classuk__ac__ox__cs__c875114_1_1_linear_iterator_a64c068f0a4e2df1e12a256e7b46e711f_cgraph">
-<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last element tuple in the relation." alt="" coords="208,5,363,51"/></map>
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="208,5,363,51"/></map>
 </div>
 </p>
 
@@ -302,7 +330,7 @@ Here is the caller graph for this function:</div>
           <td class="memname">Status uk_ac_ox_cs_c875114::LinearIterator::Multiplicity </td>
           <td>(</td>
           <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>out_result</em></td><td>)</td>
+          <td class="paramname"><em>out_multiplicity</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -322,14 +350,14 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
 
-<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
+<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a1788aeb2e034416f14b407405ab880fa">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_linear_iterator_ad8589f19c363d24d647aa3d5d15bd2ca_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_linear_iterator_ad8589f19c363d24d647aa3d5d15bd2ca_cgraph" alt=""/></div>
 <map name="classuk__ac__ox__cs__c875114_1_1_linear_iterator_ad8589f19c363d24d647aa3d5d15bd2ca_cgraph" id="classuk__ac__ox__cs__c875114_1_1_linear_iterator_ad8589f19c363d24d647aa3d5d15bd2ca_cgraph">
-<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last element tuple in the relation." alt="" coords="229,5,384,51"/></map>
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="229,5,384,51"/></map>
 </div>
 </p>
 
@@ -366,19 +394,16 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Moves the iterator to the next tuple in the relation. </p>
-<p>Moves to the next tuple in the relation.</p>
-<dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise.</dd></dl>
-<p>This method uses the implementation of </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key.">Seek</a> to find the least upper bound of (current node's key + 1). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
 
-<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
+<p>Reimplemented from <a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4e967e3b27385f35e8dcba1f1119bbcd">uk_ac_ox_cs_c875114::SimpleIterator</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_linear_iterator_ae0806b62df1386a7ce6a9af6deda4e8a_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_linear_iterator_ae0806b62df1386a7ce6a9af6deda4e8a_cgraph" alt=""/></div>
 <map name="classuk__ac__ox__cs__c875114_1_1_linear_iterator_ae0806b62df1386a7ce6a9af6deda4e8a_cgraph" id="classuk__ac__ox__cs__c875114_1_1_linear_iterator_ae0806b62df1386a7ce6a9af6deda4e8a_cgraph">
-<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last element tuple in the relation." alt="" coords="417,18,572,64"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a64c068f0a4e2df1e12a256e7b46e711f" title="Returns the key at a current position of the iterator." alt="" coords="208,23,363,70"/><area shape="rect" id="node8" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="208,92,363,139"/><area shape="rect" id="node11" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree.html#a0e205977552226ef16015a24276f3c7f" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="412,88,577,152"/></map>
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="417,18,572,64"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a64c068f0a4e2df1e12a256e7b46e711f" title="Returns the key at a current position of the iterator." alt="" coords="208,23,363,70"/><area shape="rect" id="node8" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="208,92,363,139"/><area shape="rect" id="node11" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree.html#a0e205977552226ef16015a24276f3c7f" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="412,88,577,152"/></map>
 </div>
 </p>
 
@@ -420,7 +445,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_linear_iterator_aba9cce1f363cd420159691f97a6c4f14_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_linear_iterator_aba9cce1f363cd420159691f97a6c4f14_cgraph" alt=""/></div>
 <map name="classuk__ac__ox__cs__c875114_1_1_linear_iterator_aba9cce1f363cd420159691f97a6c4f14_cgraph" id="classuk__ac__ox__cs__c875114_1_1_linear_iterator_aba9cce1f363cd420159691f97a6c4f14_cgraph">
-<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last element tuple in the relation." alt="" coords="215,5,369,51"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree.html#a0e205977552226ef16015a24276f3c7f" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="209,75,375,139"/></map>
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="215,5,369,51"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree.html#a0e205977552226ef16015a24276f3c7f" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="209,75,375,139"/></map>
 </div>
 </p>
 
@@ -491,7 +516,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html">LinearIterator</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

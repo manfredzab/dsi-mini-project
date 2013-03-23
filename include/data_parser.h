@@ -11,24 +11,24 @@ namespace uk_ac_ox_cs_c875114
 {
 
 /***
- * This class parses the database and query files, creating Relation and Query structures.
+ * Database and query files parser (creates Relation and Query structures).
  */
 class DataParser
 {
     public:
-        /**
-         * Parse the database from a given file.
-         * @param file_name Database file name.
-         * @returns A pointer to the dictionary of parsed relations, indexed by the relation's name.
-         */
         static std::map<std::string, Relation*>* ParseDatabase(std::string file_name);
+        static Query*                            ParseQuery(std::string file_name);
 
-        /**
-         * Parse the query from a given file.
-         * @param file_name Query file name.
-         * @returns A pointer to the populated Query data structure.
-         */
-        static Query* ParseQuery(std::string file_name);
+    private:
+        static Relation*                 ParseRelation(std::string database_file_name, std::string relation_line);
+        static Relation*                 ParseRelation(std::string relation_file_name, std::string relation_name, const std::vector<std::string>& attribute_names);
+        static int*                      ParseRelationTuple(std::string relation_tuple_line, int attribute_count);
+
+        static void                      RemoveStringWhitespace(std::string& input_string);
+        static std::vector<std::string>* TokenizeString(const std::string& input_string, const char character);
+        static int                       ConvertStringToInt(const std::string& input_string);
+
+        static std::string               GetFilePath(std::string file_name);
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */

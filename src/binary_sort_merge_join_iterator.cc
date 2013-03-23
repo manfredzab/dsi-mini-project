@@ -9,11 +9,24 @@ using std::string;
 using std::vector;
 using std::list;
 
+/**
+ * Constructs a binary sort-merge join iterator from the given outer and inner relations,
+ * information on how to build the resulting relation tuple from two input relation tuples
+ * and the join attribute positions in each relation.
+ * @param outer_relation Outer relation.
+ * @param inner_relation Inner relation.
+ * @param result_relation_tuple_order A vector of attribute order descriptors which tells
+ *                                    how the resulting tuple should be built from the two
+ *                                    two input relation tuples.
+ * @param outer_relation_join_attribute_positions Join attribute positions in the outer relation
+ * @param inner_relation_join_attribute_positions Join attribute positions in the inner relation
+ */
 BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(Relation& outer_relation,
                                                          Relation& inner_relation,
                                                          const vector<AttributeOrderDescriptor>& result_relation_tuple_order,
                                                          const vector<int>& outer_relation_join_attribute_positions,
                                                          const vector<int>& inner_relation_join_attribute_positions) :
+    // Initialize the state
     outer_relation(outer_relation),
     inner_relation(inner_relation),
     outer_relation_tuple_comparison_functor(outer_relation_join_attribute_positions),
@@ -35,9 +48,12 @@ BinarySortMergeJoinIterator::BinarySortMergeJoinIterator(Relation& outer_relatio
     key = new int[result_relation_attribute_count];
 }
 
-
+/**
+ * Releases all resources occupied by the binary sort-merge join iterator.
+ */
 BinarySortMergeJoinIterator::~BinarySortMergeJoinIterator()
 {
+
     delete[] key;
 
     if (outer_relation_iterator != NULL)
@@ -51,7 +67,11 @@ BinarySortMergeJoinIterator::~BinarySortMergeJoinIterator()
     }
 }
 
-
+/**
+ * Initializes the iterator. This method must be called before calling any other method
+ * of the iterator.
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySortMergeJoinIterator::Init()
 {
     // Sort the relations
@@ -66,7 +86,12 @@ Status BinarySortMergeJoinIterator::Init()
     return Next();
 }
 
-
+/**
+ * Returns the tuple key at a current position of the iterator.
+ * @param out_key A pointer to the memory location where the tuple should be
+ *                stored.
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySortMergeJoinIterator::Key(int** out_key)
 {
     memcpy(*out_key, key, result_relation_attribute_count * sizeof(int));
@@ -74,20 +99,26 @@ Status BinarySortMergeJoinIterator::Key(int** out_key)
     return kOK;
 }
 
-
+/**
+ * Checks if the join iterator is positioned at the last tuple in the join result.
+ * @returns true if the iterator is positioned at the last tuple, false otherwise.
+ */
 bool BinarySortMergeJoinIterator::AtEnd()
 {
     return at_end;
 }
 
-
+/**
+ * Positions the join iterator at the next position in the join result.
+ * @returns kOK on success, failure otherwise.
+ */
 Status BinarySortMergeJoinIterator::Next()
 {
     int* outer_tuple;
     int* inner_tuple;
 
-    // There are potential duplicates to be output before proceeding
-    if (!outer_relation_duplicates.empty())
+    // Before seeking to the next tuple, finish dealing with duplicates first
+    if (!outer_relation_duplicates.empty()) // There are potential duplicates to be output before proceeding
     {
         // Prepare to output the next duplicate
         inner_relation_duplicates_position++;
@@ -97,8 +128,7 @@ Status BinarySortMergeJoinIterator::Next()
             inner_relation_duplicates_position = inner_relation_duplicates.begin();
         }
 
-        // If there are no more duplicates in the outer relation, clear the inner relation duplicates and search
-        // for the new match (below), otherwise, set the key and return.
+        // If there are more duplicates in the outer relation, set the key and return
         if (!outer_relation_duplicates.empty())
         {
             CreateResultTupleAsKey(outer_relation_duplicates.front(), *inner_relation_duplicates_position);
@@ -106,6 +136,8 @@ Status BinarySortMergeJoinIterator::Next()
         }
         else
         {
+            // If there are no more duplicates in the outer relation, clear the inner relation duplicates
+            // and proceed
             inner_relation_duplicates.clear();
         }
     }
@@ -115,17 +147,21 @@ Status BinarySortMergeJoinIterator::Next()
         return kFail;
     }
 
+    // Scan outer and inner relations in lock-step fashion
     while (!outer_relation_iterator->AtEnd() && !inner_relation_iterator->AtEnd())
     {
+        // Get the current keys
         outer_relation_iterator->Key(&outer_tuple);
         inner_relation_iterator->Key(&inner_tuple);
 
         if (kLessThan == CompareTuplesAtDifferentRelations(outer_tuple, inner_tuple))
         {
+            // Outer key < inner key, move the outer relation forwards
             outer_relation_iterator->Next();
         }
         else if (kGreaterThan == CompareTuplesAtDifferentRelations(outer_tuple, inner_tuple))
         {
+            // Inner key < outer key, move the inner relation forwards
             inner_relation_iterator->Next();
         }
         else // Outer and inner tuples are equal
@@ -144,11 +180,17 @@ Status BinarySortMergeJoinIterator::Next()
         }
     }
 
+    // If we fell-through the previous loop, we must be at the end
     this->at_end = true;
     return kFail;
 }
 
-
+/**
+ * Gathers tuples with the same key, starting at the current relation iterator position.
+ * @param relation_iterator A reference to a simple relation iterator.
+ * @param comparison_functor A reference to the tuple comparison functor (@see SameRelationTupleComparisonFunctor).
+ * @param out_same_key_result_tuples A reference to the list into which the same key tuples should be placed.
+ */
 inline void BinarySortMergeJoinIterator::GatherSameKeyTuples(SimpleIterator& relation_iterator, SameRelationTupleComparisonFunctor& comparison_functor, list<int*>& out_same_key_tuples)
 {
     int* current_tuple;
@@ -169,7 +211,12 @@ inline void BinarySortMergeJoinIterator::GatherSameKeyTuples(SimpleIterator& rel
     }
 }
 
-
+/**
+ * Lexicographically compares tuples from outer and inner relations based on the join attribute positions.
+ * @param outer_relation_tuple Outer relation tuple.
+ * @param inner_relation_tuple Inner relation tuple.
+ * @returns Lexicographic comparison result.
+ */
 inline Equality BinarySortMergeJoinIterator::CompareTuplesAtDifferentRelations(int* outer_relation_tuple, int* inner_relation_tuple)
 {
     for (int i = 0; i < join_attribute_count; i++)
@@ -187,7 +234,12 @@ inline Equality BinarySortMergeJoinIterator::CompareTuplesAtDifferentRelations(i
     return kEqual;
 }
 
-
+/**
+ * Builds a resulting relation tuple from the two input relation tuples (from outer and inner relations).
+ * The result is stored in the "key" member of the binary sort-merge join iterator.
+ * @param outer_tuple Outer relation tuple.
+ * @param inner_tuple Inner relation tuple.
+ */
 inline void BinarySortMergeJoinIterator::CreateResultTupleAsKey(int* outer_tuple, int* inner_tuple)
 {
     for (int i = 0; i < result_relation_attribute_count; i++)
@@ -197,7 +249,10 @@ inline void BinarySortMergeJoinIterator::CreateResultTupleAsKey(int* outer_tuple
     }
 }
 
-
+/**
+ * Not supported by the binary sort merge join iterator.
+ * @returns kNotSupported
+ */
 Status BinarySortMergeJoinIterator::Multiplicity(int* out_key)
 {
     return kNotImplemented;

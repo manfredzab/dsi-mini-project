@@ -109,6 +109,11 @@ $(document).ready(function(){initNavTree('classuk__ac__ox__cs__c875114_1_1_simpl
 <div class="title">uk_ac_ox_cs_c875114::SimpleIterator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Allows access to the tuples of a given relation in a given order.  
+ <a href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="simple__iterator_8h_source.html">simple_iterator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for uk_ac_ox_cs_c875114::SimpleIterator:</div>
 <div class="dyncontent">
@@ -119,18 +124,20 @@ Inheritance diagram for uk_ac_ox_cs_c875114::SimpleIterator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a62a1276da0ede0dcfe5ed55ea1cc3e13"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62a1276da0ede0dcfe5ed55ea1cc3e13"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SimpleIterator</b> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memitem:a62a1276da0ede0dcfe5ed55ea1cc3e13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a62a1276da0ede0dcfe5ed55ea1cc3e13">SimpleIterator</a> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memdesc:a62a1276da0ede0dcfe5ed55ea1cc3e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a simple iterator for a given relation.  <a href="#a62a1276da0ede0dcfe5ed55ea1cc3e13"></a><br/></td></tr>
+<tr class="memitem:a4c14eb91f0e51eb6efd6912a2f7b7a79"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4c14eb91f0e51eb6efd6912a2f7b7a79">Key</a> (int **out_key)</td></tr>
+<tr class="memdesc:a4c14eb91f0e51eb6efd6912a2f7b7a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the key at a current position of the iterator.  <a href="#a4c14eb91f0e51eb6efd6912a2f7b7a79"></a><br/></td></tr>
 <tr class="memitem:af71aa8b9a4946e950ca7fe1cb205e7ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af71aa8b9a4946e950ca7fe1cb205e7ff"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
-<tr class="memitem:a4c14eb91f0e51eb6efd6912a2f7b7a79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c14eb91f0e51eb6efd6912a2f7b7a79"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Key</b> (int **out_key)</td></tr>
+virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#af71aa8b9a4946e950ca7fe1cb205e7ff">Init</a> ()</td></tr>
+<tr class="memdesc:af71aa8b9a4946e950ca7fe1cb205e7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Not implemented. <br/></td></tr>
 <tr class="memitem:a1788aeb2e034416f14b407405ab880fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1788aeb2e034416f14b407405ab880fa"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Multiplicity</b> (int *out_result)</td></tr>
-<tr class="memitem:a4e967e3b27385f35e8dcba1f1119bbcd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e967e3b27385f35e8dcba1f1119bbcd"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Next</b> ()</td></tr>
-<tr class="memitem:a8cd369f15f839afbb043e13e74f996bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8cd369f15f839afbb043e13e74f996bb"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>AtEnd</b> ()</td></tr>
+virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a1788aeb2e034416f14b407405ab880fa">Multiplicity</a> (int *out_result)</td></tr>
+<tr class="memdesc:a1788aeb2e034416f14b407405ab880fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Not implemented. <br/></td></tr>
+<tr class="memitem:a4e967e3b27385f35e8dcba1f1119bbcd"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4e967e3b27385f35e8dcba1f1119bbcd">Next</a> ()</td></tr>
+<tr class="memdesc:a4e967e3b27385f35e8dcba1f1119bbcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the iterator to the next tuple in the relation.  <a href="#a4e967e3b27385f35e8dcba1f1119bbcd"></a><br/></td></tr>
+<tr class="memitem:a8cd369f15f839afbb043e13e74f996bb"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a8cd369f15f839afbb043e13e74f996bb">AtEnd</a> ()</td></tr>
+<tr class="memdesc:a8cd369f15f839afbb043e13e74f996bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the join iterator is positioned at the last tuple in the relation.  <a href="#a8cd369f15f839afbb043e13e74f996bb"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -153,6 +160,170 @@ virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Next</b> ()
 <tr class="memitem:ac76eb9de593539f6f431f8f52e66d207 inherit pub_methods_classuk__ac__ox__cs__c875114_1_1_i_iterator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac76eb9de593539f6f431f8f52e66d207"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>AtEnd</b> ()=0</td></tr>
 </table>
+<a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Allows access to the tuples of a given relation in a given order. </p>
+</div><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a62a1276da0ede0dcfe5ed55ea1cc3e13"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uk_ac_ox_cs_c875114::SimpleIterator::SimpleIterator </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;&#160;</td>
+          <td class="paramname"><em>relation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a simple iterator for a given relation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">relation</td><td><a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a> for which a simple iterator should be constructed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
+<a class="anchor" id="a8cd369f15f839afbb043e13e74f996bb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool uk_ac_ox_cs_c875114::SimpleIterator::AtEnd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if the join iterator is positioned at the last tuple in the relation. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the iterator is at the last tuple, false otherwise. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6">uk_ac_ox_cs_c875114::LinearIterator</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a8cd369f15f839afbb043e13e74f996bb_icgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_simple_iterator_a8cd369f15f839afbb043e13e74f996bb_icgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a8cd369f15f839afbb043e13e74f996bb_icgraph" id="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a8cd369f15f839afbb043e13e74f996bb_icgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#a6a4b635a77583239154d68460bb7e7ad" title="Positions the join iterator at the next position in the join result." alt="" coords="412,27,639,74"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4c14eb91f0e51eb6efd6912a2f7b7a79" title="Returns the key at a current position of the iterator." alt="" coords="208,27,363,74"/><area shape="rect" id="node10" href="classuk__ac__ox__cs__c875114_1_1_trie.html#a89e1a18a6cf6924601f095eb097f4170" title="Constructs a trie for a given relation (in the relation&#39;s attribute order, i.e." alt="" coords="448,97,603,143"/><area shape="rect" id="node12" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4e967e3b27385f35e8dcba1f1119bbcd" title="Moves the iterator to the next tuple in the relation." alt="" coords="208,97,363,143"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#ad79bd336a73a51fed0727b043fff1588" title="Initializes the iterator." alt="" coords="688,27,907,74"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4c14eb91f0e51eb6efd6912a2f7b7a79"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Status uk_ac_ox_cs_c875114::SimpleIterator::Key </td>
+          <td>(</td>
+          <td class="paramtype">int **&#160;</td>
+          <td class="paramname"><em>out_key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the key at a current position of the iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out_key</td><td>A pointer to the memory location where the key should be stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a64c068f0a4e2df1e12a256e7b46e711f">uk_ac_ox_cs_c875114::LinearIterator</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4c14eb91f0e51eb6efd6912a2f7b7a79_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4c14eb91f0e51eb6efd6912a2f7b7a79_cgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4c14eb91f0e51eb6efd6912a2f7b7a79_cgraph" id="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4c14eb91f0e51eb6efd6912a2f7b7a79_cgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a8cd369f15f839afbb043e13e74f996bb" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="208,5,363,51"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4c14eb91f0e51eb6efd6912a2f7b7a79_icgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4c14eb91f0e51eb6efd6912a2f7b7a79_icgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4c14eb91f0e51eb6efd6912a2f7b7a79_icgraph" id="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4c14eb91f0e51eb6efd6912a2f7b7a79_icgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#a6a4b635a77583239154d68460bb7e7ad" title="Positions the join iterator at the next position in the join result." alt="" coords="209,5,436,51"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_trie.html#a89e1a18a6cf6924601f095eb097f4170" title="Constructs a trie for a given relation (in the relation&#39;s attribute order, i.e." alt="" coords="245,74,400,121"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#ad79bd336a73a51fed0727b043fff1588" title="Initializes the iterator." alt="" coords="485,5,704,51"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e967e3b27385f35e8dcba1f1119bbcd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Status uk_ac_ox_cs_c875114::SimpleIterator::Next </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Moves the iterator to the next tuple in the relation. </p>
+<dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#ae0806b62df1386a7ce6a9af6deda4e8a">uk_ac_ox_cs_c875114::LinearIterator</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4e967e3b27385f35e8dcba1f1119bbcd_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4e967e3b27385f35e8dcba1f1119bbcd_cgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4e967e3b27385f35e8dcba1f1119bbcd_cgraph" id="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4e967e3b27385f35e8dcba1f1119bbcd_cgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a8cd369f15f839afbb043e13e74f996bb" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="208,5,363,51"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4e967e3b27385f35e8dcba1f1119bbcd_icgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4e967e3b27385f35e8dcba1f1119bbcd_icgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4e967e3b27385f35e8dcba1f1119bbcd_icgraph" id="classuk__ac__ox__cs__c875114_1_1_simple_iterator_a4e967e3b27385f35e8dcba1f1119bbcd_icgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#a6a4b635a77583239154d68460bb7e7ad" title="Positions the join iterator at the next position in the join result." alt="" coords="209,5,436,51"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_trie.html#a89e1a18a6cf6924601f095eb097f4170" title="Constructs a trie for a given relation (in the relation&#39;s attribute order, i.e." alt="" coords="245,74,400,121"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#ad79bd336a73a51fed0727b043fff1588" title="Initializes the iterator." alt="" coords="485,5,704,51"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/manfred/git/dsi-mini-project/include/<a class="el" href="simple__iterator_8h_source.html">simple_iterator.h</a></li>
 <li>/home/manfred/git/dsi-mini-project/src/simple_iterator.cc</li>
@@ -163,7 +334,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>AtEnd</b> ()=
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_simple_iterator.html">SimpleIterator</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

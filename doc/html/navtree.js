@@ -1,7 +1,7 @@
 var NAVTREE =
 [
   [ "DSI Mini Project", "index.html", [
-    [ "Documentation for the dsi-mini-project", "index.html", null ],
+    [ "Documentation for the DSI Mini Project", "index.html", null ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],

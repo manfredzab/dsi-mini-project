@@ -111,44 +111,43 @@ $(document).ready(function(){initNavTree('trie_8h_source.html','');});
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>uk_ac_ox_cs_c875114</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">   10</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a>*                                  parent;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span>                                        key;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span>                                        multiplicity;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::vector&lt;TrieNode*&gt;                     children;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">typename</span> std::vector&lt;TrieNode*&gt;::iterator  current_child;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html">Trie</a></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html">Trie</a>(<span class="keyword">const</span> <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a>&amp; relation);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html">Trie</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> CompareTrieNodeKeys(<a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a>* first, <a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a>* second)</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">return</span> (first-&gt;key &lt; second-&gt;key);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">TrieNode</a> root;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> Insert(<span class="keyword">const</span> <span class="keywordtype">int</span>* tuple);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">int</span> trie_depth;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;} <span class="comment">/* namespace uk_ac_ox_cs_c875114 */</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* TRIE_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html">   14</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html" title="Holds internal trie node data: pointer to the parent, node key, node multiplicity, a list of children trie nodes and the pointer to the currently open child.">TrieNode</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html" title="Holds internal trie node data: pointer to the parent, node key, node multiplicity, a list of children trie nodes and the pointer to the currently open child.">TrieNode</a>*                                  parent;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span>                                        key;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span>                                        multiplicity;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::vector&lt;TrieNode*&gt;                     children;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">typename</span> std::vector&lt;TrieNode*&gt;::iterator  current_child;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html" title="Trie implementation.">Trie</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html#a89e1a18a6cf6924601f095eb097f4170" title="Constructs a trie for a given relation (in the relation&#39;s attribute order, i.e.">Trie</a>(<span class="keyword">const</span> <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a>&amp; relation);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html#a02d2d8e073eafc22b333e90f4e640899" title="Releases the resources held by the trie (including all memory occupied by the trie nodes)...">~Trie</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html#aade025afb6f6390135bc26e67e4a077a">   40</a></span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html#aade025afb6f6390135bc26e67e4a077a" title="Compares two trie nodes by keys.">CompareTrieNodeKeys</a>(<a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html" title="Holds internal trie node data: pointer to the parent, node key, node multiplicity, a list of children trie nodes and the pointer to the currently open child.">TrieNode</a>* first, <a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html" title="Holds internal trie node data: pointer to the parent, node key, node multiplicity, a list of children trie nodes and the pointer to the currently open child.">TrieNode</a>* second)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">return</span> (first-&gt;key &lt; second-&gt;key);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html#ab394b101dafa7f65c5c716630adf3a72">   45</a></span>&#160;        <a class="code" href="structuk__ac__ox__cs__c875114_1_1_trie_node.html" title="Holds internal trie node data: pointer to the parent, node key, node multiplicity, a list of children trie nodes and the pointer to the currently open child.">TrieNode</a> <a class="code" href="classuk__ac__ox__cs__c875114_1_1_trie.html#ab394b101dafa7f65c5c716630adf3a72" title="Root node of the trie.">root</a>; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">void</span> Insert(<span class="keyword">const</span> <span class="keywordtype">int</span>* tuple);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">int</span> trie_depth; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <span class="comment">/* namespace uk_ac_ox_cs_c875114 */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* TRIE_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9bec7083027963d9f9ceae2cc7474de5.html">git</a></li><li class="navelem"><a class="el" href="dir_5f7917324dd3531ad5091474fec5d929.html">dsi-mini-project</a></li><li class="navelem"><a class="el" href="dir_cd053fb20616144d9b3fb80d67110617.html">include</a></li><li class="navelem"><b>trie.h</b></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

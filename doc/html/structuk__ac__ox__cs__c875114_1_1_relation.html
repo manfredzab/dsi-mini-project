@@ -108,16 +108,67 @@ $(document).ready(function(){initNavTree('structuk__ac__ox__cs__c875114_1_1_rela
 <div class="title">uk_ac_ox_cs_c875114::Relation Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Holds relation details: relation name, attribute names and tuple data.  
+ <a href="structuk__ac__ox__cs__c875114_1_1_relation.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="relation_8h_source.html">relation.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a46ff3db44ed0436ca08a4f44b36638d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46ff3db44ed0436ca08a4f44b36638d8"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
-<tr class="memitem:aff6a5b61aa4772217495da70598b081b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff6a5b61aa4772217495da70598b081b"></a>
-std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>attribute_names</b></td></tr>
-<tr class="memitem:a4b3172ecf0f2232aabb97e10f67cda15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b3172ecf0f2232aabb97e10f67cda15"></a>
-std::vector&lt; int * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
+<tr class="memitem:a46ff3db44ed0436ca08a4f44b36638d8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html#a46ff3db44ed0436ca08a4f44b36638d8">name</a></td></tr>
+<tr class="memdesc:a46ff3db44ed0436ca08a4f44b36638d8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a> name.  <a href="#a46ff3db44ed0436ca08a4f44b36638d8"></a><br/></td></tr>
+<tr class="memitem:aff6a5b61aa4772217495da70598b081b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html#aff6a5b61aa4772217495da70598b081b">attribute_names</a></td></tr>
+<tr class="memdesc:aff6a5b61aa4772217495da70598b081b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attribute names.  <a href="#aff6a5b61aa4772217495da70598b081b"></a><br/></td></tr>
+<tr class="memitem:a4b3172ecf0f2232aabb97e10f67cda15"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html#a4b3172ecf0f2232aabb97e10f67cda15">data</a></td></tr>
+<tr class="memdesc:a4b3172ecf0f2232aabb97e10f67cda15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple data.  <a href="#a4b3172ecf0f2232aabb97e10f67cda15"></a><br/></td></tr>
 </table>
+<a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Holds relation details: relation name, attribute names and tuple data. </p>
+<p>Each tuple is stored as a sequence of integers on the heap, and the tuple data is stored as a vector of pointers to individual tuple locations on the heap. </p>
+</div><h2>Member Data Documentation</h2>
+<a class="anchor" id="aff6a5b61aa4772217495da70598b081b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; uk_ac_ox_cs_c875114::Relation::attribute_names</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attribute names. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4b3172ecf0f2232aabb97e10f67cda15"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int*&gt; uk_ac_ox_cs_c875114::Relation::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tuple data. </p>
+
+</div>
+</div>
+<a class="anchor" id="a46ff3db44ed0436ca08a4f44b36638d8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string uk_ac_ox_cs_c875114::Relation::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a> name. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/manfred/git/dsi-mini-project/include/<a class="el" href="relation_8h_source.html">relation.h</a></li>
 </ul>
@@ -127,7 +178,7 @@ std::vector&lt; int * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

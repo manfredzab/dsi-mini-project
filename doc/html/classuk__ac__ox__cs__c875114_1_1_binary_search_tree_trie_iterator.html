@@ -118,8 +118,11 @@ Inheritance diagram for uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad805a51c2b3b517a8c62b2f4aa412886"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad805a51c2b3b517a8c62b2f4aa412886"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>BinarySearchTreeTrieIterator</b> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memitem:ad805a51c2b3b517a8c62b2f4aa412886"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#ad805a51c2b3b517a8c62b2f4aa412886">BinarySearchTreeTrieIterator</a> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memdesc:ad805a51c2b3b517a8c62b2f4aa412886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the binary search tree-based trie iterator.  <a href="#ad805a51c2b3b517a8c62b2f4aa412886"></a><br/></td></tr>
+<tr class="memitem:a627b5d49005f887bacb588112e1f88df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a627b5d49005f887bacb588112e1f88df"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a627b5d49005f887bacb588112e1f88df">~BinarySearchTreeTrieIterator</a> ()</td></tr>
+<tr class="memdesc:a627b5d49005f887bacb588112e1f88df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases resources held by the binary search tree iterator (but not the underlying linear iterator's binary search tree). <br/></td></tr>
 <tr class="memitem:a8eecbf89fee761fa9a4760c6d6660616"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a8eecbf89fee761fa9a4760c6d6660616">Init</a> ()</td></tr>
 <tr class="memdesc:a8eecbf89fee761fa9a4760c6d6660616"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the underlying linear iterator.  <a href="#a8eecbf89fee761fa9a4760c6d6660616"></a><br/></td></tr>
 <tr class="memitem:a032ace974df1ed4d3baf11dfb91e926b"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a032ace974df1ed4d3baf11dfb91e926b">Open</a> ()</td></tr>
@@ -139,6 +142,31 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aec28f2a02cc5078b22da584cf10f3e8e"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aec28f2a02cc5078b22da584cf10f3e8e">Arity</a> ()</td></tr>
 <tr class="memdesc:aec28f2a02cc5078b22da584cf10f3e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the arity (maximum depth) of the trie.  <a href="#aec28f2a02cc5078b22da584cf10f3e8e"></a><br/></td></tr>
 </table>
+<h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ad805a51c2b3b517a8c62b2f4aa412886"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::BinarySearchTreeTrieIterator </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;&#160;</td>
+          <td class="paramname"><em>relation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs the binary search tree-based trie iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">relation</td><td>A reference to the relation for which the trie iterator should be constructed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2>Member Function Documentation</h2>
 <a class="anchor" id="aec28f2a02cc5078b22da584cf10f3e8e"></a>
 <div class="memitem">
@@ -325,7 +353,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_ae861693f80aa76c347a90ae90099d6aa_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_ae861693f80aa76c347a90ae90099d6aa_cgraph" alt=""/></div>
 <map name="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_ae861693f80aa76c347a90ae90099d6aa_cgraph" id="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_ae861693f80aa76c347a90ae90099d6aa_cgraph">
-<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="251,5,448,69"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#ad8589f19c363d24d647aa3d5d15bd2ca" title="Returns the multiplicity of the key at a current position of the iterator." alt="" coords="261,93,437,139"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last element tuple in the relation." alt="" coords="496,93,651,139"/></map>
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="251,5,448,69"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#ad8589f19c363d24d647aa3d5d15bd2ca" title="Returns the multiplicity of the key at a current position of the iterator." alt="" coords="261,93,437,139"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="496,93,651,139"/></map>
 </div>
 </p>
 
@@ -362,7 +390,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a3c96787db30fbb81350a4939835c3f82_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a3c96787db30fbb81350a4939835c3f82_cgraph" alt=""/></div>
 <map name="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a3c96787db30fbb81350a4939835c3f82_cgraph" id="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a3c96787db30fbb81350a4939835c3f82_cgraph">
-<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a0ca084a646f6b7849b3cc3b7b8c25671" title="Moves the trie iterator to the element which is i) in the same level, ii) belongs to the same parent..." alt="" coords="288,54,523,101"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="571,5,768,69"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="592,93,747,139"/><area shape="rect" id="node9" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last element tuple in the relation." alt="" coords="823,53,977,99"/><area shape="rect" id="node11" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree.html#a0e205977552226ef16015a24276f3c7f" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="817,123,983,187"/></map>
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a0ca084a646f6b7849b3cc3b7b8c25671" title="Moves the trie iterator to the element which is i) in the same level, ii) belongs to the same parent..." alt="" coords="288,54,523,101"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="571,5,768,69"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="592,93,747,139"/><area shape="rect" id="node9" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="823,53,977,99"/><area shape="rect" id="node11" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree.html#a0e205977552226ef16015a24276f3c7f" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="817,123,983,187"/></map>
 </div>
 </p>
 
@@ -399,7 +427,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a032ace974df1ed4d3baf11dfb91e926b_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a032ace974df1ed4d3baf11dfb91e926b_cgraph" alt=""/></div>
 <map name="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a032ace974df1ed4d3baf11dfb91e926b_cgraph" id="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a032ace974df1ed4d3baf11dfb91e926b_cgraph">
-<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="291,5,488,69"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last element tuple in the relation." alt="" coords="312,93,467,139"/></map>
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="291,5,488,69"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="312,93,467,139"/></map>
 </div>
 </p>
 
@@ -441,7 +469,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a0ca084a646f6b7849b3cc3b7b8c25671_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a0ca084a646f6b7849b3cc3b7b8c25671_cgraph" alt=""/></div>
 <map name="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a0ca084a646f6b7849b3cc3b7b8c25671_cgraph" id="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator_a0ca084a646f6b7849b3cc3b7b8c25671_cgraph">
-<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="288,5,485,69"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="309,93,464,139"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last element tuple in the relation." alt="" coords="540,53,695,99"/><area shape="rect" id="node9" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree.html#a0e205977552226ef16015a24276f3c7f" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="535,123,700,187"/></map>
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="288,5,485,69"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="309,93,464,139"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="540,53,695,99"/><area shape="rect" id="node9" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree.html#a0e205977552226ef16015a24276f3c7f" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="535,123,700,187"/></map>
 </div>
 </p>
 
@@ -494,7 +522,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html">BinarySearchTreeTrieIterator</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

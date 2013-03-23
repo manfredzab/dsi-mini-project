@@ -16,13 +16,6 @@ namespace uk_ac_ox_cs_c875114
 class CascadingSortMergeJoin
 {
     public:
-        /***
-         * Performs a sequence of cascading sort-merge joins for the given relations and a given
-         * query. This method invokes n - 1 binary sort-merge joins.
-         * @param relations Relations to be joined.
-         * @param query Join query.
-         * @result A joined relation.
-         */
         static Relation* Join(std::map<std::string, Relation*>& relations, const Query& query);
 };
 

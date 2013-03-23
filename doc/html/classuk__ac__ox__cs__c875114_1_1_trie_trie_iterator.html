@@ -103,6 +103,7 @@ $(document).ready(function(){initNavTree('classuk__ac__ox__cs__c875114_1_1_trie_
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator-members.html">List of all members</a>  </div>
@@ -120,29 +121,37 @@ Inheritance diagram for uk_ac_ox_cs_c875114::TrieTrieIterator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad5b02605e70f6bfbaf664e07fac1d918"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5b02605e70f6bfbaf664e07fac1d918"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TrieTrieIterator</b> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
-<tr class="memitem:aeacf86db9a67cc4ac49ee0251bf8fb31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeacf86db9a67cc4ac49ee0251bf8fb31"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
-<tr class="memitem:a053af9224f0064f9e65d689ee0a4a250"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a053af9224f0064f9e65d689ee0a4a250"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Open</b> ()</td></tr>
-<tr class="memitem:ac83fe13db8cb1e897d06d92295c06eee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac83fe13db8cb1e897d06d92295c06eee"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Up</b> ()</td></tr>
-<tr class="memitem:af02f83c7917b77dbbccaa862e76727da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af02f83c7917b77dbbccaa862e76727da"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Key</b> (int *out_key)</td></tr>
-<tr class="memitem:ae55fada4eb19f5ba6a938b5bdc65e111"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae55fada4eb19f5ba6a938b5bdc65e111"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Multiplicity</b> (int *out_multiplicity)</td></tr>
-<tr class="memitem:aa38984bb90ebd0e1507b2bb584f62c98"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa38984bb90ebd0e1507b2bb584f62c98"></a>
-virtual Status&#160;</td><td class="memItemRight" valign="bottom"><b>Next</b> ()</td></tr>
-<tr class="memitem:aaa60e0d4b7c530278e1651556143502a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa60e0d4b7c530278e1651556143502a"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>AtEnd</b> ()</td></tr>
-<tr class="memitem:aca0cbde7e9dbb54ec8f2f0a45f560b7a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca0cbde7e9dbb54ec8f2f0a45f560b7a"></a>
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>Arity</b> ()</td></tr>
+<tr class="memitem:ad5b02605e70f6bfbaf664e07fac1d918"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#ad5b02605e70f6bfbaf664e07fac1d918">TrieTrieIterator</a> (const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;relation)</td></tr>
+<tr class="memdesc:ad5b02605e70f6bfbaf664e07fac1d918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the materialized trie-based trie iterator.  <a href="#ad5b02605e70f6bfbaf664e07fac1d918"></a><br/></td></tr>
+<tr class="memitem:aeb18e37f674ebd4d2173dab89478529d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb18e37f674ebd4d2173dab89478529d"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aeb18e37f674ebd4d2173dab89478529d">~TrieTrieIterator</a> ()</td></tr>
+<tr class="memdesc:aeb18e37f674ebd4d2173dab89478529d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources held by the trie iterator. <br/></td></tr>
+<tr class="memitem:aeacf86db9a67cc4ac49ee0251bf8fb31"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aeacf86db9a67cc4ac49ee0251bf8fb31">Init</a> ()</td></tr>
+<tr class="memdesc:aeacf86db9a67cc4ac49ee0251bf8fb31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the trie iterator.  <a href="#aeacf86db9a67cc4ac49ee0251bf8fb31"></a><br/></td></tr>
+<tr class="memitem:a053af9224f0064f9e65d689ee0a4a250"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a053af9224f0064f9e65d689ee0a4a250">Open</a> ()</td></tr>
+<tr class="memdesc:a053af9224f0064f9e65d689ee0a4a250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Positions the trie iterator at the first child of the current node.  <a href="#a053af9224f0064f9e65d689ee0a4a250"></a><br/></td></tr>
+<tr class="memitem:ac83fe13db8cb1e897d06d92295c06eee"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#ac83fe13db8cb1e897d06d92295c06eee">Up</a> ()</td></tr>
+<tr class="memdesc:ac83fe13db8cb1e897d06d92295c06eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Positions the trie iterator at the parent node.  <a href="#ac83fe13db8cb1e897d06d92295c06eee"></a><br/></td></tr>
+<tr class="memitem:af02f83c7917b77dbbccaa862e76727da"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#af02f83c7917b77dbbccaa862e76727da">Key</a> (int *out_key)</td></tr>
+<tr class="memdesc:af02f83c7917b77dbbccaa862e76727da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the key at a current position of the iterator.  <a href="#af02f83c7917b77dbbccaa862e76727da"></a><br/></td></tr>
+<tr class="memitem:ae55fada4eb19f5ba6a938b5bdc65e111"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#ae55fada4eb19f5ba6a938b5bdc65e111">Multiplicity</a> (int *out_multiplicity)</td></tr>
+<tr class="memdesc:ae55fada4eb19f5ba6a938b5bdc65e111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the multiplicity of the key at a current position of the iterator.  <a href="#ae55fada4eb19f5ba6a938b5bdc65e111"></a><br/></td></tr>
+<tr class="memitem:aa38984bb90ebd0e1507b2bb584f62c98"><td class="memItemLeft" align="right" valign="top">virtual Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aa38984bb90ebd0e1507b2bb584f62c98">Next</a> ()</td></tr>
+<tr class="memdesc:aa38984bb90ebd0e1507b2bb584f62c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the trie iterator to the next element in same level (belonging to the same parent).  <a href="#aa38984bb90ebd0e1507b2bb584f62c98"></a><br/></td></tr>
+<tr class="memitem:aaa60e0d4b7c530278e1651556143502a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aaa60e0d4b7c530278e1651556143502a">AtEnd</a> ()</td></tr>
+<tr class="memdesc:aaa60e0d4b7c530278e1651556143502a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the trie iterator is positioned at the last child of the parent node.  <a href="#aaa60e0d4b7c530278e1651556143502a"></a><br/></td></tr>
+<tr class="memitem:aca0cbde7e9dbb54ec8f2f0a45f560b7a"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aca0cbde7e9dbb54ec8f2f0a45f560b7a">Arity</a> ()</td></tr>
+<tr class="memdesc:aca0cbde7e9dbb54ec8f2f0a45f560b7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the arity (maximum depth) of the trie.  <a href="#aca0cbde7e9dbb54ec8f2f0a45f560b7a"></a><br/></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a3cb448c13a557468cef6e827e8012aec"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a3cb448c13a557468cef6e827e8012aec">CompareTrieIteratorsByKeys</a> (<a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_trie_iterator.html">ITrieIterator</a>&lt; int &gt; *first, <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_trie_iterator.html">ITrieIterator</a>&lt; int &gt; *second)</td></tr>
+<tr class="memdesc:a3cb448c13a557468cef6e827e8012aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">An inline trie iterator comparator, which compares tries by their current keys using &lt; (less than) relation on integers.  <a href="#a3cb448c13a557468cef6e827e8012aec"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a25b9d794b6ffd311b13c30ef9df94884"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25b9d794b6ffd311b13c30ef9df94884"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>AtRoot</b> ()</td></tr>
+<tr class="memitem:a25b9d794b6ffd311b13c30ef9df94884"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a25b9d794b6ffd311b13c30ef9df94884">AtRoot</a> ()</td></tr>
+<tr class="memdesc:a25b9d794b6ffd311b13c30ef9df94884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the trie iterator is positioned at the root.  <a href="#a25b9d794b6ffd311b13c30ef9df94884"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -157,6 +166,403 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>current_node_multiplic
 <tr class="memitem:a9b46997bda60e0ac570477ef05338148"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b46997bda60e0ac570477ef05338148"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>at_end</b></td></tr>
 </table>
+<h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ad5b02605e70f6bfbaf664e07fac1d918"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uk_ac_ox_cs_c875114::TrieTrieIterator::TrieTrieIterator </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structuk__ac__ox__cs__c875114_1_1_relation.html">Relation</a> &amp;&#160;</td>
+          <td class="paramname"><em>relation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs the materialized trie-based trie iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">relation</td><td>A reference to the relation for which the trie iterator should be constructed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
+<a class="anchor" id="aca0cbde7e9dbb54ec8f2f0a45f560b7a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int uk_ac_ox_cs_c875114::TrieTrieIterator::Arity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the arity (maximum depth) of the trie. </p>
+<dl class="section return"><dt>Returns</dt><dd>the arity (maximum depth) of the trie. </dd></dl>
+
+<p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_trie_iterator.html">uk_ac_ox_cs_c875114::ITrieIterator&lt; int &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa60e0d4b7c530278e1651556143502a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool uk_ac_ox_cs_c875114::TrieTrieIterator::AtEnd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if the trie iterator is positioned at the last child of the parent node. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the iterator is positioned at the last element, false otherwise. </dd></dl>
+
+<p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_iterator.html">uk_ac_ox_cs_c875114::IIterator&lt; int &gt;</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_aaa60e0d4b7c530278e1651556143502a_icgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_aaa60e0d4b7c530278e1651556143502a_icgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_aaa60e0d4b7c530278e1651556143502a_icgraph" id="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_aaa60e0d4b7c530278e1651556143502a_icgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aa38984bb90ebd0e1507b2bb584f62c98" title="Moves the trie iterator to the next element in same level (belonging to the same parent)." alt="" coords="213,5,368,51"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a25b9d794b6ffd311b13c30ef9df94884"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool uk_ac_ox_cs_c875114::TrieTrieIterator::AtRoot </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if the trie iterator is positioned at the root. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the iterator is positioned at the root, false otherwise. </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_a25b9d794b6ffd311b13c30ef9df94884_icgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_a25b9d794b6ffd311b13c30ef9df94884_icgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_a25b9d794b6ffd311b13c30ef9df94884_icgraph" id="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_a25b9d794b6ffd311b13c30ef9df94884_icgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#ac83fe13db8cb1e897d06d92295c06eee" title="Positions the trie iterator at the parent node." alt="" coords="208,5,363,51"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#af02f83c7917b77dbbccaa862e76727da" title="Returns the key at a current position of the iterator." alt="" coords="208,74,363,121"/><area shape="rect" id="node7" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#ae55fada4eb19f5ba6a938b5bdc65e111" title="Returns the multiplicity of the key at a current position of the iterator." alt="" coords="208,144,363,208"/><area shape="rect" id="node9" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aa38984bb90ebd0e1507b2bb584f62c98" title="Moves the trie iterator to the next element in same level (belonging to the same parent)." alt="" coords="208,231,363,278"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a3cb448c13a557468cef6e827e8012aec"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool uk_ac_ox_cs_c875114::TrieTrieIterator::CompareTrieIteratorsByKeys </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_trie_iterator.html">ITrieIterator</a>&lt; int &gt; *&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_trie_iterator.html">ITrieIterator</a>&lt; int &gt; *&#160;</td>
+          <td class="paramname"><em>second</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>An inline trie iterator comparator, which compares tries by their current keys using &lt; (less than) relation on integers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>First trie iterator to compare. </td></tr>
+    <tr><td class="paramname">second</td><td>Second trie iterator to compare. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true, if the current key at the first trie iterator is strictly less than the current key at the second trie iterator, and false otherwise. </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_a3cb448c13a557468cef6e827e8012aec_icgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_a3cb448c13a557468cef6e827e8012aec_icgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_a3cb448c13a557468cef6e827e8012aec_icgraph" id="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_a3cb448c13a557468cef6e827e8012aec_icgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_iterator.html#a4b5a31e1b2f45fc70749baccae129740" title="Initializes the iterator." alt="" coords="249,5,439,69"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aeacf86db9a67cc4ac49ee0251bf8fb31"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Status uk_ac_ox_cs_c875114::TrieTrieIterator::Init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes the trie iterator. </p>
+<dl class="section return"><dt>Returns</dt><dd>kOK </dd></dl>
+
+<p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_iterator.html">uk_ac_ox_cs_c875114::IIterator&lt; int &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af02f83c7917b77dbbccaa862e76727da"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Status uk_ac_ox_cs_c875114::TrieTrieIterator::Key </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the key at a current position of the iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out_key</td><td>A pointer to the memory location where the key should be stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
+
+<p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_iterator.html">uk_ac_ox_cs_c875114::IIterator&lt; int &gt;</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_af02f83c7917b77dbbccaa862e76727da_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_af02f83c7917b77dbbccaa862e76727da_cgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_af02f83c7917b77dbbccaa862e76727da_cgraph" id="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_af02f83c7917b77dbbccaa862e76727da_cgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a25b9d794b6ffd311b13c30ef9df94884" title="Checks if the trie iterator is positioned at the root." alt="" coords="208,5,363,69"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae55fada4eb19f5ba6a938b5bdc65e111"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Status uk_ac_ox_cs_c875114::TrieTrieIterator::Multiplicity </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_multiplicity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the multiplicity of the key at a current position of the iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out_multiplicity</td><td>A pointer to the memory location where the multiplicity should be stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
+
+<p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_iterator.html">uk_ac_ox_cs_c875114::IIterator&lt; int &gt;</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_ae55fada4eb19f5ba6a938b5bdc65e111_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_ae55fada4eb19f5ba6a938b5bdc65e111_cgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_ae55fada4eb19f5ba6a938b5bdc65e111_cgraph" id="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_ae55fada4eb19f5ba6a938b5bdc65e111_cgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a25b9d794b6ffd311b13c30ef9df94884" title="Checks if the trie iterator is positioned at the root." alt="" coords="208,5,363,69"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa38984bb90ebd0e1507b2bb584f62c98"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Status uk_ac_ox_cs_c875114::TrieTrieIterator::Next </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Moves the trie iterator to the next element in same level (belonging to the same parent). </p>
+<dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
+
+<p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_iterator.html">uk_ac_ox_cs_c875114::IIterator&lt; int &gt;</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_aa38984bb90ebd0e1507b2bb584f62c98_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_aa38984bb90ebd0e1507b2bb584f62c98_cgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_aa38984bb90ebd0e1507b2bb584f62c98_cgraph" id="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_aa38984bb90ebd0e1507b2bb584f62c98_cgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a25b9d794b6ffd311b13c30ef9df94884" title="Checks if the trie iterator is positioned at the root." alt="" coords="211,5,365,69"/><area shape="rect" id="node5" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aaa60e0d4b7c530278e1651556143502a" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="209,93,367,139"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a053af9224f0064f9e65d689ee0a4a250"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Status uk_ac_ox_cs_c875114::TrieTrieIterator::Open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Positions the trie iterator at the first child of the current node. </p>
+<dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
+
+<p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_trie_iterator.html">uk_ac_ox_cs_c875114::ITrieIterator&lt; int &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac83fe13db8cb1e897d06d92295c06eee"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Status uk_ac_ox_cs_c875114::TrieTrieIterator::Up </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Positions the trie iterator at the parent node. </p>
+<dl class="section return"><dt>Returns</dt><dd>kOK on success, failure otherwise. </dd></dl>
+
+<p>Implements <a class="el" href="classuk__ac__ox__cs__c875114_1_1_i_trie_iterator.html">uk_ac_ox_cs_c875114::ITrieIterator&lt; int &gt;</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_ac83fe13db8cb1e897d06d92295c06eee_cgraph.png" border="0" usemap="#classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_ac83fe13db8cb1e897d06d92295c06eee_cgraph" alt=""/></div>
+<map name="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_ac83fe13db8cb1e897d06d92295c06eee_cgraph" id="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator_ac83fe13db8cb1e897d06d92295c06eee_cgraph">
+<area shape="rect" id="node3" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a25b9d794b6ffd311b13c30ef9df94884" title="Checks if the trie iterator is positioned at the root." alt="" coords="208,5,363,69"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/manfred/git/dsi-mini-project/include/<a class="el" href="trie__trie__iterator_8h_source.html">trie_trie_iterator.h</a></li>
 <li>/home/manfred/git/dsi-mini-project/src/trie_trie_iterator.cc</li>
@@ -167,7 +573,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>at_end</b></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>uk_ac_ox_cs_c875114</b></li><li class="navelem"><a class="el" href="classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html">TrieTrieIterator</a></li>
-    <li class="footer">Generated on Sat Mar 23 2013 02:27:34 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

@@ -22,6 +22,22 @@ class TrieTrieIterator : public virtual ITrieIterator<int>
         virtual bool   AtEnd();
         virtual int    Arity();
 
+        /**
+         * An inline trie iterator comparator, which compares tries by their current keys using
+         * < (less than) relation on integers.
+         * @param first  First trie iterator to compare.
+         * @param second Second trie iterator to compare.
+         * @returns true, if the current key at the first trie iterator is strictly less than the
+         *          current key at the second trie iterator, and false otherwise.
+         */
+        static bool CompareTrieIteratorsByKeys(ITrieIterator<int>* first, ITrieIterator<int>* second)
+        {
+            int first_result, second_result;
+            first->Key(&first_result); second->Key(&second_result);
+
+            return (first_result < second_result);
+        }
+
     protected:
         virtual bool AtRoot();
 

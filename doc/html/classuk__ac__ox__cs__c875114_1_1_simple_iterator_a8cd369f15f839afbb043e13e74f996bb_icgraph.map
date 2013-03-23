@@ -1,0 +1,7 @@
+<map id="uk_ac_ox_cs_c875114::SimpleIterator::AtEnd" name="uk_ac_ox_cs_c875114::SimpleIterator::AtEnd">
+<area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#a6a4b635a77583239154d68460bb7e7ad" title="Positions the join iterator at the next position in the join result." alt="" coords="412,27,639,74"/>
+<area shape="rect" id="node7" href="$classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4c14eb91f0e51eb6efd6912a2f7b7a79" title="Returns the key at a current position of the iterator." alt="" coords="208,27,363,74"/>
+<area shape="rect" id="node10" href="$classuk__ac__ox__cs__c875114_1_1_trie.html#a89e1a18a6cf6924601f095eb097f4170" title="Constructs a trie for a given relation (in the relation&#39;s attribute order, i.e." alt="" coords="448,97,603,143"/>
+<area shape="rect" id="node12" href="$classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4e967e3b27385f35e8dcba1f1119bbcd" title="Moves the iterator to the next tuple in the relation." alt="" coords="208,97,363,143"/>
+<area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#ad79bd336a73a51fed0727b043fff1588" title="Initializes the iterator." alt="" coords="688,27,907,74"/>
+</map>

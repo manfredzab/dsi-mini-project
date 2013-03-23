@@ -1,0 +1,4 @@
+<map id="uk_ac_ox_cs_c875114::TrieTrieIterator::Next" name="uk_ac_ox_cs_c875114::TrieTrieIterator::Next">
+<area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a25b9d794b6ffd311b13c30ef9df94884" title="Checks if the trie iterator is positioned at the root." alt="" coords="211,5,365,69"/>
+<area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#aaa60e0d4b7c530278e1651556143502a" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="209,93,367,139"/>
+</map>
