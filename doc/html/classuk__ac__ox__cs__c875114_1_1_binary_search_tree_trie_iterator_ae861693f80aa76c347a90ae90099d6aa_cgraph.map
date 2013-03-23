@@ -1,4 +1,4 @@
-<map id="uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::Multiplicity" name="uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::Multiplicity">
+<map id="c875114::BinarySearchTreeTrieIterator::Multiplicity" name="c875114::BinarySearchTreeTrieIterator::Multiplicity">
 <area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="251,5,448,69"/>
 <area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#ad8589f19c363d24d647aa3d5d15bd2ca" title="Returns the multiplicity of the key at a current position of the iterator." alt="" coords="261,93,437,139"/>
 <area shape="rect" id="node7" href="$classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="496,93,651,139"/>

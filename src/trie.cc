@@ -2,7 +2,7 @@
 #include "../include/trie.h"
 #include "../include/simple_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::vector;
@@ -107,4 +107,4 @@ void Trie::Insert(const int* tuple)
     }
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

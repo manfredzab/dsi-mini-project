@@ -1,0 +1,7 @@
+<map id="c875114::BinarySearchTreeTrieIterator::Next" name="c875114::BinarySearchTreeTrieIterator::Next">
+<area shape="rect" id="node3" href="$classc875114_1_1_binary_search_tree_trie_iterator.html#af82c7a66338e0311c1da0e91266261c0" title="Moves the trie iterator to the element which is i) in the same level, ii) belongs to the same parent..." alt="" coords="239,39,420,86"/>
+<area shape="rect" id="node5" href="$classc875114_1_1_binary_search_tree_trie_iterator.html#a439000495eef4a5d25d6924f4a7dfb1f" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="471,5,652,51"/>
+<area shape="rect" id="node7" href="$classc875114_1_1_linear_iterator.html#aa2d19164f9fa6b955030a78c6739d051" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="484,74,639,121"/>
+<area shape="rect" id="node9" href="$classc875114_1_1_linear_iterator.html#aaf9043ca2c4f491e2315e7104ebbd845" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="716,39,871,86"/>
+<area shape="rect" id="node11" href="$classc875114_1_1_binary_search_tree.html#aa09d64262649964cf042b37e80576cfd" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="703,109,884,155"/>
+</map>

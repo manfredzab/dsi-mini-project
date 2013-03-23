@@ -3,7 +3,7 @@
 #include "../include/trie_trie_iterator.h"
 #include "../include/binary_search_tree_trie_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::vector;
@@ -181,4 +181,4 @@ bool AbstractMultiwaySortMergeJoinIterator<TTrieIterator>::AtEnd()
 template class AbstractMultiwaySortMergeJoinIterator<TrieTrieIterator>;
 template class AbstractMultiwaySortMergeJoinIterator<BinarySearchTreeTrieIterator>;
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

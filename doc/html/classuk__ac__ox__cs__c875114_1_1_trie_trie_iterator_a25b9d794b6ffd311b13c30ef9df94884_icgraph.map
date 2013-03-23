@@ -1,4 +1,4 @@
-<map id="uk_ac_ox_cs_c875114::TrieTrieIterator::AtRoot" name="uk_ac_ox_cs_c875114::TrieTrieIterator::AtRoot">
+<map id="c875114::TrieTrieIterator::AtRoot" name="c875114::TrieTrieIterator::AtRoot">
 <area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#ac83fe13db8cb1e897d06d92295c06eee" title="Positions the trie iterator at the parent node." alt="" coords="208,5,363,51"/>
 <area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#af02f83c7917b77dbbccaa862e76727da" title="Returns the key at a current position of the iterator." alt="" coords="208,74,363,121"/>
 <area shape="rect" id="node7" href="$classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#ae55fada4eb19f5ba6a938b5bdc65e111" title="Returns the multiplicity of the key at a current position of the iterator." alt="" coords="208,144,363,208"/>

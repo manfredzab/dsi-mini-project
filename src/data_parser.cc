@@ -6,7 +6,7 @@
 
 #include "../include/data_parser.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::string;
@@ -255,4 +255,4 @@ int DataParser::ConvertStringToInt(const string& input_string)
 }
 
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

@@ -1,4 +1,4 @@
-<map id="uk_ac_ox_cs_c875114::LinearIterator::AtEnd" name="uk_ac_ox_cs_c875114::LinearIterator::AtEnd">
+<map id="c875114::LinearIterator::AtEnd" name="c875114::LinearIterator::AtEnd">
 <area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a032ace974df1ed4d3baf11dfb91e926b" title="Positions the trie iterator at the first child of the current node." alt="" coords="209,5,444,51"/>
 <area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a64c068f0a4e2df1e12a256e7b46e711f" title="Returns the key at a current position of the iterator." alt="" coords="249,125,404,171"/>
 <area shape="rect" id="node7" href="$classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#ae0806b62df1386a7ce6a9af6deda4e8a" title="Moves the iterator to the next tuple in the relation." alt="" coords="533,125,688,171"/>

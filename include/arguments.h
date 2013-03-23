@@ -4,7 +4,7 @@
 #include <string>
 #include "join_algorithm_type.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -19,6 +19,6 @@ struct Arguments
                                            /**  should be printed to screen when the program terminates. */
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* ARGUMENTS_H_ */

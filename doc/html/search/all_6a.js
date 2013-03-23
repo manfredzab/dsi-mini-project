@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['join_5falgorithm_5ftype',['join_algorithm_type',['../structuk__ac__ox__cs__c875114_1_1_arguments.html#ae009a1bbe0061c677d47caf9a3eba8cc',1,'uk_ac_ox_cs_c875114::Arguments']]],
-  ['join_5fattributes',['join_attributes',['../structuk__ac__ox__cs__c875114_1_1_query.html#a3183921f0b470aabd55ec555147ff3de',1,'uk_ac_ox_cs_c875114::Query']]],
-  ['join_5fiterator_5ffor_5fdepth',['join_iterator_for_depth',['../classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#a33ceb962afc64d60b7bdc36fca7549fa',1,'uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinTrieIterator']]]
+  ['join',['Join',['../classc875114_1_1_binary_sort_merge_join.html#a43d4c01d26988881959ec7cd18d24662',1,'c875114::BinarySortMergeJoin::Join()'],['../classc875114_1_1_cascading_sort_merge_join.html#a2b83f3436acbfa96984791c7ebebf352',1,'c875114::CascadingSortMergeJoin::Join()']]],
+  ['join_5falgorithm_5ftype',['join_algorithm_type',['../structc875114_1_1_arguments.html#ac6d9167207cec8d8ee13f8caf621a904',1,'c875114::Arguments']]],
+  ['join_5fattributes',['join_attributes',['../structc875114_1_1_query.html#a0592c09408822a3c862fe9a3a2c201a9',1,'c875114::Query']]],
+  ['join_5fiterator_5ffor_5fdepth',['join_iterator_for_depth',['../classc875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#ae4c3624be09eb2a46a2393b1eebc7664',1,'c875114::AbstractMultiwaySortMergeJoinTrieIterator']]]
 ];

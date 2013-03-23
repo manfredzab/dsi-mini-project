@@ -1,2 +1,6 @@
 \form#0:$O(\log N)$
 \form#1:$O(1 + \log N/m)$
+\form#2:$N$
+\form#3:$m$
+\form#4:$n$
+\form#5:$n - 1$

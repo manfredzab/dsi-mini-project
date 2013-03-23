@@ -4,9 +4,12 @@
 #include "interface_trie_iterator.h"
 #include "trie.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
+/**
+ * Trie iterator based on the materialized trie data structure.
+ */
 class TrieTrieIterator : public virtual ITrieIterator<int>
 {
     public:
@@ -49,6 +52,6 @@ class TrieTrieIterator : public virtual ITrieIterator<int>
         bool      at_end;
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* TRIE_TRIE_ITERATOR_H_ */

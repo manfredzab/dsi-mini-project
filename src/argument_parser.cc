@@ -2,7 +2,7 @@
 #include <string>
 #include "../include/argument_parser.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::string;
@@ -61,4 +61,4 @@ Status ArgumentParser::ParseArguments(int argc, char *argv[], Arguments* out_arg
     return kOK;
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

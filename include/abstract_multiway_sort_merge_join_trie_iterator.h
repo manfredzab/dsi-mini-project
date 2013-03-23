@@ -11,7 +11,7 @@
 #include "interface_trie_iterator.h"
 #include "interface_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -75,6 +75,6 @@ class AbstractMultiwaySortMergeJoinTrieIterator : public virtual ITrieIterator<i
         const Query&                            query;                             /**< Input query. */
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* ABSTRACT_MULTIWAY_SORT_MERGE_JOIN_TRIE_ITERATOR_H_ */

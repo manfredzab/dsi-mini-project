@@ -1,0 +1,6 @@
+<map id="c875114::TrieTrieIterator::AtRoot" name="c875114::TrieTrieIterator::AtRoot">
+<area shape="rect" id="node3" href="$classc875114_1_1_trie_trie_iterator.html#a398af1a7a9a4bb615d290b406a427242" title="Positions the trie iterator at the parent node." alt="" coords="221,5,411,35"/>
+<area shape="rect" id="node5" href="$classc875114_1_1_trie_trie_iterator.html#a1384a42db16a94755aa0b7f3f7573509" title="Returns the key at a current position of the iterator." alt="" coords="219,59,413,88"/>
+<area shape="rect" id="node7" href="$classc875114_1_1_trie_trie_iterator.html#a394be60da77262d289041d878a324abc" title="Returns the multiplicity of the key at a current position of the iterator." alt="" coords="235,111,397,158"/>
+<area shape="rect" id="node9" href="$classc875114_1_1_trie_trie_iterator.html#acf177b83b8587b2200e819bf182109b2" title="Moves the trie iterator to the next element in same level (belonging to the same parent)." alt="" coords="235,181,397,227"/>
+</map>

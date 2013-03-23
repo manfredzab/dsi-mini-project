@@ -1,7 +1,7 @@
 #include <vector>
 #include "../include/leapfrog_join_trie_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::vector;
@@ -38,4 +38,4 @@ LeapfrogJoinIterator* LeapfrogJoinTrieIterator::CreateJoinIteratorForTrieIterato
     return new LeapfrogJoinIterator(trie_iterators);
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

@@ -4,7 +4,7 @@
 #include "../include/binary_sort_merge_join.h"
 #include "../include/binary_sort_merge_join_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::vector;
@@ -12,7 +12,7 @@ using std::string;
 
 typedef BinarySortMergeJoinIterator::AttributeOrderDescriptor AttributeOrderDescriptor; // Shortening of the name (without polluting the namespace)
 
-/***
+/**
  * Performs the binary sort-merge joins for the given relations and a given query.
  * @param relations Relations to be joined.
  * @param query Join query.
@@ -92,7 +92,7 @@ Relation* BinarySortMergeJoin::Join(Relation& outer_relation, Relation& inner_re
     return result_relation;
 }
 
-/***
+/**
  * Joins the outer and inner relations using a binary sort-merge join iterator.
  * @param join_iterator Binary sort-merge join iterator that is used to join the relations.
  * @param out_result_relation A pointer to the result relation, where the tuple data should
@@ -116,4 +116,4 @@ void BinarySortMergeJoin::JoinUsingIterator(BinarySortMergeJoinIterator& join_it
 }
 
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

@@ -2,7 +2,7 @@
 #include <limits>
 #include "../include/binary_search_tree_trie_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -242,4 +242,4 @@ int BinarySearchTreeTrieIterator::MatchDepth(int* first_tuple, int* second_tuple
     return kArity - 1;
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

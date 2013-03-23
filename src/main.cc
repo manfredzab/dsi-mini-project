@@ -44,7 +44,7 @@
 #include "../include/binary_search_tree_trie_iterator.h"
 #include "../include/trie_trie_iterator.h"
 
-using namespace uk_ac_ox_cs_c875114;
+using namespace c875114;
 
 using std::map;
 using std::string;

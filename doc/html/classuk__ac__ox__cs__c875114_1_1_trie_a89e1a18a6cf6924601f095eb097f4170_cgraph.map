@@ -1,4 +1,4 @@
-<map id="uk_ac_ox_cs_c875114::Trie::Trie" name="uk_ac_ox_cs_c875114::Trie::Trie">
+<map id="c875114::Trie::Trie" name="c875114::Trie::Trie">
 <area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a8cd369f15f839afbb043e13e74f996bb" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="411,24,565,70"/>
 <area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4c14eb91f0e51eb6efd6912a2f7b7a79" title="Returns the key at a current position of the iterator." alt="" coords="208,24,363,70"/>
 <area shape="rect" id="node8" href="$classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4e967e3b27385f35e8dcba1f1119bbcd" title="Moves the iterator to the next tuple in the relation." alt="" coords="208,93,363,140"/>

@@ -1,6 +1,6 @@
 #include "../include/multiway_sort_merge_join_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -28,4 +28,4 @@ void MultiwaySortMergeJoinIterator::PositionCurrentIteratorAtKey(int key)
     }
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

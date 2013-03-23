@@ -1,4 +1,4 @@
-<map id="uk_ac_ox_cs_c875114::SimpleIterator::AtEnd" name="uk_ac_ox_cs_c875114::SimpleIterator::AtEnd">
+<map id="c875114::SimpleIterator::AtEnd" name="c875114::SimpleIterator::AtEnd">
 <area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#a6a4b635a77583239154d68460bb7e7ad" title="Positions the join iterator at the next position in the join result." alt="" coords="412,27,639,74"/>
 <area shape="rect" id="node7" href="$classuk__ac__ox__cs__c875114_1_1_simple_iterator.html#a4c14eb91f0e51eb6efd6912a2f7b7a79" title="Returns the key at a current position of the iterator." alt="" coords="208,27,363,74"/>
 <area shape="rect" id="node10" href="$classuk__ac__ox__cs__c875114_1_1_trie.html#a89e1a18a6cf6924601f095eb097f4170" title="Constructs a trie for a given relation (in the relation&#39;s attribute order, i.e." alt="" coords="448,97,603,143"/>

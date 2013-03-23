@@ -6,13 +6,13 @@
 #include "binary_search_tree_trie_iterator.h"
 #include "status.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
- * Leapfrog join iterator implementation. It is based on an abstract multiway sort-merge join iterator, with
- * the main difference that it uses the linear iterator portions of the binary tree trie iterator to seek the
- * current iterator to the next candidate key.
+ * Leapfrog join iterator. It is based on an abstract multiway sort-merge join iterator; the main
+ * difference is that it uses the linear iterator portions of the binary tree trie iterator to
+ * efficiently seek the current iterator to the next candidate key.
  */
 class LeapfrogJoinIterator : public virtual AbstractMultiwaySortMergeJoinIterator<BinarySearchTreeTrieIterator>
 {
@@ -26,6 +26,6 @@ class LeapfrogJoinIterator : public virtual AbstractMultiwaySortMergeJoinIterato
         virtual void PositionCurrentIteratorAtKey(int key);
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* LEAPFROG_JOIN_ITERATOR_H_ */

@@ -4,13 +4,13 @@
 #include "../include/cascading_sort_merge_join.h"
 #include "../include/binary_sort_merge_join.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::map;
 using std::string;
 
-/***
+/**
  * Performs a sequence of cascading sort-merge joins for the given relations and a given
  * query. This method invokes \f$n - 1\f$ binary sort-merge joins.
  * @param relations Relations to be joined.
@@ -36,4 +36,4 @@ Relation* CascadingSortMergeJoin::Join(map<string, Relation*>& relations, const 
     return current_join;
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

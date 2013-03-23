@@ -4,11 +4,11 @@
 #include <string>
 #include <vector>
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
- * Holds relation details: relation name, attribute names and tuple data. Each tuple is stored as
+ * Relation detail holder: stores relation name, attribute names and tuple data. Each tuple is stored as
  * a sequence of integers on the heap, and the tuple data is stored as a vector of pointers to individual
  * tuple locations on the heap.
  */
@@ -29,6 +29,6 @@ struct Relation
     std::vector<int*> data;                    /**< Tuple data. */
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* RELATION_H_ */

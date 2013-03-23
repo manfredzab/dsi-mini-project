@@ -6,12 +6,12 @@
 #include "relation.h"
 #include "linear_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
-/*
- * A wrapper class that takes a binary search tree and provides a trie iterator interface.
- * Largely based on the BTreeTrieIterator class by Todd Veldhuizen.
+/**
+ * Binary search tree wrapper, providing a trie iterator interface. Largely based on
+ * the BTreeTrieIterator class by Todd L Veldhuizen.
  */
 class BinarySearchTreeTrieIterator : public virtual ITrieIterator<int>
 {
@@ -46,5 +46,5 @@ class BinarySearchTreeTrieIterator : public virtual ITrieIterator<int>
         std::stack<bool>      at_end_stack;     /**< Stack of "At end" flags, used at Open and Up calls. */
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 #endif /* BINARY_SEARCH_TREE_TRIE_ITERATOR_H_ */

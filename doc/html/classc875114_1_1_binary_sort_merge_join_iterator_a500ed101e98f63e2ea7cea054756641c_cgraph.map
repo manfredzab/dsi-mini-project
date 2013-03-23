@@ -1,0 +1,7 @@
+<map id="c875114::BinarySortMergeJoinIterator::Init" name="c875114::BinarySortMergeJoinIterator::Init">
+<area shape="rect" id="node3" href="$classc875114_1_1_binary_sort_merge_join_iterator.html#abc6d6bc75f97bf3d2e6d733007961471" title="Positions the join iterator at the next position in the join result." alt="" coords="229,91,405,138"/>
+<area shape="rect" id="node5" href="$classc875114_1_1_binary_sort_merge_join_iterator.html#a4c2fa544ed7ce59784f417fc822b314d" title="Checks if the join iterator is positioned at the last tuple in the join result." alt="" coords="461,5,637,51"/>
+<area shape="rect" id="node7" href="$classc875114_1_1_simple_iterator.html#ae147573f6e6c6fe14579b7864cfabc82" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="693,117,853,163"/>
+<area shape="rect" id="node9" href="$classc875114_1_1_simple_iterator.html#a32e1d30047e6e5bb09db3101251890e5" title="Returns the key at a current position of the iterator." alt="" coords="455,125,644,155"/>
+<area shape="rect" id="node12" href="$classc875114_1_1_simple_iterator.html#ab3e43b2854c331ccfd6aa6ca90477dad" title="Moves the iterator to the next tuple in the relation." alt="" coords="469,178,629,225"/>
+</map>

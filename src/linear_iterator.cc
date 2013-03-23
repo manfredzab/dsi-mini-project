@@ -2,7 +2,7 @@
 #include <cstring>
 #include "../include/linear_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -201,4 +201,4 @@ bool LinearIterator::AtEnd()
     return at_end;
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

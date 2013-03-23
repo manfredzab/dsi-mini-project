@@ -3,7 +3,7 @@
 
 #include <sys/time.h>
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -45,6 +45,6 @@ class Timer
         timeval start_time;
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* TIMER_H_ */

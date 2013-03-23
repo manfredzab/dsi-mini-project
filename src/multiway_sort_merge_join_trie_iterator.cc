@@ -1,7 +1,7 @@
 #include <vector>
 #include "../include/multiway_sort_merge_join_trie_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::vector;
@@ -38,4 +38,4 @@ MultiwaySortMergeJoinIterator* MultiwaySortMergeJoinTrieIterator::CreateJoinIter
     return new MultiwaySortMergeJoinIterator(trie_iterators);
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

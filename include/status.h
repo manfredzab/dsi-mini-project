@@ -1,7 +1,7 @@
 #ifndef STATUS_H_
 #define STATUS_H_
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -15,6 +15,6 @@ enum Status
   kNotImplemented
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* STATUS_H_ */

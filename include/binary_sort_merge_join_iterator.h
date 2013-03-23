@@ -9,7 +9,7 @@
 #include "interface_iterator.h"
 #include "simple_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -20,7 +20,7 @@ class BinarySortMergeJoinIterator : public virtual IIterator<int*>
 {
     public:
         /**
-         * Holds the information on how to produce the correct order of attributes in the
+         * Holder of information on how to produce the correct order of attributes in the
          * resulting relation's tuple from the two source relation tuples.
          */
         struct AttributeOrderDescriptor
@@ -129,6 +129,6 @@ class BinarySortMergeJoinIterator : public virtual IIterator<int*>
         int                                          join_attribute_count;                    /**< Join attribute count. */
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* BINARY_SORT_MERGE_JOIN_ITERATOR_H_ */

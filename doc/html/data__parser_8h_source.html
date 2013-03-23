@@ -111,21 +111,28 @@ $(document).ready(function(){initNavTree('data__parser_8h_source.html','');});
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;query.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;relation.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>uk_ac_ox_cs_c875114</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>c875114</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/***</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * This class parses the database and query files, creating Relation and Query structures.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="classuk__ac__ox__cs__c875114_1_1_data_parser.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classuk__ac__ox__cs__c875114_1_1_data_parser.html">DataParser</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="classc875114_1_1_data_parser.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classc875114_1_1_data_parser.html" title="Database and query files parser (creates Relation and Query structures).">DataParser</a></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">static</span> std::map&lt;std::string, Relation*&gt;* <a class="code" href="classuk__ac__ox__cs__c875114_1_1_data_parser.html#aabd61f4a5328e18362bdfe9a803fab17" title="Parse the database from a given file.">ParseDatabase</a>(std::string file_name);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">static</span> <a class="code" href="structuk__ac__ox__cs__c875114_1_1_query.html" title="Holds query details (names of relations involved) and the join attribute order.">Query</a>* <a class="code" href="classuk__ac__ox__cs__c875114_1_1_data_parser.html#a7b1adbe6c249c5f38462aa8b3ea676f4" title="Parse the query from a given file.">ParseQuery</a>(std::string file_name);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">static</span> std::map&lt;std::string, Relation*&gt;* <a class="code" href="classc875114_1_1_data_parser.html#ad89de37af873d8cee3bf8454b162971a" title="Parses the database from a given file.">ParseDatabase</a>(std::string file_name);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">static</span> <a class="code" href="structc875114_1_1_query.html" title="Query detail holder: stores the join attribute order and the names of relations involved in the join...">Query</a>*                            <a class="code" href="classc875114_1_1_data_parser.html#ad49b8c4bcdbc5297afcd542a8eab840a" title="Parses the query from a given file.">ParseQuery</a>(std::string file_name);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">static</span> <a class="code" href="structc875114_1_1_relation.html" title="Relation detail holder: stores relation name, attribute names and tuple data.">Relation</a>*                 ParseRelation(std::string database_file_name, std::string relation_line);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">static</span> <a class="code" href="structc875114_1_1_relation.html" title="Relation detail holder: stores relation name, attribute names and tuple data.">Relation</a>*                 ParseRelation(std::string relation_file_name, std::string relation_name, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; attribute_names);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span>*                      ParseRelationTuple(std::string relation_tuple_line, <span class="keywordtype">int</span> attribute_count);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span>                      RemoveStringWhitespace(std::string&amp; input_string);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">static</span> std::vector&lt;std::string&gt;* TokenizeString(<span class="keyword">const</span> std::string&amp; input_string, <span class="keyword">const</span> <span class="keywordtype">char</span> character);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span>                       ConvertStringToInt(<span class="keyword">const</span> std::string&amp; input_string);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">static</span> std::string               GetFilePath(std::string file_name);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;} <span class="comment">/* namespace uk_ac_ox_cs_c875114 */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;} <span class="comment">/* namespace c875114 */</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* DATABASE_PARSER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -134,7 +141,7 @@ $(document).ready(function(){initNavTree('data__parser_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9bec7083027963d9f9ceae2cc7474de5.html">git</a></li><li class="navelem"><a class="el" href="dir_5f7917324dd3531ad5091474fec5d929.html">dsi-mini-project</a></li><li class="navelem"><a class="el" href="dir_cd053fb20616144d9b3fb80d67110617.html">include</a></li><li class="navelem"><b>data_parser.h</b></li>
-    <li class="footer">Generated on Sat Mar 23 2013 03:55:33 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 05:46:56 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

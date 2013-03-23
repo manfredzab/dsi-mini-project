@@ -2,7 +2,7 @@
 #include <vector>
 #include "../include/printer.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::string;
@@ -20,7 +20,7 @@ void Printer::Print(Relation& relation, std::ostream& out)
     int tuple_size = relation.attribute_names.size();
     for (vector<int*>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
     {
-        //PrintTuple(*it, tuple_size, ',', out);
+        PrintTuple(*it, tuple_size, ',', out);
     }
 }
 
@@ -54,14 +54,13 @@ void Printer::PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, i
     {
         if (current_depth == printing_depth)
         {
-            //PrintTuple(current_tuple, printing_depth, ',', out);
+            PrintTuple(current_tuple, printing_depth, ',', out);
         }
 
         return;
     }
 
-    // Scan the siblings
-    do
+    do // Scan the siblings
     {
         trie_iterator.Key(&current_tuple[current_depth]);
 
@@ -91,4 +90,4 @@ inline void Printer::PrintTuple(int* current_tuple, int tuple_size, char separat
     out << std::endl;
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

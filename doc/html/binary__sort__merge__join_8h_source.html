@@ -109,34 +109,28 @@ $(document).ready(function(){initNavTree('binary__sort__merge__join_8h_source.ht
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;query.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;binary_sort_merge_join_iterator.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>uk_ac_ox_cs_c875114</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>c875114</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join.html" title="Binary sort merge join class.">BinarySortMergeJoin</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="classc875114_1_1_binary_sort_merge_join.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classc875114_1_1_binary_sort_merge_join.html" title="Binary sort merge join.">BinarySortMergeJoin</a></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">static</span> <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a>* Join(<a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a>&amp; outer_relation, <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a>&amp; inner_relation, <span class="keyword">const</span> <a class="code" href="structuk__ac__ox__cs__c875114_1_1_query.html" title="Holds query details (names of relations involved) and the join attribute order.">Query</a>&amp; query);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">static</span> <a class="code" href="structc875114_1_1_relation.html" title="Relation detail holder: stores relation name, attribute names and tuple data.">Relation</a>* <a class="code" href="classc875114_1_1_binary_sort_merge_join.html#a43d4c01d26988881959ec7cd18d24662" title="Performs the binary sort-merge joins for the given relations and a given query.">Join</a>(<a class="code" href="structc875114_1_1_relation.html" title="Relation detail holder: stores relation name, attribute names and tuple data.">Relation</a>&amp; outer_relation, <a class="code" href="structc875114_1_1_relation.html" title="Relation detail holder: stores relation name, attribute names and tuple data.">Relation</a>&amp; inner_relation, <span class="keyword">const</span> <a class="code" href="structc875114_1_1_query.html" title="Query detail holder: stores the join attribute order and the names of relations involved in the join...">Query</a>&amp; query);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">/***</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">         * Joins the outer and inner relations using a binary sort-merge join iterator.</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">         * @param join_iterator Binary sort-merge join iterator that is used to join the relations.</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">         * @param out_result_relation A pointer to the result relation, where the tuple data should</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">         *                            be stored.</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> JoinUsingIterator(<a class="code" href="classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html" title="Binary sort-merge join class.">BinarySortMergeJoinIterator</a>&amp; join_iterator, <a class="code" href="structuk__ac__ox__cs__c875114_1_1_relation.html" title="Holds relation details: relation name, attribute names and tuple data.">Relation</a>* out_result_relation);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;} <span class="comment">/* namespace uk_ac_ox_cs_c875114 */</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BINARY_SORT_MERGE_JOIN_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> JoinUsingIterator(<a class="code" href="classc875114_1_1_binary_sort_merge_join_iterator.html" title="Binary sort-merge join iterator.">BinarySortMergeJoinIterator</a>&amp; join_iterator, <a class="code" href="structc875114_1_1_relation.html" title="Relation detail holder: stores relation name, attribute names and tuple data.">Relation</a>* out_result_relation);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;} <span class="comment">/* namespace c875114 */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BINARY_SORT_MERGE_JOIN_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9bec7083027963d9f9ceae2cc7474de5.html">git</a></li><li class="navelem"><a class="el" href="dir_5f7917324dd3531ad5091474fec5d929.html">dsi-mini-project</a></li><li class="navelem"><a class="el" href="dir_cd053fb20616144d9b3fb80d67110617.html">include</a></li><li class="navelem"><b>binary_sort_merge_join.h</b></li>
-    <li class="footer">Generated on Sat Mar 23 2013 03:55:32 for DSI Mini Project by
+    <li class="footer">Generated on Sat Mar 23 2013 05:46:56 for DSI Mini Project by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

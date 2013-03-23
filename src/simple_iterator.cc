@@ -1,7 +1,7 @@
 #include <cstring>
 #include "../include/simple_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -73,4 +73,4 @@ Status SimpleIterator::Multiplicity(int* out_result)
     return kNotImplemented;
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

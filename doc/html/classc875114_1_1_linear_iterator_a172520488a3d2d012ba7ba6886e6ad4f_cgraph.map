@@ -1,0 +1,6 @@
+<map id="c875114::LinearIterator::Next" name="c875114::LinearIterator::Next">
+<area shape="rect" id="node3" href="$classc875114_1_1_linear_iterator.html#aaf9043ca2c4f491e2315e7104ebbd845" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="457,11,612,57"/>
+<area shape="rect" id="node5" href="$classc875114_1_1_linear_iterator.html#abc9ac85a6f8477bbeefbd929d95859b3" title="Returns the key at a current position of the iterator." alt="" coords="208,23,395,53"/>
+<area shape="rect" id="node8" href="$classc875114_1_1_linear_iterator.html#aa2d19164f9fa6b955030a78c6739d051" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="224,76,379,123"/>
+<area shape="rect" id="node11" href="$classc875114_1_1_binary_search_tree.html#aa09d64262649964cf042b37e80576cfd" title="An inline tree node comparator, which compares tree nodes by keys using lexicographic ordering on an ..." alt="" coords="444,80,625,127"/>
+</map>

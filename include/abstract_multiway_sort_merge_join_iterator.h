@@ -6,7 +6,7 @@
 #include "interface_trie_iterator.h"
 #include "status.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -55,6 +55,6 @@ class AbstractMultiwaySortMergeJoinIterator : public virtual IIterator<int>
         int  key_multiplicity;                  /**< Current key multiplicity. */
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* ABSTRACT_MULTIWAY_SORT_MERGE_JOIN_ITERATOR_H_ */

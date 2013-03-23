@@ -1,4 +1,4 @@
-<map id="uk_ac_ox_cs_c875114::LinearIterator::Next" name="uk_ac_ox_cs_c875114::LinearIterator::Next">
+<map id="c875114::LinearIterator::Next" name="c875114::LinearIterator::Next">
 <area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a279cd465a6e44eee4972b8d549697ab6" title="Checks if the join iterator is positioned at the last tuple in the relation." alt="" coords="417,18,572,64"/>
 <area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#a64c068f0a4e2df1e12a256e7b46e711f" title="Returns the key at a current position of the iterator." alt="" coords="208,23,363,70"/>
 <area shape="rect" id="node8" href="$classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="208,92,363,139"/>

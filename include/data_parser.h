@@ -7,10 +7,10 @@
 #include "query.h"
 #include "relation.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
-/***
+/**
  * Database and query files parser (creates Relation and Query structures).
  */
 class DataParser
@@ -31,6 +31,6 @@ class DataParser
         static std::string               GetFilePath(std::string file_name);
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* DATABASE_PARSER_H_ */

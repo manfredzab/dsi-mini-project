@@ -4,11 +4,11 @@
 #include <vector>
 #include "equality.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
- * A structure to hold the tuple's key and tuple's multiplicity (number of times this exact tuple
+ * Holder of tuple's key and tuple's multiplicity (number of times this exact tuple
  * appears in a relation).
  */
 struct KeyMultiplicityPair
@@ -18,7 +18,7 @@ struct KeyMultiplicityPair
 };
 
 /**
- * An internal binary search tree node.
+ * Internal binary search tree node.
  */
 struct TreeNode
 {
@@ -29,7 +29,7 @@ struct TreeNode
 };
 
 /**
- * Binary search tree implementation. For the tree to be balanced, the source relation has to be
+ * Binary search tree data structure. For the tree to be balanced, the source relation has to be
  * sorted and must not contain duplicates.
  */
 class BinarySearchTree
@@ -86,6 +86,6 @@ class BinarySearchTree
         const int kTupleSize; /**< Tuple size. */
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* BINARY_SEARCH_TREE_H_ */

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['open',['Open',['../classuk__ac__ox__cs__c875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#aadda3feb3b0ccd91af56e74dbf6f2706',1,'uk_ac_ox_cs_c875114::AbstractMultiwaySortMergeJoinTrieIterator::Open()'],['../classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a032ace974df1ed4d3baf11dfb91e926b',1,'uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::Open()'],['../classuk__ac__ox__cs__c875114_1_1_trie_trie_iterator.html#a053af9224f0064f9e65d689ee0a4a250',1,'uk_ac_ox_cs_c875114::TrieTrieIterator::Open()']]]
+  ['open',['Open',['../classc875114_1_1_abstract_multiway_sort_merge_join_trie_iterator.html#a0f716c304e2c9a12579e854dffd91f83',1,'c875114::AbstractMultiwaySortMergeJoinTrieIterator::Open()'],['../classc875114_1_1_binary_search_tree_trie_iterator.html#ac00dca7fcbacff4966287f51ad0aebc3',1,'c875114::BinarySearchTreeTrieIterator::Open()'],['../classc875114_1_1_trie_trie_iterator.html#a3b98c9f54502cb5a95952190846f689d',1,'c875114::TrieTrieIterator::Open()']]]
 ];

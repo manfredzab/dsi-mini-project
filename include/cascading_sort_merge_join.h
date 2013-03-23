@@ -6,12 +6,13 @@
 #include "relation.h"
 #include "query.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
- * A class to perform a multiway sort-merge join. If n relations are being joined, then
- * this class executes n - 1 cascading binary sort-merge joins (@see BinarySortMergeJoin).
+ * Multi-way cascading sort-merge join, based on the binary sort-merge join. If \f$n\f$ relations
+ * are being joined, then this class executes \f$n - 1\f$ cascading binary sort-merge joins
+ * (@see BinarySortMergeJoin).
  */
 class CascadingSortMergeJoin
 {
@@ -19,6 +20,6 @@ class CascadingSortMergeJoin
         static Relation* Join(std::map<std::string, Relation*>& relations, const Query& query);
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* CASCADING_SORT_MERGE_JOIN_H_ */

@@ -1,4 +1,4 @@
-<map id="uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::Next" name="uk_ac_ox_cs_c875114::BinarySearchTreeTrieIterator::Next">
+<map id="c875114::BinarySearchTreeTrieIterator::Next" name="c875114::BinarySearchTreeTrieIterator::Next">
 <area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#a0ca084a646f6b7849b3cc3b7b8c25671" title="Moves the trie iterator to the element which is i) in the same level, ii) belongs to the same parent..." alt="" coords="288,54,523,101"/>
 <area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_binary_search_tree_trie_iterator.html#aa9733a76f022d20fe06d43d0932d1dc9" title="Checks if the trie iterator is positioned at the last child of the parent node." alt="" coords="571,5,768,69"/>
 <area shape="rect" id="node7" href="$classuk__ac__ox__cs__c875114_1_1_linear_iterator.html#aba9cce1f363cd420159691f97a6c4f14" title="Moves the iterator to the least upper bound (LUB) of the seek key." alt="" coords="592,93,747,139"/>

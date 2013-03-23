@@ -8,11 +8,11 @@
 #include "relation.h"
 #include "interface_trie_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
- * Outputs relations/tries to a given output stream. Tries are printed in a depth-first search manner.
+ * Relation/trie printer into a given output stream. Tries are printed in a depth-first search manner.
  */
 class Printer
 {
@@ -25,6 +25,6 @@ class Printer
         static void PrintTuple(int* current_tuple, int tuple_size, char separator, std::ostream& out);
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* PRINTER_H_ */

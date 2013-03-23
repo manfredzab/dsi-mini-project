@@ -1,7 +1,7 @@
 #include <algorithm>
 #include "../include/leapfrog_join_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::vector;
@@ -51,4 +51,4 @@ Status LeapfrogJoinIterator::Seek(int seek_key)
     return (this->AtEnd()) ? kFail : kOK;
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

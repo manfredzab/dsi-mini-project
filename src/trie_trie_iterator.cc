@@ -2,7 +2,7 @@
 
 #include "../include/trie_trie_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::vector;
@@ -171,4 +171,4 @@ Status TrieTrieIterator::Init()
     return kOK;
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

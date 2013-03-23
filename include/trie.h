@@ -4,11 +4,11 @@
 #include <vector>
 #include "relation.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
- * Holds internal trie node data: pointer to the parent, node key, node multiplicity,
+ * Holder of internal trie node data: pointer to the parent, node key, node multiplicity,
  * a list of children trie nodes and the pointer to the currently open child.
  */
 struct TrieNode
@@ -21,7 +21,7 @@ struct TrieNode
 };
 
 /**
- * Trie implementation. Builds a trie for a given relation in the order of relation's
+ * Trie data structure. Builds a trie for a given relation in the order of relation's
  * attributes.
  */
 class Trie
@@ -50,6 +50,6 @@ class Trie
         int trie_depth; /**< Depth of the trie. */
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* TRIE_H_ */

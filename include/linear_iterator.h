@@ -5,13 +5,14 @@
 #include "simple_iterator.h"
 #include "relation.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
- * Linear iterator class based on the binary search tree. It extends the simple iterator (@see SimpleIterator)
- * by providing a Seek() method which finds a seek key in O(log N) time and O(1 + log N/m) amortized time, where
- * N is the number of nodes in the relation and m is the number of visits to keys in ascending order.
+ * Linear iterator based on the binary search tree. It extends the simple iterator (@see SimpleIterator)
+ * by providing a Seek() method which finds a seek key in \f$O(\log N)\f$ time and \f$O(1 + \log N/m)\f$ amortized
+ * time, where \f$N\f$ is the number of nodes in the relation and \f$m\f$ is the number of visits to keys in
+ * ascending order.
  */
 class LinearIterator : public virtual SimpleIterator
 {
@@ -37,6 +38,6 @@ class LinearIterator : public virtual SimpleIterator
         bool      at_end;       /**< "At-end" flag. */
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* LINEAR_ITERATOR_H_ */

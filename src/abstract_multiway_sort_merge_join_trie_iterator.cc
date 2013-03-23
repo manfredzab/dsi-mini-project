@@ -9,7 +9,7 @@
 #include "../include/multiway_sort_merge_join_iterator.h"
 #include "../include/leapfrog_join_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::string;
@@ -370,4 +370,4 @@ bool AbstractMultiwaySortMergeJoinTrieIterator<TTrieIterator, TJoinIterator>::At
 template class AbstractMultiwaySortMergeJoinTrieIterator<TrieTrieIterator, MultiwaySortMergeJoinIterator>;
 template class AbstractMultiwaySortMergeJoinTrieIterator<BinarySearchTreeTrieIterator, LeapfrogJoinIterator>;
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

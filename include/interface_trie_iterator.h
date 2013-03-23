@@ -4,7 +4,7 @@
 #include "interface_iterator.h"
 #include "status.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
@@ -21,6 +21,6 @@ class ITrieIterator : public virtual IIterator<T>
         virtual int    Arity() = 0;
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* INTERFACE_TRIE_ITERATOR_H_ */

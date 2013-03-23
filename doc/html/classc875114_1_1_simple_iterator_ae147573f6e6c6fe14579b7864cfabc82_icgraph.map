@@ -1,0 +1,7 @@
+<map id="c875114::SimpleIterator::AtEnd" name="c875114::SimpleIterator::AtEnd">
+<area shape="rect" id="node3" href="$classc875114_1_1_binary_sort_merge_join_iterator.html#abc6d6bc75f97bf3d2e6d733007961471" title="Positions the join iterator at the next position in the join result." alt="" coords="453,18,629,65"/>
+<area shape="rect" id="node7" href="$classc875114_1_1_simple_iterator.html#a32e1d30047e6e5bb09db3101251890e5" title="Returns the key at a current position of the iterator." alt="" coords="215,27,404,56"/>
+<area shape="rect" id="node10" href="$classc875114_1_1_trie.html#a98b15977f51681dd8ba5e4ddb032de32" title="Constructs a trie for a given relation (in the relation&#39;s attribute order, i.e." alt="" coords="476,88,607,117"/>
+<area shape="rect" id="node12" href="$classc875114_1_1_simple_iterator.html#ab3e43b2854c331ccfd6aa6ca90477dad" title="Moves the iterator to the next tuple in the relation." alt="" coords="229,79,389,126"/>
+<area shape="rect" id="node5" href="$classc875114_1_1_binary_sort_merge_join_iterator.html#a500ed101e98f63e2ea7cea054756641c" title="Initializes the iterator." alt="" coords="677,18,853,65"/>
+</map>

@@ -2,7 +2,7 @@
 #include <algorithm>
 #include "../include/binary_sort_merge_join_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::string;
@@ -259,4 +259,4 @@ Status BinarySortMergeJoinIterator::Multiplicity(int* out_key)
 }
 
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */

@@ -1,4 +1,4 @@
-<map id="uk_ac_ox_cs_c875114::BinarySortMergeJoinIterator::AtEnd" name="uk_ac_ox_cs_c875114::BinarySortMergeJoinIterator::AtEnd">
+<map id="c875114::BinarySortMergeJoinIterator::AtEnd" name="c875114::BinarySortMergeJoinIterator::AtEnd">
 <area shape="rect" id="node3" href="$classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#a6a4b635a77583239154d68460bb7e7ad" title="Positions the join iterator at the next position in the join result." alt="" coords="247,14,473,61"/>
 <area shape="rect" id="node5" href="$classuk__ac__ox__cs__c875114_1_1_binary_sort_merge_join_iterator.html#ad79bd336a73a51fed0727b043fff1588" title="Initializes the iterator." alt="" coords="523,14,741,61"/>
 </map>

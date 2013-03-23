@@ -11,13 +11,13 @@
 #include "leapfrog_join_iterator.h"
 #include "binary_search_tree_trie_iterator.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 /**
  * Leapfrog join trie iterator as described by Todd L Veldhuizen in "Leapfrog Triejoin: A Simple, Worst-Case Optimal Join Algorithm",
- * LogicBlox Technical Report LB1201, December 2012. This class instantiates an abstract multi-way sort-merge join trie iterator with
- * leapfrog join iterators and binary search tree-based trie iterators.
+ * LogicBlox Technical Report LB1201, December 2012. This class instantiates an abstract multi-way sort-merge join trie iterator
+ * with leapfrog join iterators and binary search tree-based trie iterators.
  */
 class LeapfrogJoinTrieIterator : public virtual AbstractMultiwaySortMergeJoinTrieIterator<BinarySearchTreeTrieIterator, LeapfrogJoinIterator>
 {
@@ -30,6 +30,6 @@ class LeapfrogJoinTrieIterator : public virtual AbstractMultiwaySortMergeJoinTri
         virtual LeapfrogJoinIterator*         CreateJoinIteratorForTrieIterators(std::vector<BinarySearchTreeTrieIterator*>& trie_iterators);
 };
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
 
 #endif /* LEAPFROG_JOIN_TRIE_ITERATOR_H_ */

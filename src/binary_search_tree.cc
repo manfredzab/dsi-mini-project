@@ -2,7 +2,7 @@
 #include <stack>
 #include "../include/binary_search_tree.h"
 
-namespace uk_ac_ox_cs_c875114
+namespace c875114
 {
 
 using std::vector;
@@ -139,4 +139,4 @@ vector<KeyMultiplicityPair> BinarySearchTree::CollectTupleMultiplicities(vector<
     return tuple_multiplicities;
 }
 
-} /* namespace uk_ac_ox_cs_c875114 */
+} /* namespace c875114 */
