@@ -4,49 +4,26 @@
 #include <map>
 #include <string>
 #include <vector>
-
+#include "abstract_multiway_sort_merge_join_trie_iterator.h"
+#include "multiway_sort_merge_join_iterator.h"
+#include "trie_trie_iterator.h"
 #include "relation.h"
 #include "query.h"
-#include "status.h"
-#include "interface_trie_iterator.h"
-#include "interface_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-class MultiwaySortMergeJoinTrieIterator : public virtual ITrieIterator<int>
+class MultiwaySortMergeJoinTrieIterator : public virtual AbstractMultiwaySortMergeJoinTrieIterator<TrieTrieIterator, MultiwaySortMergeJoinIterator>
 {
     public:
-        MultiwaySortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query);
-        virtual ~MultiwaySortMergeJoinTrieIterator();
+        MultiwaySortMergeJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) : AbstractMultiwaySortMergeJoinTrieIterator<TrieTrieIterator, MultiwaySortMergeJoinIterator>(relations, query) { };
 
-        virtual Status Init();
-        virtual Status Open();
-        virtual Status Up();
-        virtual Status Key(int* result);
-        virtual Status Multiplicity(int* result);
-        virtual Status Next();
-        virtual bool   AtEnd();
-        virtual int    Arity();
+        virtual ~MultiwaySortMergeJoinTrieIterator() { };
 
     protected:
-        virtual bool                AtRoot();
-        virtual ITrieIterator<int>* CreateTrieIteratorForRelation(const Relation& relation);
-        virtual IIterator<int>* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
-
-        int                                         depth;
-        int                                         number_of_join_attributes;
-        int                                         number_of_result_attributes;
-        std::map<std::string, ITrieIterator*>       trie_iterator_for_relation;
-        std::map<int, std::vector<ITrieIterator*> > trie_iterators_for_depth;
-        std::map<int, IIterator*>                   join_iterator_for_depth;
-        std::vector<int>                            key_multiplicity_stack;
-
-    private:
-        const std::map<std::string, Relation*>& relations;
-        const Query&                            query;
+        virtual TrieTrieIterator*              CreateTrieIteratorForRelation(const Relation& relation);
+        virtual MultiwaySortMergeJoinIterator* CreateJoinIteratorForTrieIterators(std::vector<TrieTrieIterator*>& trie_iterators);
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */
-
 #endif /* MULTIWAY_SORT_MERGE_JOIN_TRIE_ITERATOR_H_ */

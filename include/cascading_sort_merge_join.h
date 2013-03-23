@@ -9,23 +9,21 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * A class to perform a multiway sort-merge join. If n relations are being joined, then
+ * this class executes n - 1 cascading binary sort-merge joins (@see BinarySortMergeJoin).
+ */
 class CascadingSortMergeJoin
 {
     public:
+        /***
+         * Performs a sequence of cascading sort-merge joins for the given relations and a given
+         * query. This method invokes n - 1 binary sort-merge joins.
+         * @param relations Relations to be joined.
+         * @param query Join query.
+         * @result A joined relation.
+         */
         static Relation* Join(std::map<std::string, Relation*>& relations, const Query& query);
-//
-//    private:
-//        struct RelationComparisonBySizeFunctor
-//        {
-//            RelationComparisonBySizeFunctor(std::map<std::string, Relation*>& relations) : relations(relations) { }
-//
-//            std::map<std::string, Relation*>& relations;
-//
-//            bool operator()(std::string first, std::string second)
-//            {
-//                return relations[first]->data.size() < relations[second]->data.size();
-//            }
-//        };
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */

@@ -4,26 +4,25 @@
 #include <map>
 #include <string>
 #include <vector>
-
 #include "relation.h"
 #include "query.h"
 #include "status.h"
-#include "interface_trie_iterator.h"
-#include "interface_iterator.h"
-#include "multiway_sort_merge_join_trie_iterator.h"
+#include "abstract_multiway_sort_merge_join_trie_iterator.h"
+#include "leapfrog_join_iterator.h"
+#include "binary_search_tree_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
-class LeapfrogJoinTrieIterator : public virtual MultiwaySortMergeJoinTrieIterator
+class LeapfrogJoinTrieIterator : public virtual AbstractMultiwaySortMergeJoinTrieIterator<BinarySearchTreeTrieIterator, LeapfrogJoinIterator>
 {
     public:
-        LeapfrogJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) : MultiwaySortMergeJoinTrieIterator(relations, query) { };
+        LeapfrogJoinTrieIterator(const std::map<std::string, Relation*>& relations, const Query& query) : AbstractMultiwaySortMergeJoinTrieIterator<BinarySearchTreeTrieIterator, LeapfrogJoinIterator>(relations, query) { };
         virtual ~LeapfrogJoinTrieIterator() { };
 
     protected:
-        virtual ITrieIterator<int>* CreateTrieIteratorForRelation(const Relation& relation);
-        virtual IIterator<int>* CreateJoinIteratorForTrieIterators(std::vector<ITrieIterator*>& trie_iterators);
+        virtual BinarySearchTreeTrieIterator* CreateTrieIteratorForRelation(const Relation& relation);
+        virtual LeapfrogJoinIterator*         CreateJoinIteratorForTrieIterators(std::vector<BinarySearchTreeTrieIterator*>& trie_iterators);
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */

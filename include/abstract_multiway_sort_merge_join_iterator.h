@@ -17,10 +17,11 @@ namespace uk_ac_ox_cs_c875114
  * this method is implemented as an efficient O(logN) (amortized O(1 + log N/m)) seek in the current
  * trie iterator level.
  */
+template <class TTrieIterator>
 class AbstractMultiwaySortMergeJoinIterator : public virtual IIterator<int>
 {
     public:
-        AbstractMultiwaySortMergeJoinIterator(std::vector<ITrieIterator<int>*>& iterators);
+        AbstractMultiwaySortMergeJoinIterator(std::vector<TTrieIterator*>& iterators);
         virtual ~AbstractMultiwaySortMergeJoinIterator() { };
 
         /**
@@ -73,13 +74,15 @@ class AbstractMultiwaySortMergeJoinIterator : public virtual IIterator<int>
          */
         virtual void Search();
 
-        std::vector<ITrieIterator<int>*>& iterators;
-        bool                              at_end;
-        int                               key;
-        int                               min_key;
-        int                               max_key;
-        int                               key_multiplicity;
-        int                               current_iterator_index;
+        std::vector<TTrieIterator*>& iterators; /**< A list of trie iterators of the relations that
+                                                     participate in this multiway join. */
+        int  current_iterator_index;            /**< Current iterator index. */
+
+        bool at_end;           /**< "At-end" flag. */
+        int  key;              /**< Current key */
+        int  min_key;          /**< Current minimum key (used in Search()). */
+        int  max_key;          /**< Current maximum key (used in Search()). */
+        int  key_multiplicity; /**< Current key multiplicity. */
 };
 
 } /* namespace uk_ac_ox_cs_c875114 */

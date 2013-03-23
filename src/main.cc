@@ -47,12 +47,12 @@ int main(int argc, char *argv[])
     Query* query = DataParser::ParseQuery(arguments.query_file);
 
     // Set up the output stream: if "-output time" flag is specified, the joined relation will
-    // be written into "result.rel" file and the time measurement will be written to STDOUT;
-    // otherwise the joined relation will be printed to STDOUT.
+    // be written into /dev/null file and the time measurement will be written to STDOUT; otherwise
+    // the joined relation will be printed to STDOUT.
     std::ofstream file_output_stream;
     if (arguments.output_time)
     {
-        file_output_stream.open("result.rel", std::ios::out | std::ios::trunc);
+        file_output_stream.open("/dev/null", std::ios::out);
     }
     std::ostream& output_stream = arguments.output_time ? file_output_stream : std::cout;
 
@@ -83,8 +83,8 @@ int main(int argc, char *argv[])
         case kSortMergeTrie:
         case kLeapfrog:
         {
-            ITrieIterator<int>* join_trie_iterator = (kSortMergeTrie == arguments.join_algorithm_type) ? new MultiwaySortMergeJoinTrieIterator(*relations, *query) :
-                                                                                                         new LeapfrogJoinTrieIterator(*relations, *query);
+            ITrieIterator<int>* join_trie_iterator = (kSortMergeTrie == arguments.join_algorithm_type) ? (ITrieIterator<int>*)new MultiwaySortMergeJoinTrieIterator(*relations, *query) :
+                    (ITrieIterator<int>*)new LeapfrogJoinTrieIterator(*relations, *query);
             // Initialize the join trie iterator
             join_trie_iterator->Init();
 

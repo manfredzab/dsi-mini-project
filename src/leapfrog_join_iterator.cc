@@ -1,18 +1,25 @@
 #include <algorithm>
 #include "../include/leapfrog_join_iterator.h"
-#include "../include/binary_search_tree_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
+using std::vector;
+
+LeapfrogJoinIterator::LeapfrogJoinIterator(vector<BinarySearchTreeTrieIterator*>& iterators) :
+    AbstractMultiwaySortMergeJoinIterator<BinarySearchTreeTrieIterator>(iterators)
+{
+    // Do nothing
+};
+
 void LeapfrogJoinIterator::PositionCurrentIteratorAtKey(int key)
 {
-    (dynamic_cast<BinarySearchTreeTrieIterator*>(iterators[current_iterator_index]))->Seek(key);
+    iterators[current_iterator_index]->Seek(key);
 }
 
 Status LeapfrogJoinIterator::Seek(int seek_key)
 {
-    (dynamic_cast<BinarySearchTreeTrieIterator*>(iterators[current_iterator_index]))->Seek(seek_key);
+    iterators[current_iterator_index]->Seek(key);
 
     if (iterators[current_iterator_index]->AtEnd())
     {

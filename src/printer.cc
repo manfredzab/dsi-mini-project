@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <vector>
-#include <sstream>
 #include "../include/printer.h"
 
 namespace uk_ac_ox_cs_c875114
@@ -8,16 +7,16 @@ namespace uk_ac_ox_cs_c875114
 
 using std::string;
 using std::vector;
-using std::map;
 using std::ostream;
 using std::ostringstream;
+
 
 void Printer::Print(Relation& relation, std::ostream& out)
 {
     int tuple_size = relation.attribute_names.size();
     for (vector<int*>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
     {
-        out << TupleToString(*it, tuple_size, ',') << std::endl;
+        PrintTuple(*it, tuple_size, ',', out);
     }
 }
 
@@ -25,33 +24,32 @@ void Printer::Print(Relation& relation, std::ostream& out)
 void Printer::Print(ITrieIterator<int>& trie_iterator, ostream& out)
 {
     // Print the trie contents in-order
-    vector<int> current_tuple;
-    PrintNode(trie_iterator, trie_iterator.Arity(), 0, current_tuple, out);
+    int tuple_size = trie_iterator.Arity();
+    int* current_tuple = new int[tuple_size];
+
+    PrintNode(trie_iterator, tuple_size, 0, current_tuple, out);
+
+    delete[] current_tuple;
 }
 
 
-void Printer::PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, vector<int>& current_tuple, ostream& out)
+void Printer::PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, int* current_tuple, ostream& out)
 {
     if (trie_iterator.Open() == kFail)
     {
         if (current_depth == printing_depth)
         {
-            out << TupleToString(current_tuple, ',') << std::endl;
+            PrintTuple(current_tuple, printing_depth, ',', out);
         }
 
         return;
     }
 
-    int current_node_key;
     do
     {
-        trie_iterator.Key(&current_node_key);
-
-        current_tuple.push_back(current_node_key);
+        trie_iterator.Key(&current_tuple[current_depth]);
 
         PrintNode(trie_iterator, printing_depth, current_depth + 1, current_tuple, out);
-
-        current_tuple.pop_back();
     }
     while (trie_iterator.Next() == kOK);
 
@@ -59,29 +57,14 @@ void Printer::PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, i
 }
 
 
-string Printer::TupleToString(int* current_tuple, int tuple_size, char separator)
+inline void Printer::PrintTuple(int* current_tuple, int tuple_size, char separator, ostream& out)
 {
-    ostringstream stream;
-
     for (int i = 0; i < tuple_size; i++)
     {
-        stream << current_tuple[i] << separator;
+        out << current_tuple[i] << separator;
     }
 
-    return stream.str();
-}
-
-
-string Printer::TupleToString(vector<int>& current_tuple, char separator)
-{
-    ostringstream stream;
-
-    for (vector<int>::iterator it = current_tuple.begin(); it != current_tuple.end(); ++it)
-    {
-        stream << *it << separator;
-    }
-
-    return stream.str();
+    out << std::endl;
 }
 
 } /* namespace uk_ac_ox_cs_c875114 */

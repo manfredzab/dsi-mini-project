@@ -4,6 +4,9 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * Equality enumeration, representing "<", ">" and "=" relations.
+ */
 enum Equality
 {
     kLessThan = 0,

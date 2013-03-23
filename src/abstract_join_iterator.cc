@@ -1,16 +1,17 @@
 #include <algorithm>
 #include "../include/abstract_multiway_sort_merge_join_iterator.h"
+#include "../include/trie_trie_iterator.h"
+#include "../include/binary_search_tree_trie_iterator.h"
 
 namespace uk_ac_ox_cs_c875114
 {
 
 using std::vector;
 
-
 bool CompareTrieIteratorsByKeys(ITrieIterator<int>* first, ITrieIterator<int>* second);
 
-
-AbstractMultiwaySortMergeJoinIterator::AbstractMultiwaySortMergeJoinIterator(vector<ITrieIterator<int>*>& iterators) : iterators(iterators)
+template <class TTrieIterator>
+AbstractMultiwaySortMergeJoinIterator<TTrieIterator>::AbstractMultiwaySortMergeJoinIterator(vector<TTrieIterator*>& iterators) : iterators(iterators)
 {
     this->at_end = false;
     this->current_iterator_index = 0;
@@ -20,18 +21,18 @@ AbstractMultiwaySortMergeJoinIterator::AbstractMultiwaySortMergeJoinIterator(vec
     this->key_multiplicity = 1;
 }
 
-
-Status AbstractMultiwaySortMergeJoinIterator::Init()
+template <class TTrieIterator>
+Status AbstractMultiwaySortMergeJoinIterator<TTrieIterator>::Init()
 {
     at_end = false;
-    for (vector<ITrieIterator<int>*>::iterator iterator = iterators.begin(); iterator != iterators.end(); ++iterator)
+    for (unsigned int i = 0; i < iterators.size(); i++)
     {
-        at_end |= (*iterator)->AtEnd();
+        at_end |= iterators[i]->AtEnd();
     }
 
     if (!at_end)
     {
-        sort(iterators.begin(), iterators.end(), CompareTrieIteratorsByKeys);
+        std::sort(iterators.begin(), iterators.end(), CompareTrieIteratorsByKeys);
         current_iterator_index = 0;
         Search();
     }
@@ -39,8 +40,8 @@ Status AbstractMultiwaySortMergeJoinIterator::Init()
     return kOK;
 }
 
-
-void AbstractMultiwaySortMergeJoinIterator::Search()
+template <class TTrieIterator>
+void AbstractMultiwaySortMergeJoinIterator<TTrieIterator>::Search()
 {
     int iterator_count = iterators.size();
 
@@ -86,8 +87,8 @@ void AbstractMultiwaySortMergeJoinIterator::Search()
     }
 }
 
-
-Status AbstractMultiwaySortMergeJoinIterator::Next()
+template <class TTrieIterator>
+Status AbstractMultiwaySortMergeJoinIterator<TTrieIterator>::Next()
 {
     if (this->AtEnd())
     {
@@ -107,24 +108,24 @@ Status AbstractMultiwaySortMergeJoinIterator::Next()
     return (this->AtEnd()) ? kFail : kOK;
 }
 
-
-Status AbstractMultiwaySortMergeJoinIterator::Key(int* out_key)
+template <class TTrieIterator>
+Status AbstractMultiwaySortMergeJoinIterator<TTrieIterator>::Key(int* out_key)
 {
     *out_key = this->key;
 
     return kOK;
 }
 
-
-Status AbstractMultiwaySortMergeJoinIterator::Multiplicity(int* out_multiplicity)
+template <class TTrieIterator>
+Status AbstractMultiwaySortMergeJoinIterator<TTrieIterator>::Multiplicity(int* out_multiplicity)
 {
     *out_multiplicity = this->key_multiplicity;
 
     return kOK;
 }
 
-
-bool AbstractMultiwaySortMergeJoinIterator::AtEnd()
+template <class TTrieIterator>
+bool AbstractMultiwaySortMergeJoinIterator<TTrieIterator>::AtEnd()
 {
     return this->at_end;
 }
@@ -138,5 +139,7 @@ bool CompareTrieIteratorsByKeys(ITrieIterator<int>* first, ITrieIterator<int>* s
     return (first_result < second_result);
 }
 
+template class AbstractMultiwaySortMergeJoinIterator<TrieTrieIterator>;
+template class AbstractMultiwaySortMergeJoinIterator<BinarySearchTreeTrieIterator>;
 
 } /* namespace uk_ac_ox_cs_c875114 */

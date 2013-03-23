@@ -7,6 +7,9 @@
 namespace uk_ac_ox_cs_c875114
 {
 
+/**
+ * Generic trie iterator interface.
+ */
 template <typename T>
 class ITrieIterator : public virtual IIterator<T>
 {
