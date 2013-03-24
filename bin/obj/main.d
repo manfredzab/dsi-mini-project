@@ -19,11 +19,7 @@ obj/main.d: ../src/main.cc ../src/../include/arguments.h \
  ../src/../include/binary_search_tree.h ../src/../include/equality.h \
  ../src/../include/simple_iterator.h \
  ../src/../include/cascading_sort_merge_join.h \
- ../src/../include/printer.h ../src/../include/timer.h \
- ../src/../include/binary_search_tree.h \
- ../src/../include/linear_iterator.h \
- ../src/../include/binary_search_tree_trie_iterator.h \
- ../src/../include/trie_trie_iterator.h
+ ../src/../include/printer.h ../src/../include/timer.h
 
 ../src/../include/arguments.h:
 
@@ -82,11 +78,3 @@ obj/main.d: ../src/main.cc ../src/../include/arguments.h \
 ../src/../include/printer.h:
 
 ../src/../include/timer.h:
-
-../src/../include/binary_search_tree.h:
-
-../src/../include/linear_iterator.h:
-
-../src/../include/binary_search_tree_trie_iterator.h:
-
-../src/../include/trie_trie_iterator.h:

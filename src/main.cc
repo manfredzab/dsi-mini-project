@@ -1,18 +1,26 @@
 /**
- * @mainpage Documentation of "dsi-mini-project" tool
+ * @mainpage Documentation
  *
- * @section decription_sec Description
+ * @section general_information_sec Overview
  *
- * The <i>dsi-mini-project</i> tool implements three multi-way join algorithms:
+ * The multi-way join algorithm benchmarking problem posed in the Database Systems Implementation, Hilary Term 2013 examination is solved by three separate tools:
  * <ul>
- *   <li>Cascading sort-merge join, which uses \f$n - 1\f$ binary sort-merge joins to join \f$n\f$ relations,</li>
- *   <li>Trie-based sort-merge join, which joins all relations at the same time using trie representations
- *       of relations (but requires that relations would be pre-sorted in the join-order), and</li>
- *   <li>Leapfrog join, as described by Todd L Veldhuizen in "Leapfrog Triejoin: A Simple, Worst-Case Optimal Join
- *       Algorithm", LogicBlox Technical Report LB1201, December 2012.</li>
+ *   <li><i>dsi-mini-project</i> tool, which implements three multi-way join algorithms:
+ *     <ul>
+ *       <li>Cascading sort-merge join, which uses \f$n - 1\f$ binary sort-merge joins to join \f$n\f$ relations,</li>
+ *       <li>Trie-based sort-merge join, which joins all relations at the same time using trie representations
+ *           of relations (but requires that relations would be pre-sorted in the join-order), and</li>
+ *       <li>Leapfrog join, as described by Todd L Veldhuizen in "Leapfrog Triejoin: A Simple, Worst-Case Optimal Join
+ *          Algorithm", LogicBlox Technical Report LB1201, December 2012.</li>
+ *     </ul>
+ *   </li>
+ *   <li><i>dsi-mini-project-tests</i> tool, which is used to test <i>dsi-mini-project</i> tool by comparing the results
+ *       that it produces to the ones produced by <a href="http://www.h2database.com">H2 RDBMS engine</a>, and</li>
+ *   <li><i>dsi-mini-project-timing</i> tool, which is used to gather performance data for different algorithms, supported
+ *       by <i>dsi-mini-project</i> tool.
  * </ul>
  *
- * @section usage_sec Usage
+ * @section usage_sec Usage of "dsi-mini-project", "dsi-mini-project-tests" and "dsi-mini-project-timing" tools
  *
  *  This section describes how to:
  *  <ul>
@@ -24,9 +32,10 @@
  *
  * @subsection running_sec Running "dsi-mini-project" tool
  *
- * To join a set of relations using a particular join query and a particular join algorithm, execute the command:
+ * To join a set of relations using a particular join query and a particular join algorithm, navigate to the binaries folder of
+ * <i>dsi-mini-project</i> tool ("dsi-mini-project/bin") and execute the command:
  * <blockquote>
- *   <code>dsi-mini-project &lt;algorithm&gt; -query &lt;query file&gt; -database &lt;database file&gt; [-output &lt;output type&gt;]</code>, where
+ *   <code>./dsi-mini-project &lt;algorithm&gt; -query &lt;query file&gt; -database &lt;database file&gt; [-output &lt;output type&gt;]</code>, where
  * </blockquote>
  * <ul>
  *   <li><code>algorithm</code> \f$\in \{\f$ <code>sortmerge</code>, <code>sortmergetrie</code>, <code>leapfrog</code> \f$\}\f$, and
@@ -45,13 +54,22 @@
  *     </ul>
  *   </li>
  * </ul>
+ * For example, to perform a multi-way leapfrog join on "query2" and "scale3" of "dataset1-uniform", execute the command <code>./dsi-mini-project
+ * leapfrog -query ../data/query2 -database ../data/dataset1-uniform/scale3/databasefile</code>.
  *
+ * @subsubsection troubleshooting_sec Troubleshooting
+ *
+ * If you are getting <code>"-bash: ./dsi-mini-project: Permission denied"</code> error message, give the "execution" permission to the <i>dsi-mini-project</i>
+ * tool with the command
+ * <blockquote>
+ *   <code>chmod +x dsi-mini-project</code>
+ * </blockquote>
+ * and re-run the <code>dsi-mini-project</code> executable.
  *
  * @subsection compiling_sec Compiling "dsi-mini-project" tool
  *
- * To compile the <i>dsi-mini-project</i> tool execute the following commands:
+ * To compile the <i>dsi-mini-project</i> tool, execute the following command from the "dsi-mini-project/bin" folder:
  * <blockquote>
- *  <code>cd bin</code><br/>
  *  <code>make</code>
  * </blockquote>
  *
@@ -67,7 +85,8 @@
  * @subsubsection testing_running_subsubsec Running "dsi-mini-project-tests" tool
  *
  * To run the tests on both datasets ("dataset1-uniform" and "dataset2-zipf"), all queries ("query1" to "query3"),
- * all scales ("scale1" to "scale6") and all algorithms ("sortmerge", "sortmergetrie", "leapfrog"), execute the command:
+ * all scales ("scale1" to "scale6") and all algorithms ("sortmerge", "sortmergetrie", "leapfrog"), execute the following command
+ * from the binaries folder of the <i>dsi-mini-project-tests</i> tool ("dsi-mini-project-tests/bin"):
  * <blockquote>
  *   <code>java -jar dsi-mini-project-tests.jar &lt;path to the dataset&gt; &lt;path to dsi-mini-project executable&gt;</code>,
  * </blockquote>
@@ -101,9 +120,10 @@
  *
  * @subsubsection testing_compiling_subsubsec Compiling "dsi-mini-project-tests" tool
  *
- * To compile the <i>dsi-mini-project-tests</i> tool execute the following commands:
+ * To compile the <i>dsi-mini-project-tests</i> tool, navigate to the "dsi-mini-project-tests" folder
+ * and execute the following commands:
  * <blockquote>
- *  <code>javac -d bin -sourcepath src -cp lib/h2-1.3.170.jar src/uk/ac/ox/cs/c875114/</code><code>*.java</code><br/>
+ *  <code>javac -d bin -sourcepath src src/uk/ac/ox/cs/c875114/</code><code>*.java</code><br/>
  *  <code>cd bin</code><br/>
  *  <code>jar cfm dsi-mini-project-tests.jar manifest.txt uk/ac/ox/cs/c875114</code>
  * </blockquote>
@@ -146,7 +166,8 @@
  *
  * @subsubsection timing_running_subsubsec Running "dsi-mini-project-timing" tool
  *
- * To gather the running time averages of all three algorithms on all datasets, queries and scales, execute the command:
+ * To gather the running time averages of all three algorithms on all datasets, queries and scales, navigate to the
+ * binaries folder of <i>dsi-mini-project-timing</i> tool ("dsi-mini-project-timing/bin") and execute the following command:
  * <blockquote>
  *   <code>java -jar dsi-mini-project-timing.jar &lt;path to the dataset&gt; &lt;path to dsi-mini-project executable&gt;</code>,
  * </blockquote>
@@ -171,9 +192,10 @@
  *
  * @subsubsection timing_compiling_subsubsec Compiling "dsi-mini-project-timing" tool
  *
- * To compile the <i>dsi-mini-project-timing</i> tool execute the following commands:
+ * To compile the <i>dsi-mini-project-timing</i> tool execute the following commands from the
+ * "dsi-mini-project-timing" folder:
  * <blockquote>
- *  <code>javac -d bin -sourcepath src -cp src/uk/ac/ox/cs/c875114/</code><code>*.java</code><br/>
+ *  <code>javac -d bin -sourcepath src src/uk/ac/ox/cs/c875114/</code><code>*.java</code><br/>
  *  <code>cd bin</code><br/>
  *  <code>jar cfm dsi-mini-project-timing.jar manifest.txt uk/ac/ox/cs/c875114</code>
  * </blockquote>

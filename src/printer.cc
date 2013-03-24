@@ -17,10 +17,13 @@ using std::ostringstream;
  */
 void Printer::Print(Relation& relation, std::ostream* out)
 {
-    int tuple_size = relation.attribute_names.size();
-    for (vector<int*>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
+    if (out != NULL)
     {
-        PrintTuple(*it, tuple_size, ',', *out);
+        int tuple_size = relation.attribute_names.size();
+        for (vector<int*>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
+        {
+            PrintTuple(*it, tuple_size, ',', *out);
+        }
     }
 }
 
