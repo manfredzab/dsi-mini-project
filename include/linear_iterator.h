@@ -9,8 +9,8 @@ namespace c875114
 {
 
 /**
- * Linear iterator based on the binary search tree. It extends the simple iterator (@see SimpleIterator)
- * by providing a Seek() method which finds a seek key in \f$O(\log N)\f$ time and \f$O(1 + \log N/m)\f$ amortized
+ * Linear iterator based on the binary search tree. It extends the simple iterator (SimpleIterator) by
+ * providing a Seek() method which finds a seek key in \f$O(\log N)\f$ time and \f$O(1 + \log N/m)\f$ amortized
  * time, where \f$N\f$ is the number of nodes in the relation and \f$m\f$ is the number of visits to keys in
  * ascending order.
  */

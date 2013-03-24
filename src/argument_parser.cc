@@ -9,11 +9,11 @@ using std::string;
 
 /**
  *  Reads the arguments from the command line argument string array and populates the
- *  @see Arguments structure.
+ *  Arguments structure.
  *  @param argc Argument count.
  *  @param argv A pointer to the command line argument string array.
- *  @param out_arguments Resulting @see Arguments structure.
- *  @return @see kOK if the arguments were parsed successfully, @see kFail otherwise.
+ *  @param out_arguments Resulting Arguments structure.
+ *  @return kOK if the arguments were parsed successfully, kFail otherwise.
  */
 Status ArgumentParser::ParseArguments(int argc, char *argv[], Arguments* out_arguments)
 {

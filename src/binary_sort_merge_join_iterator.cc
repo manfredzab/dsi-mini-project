@@ -188,7 +188,7 @@ Status BinarySortMergeJoinIterator::Next()
 /**
  * Gathers tuples with the same key, starting at the current relation iterator position.
  * @param relation_iterator A reference to a simple relation iterator.
- * @param comparison_functor A reference to the tuple comparison functor (@see SameRelationTupleComparisonFunctor).
+ * @param comparison_functor A reference to the tuple comparison functor (see SameRelationTupleComparisonFunctor).
  * @param out_same_key_result_tuples A reference to the list into which the same key tuples should be placed.
  */
 inline void BinarySortMergeJoinIterator::GatherSameKeyTuples(SimpleIterator& relation_iterator, SameRelationTupleComparisonFunctor& comparison_functor, list<int*>& out_same_key_tuples)

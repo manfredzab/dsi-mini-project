@@ -9,7 +9,7 @@ namespace c875114
 
 /**
  * Command line arguments parser. Reads the arguments from the command line argument string
- * array and populates the @see Arguments structure.
+ * array and populates the Arguments structure.
  */
 class ArgumentParser
 {

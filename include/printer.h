@@ -17,11 +17,11 @@ namespace c875114
 class Printer
 {
     public:
-        static void Print(Relation& relation, std::ostream& out = std::cout);
-        static void Print(ITrieIterator<int>& trie_iterator, std::ostream& out = std::cout);
+        static void Print(Relation& relation, std::ostream* out);
+        static void Print(ITrieIterator<int>& trie_iterator, std::ostream* out);
 
     private:
-        static void PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, int* current_tuple, std::ostream& out);
+        static void PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, int* current_tuple, std::ostream* out);
         static void PrintTuple(int* current_tuple, int tuple_size, char separator, std::ostream& out);
 };
 

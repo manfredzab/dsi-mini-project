@@ -15,8 +15,8 @@ namespace c875114
 
 /**
  * Multi-way sort-merge join trie iterator. This class instantiates the abstract multi-way sort-merge join trie iterator, by constructing
- * (actual) tries for underlying relation trie iterators (@see TrieTrieIterator). Similarly, it constructs simple join iterators which are then
- * used to scan the trie iterators at the appropriate depths by repeatedly calling Next() method (@see MultiwaySortMergeJoinIterator).
+ * (actual) tries for underlying relation trie iterators (see TrieTrieIterator). Similarly, it constructs simple join iterators which are then
+ * used to scan the trie iterators at the appropriate depths by repeatedly calling Next() method (see MultiwaySortMergeJoinIterator).
  */
 class MultiwaySortMergeJoinTrieIterator : public virtual AbstractMultiwaySortMergeJoinTrieIterator<TrieTrieIterator, MultiwaySortMergeJoinIterator>
 {

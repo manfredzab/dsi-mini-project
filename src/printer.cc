@@ -15,12 +15,12 @@ using std::ostringstream;
  * @param relation Relation to be printed.
  * @param out      Output stream to which the relation should be printed.
  */
-void Printer::Print(Relation& relation, std::ostream& out)
+void Printer::Print(Relation& relation, std::ostream* out)
 {
     int tuple_size = relation.attribute_names.size();
     for (vector<int*>::iterator it = relation.data.begin(); it != relation.data.end(); ++it)
     {
-        PrintTuple(*it, tuple_size, ',', out);
+        PrintTuple(*it, tuple_size, ',', *out);
     }
 }
 
@@ -29,7 +29,7 @@ void Printer::Print(Relation& relation, std::ostream& out)
  * @param trie_iterator Iterator over a trie to be printed.
  * @param out           Output stream to which the relation should be printed.
  */
-void Printer::Print(ITrieIterator<int>& trie_iterator, ostream& out)
+void Printer::Print(ITrieIterator<int>& trie_iterator, ostream* out)
 {
     // Print the trie contents in-order
     int tuple_size = trie_iterator.Arity();
@@ -47,14 +47,14 @@ void Printer::Print(ITrieIterator<int>& trie_iterator, ostream& out)
  * @param current_tuple  Current tuple build while traversing the trie (i.e. path over the trie).
  * @param out            Output stream where trie should be printed.
  */
-void Printer::PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, int* current_tuple, ostream& out)
+void Printer::PrintNode(ITrieIterator<int>& trie_iterator, int printing_depth, int current_depth, int* current_tuple, ostream* out)
 {
     // Iterate depth-first
     if (trie_iterator.Open() == kFail)
     {
-        if (current_depth == printing_depth)
+        if ((current_depth == printing_depth) && (out != NULL))
         {
-            PrintTuple(current_tuple, printing_depth, ',', out);
+            PrintTuple(current_tuple, printing_depth, ',', *out);
         }
 
         return;

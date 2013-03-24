@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['documentation_20for_20the_20dsi_20mini_20project',['Documentation for the DSI Mini Project',['../index.html',1,'']]]
+  ['documentation_20of_20_22dsi_2dmini_2dproject_22_20tool',['Documentation of &quot;dsi-mini-project&quot; tool',['../index.html',1,'']]]
 ];

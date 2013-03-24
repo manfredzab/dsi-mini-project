@@ -8,11 +8,11 @@ namespace c875114
 {
 
 /**
- * Holder of parsed command line arguments. Populated by @see ArgumentParser.
+ * Holder of parsed command line arguments. Populated by ArgumentParser.
  */
 struct Arguments
 {
-    JoinAlgorithmType join_algorithm_type; /**< Join algorithm type (@see JoinAlgorithmType). */
+    JoinAlgorithmType join_algorithm_type; /**< Join algorithm type. */
     std::string       query_file;          /**< Query file name. */
     std::string       database_file;       /**< Database file name. */
     bool              output_time;         /**< Flag indicating whether the time or the joined relation tuples */

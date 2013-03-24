@@ -11,8 +11,8 @@ namespace c875114
 
 /**
  * Multi-way cascading sort-merge join, based on the binary sort-merge join. If \f$n\f$ relations
- * are being joined, then this class executes \f$n - 1\f$ cascading binary sort-merge joins
- * (@see BinarySortMergeJoin).
+ * are being joined, then this class executes \f$n - 1\f$ cascading binary sort-merge joins.
+ * @see BinarySortMergeJoin
  */
 class CascadingSortMergeJoin
 {
